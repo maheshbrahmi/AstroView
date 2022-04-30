@@ -1,0 +1,175 @@
+<html>
+<head>
+<title>FAQ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <link href="css/bootstrap3.min.css" rel="stylesheet" type="text/css" media="all"/>
+ <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/bootstrap3.min.js"></script>
+</head>
+<body text="#000000" bgcolor="#ffffff" link="#274d99" vlink="#5a83d7" alink="#5a83d7">
+<basefont size=2>
+<table width="100%" border="0" cellpadding="5" cellspacing="0">
+   <tr>
+   <td   align=center bgcolor="#264b99"><font face="verdana,arial" size=6 color="#FFFFFF"><b>QuickSmith Web Version 1.0.0</b></font> <br>
+    <button style="float: left; "   class="btn btn-info btn-lg" onclick="window.location.href='index.html'">Home</button>
+    <font 
+       face="verdana,arial" size=4 color="#FFFFFF"><b>Frequently Asked Questions</b><br>
+    </font>
+  </td>
+  </tr>
+</table>
+<font face="verdana,arial" size=5>
+<!-- <p><i>Last Updated: 6-14-2014</i> -->
+<p>Following are answers to some of the top questions I receive regarding QuickSmith.
+<ul>
+<li><a href="#lang">What is QuickSmith ?</a>
+<li><a href="#mbcs">How do I get started ?</a>
+<li><a href="#setupicon">How to change step size ?</a>
+<li><a href="#silent">What does the Load in the schematic represent ? </a>
+<li><a href="#units">What are the default units ? </a>
+<li><a href="#components">How can I change load resistance and reactance ?</a>
+<li><a href="#match">How do I match my circuit to 50 (or Char. impedance) ohms ?</a>
+<li><a href="#match1">How do I match to impedance other that 50 ohms ?</a>
+<li><a href="#amplifier">What is the Amplifier Design window all about ?</a>
+<li><a href="#s21">What does Insertion Loss window do?</a>
+<li><a href="#sweep">How to Sweep Frequency or Component values?</a>
+<li><a href="#back">How do I get to the main window from Insertion Loss or Amplifier Design window?</a>
+<li><a href="#vswr">How do I get VSWR/Return Loss at any point on the Smith chart?</a>
+<li><a href="#missingfeatures">I don't see some features on my phone.</a>
+<li><a href="#session">How can I avoid losing my work if the page reloads ?</a>
+<li><a href="#import">How can I import external data on the Smith Chart ?</a>
+<li><a href="#latestversion">Where can I get the latest version from ?</a>
+<li><a href="#examples">Where can I find tutorials or examples ?</a>
+<li><a href="#references"> Where can I read more about the formulas and calculations this program is based on ?</a>
+</ul>
+
+</BR>
+<h3><a name="lang">About QuickSmith </a></h3>
+<blockquote>
+QuickSmith is a Smith Chart based linear circuit simulation program.<BR>
+Some of the features offered by this program are listed below:<BR>
+  - Ladder network, elements are loaded using drag drop method.<BR>
+  - Open and Save functions for schematic files<BR>
+  - Impedance matching<BR>
+  - Frequency/component sweep<BR>
+  - Load impedance interpolation/extrapolation for frequency dependent loads<BR>
+  - Q factors taken into account for network components<BR>
+  - Amplifier design/analysis using gain/noise circles<BR>
+  - Insertion loss and S21 graphs<BR>
+  - Transmission line parameter calculations<BR>
+  - Constant Conductance, VSWR and Q circles<BR>
+  - Import and Export of data files<BR>
+  - Help files with solved examples of network matching and amplifier design<BR>
+</blockquote>
+<h3><a name="mbcs">Getting started</a></h3>
+<blockquote>
+First you will notice there are two windows one on the left is the <B>Smithchart</B> window another and on the right is <B>Schematic</B><BR>
+In the Schematic window, click on the resistor <IMG SRC="img/r.bmp" WIDTH=61 HEIGHT=20 BORDER=0> icon and drag and drop it in the white slot in the ladder above, a Message box will pop up and enter a number and hit return<BR>
+Notice that the blue dot on the Smith chart moves to an appropriate location. Now you can you use spin(up/down) button to navigate on the Smith chart<BR>
+</blockquote>
+<h3><a name="setupicon">Step Size</a></h3>
+<blockquote>
+To change the step size double click on the <B>component value</B> in the schematic window. Mobile users may tap on the component value, and enter <B>s or S </B> to change the setp size.
+</blockquote>
+<h3><a name="silent">Load in the schematic</a></h3>
+<blockquote>
+The <B>load (L)</B> on the left side of the Schematic window is the device you are looking into. It is very similar to a Network analyser with the Port 1 cable connected to a device.
+The display end of the network analyzer is the right side <B>(Zin)</B>
+</blockquote>
+<h3><a name="units">Default Units</a></h3>
+<blockquote>
+Frequency <B>MHz</B>, Resistor <B>Ohms</B>, Inductor <B>nH</B>, Capacitor <B>pH</B>.
+</blockquote>
+<h3><a name="components">Load Resistance/Reactance</a></h3>
+<blockquote>
+To change the load resistance or reactance drag the RX icon<IMG SRC="img/rx.bmp" WIDTH=20 HEIGHT=70 BORDER=0 align="middle" style="margin-left:4px"> or the GAMMA icon <IMG SRC="img/g.bmp" WIDTH=20 HEIGHT=70 BORDER=0 align="middle" style="margin-left:4px"> icon on load (L) slot and enter the value in the message box .
+</blockquote>
+<!-- 
+<h3><a name="conditional">Menus</a></h3>
+<blockquote>
+In the interest of giving user many options there are two menus one when the Smithchart window in focus another when the Schematic window is in focus.
+To change menus click on the appropriate window or on the icon in the top left side of the window.
+</blockquote> -->
+<h3><a name="match">To Match to 50 Ohms (or Char. impedance)</a></h3>
+<blockquote>
+In the Schematic window enter the Load resistance and reactance. Next enter the operating frequency[Mhz] in the freqency input box. Depending upon your Load location use the Matching aid shown below
+to determine the network to get to 50 Ohms, alternatively web users can make use of the new "Matching Tip" feature that will appear in the schematic section when the mouse pointer is hovered on the blue dot.  The goal is to navigate the blue dot on the Smith chart to the circle going through the  center
+and then use the last component to bring to the 50 Ohm point. See the <a  href="help/examples/examples/EXAMPLE_6.html">Large Signal Amplifier Design Example</a> in the help section.
+<br> <br><br> <br>
+<center><IMG SRC="img/match.jpg" WIDTH=700 HEIGHT=694 BORDER=1></center>
+<br> <br> <br> <br>
+</blockquote>
+<h3><a name="match1">To Match to other impedance</a></h3>
+<blockquote>
+Use the Marker in the SmithChart window display menu to set a target marker.
+</blockquote>
+<h3><a name="amplifier">Amplifier Design and Analysis</a></h3>
+<blockquote>
+ To get to the Amplifier design window click on the Amplifier design menu or the "Chart icon".
+ You will see two Smith charts. One for the source plane and another for the load plane.
+ You can use this to optimize Gain and noise trade offs. See the <a href="help/examples/examples/EXAMPLE_7.html">"Small Signal Amplifier Design"</a> Example in the Help section.
+</blockquote>
+<h3><a name="s21">Insertion Loss Window</a></h3>
+<blockquote>
+Insertion Loss window gives you the insertion loss of the network. It assume load and source impedance is 50 (characteristic) Ohms.
+To set frequency sweep parameters, use "Options" menu in the navaigation bar.
+</blockquote>
+<h3><a name="sweep">Sweep Frequency or component</a></h3>
+<blockquote>
+First set frequency/component sweep parameters, use "Options" menu in  navaigation bar. Click on "ShowSweep" menu "Generate" item to sweep.
+</blockquote>
+<h3><a name="back">Return from Insertion Loss or Amplifier Design window </a></h3>
+<blockquote>
+On the menu of Insertion Loss or Amplifier Design window click on <B>Back</B>, on small screen devices like a phone or tablet, you will see <B>BackM</B>, this will open a new window instead of going back to the parent window. This is due to security limitation on the phone.
+</blockquote>
+<h3><a name="vswr">VSWR /Return Loss etc.</a></h3>
+ <blockquote>
+Move you mouse pointer to the Smith chart and double click your right mouse button.
+</blockquote> 
+<h3><a name="missingfeatures">Phone or Tablet mode.</a></h3>
+ <blockquote>
+ Due the limited screen width and other limitations of mobile devices, we have restricted some features in that mode as listed below:<BR>
+ 1) No file access<BR>
+ 2) Q circles and Insertion loss features are not available<BR>
+ 3) Only half of the element slots(6) are available<BR>
+ 4) Element designators are omitted<BR>
+ 4) To avoid interference with the drag operations, we have limited touch interactions to bare minimum<BR>
+ 5) "Matching Tip" and "ToolTip" featurea are not available in Mobile mode.
+
+</blockquote> 
+ <h3><a name="session">Save/Recall session</a></h3>
+ <blockquote>
+ To avoid losing data in between refresh, use "Save Session" in the File menu. This saves the data to the local memory, a new refresh will check if there is anything saved and load it if so. <BR>
+ "New Session" removes any saved session and "Restore Session" recalls the last saved session.
+</blockquote> 
+ <h3><a name="import">Export/Import feature</a></h3>
+ <blockquote>
+ External data can be imported by using the Import feature under Data menu in the Navbar. The data is stored in JSON format. Example files can be found in the gam folder. To create "gam" files "Generate" a Sweep and export the data using the "Export Command".
+</blockquote>
+
+<blockquote>
+<!-- Link to latest code base  -->
+</blockquote>
+<h3><a  name="latestversion" href="https://github.com/niyeradori/QuickSmith-Web">Latest version on Github</a></h3>
+<blockquote>
+<!-- Link to more examples -->
+</blockquote>
+<h3><a  name="examples" href="help/examples/examples/EXAMPLES.html">More Examples</a></h3>
+<blockquote>
+
+</blockquote>
+<h3><a  name="references">References</a></h3>
+<blockquote>
+i) <a href="https://www.amazon.com/Electronic-Applications-Smith-Chart-Electromagnetics/dp/1884932398"> Electronic Applications of the Smith Chart</a>, Phillip H. Smith, Robert E. Krieger Company, Malabar, Florida  <BR>
+ii) Hewlett-Packard Application Note 970, February 1978<BR>
+iii) <a href="https://www.amazon.com/Microwave-Transistor-Amplifiers-Analysis-Design/dp/0132543354">Microwave Transistor Amplifiers</a>, Guillermo Gonzalez, Prentice-Hall, 1984.<BR>
+iv) QEX July/August and Sep/Oct. 2010, Using QuickSmith: Part 1 and Part2, By Harold Kinley, WA4GIB.<BR>
+
+
+
+</blockquote>
+<script>
+
+</script>
+</body>
+</html>

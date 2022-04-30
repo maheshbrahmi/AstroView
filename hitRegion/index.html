@@ -1,0 +1,165 @@
+
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>A Basic HTML5 Template</title>
+  <meta name="description" content="A simple HTML5 Template for new projects.">
+  <meta name="author" content="SitePoint">
+
+  <meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+  <meta property="og:description" content="A simple HTML5 Template for new projects.">
+  <meta property="og:image" content="image.png">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="../js/jquery-3.2.1.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" />
+  <p>This is an example of a simple HTML page with one paragraph.</p>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const hitCanvas = document.createElement('canvas');
+    const hitCtx = hitCanvas.getContext('2d');
+
+    const colorsHash = {};
+    const circles = [{
+      id: '1', x: 40, y: 40, radius: 10, color: 'rgb(255,0,0)'
+    }, {
+      id: '2', x: 100, y: 70, radius: 10, color: 'rgb(0,255,0)'
+    }
+  ];
+
+    function getRandomColor() {
+      const r = Math.round(Math.random() * 255);
+      const g = Math.round(Math.random() * 255);
+      const b = Math.round(Math.random() * 255);
+      return `rgb(${r},${g},${b})`;
+    }
+
+    function hasSameColor(color, shape) {
+      return shape.color === color;
+    }
+
+    
+    $('document').ready(function () {
+
+  // circles.forEach(circle => {
+  //     while(true) {
+  //       const colorKey = getRandomColor();
+  //       if (!colorsHash[colorKey]) {
+  //           circle.colorKey = colorKey;
+  //           colorsHash[colorKey] = circle;
+  //           return;
+  //       }
+  //     }
+  //   });
+    const propOwn = Object.keys(circles);
+    console.log(propOwn.length); // 1
+
+    for (let i = 0; i < propOwn.length; ++i) {
+      console.log(circles[i].color);
+      const colorKey = getRandomColor();
+        if (!colorsHash[colorKey]) {
+            circles[i].colorKey = colorKey;
+            colorsHash[colorKey] = circles[i].colorKey;
+      }
+      console.log(circles[i].colorKey);
+      console.log(colorsHash[colorKey]);
+    //const element = theArray[i];
+    // ...use `element`...
+    } // end for
+
+    str = JSON.stringify(colorsHash, null, 4); // (Optional) beautiful indented output.
+    console.log(str); // Logs output to dev tools console.
+
+    //circles.forEach(circle => {
+      ctx.beginPath();
+      //ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
+      ctx.moveTo(75, 50);
+      ctx.lineTo(100, 75);
+      ctx.lineTo(100, 25);
+      ctx.closePath();
+      ctx.fillStyle = circles[0].color;
+      ctx.fill();
+      
+      hitCtx.beginPath();
+      //hitCtx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
+      hitCtx.moveTo(75, 50);
+      hitCtx.lineTo(100, 75);
+      hitCtx.lineTo(100, 25);
+      hitCtx.closePath();
+      hitCtx.fillStyle = circles[0].colorKey;
+      hitCtx.fill();
+
+      ctx.beginPath();
+      //ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
+      ctx.moveTo(175, 150);
+      ctx.lineTo(200, 75);
+      ctx.lineTo(100, 25);
+      ctx.closePath();
+      ctx.fillStyle = circles[1].color;
+      ctx.fill();
+      
+      hitCtx.beginPath();
+      //hitCtx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
+      hitCtx.moveTo(175, 150);
+      hitCtx.lineTo(200, 75);
+      hitCtx.lineTo(100, 25);
+      hitCtx.closePath();
+      hitCtx.fillStyle = circles[1].colorKey;
+      hitCtx.fill();
+
+});
+ 
+function hasSameColor(color, shape) {
+      return shape.color === color;
+    }
+
+    canvas.addEventListener('click', (e) => {
+      const mousePos = {
+        x: e.clientX - canvas.offsetLeft,
+        y: e.clientY - canvas.offsetTop
+      };
+      const pixel = hitCtx.getImageData(mousePos.x, mousePos.y, 1, 1).data;
+      const color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
+      console.log("color = " + color);
+      const shape = colorsHash[color];
+      console.log("shape = " + shape);
+      // if (shape) {
+      //   alert('click on circle: ' + shape.id);
+      // }
+      str = JSON.stringify(shape, null, 4); // (Optional) beautiful indented output.
+      console.log(str); // Logs output to dev tools console.
+      str = JSON.stringify(circles, null, 4); // (Optional) beautiful indented output.
+      console.log(str); // Logs output to dev tools console.
+     /// find a circle with the same colour
+    circles.forEach(circle => {
+    if (shape === circle.colorKey) {
+      alert('click on circle: ' + circle.id);
+    }
+  });
+
+    });
+</script>
+</body>
+</html>
