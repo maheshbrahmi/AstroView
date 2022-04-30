@@ -1,2 +1,2 @@
-# AstroChart1
+# AstroChart
 Vedic Chart Visualizer
