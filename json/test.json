@@ -1,7 +1,6 @@
 ﻿{
 	"ver":1.0, 
 	"name": "test",  
-	"gender": 0, 
 	"city": "Mumbai", 
 	"state": "Maharashtra",  
 	"country": "India",  

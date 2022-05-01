@@ -157,9 +157,9 @@
   /* min-width: 612px; */
 } 
 
-.schematic{
+/* .schematic{
   display: none !important;
-}
+} */
 .HideMe{
   display: none !important;
 }
@@ -267,9 +267,9 @@
         </div>
                  <!-- ********************************SCHEMATIC WINDOW ************************************************* -->
         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 schematic " style="background-color:white;" > 
-                    <!-- ********************************SCHEMATIC WINDOW  ROW 1************************************************* -->
+            <!-- ******************************** INPUT GROUPS ASTRO BEGIN ************************************************* -->
             <div nopadding style="margin-left: -13px;  margin-bottom: 5px;">
-                <table  >
+                <table class="HideMe" >
                     <tr>
                         <td><label  for="E0" > <font size="1">Freq.MHz: </font> </label> </td>
                         <td><input id="E0" type="text" value="100" name="spin2"  style="width: 100%;" class="form-control input-sm " onchange="spin_change(this.id)" ondblclick="step_change(this.id)" onDrop="return false" /></td> 
@@ -283,12 +283,143 @@
                         <td><input id="ZIO" type="text" value="0" readonly class="form-control  input-sm" /></td>  -->
                     </tr>
                 </table>
+                <!-- </div> -->
+                <!-- ********************************SCHEMATIC WINDOW ROW 1 END************************************************* -->  
+                <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Input Data</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="input-group input-group-sm ">
+                            <span class="input-group-addon" id="basic-addon3">Name</span>
+                            <input type="text" class="form-control" id="name" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group input-group-sm ">
+                            <span class="input-group-addon" id="basic-addon3">City</span>
+                            <input type="text" class="form-control" id="city" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">State</span>
+                            <input type="text" class="form-control" id="state" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">Country</span>
+                            <input type="text" class="form-control" id="country" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group input-group-sm ">
+                            <span class="input-group-addon" id="basic-addon3">Birth Date</span>
+                            <input type="text" class="form-control" id="date" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">Time</span>
+                            <input type="text" class="form-control" id="time" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group input-group-sm ">
+                            <span class="input-group-addon" id="basic-addon3">Laititude</span>
+                            <input type="text" class="form-control" id="latitude" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">Longitude</span>
+                            <input type="text" class="form-control" id="longitude" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group input-group-sm ">
+                            <span class="input-group-addon" id="basic-addon3">Ascendent</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group input-group-sm ">
+                            <span class="input-group-addon" id="basic-addon3">Sun</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">Moon</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">Mars</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group input-group-sm ">
+                            <span class="input-group-addon" id="basic-addon3">Mercury</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">Jupiter</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">Venus</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group input-group-sm ">
+                            <span class="input-group-addon" id="basic-addon3">Saturn</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">Rahu</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                            <span class="input-group-addon" id="basic-addon3">Ketu</span>
+                            <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-default text-center ">Submit</button>
+                    </div>
+                </div>
+            <!-- </div>   -->
+            <!-- ******************************** INPUT GROUPS ASTRO END ************************************************* -->  
+ <!-- ******************************** INPUT GROUPS ASTRO BEGIN ************************************************* -->
+    <!-- <div nopadding style="margin-left: -13px;  margin-bottom: 5px;"> -->
+
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+                <h3 class="panel-title">Output Data</h3>
             </div>
-            <!-- ********************************SCHEMATIC WINDOW ROW 1 END************************************************* -->  
+            <div class="panel-body">
+                <div class="input-group input-group-sm ">
+                    <span class="input-group-addon" id="basic-addon3">Name</span>
+                    <input type="text" class="form-control" id="name" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group input-group-sm ">
+                    <span class="input-group-addon" id="basic-addon3">City</span>
+                    <input type="text" class="form-control" id="city" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">State</span>
+                    <input type="text" class="form-control" id="state" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">Country</span>
+                    <input type="text" class="form-control" id="country" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group input-group-sm ">
+                    <span class="input-group-addon" id="basic-addon3">Birth Date</span>
+                    <input type="text" class="form-control" id="date" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">Time</span>
+                    <input type="text" class="form-control" id="time" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group input-group-sm ">
+                    <span class="input-group-addon" id="basic-addon3">Laititude</span>
+                    <input type="text" class="form-control" id="latitude" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">Longitude</span>
+                    <input type="text" class="form-control" id="longitude" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group input-group-sm ">
+                    <span class="input-group-addon" id="basic-addon3">Ascendent</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group input-group-sm ">
+                    <span class="input-group-addon" id="basic-addon3">Sun</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">Moon</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">Mars</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group input-group-sm ">
+                    <span class="input-group-addon" id="basic-addon3">Mercury</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">Jupiter</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">Venus</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group input-group-sm ">
+                    <span class="input-group-addon" id="basic-addon3">Saturn</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">Rahu</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3">Ketu</span>
+                    <input type="text" class="form-control" id="ascendent" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-default text-center ">Submit</button>
+            </div>
+        </div>
+    </div>  
+<!-- ******************************** INPUT GROUPS ASTRO END ************************************************* -->  
             <!--width:527px-->
-            <div class="row" > 
+            <div class="row HideMe " > 
                 <!-- Dropzone1 -->
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 nopadding" style="background-color:white;">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 nopadding " style="background-color:white;">
                     <!-- <div class="spinzone" >  -->
                         <table style=" margin-left: 0px;  margin-bottom: 0px; width:100%;">  
                             <tr class="hidden-xs">
@@ -432,11 +563,11 @@
                         </tr> 
                     </table>
                         <br />
-                </div>   <!--dropzone div 2 end-->  
+                </div >   <!--dropzone div 2 end-->  
                     <!-- <span class="stretch" style="width:100%;  display: inline-block; font-size: 0; line-height: 0 "></span> -->
                     <br style="clear: both;" />
                     <!--Component Zone Begin--> 
-                    <div id="component-container" class="component col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="margin-top:0px">
+                    <div id="component-container" class="component col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 HideMe" style="margin-top:0px">
                         <!-- Note that here we are only storing the default values, the actual user input values are stored in the schObj JSON -->                  
                         <!-- Component Zone 1 begin -->
                         <div  style="background-color:white; clear: both; margin-top:10px; padding-left:5%;padding-right:5% ">

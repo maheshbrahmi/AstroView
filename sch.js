@@ -4,7 +4,6 @@ var C = 299800000; // speed of light - 299792458 m/s
 var schObj = {
                 "ver":1.0,  //if you change this then change the file load verify function- this is used as a check - need a better way to do this
                 "name": "test",  //First and Last name
-                "gender": 0, // 0==male
                 "city": "Mumbai", // 
                 "state": "Maharashtra",  // 
                 "country": "India",   // 
