@@ -101,315 +101,26 @@ var schObj = {
 //                     { "index": 12, "type": "w", "value1": 0, "value2": 0, "q": 1000000, "tune": 1, assign: updateImpedance }
 //                 ]   
 //             };
-
+const signsArray = ['aries','taurus','gemini','cancer','leo','virgo','scorpio','sagittarius','capricorn','aquarius','pisces']; //rashis
+const planetsArray = ['ascendant','sun','moon','mars','mercury','jupiter','venus','saturn','rahu','ketu']; //rashis
+//console.log(signs.indexOf('taurus'));
+//console.log(signs.indexOf('cancer', 1)); // start from index 1
 const signObj = {  // RASI
-    "sign": [
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        },
-        {
-            "id": 8,
-            "name": "Dhanu",
-            "ruledby": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "exaltation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            },
-            "debilitation": 
-            {
-                "id": 5,
-                "name": "Jupiter",
-            }
-        }
-
-    ]
+    "signs": 
+            [
+                {"name": "aries",      "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"   },
+                {"name": "taurus",     "ruledby": "venus",   "exaltation": "moon",      "debilitation": "rahu/ketu"},
+                {"name": "gemini",     "ruledby": "mercury", "exaltation": "none",      "debilitation": "none"     },
+                {"name": "cancer",     "ruledby": "moon",    "exaltation": "jupiter",   "debilitation": "mars"     },
+                {"name": "leo",        "ruledby": "sun",     "exaltation": "none",      "debilitation": "none"     },
+                {"name": "virgo",      "ruledby": "mercury", "exaltation": "mercury",   "debilitation": "venus"    },
+                {"name": "libra",      "ruledby": "venus",   "exaltation": "saturn",    "debilitation": "sun"      },
+                {"name": "scorpio",    "ruledby": "mars",    "exaltation": "rahu/ketu", "debilitation": "moon"     },
+                {"name": "sagittarius","ruledby": "jupiter", "exaltation": "none",      "debilitation": "none"     },
+                {"name": "capricon",   "ruledby": "saturn",  "exaltation": "mars",      "debilitation": "jupiter"  },
+                {"name": "aquarius",   "ruledby": "saturn",  "exaltation": "none",      "debilitation": "none"     },
+                {"name": "pisces",     "ruledby": "jupiter", "exaltation": "venus",     "debilitation": "mercury"  }
+            ]
 
 }
 
@@ -421,32 +132,14 @@ var planetsObj = {
             "longitude": 246.56118886967027,
             "is_retrograde": false,
             "is_combust": false,
+            "is_ownsign":false,
             "is_exhalted":false,
             "is_debilitated":false,
-            "is_debilitated":false,
-            "is_ownsign":false,
-            "position": 9,
+            "aspect":"1,7",
+            "position": 1,
             "degree": 6.561188869670275,
-            "sign":  // rasi
-            {
-                "id": 8,
-                "name": "Dhanu",
-                "ruledby": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"},
+
         },
         {
             "id": 1,
@@ -454,32 +147,13 @@ var planetsObj = {
             "longitude": 203.8878753137908,
             "is_retrograde": false,
             "is_combust": false,
+            "is_ownsign":false,
             "is_exhalted":false,
             "is_debilitated":false,
-            "is_debilitated":false,
-            "is_ownsign":false,
+            "aspect":"1,7",
             "position": 7,
             "degree": 23.8878753137908,
-            "sign":  // rasi
-            {
-                "id": 6,
-                "name": "Tula",
-                "ruledby": 
-                {
-                    "id": 6,
-                    "name": "Venus",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
         },
         {
             "id": 2,
@@ -487,32 +161,13 @@ var planetsObj = {
             "longitude": 341.9411337844902,
             "is_retrograde": false,
             "is_combust": false,
+            "is_ownsign":false,
             "is_exhalted":false,
             "is_debilitated":false,
-            "is_debilitated":false,
-            "is_ownsign":false,
+            "aspect":"1,7",
             "position": 12,
             "degree": 11.941133784490205,
-            "sign":  // rasi
-            {
-                "id": 11,
-                "name": "Meena",
-                "ruledby":   // lord
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
         },
         {
             "id": 3,
@@ -520,32 +175,13 @@ var planetsObj = {
             "longitude": 169.69653509160494,
             "is_retrograde": false,
             "is_combust": false,
+            "is_ownsign":false,
             "is_exhalted":false,
             "is_debilitated":false,
-            "is_debilitated":false,
-            "is_ownsign":false,
+            "aspect":"1,7",
             "position": 6,
             "degree": 19.696535091604943,
-            "sign":  // rasi
-            {
-                "id": 5,
-                "name": "Kanya",
-                "ruledby":   // lord
-                {
-                    "id": 4,
-                    "name": "Mercury",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
         },
         {
             "id": 4,
@@ -554,31 +190,13 @@ var planetsObj = {
             "is_retrograde": false,
             "is_combust": false,
             "is_exhalted":false,
-            "is_debilitated":false,
-            "is_debilitated":false,
             "is_ownsign":false,
+            "is_exhalted":false,
+            "is_debilitated":false,
+            "aspect":"1,7",
             "position": 8,
             "degree": 2.082888855565045,
-            "sign":  // rasi
-            {
-                "id": 7,
-                "name": "Vrischika",
-                "ruledby":   // lord
-                {
-                    "id": 3,
-                    "name": "Mars",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
         },
         {
             "id": 5,
@@ -587,31 +205,13 @@ var planetsObj = {
             "is_retrograde": false,
             "is_combust": false,
             "is_exhalted":false,
-            "is_debilitated":false,
-            "is_debilitated":false,
             "is_ownsign":false,
+            "is_exhalted":false,
+            "is_debilitated":false,
+            "aspect":"1,7",
             "position": 7,
             "degree": 23.218369346580943,
-            "sign":  // rasi 
-            {
-                "id": 6,
-                "name": "Tula",
-                "ruledby":   // lord
-                {
-                    "id": 3,
-                    "name": "Venus",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
         },
         {
             "id": 6,
@@ -620,31 +220,13 @@ var planetsObj = {
             "is_retrograde": true,
             "is_combust": false,
             "is_exhalted":false,
-            "is_debilitated":false,
-            "is_debilitated":false,
             "is_ownsign":false,
+            "is_exhalted":false,
+            "is_debilitated":false,
+            "aspect":"1,7",
             "position": 7,
             "degree": 24.22293274735202,
-            "sign":  // rasi 
-            {
-                "id": 6,
-                "name": "Tula",
-                "ruledby":   // lord
-                {
-                    "id": 6,
-                    "name": "Venus",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
         },
         {
             "id": 7,
@@ -653,31 +235,13 @@ var planetsObj = {
             "is_retrograde": true,
             "is_combust": false,
             "is_exhalted":false,
-            "is_debilitated":false,
-            "is_debilitated":false,
             "is_ownsign":false,
+            "is_exhalted":false,
+            "is_debilitated":false,
+            "aspect":"1,7",
             "position": 1,
             "degree": 25.822718487963904,
-            "sign":  // rasi
-            {
-                "id": 0,
-                "name": "Mesha",
-                "ruledby":   // lord
-                {
-                    "id": 3,
-                    "name": "Mars",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
         },
             {
             "id": 8,
@@ -686,31 +250,13 @@ var planetsObj = {
             "is_retrograde": false,
             "is_combust": false,
             "is_exhalted":false,
-            "is_debilitated":false,
-            "is_debilitated":false,
             "is_ownsign":false,
+            "is_exhalted":false,
+            "is_debilitated":false,
+            "aspect":"1,7",
             "position": 11,
             "degree": 5.254640131365875,
-            "sign":  // rasi
-            {
-                "id": 10,
-                "name": "Kumbha",
-                "ruledby":   // lord
-                {
-                    "id": 7,
-                    "name": "Saturn",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
         },
         {
             "id": 9,
@@ -719,31 +265,13 @@ var planetsObj = {
             "is_retrograde": false,
             "is_combust": false,
             "is_exhalted":false,
-            "is_debilitated":false,
-            "is_debilitated":false,
             "is_ownsign":false,
+            "is_exhalted":false,
+            "is_debilitated":false,
+            "aspect":"1,7",
             "position": 5,
             "degree": 5.254640131365875,
-            "sign":  // rasi
-            {
-                "id": 4,
-                "name": "Simha",
-                "ruledby":   // lord
-                {
-                    "id": 1,
-                    "name": "Sun",
-                },
-                "exaltation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                },
-                "debilitation": 
-                {
-                    "id": 5,
-                    "name": "Jupiter",
-                }
-            }
+            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
         }
     ]
   }
