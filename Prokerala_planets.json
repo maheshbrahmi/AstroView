@@ -1,0 +1,177 @@
+{
+  "status": "ok",
+  "data": {
+    "planet_position": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "longitude": 203.8878753137908,
+        "is_retrograde": false,
+        "position": 7,
+        "degree": 23.8878753137908,
+        "rasi": {
+          "id": 6,
+          "name": "Tula",
+          "lord": {
+            "id": 3,
+            "name": "Venus",
+            "vedic_name": "Shukra"
+          }
+        }
+      },
+      {
+        "id": 1,
+        "name": "Moon",
+        "longitude": 341.9411337844902,
+        "is_retrograde": false,
+        "position": 12,
+        "degree": 11.941133784490205,
+        "rasi": {
+          "id": 11,
+          "name": "Meena",
+          "lord": {
+            "id": 5,
+            "name": "Jupiter",
+            "vedic_name": "Guru"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "name": "Mercury",
+        "longitude": 212.08288885556505,
+        "is_retrograde": false,
+        "position": 8,
+        "degree": 2.082888855565045,
+        "rasi": {
+          "id": 7,
+          "name": "Vrischika",
+          "lord": {
+            "id": 4,
+            "name": "Mars",
+            "vedic_name": "Kuja"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "name": "Venus",
+        "longitude": 204.22293274735202,
+        "is_retrograde": true,
+        "position": 7,
+        "degree": 24.22293274735202,
+        "rasi": {
+          "id": 6,
+          "name": "Tula",
+          "lord": {
+            "id": 3,
+            "name": "Venus",
+            "vedic_name": "Shukra"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "name": "Mars",
+        "longitude": 169.69653509160494,
+        "is_retrograde": false,
+        "position": 6,
+        "degree": 19.696535091604943,
+        "rasi": {
+          "id": 5,
+          "name": "Kanya",
+          "lord": {
+            "id": 2,
+            "name": "Mercury",
+            "vedic_name": "Budha"
+          }
+        }
+      },
+      {
+        "id": 5,
+        "name": "Jupiter",
+        "longitude": 203.21836934658094,
+        "is_retrograde": false,
+        "position": 7,
+        "degree": 23.218369346580943,
+        "rasi": {
+          "id": 6,
+          "name": "Tula",
+          "lord": {
+            "id": 3,
+            "name": "Venus",
+            "vedic_name": "Shukra"
+          }
+        }
+      },
+      {
+        "id": 6,
+        "name": "Saturn",
+        "longitude": 25.822718487963904,
+        "is_retrograde": true,
+        "position": 1,
+        "degree": 25.822718487963904,
+        "rasi": {
+          "id": 0,
+          "name": "Mesha",
+          "lord": {
+            "id": 4,
+            "name": "Mars",
+            "vedic_name": "Kuja"
+          }
+        }
+      },
+      {
+        "id": 100,
+        "name": "Ascendant",
+        "longitude": 246.56118886967027,
+        "is_retrograde": false,
+        "position": 9,
+        "degree": 6.561188869670275,
+        "rasi": {
+          "id": 8,
+          "name": "Dhanu",
+          "lord": {
+            "id": 5,
+            "name": "Jupiter",
+            "vedic_name": "Guru"
+          }
+        }
+      },
+      {
+        "id": 101,
+        "name": "Rahu",
+        "longitude": 305.2546401313659,
+        "is_retrograde": false,
+        "position": 11,
+        "degree": 5.254640131365875,
+        "rasi": {
+          "id": 10,
+          "name": "Kumbha",
+          "lord": {
+            "id": 6,
+            "name": "Saturn",
+            "vedic_name": "Shani"
+          }
+        }
+      },
+      {
+        "id": 102,
+        "name": "Ketu",
+        "longitude": 125.25464013136587,
+        "is_retrograde": false,
+        "position": 5,
+        "degree": 5.254640131365875,
+        "rasi": {
+          "id": 4,
+          "name": "Simha",
+          "lord": {
+            "id": 0,
+            "name": "Sun",
+            "vedic_name": "Ravi"
+          }
+        }
+      }
+    ]
+  }
+}
