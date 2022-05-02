@@ -124,26 +124,25 @@ const signObj = {  // RASI
 
 }
 
-var planetsObj = {
+var outputObj = {
     "planet_position": [
         {
-            "id": 0,
-            "name": "Ascendant",
+            "name": "ascendant",
             "longitude": 246.56118886967027,
             "is_retrograde": false,
             "is_combust": false,
             "is_ownsign":false,
             "is_exhalted":false,
             "is_debilitated":false,
-            "aspect":"1,7",
-            "position": 1,
+            "aspect":"none",
+            "position": 9,
             "degree": 6.561188869670275,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"},
-
+            "min":33,
+            "sec":40,
+            "sign": "aries"
         },
         {
-            "id": 1,
-            "name": "Sun",
+            "name": "sun",
             "longitude": 203.8878753137908,
             "is_retrograde": false,
             "is_combust": false,
@@ -153,11 +152,12 @@ var planetsObj = {
             "aspect":"1,7",
             "position": 7,
             "degree": 23.8878753137908,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
+            "min":53,
+            "sec":26,
+            "sign":"taurus"
         },
         {
-            "id": 2,
-            "name": "Moon",
+            "name": "moon",
             "longitude": 341.9411337844902,
             "is_retrograde": false,
             "is_combust": false,
@@ -167,25 +167,27 @@ var planetsObj = {
             "aspect":"1,7",
             "position": 12,
             "degree": 11.941133784490205,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
+            "min":56,
+            "sec":28,
+            "sign":"gemini"
         },
         {
-            "id": 3,
-            "name": "Mars",
+            "name": "mars",
             "longitude": 169.69653509160494,
             "is_retrograde": false,
             "is_combust": false,
             "is_ownsign":false,
             "is_exhalted":false,
             "is_debilitated":false,
-            "aspect":"1,7",
+            "aspect":"1,7,4,8",
             "position": 6,
             "degree": 19.696535091604943,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
+            "min":41,
+            "sec":47,
+            "sign":"cancer"
         },
         {
-            "id": 4,
-            "name": "Mercury",
+            "name": "mercury",
             "longitude": 212.08288885556505,
             "is_retrograde": false,
             "is_combust": false,
@@ -196,11 +198,12 @@ var planetsObj = {
             "aspect":"1,7",
             "position": 8,
             "degree": 2.082888855565045,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
+            "min":4,
+            "sec":58,
+            "sign": "leo"
         },
         {
-            "id": 5,
-            "name": "Jupiter",
+            "name": "jupiter",
             "longitude": 203.21836934658094,
             "is_retrograde": false,
             "is_combust": false,
@@ -208,29 +211,31 @@ var planetsObj = {
             "is_ownsign":false,
             "is_exhalted":false,
             "is_debilitated":false,
-            "aspect":"1,7",
+            "aspect":"1,7,5,9",
             "position": 7,
             "degree": 23.218369346580943,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
+            "min":13,
+            "sec":6,
+            "sign":"virgo"
         },
         {
-            "id": 6,
-            "name": "Venus",
+            "name": "venus",
             "longitude": 204.22293274735202,
             "is_retrograde": true,
             "is_combust": false,
             "is_exhalted":false,
-            "is_ownsign":false,
+            "is_ownsign":true,
             "is_exhalted":false,
             "is_debilitated":false,
             "aspect":"1,7",
             "position": 7,
             "degree": 24.22293274735202,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
+            "min":13,
+            "sec":22,
+            "sign":"libra"
         },
         {
-            "id": 7,
-            "name": "Saturn",
+            "name": "saturn",
             "longitude": 25.822718487963904,
             "is_retrograde": true,
             "is_combust": false,
@@ -238,14 +243,15 @@ var planetsObj = {
             "is_ownsign":false,
             "is_exhalted":false,
             "is_debilitated":false,
-            "aspect":"1,7",
+            "aspect":"1,7,3,10",
             "position": 1,
             "degree": 25.822718487963904,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
+            "min":33,
+            "sec":40,
+            "sign":"scorpio"
         },
-            {
-            "id": 8,
-            "name": "Rahu",
+        {
+            "name": "rahu",
             "longitude": 305.2546401313659,
             "is_retrograde": false,
             "is_combust": false,
@@ -256,11 +262,12 @@ var planetsObj = {
             "aspect":"1,7",
             "position": 11,
             "degree": 5.254640131365875,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
+            "min":15,
+            "sec":16,
+            "sign":"sagittarus",
         },
         {
-            "id": 9,
-            "name": "Ketu",
+            "name": "ketu",
             "longitude": 125.25464013136587,
             "is_retrograde": false,
             "is_combust": false,
@@ -271,10 +278,17 @@ var planetsObj = {
             "aspect":"1,7",
             "position": 5,
             "degree": 5.254640131365875,
-            "sign":{"name": "aries","ruledby": "mars","exaltation": "sun", "debilitation": "saturn"}
+            "min":15,
+            "sec":16,
+            "sign":"capricon"
         }
-    ]
+    ],
+    calculate: updateChart
   }
+
+function updateChart(){
+
+}
 
 resultsObj = {
     "ELEMENT": [                                    

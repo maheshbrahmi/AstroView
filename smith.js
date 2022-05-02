@@ -13,9 +13,11 @@ function getRandomColor() {
 }
 
 function drawSmith(me) {
+  if(resize_done == false) return;
+  //alert (" drawSmith 16");
   var ctx = me.ctx;
   var hitCtx = me.hitCtx;
- // if(resize_done == false) return;
+ 
   ctx.clearRect(0,0,chart.width,chart.height);
   var  r =  AXIS_RANGE;
  //var  r =  chart.height;
@@ -41,7 +43,7 @@ function drawSmith(me) {
   str = JSON.stringify(me.houses, null, 4); // (Optional) beautiful indented output.
   console.log("houses Object= " + str); // Logs output to dev tools console.
 
-  drawCircle(ctx,0,0,r,"black");  //constant resistance circles Rn = 0; small padding provide for the outer circle to avoid flatning.
+  drawCircle(ctx,0,0,r,"WhiteSmoke");  //constant resistance circles Rn = 0; small padding provide for the outer circle to avoid flatning.
   // ctx.beginPath(); // draw a gray border - to be removed later
   // ctx.lineWidth = "1";
   // ctx.strokeStyle = "black";
@@ -322,7 +324,7 @@ function drawAdmitanceCircles(me) {
      var ctx = me.ctx;
      console.log("ctx = " + me.showAdmittace);
     // ctx.clearRect(0,0,chart.width,chart.height);
-      drawSmith(me);
+    //  drawSmith(me);
   }
 
  function drawVSWRCircles(me) {
