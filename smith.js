@@ -239,33 +239,34 @@ var smithObj = {
               redrawSmith: redrawSmith, // repaints smithChart with the current values
               colorsHash: {},
               houses : [{
-                num: '1', color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '1', Signnum: '10', color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '2', color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
+                num: '2', Signnum: '11',  color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '3', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
+                num: '3', Signnum: '12', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '4', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
+                num: '4', Signnum: '1', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '5', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '5', Signnum: '2', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '6', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '6', Signnum: '3', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '7', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '7', Signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '8', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
+                num: '8', Signnum: '5', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '9', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
+                num: '9', Signnum: '6', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '10', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
+                num: '10', Signnum: '7', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '11', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '11', Signnum: '8', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '12', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
+                num: '12', Signnum: '9', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
                 }
                 ],
                drawSmith: function() { drawSmith(this);},
                test: function() { test(this);},
+               updateSigns: function() { updatesSigns (this);}, // Resets all properties to its default values
                input:inputObj,
                output:outputObj
           };
@@ -280,6 +281,10 @@ var smithObj = {
   document.getElementById('file-input1').addEventListener('change', handleFileImport, false);//file Import
   document.getElementById('file-input').addEventListener('change', handleFileOpen, false);
 
+  function updateSign(me){
+  // get asendent and increment by 1 if >12 then reset it to 0
+  const ascendant =  me.output.planet_positions[0].position ;
+}
 
 function updateChart(){
 }
