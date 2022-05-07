@@ -2,34 +2,34 @@
 // the main data structure in a centralized place so that all pages can access it.
 
 function copy_schObj(schObj1) {
- var ELEMENT_SRC = schObj1.ELEMENT;
- var ELEMENT_DEST = schObj.ELEMENT;
- for (var key in schObj1) 
-    {
-        if (schObj1.hasOwnProperty(key)) 
-        {
-            if(key !== "ELEMENT") 
-            {
-                schObj[key] = schObj1[key];
-               // console.log(key + " -> " + schObj[key]);
-            }
-        else
-            {
-            //    console.log("SCHOBJ ELEMENT" );
-            for (var key2 in ELEMENT_SRC) 
-                {
-                    var item1 = ELEMENT_SRC[key2];
-                    var item = ELEMENT_DEST[key2];
-                        for (var key3 in item1) 
-                        {
-                           //   console.log(key3 + " -> " + item1[key3]);
-                            item[key3] = item1[key3];
-                        }
-                }
-            }
+//  var ELEMENT_SRC = schObj1.ELEMENT;
+//  var ELEMENT_DEST = schObj.ELEMENT;
+//  for (var key in schObj1) 
+//     {
+//         if (schObj1.hasOwnProperty(key)) 
+//         {
+//             if(key !== "ELEMENT") 
+//             {
+//                 schObj[key] = schObj1[key];
+//                // console.log(key + " -> " + schObj[key]);
+//             }
+//         else
+//             {
+//             //    console.log("SCHOBJ ELEMENT" );
+//             for (var key2 in ELEMENT_SRC) 
+//                 {
+//                     var item1 = ELEMENT_SRC[key2];
+//                     var item = ELEMENT_DEST[key2];
+//                         for (var key3 in item1) 
+//                         {
+//                            //   console.log(key3 + " -> " + item1[key3]);
+//                             item[key3] = item1[key3];
+//                         }
+//                 }
+//             }
 
-        }
-    }
+//         }
+//     }
 
 }
 
@@ -113,15 +113,15 @@ function AddRe(a, B, C, D) {
 // }
 
 function GToZI(R, Q ){
-    var Z0 = schObj.Z0;
-    var Z1i = (2 * R * math.sin(Math.PI * Q / 180)) / (1 + (R * R) - 2 * R * math.cos(Math.PI * Q / 180));
-    return( Z1i * Z0);
+    // var Z0 = schObj.Z0;
+    // var Z1i = (2 * R * math.sin(Math.PI * Q / 180)) / (1 + (R * R) - 2 * R * math.cos(Math.PI * Q / 180));
+    // return( Z1i * Z0);
 }
 
 function GToZR(R , Q ){
-    var Z0 = schObj.Z0;
-    var Z1r = (1 - (R * R)) / (1 + (R * R) - (2 * R * math.cos(Q * Math.PI / 180)));
-    return( Z1r * Z0);
+    // var Z0 = schObj.Z0;
+    // var Z1r = (1 - (R * R)) / (1 + (R * R) - (2 * R * math.cos(Q * Math.PI / 180)));
+    // return( Z1r * Z0);
 }
 
 function GToZIZ(R, Q, Z0 ){
@@ -230,37 +230,37 @@ function getSign(n){
 }
 
 function ZtoGammaA(ZXR, ZXI) {
-    var ZRN, ZIN, a1, a2, D, SR, SI, SM, SQ;
-    var Z0 = schObj.Z0;
-    ZRN = (ZXR / Z0);
-    ZIN = (ZXI / Z0);
-    a1 = ZRN - 1;
-    a2 = ZRN + 1;
-    D = Math.pow(a2, 2) + Math.pow(ZIN, 2);
-    SR = ((ZRN * ZRN) - 1 + (ZIN * ZIN)) / D;
-    SI = (2 * ZIN) / D;
-    SM = Math.sqrt(SR * SR + SI * SI);
-    if(SI == 0) SI = 0.00000000000001;
-    if(SR == 0) SR = 0.00000000000001;
-    SQ = (Math.atan(SI / SR) * 180 / Math.PI);
-    if(SR < 0 && SI > 0)  SQ = 180 + SQ;
-    if (SR < 0 && SI < 0) SQ = -180 + SQ;
-    if(SM == 0)  SQ = 0;
-    return SQ;
+    // var ZRN, ZIN, a1, a2, D, SR, SI, SM, SQ;
+    // var Z0 = schObj.Z0;
+    // ZRN = (ZXR / Z0);
+    // ZIN = (ZXI / Z0);
+    // a1 = ZRN - 1;
+    // a2 = ZRN + 1;
+    // D = Math.pow(a2, 2) + Math.pow(ZIN, 2);
+    // SR = ((ZRN * ZRN) - 1 + (ZIN * ZIN)) / D;
+    // SI = (2 * ZIN) / D;
+    // SM = Math.sqrt(SR * SR + SI * SI);
+    // if(SI == 0) SI = 0.00000000000001;
+    // if(SR == 0) SR = 0.00000000000001;
+    // SQ = (Math.atan(SI / SR) * 180 / Math.PI);
+    // if(SR < 0 && SI > 0)  SQ = 180 + SQ;
+    // if (SR < 0 && SI < 0) SQ = -180 + SQ;
+    // if(SM == 0)  SQ = 0;
+    // return SQ;
 
 }
 
 function ZtoGammaM(ZXR, ZXI) {
-    var ZRN, ZIN, a1, a2, D, SR, SI, SM, SQ;
-    var Z0 = schObj.Z0;
-    ZRN = (ZXR / Z0);
-    ZIN = (ZXI / Z0);
-    a1 = ZRN - 1;
-    a2 = ZRN + 1;
-    D = a2 * a2 + ZIN * ZIN;
-    SR = (ZRN * ZRN - 1 + ZIN * ZIN) / D;
-    SI = (2 * ZIN) / D;
-    return Math.sqrt(SR * SR + SI * SI);
+    // var ZRN, ZIN, a1, a2, D, SR, SI, SM, SQ;
+    // var Z0 = schObj.Z0;
+    // ZRN = (ZXR / Z0);
+    // ZIN = (ZXI / Z0);
+    // a1 = ZRN - 1;
+    // a2 = ZRN + 1;
+    // D = a2 * a2 + ZIN * ZIN;
+    // SR = (ZRN * ZRN - 1 + ZIN * ZIN) / D;
+    // SI = (2 * ZIN) / D;
+    // return Math.sqrt(SR * SR + SI * SI);
 }
 
 

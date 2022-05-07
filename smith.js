@@ -5,12 +5,352 @@
 var   fontBase = 300;                   // selected default width for canvas
 var   fontSize = 6;                     // default size for font 20
 
+/*************************SMITH CHART********************************************************************************/
+var sprite = new Image();
+sprite.src = "img/sphere.png"; 
+const AXIS_RANGE = 1000;
+var resize_done = false;  // this is to avoid half shape canvas draw sometime when an attempt is made to draw with out scaling first
+var chart= {"width": 300, "height" : 300,  "currentDevicePixelRatio" : 1, "devicePixelRatio" : 1 };
+var isMobile = false; //initiate as false
+const signsArray = ['aries','taurus','gemini','cancer','leo','virgo','scorpio','sagittarius','capricorn','aquarius','pisces']; //rashis
+const planetsArray = ['ascendant','sun','moon','mars','mercury','jupiter','venus','saturn','rahu','ketu']; //rashis
+//console.log(signs.indexOf('taurus'));
+//console.log(signs.indexOf('cancer', 1)); // start from index 1
+const signObj = {  // RASI
+"signs": 
+        [
+            {"position": "1",       "name": "aries",      "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"   },
+            {"position": "2",       "name": "taurus",     "ruledby": "venus",   "exaltation": "moon",      "debilitation": "rahu/ketu"},
+            {"position": "3",       "name": "gemini",     "ruledby": "mercury", "exaltation": "none",      "debilitation": "none"     },
+            {"position": "4",       "name": "cancer",     "ruledby": "moon",    "exaltation": "jupiter",   "debilitation": "mars"     },
+            {"position": "5",       "name": "leo",        "ruledby": "sun",     "exaltation": "none",      "debilitation": "none"     },
+            {"position": "6",       "name": "virgo",      "ruledby": "mercury", "exaltation": "mercury",   "debilitation": "venus"    },
+            {"position": "7",       "name": "libra",      "ruledby": "venus",   "exaltation": "saturn",    "debilitation": "sun"      },
+            {"position": "8",       "name": "scorpio",    "ruledby": "mars",    "exaltation": "rahu/ketu", "debilitation": "moon"     },
+            {"position": "9",       "name": "sagittarius","ruledby": "jupiter", "exaltation": "none",      "debilitation": "none"     },
+            {"position": "10",      "name": "capricon",   "ruledby": "saturn",  "exaltation": "mars",      "debilitation": "jupiter"  },
+            {"position": "11",      "name": "aquarius",   "ruledby": "saturn",  "exaltation": "none",      "debilitation": "none"     },
+            {"position": "12",      "name": "pisces",     "ruledby": "jupiter", "exaltation": "venus",     "debilitation": "mercury"  }
+        ]
+
+}
+// schObj is used to save schematic - for load file to work it needs to be less the 1024 bytes and the first key should be "ver"
+//Input
+var inputObj = {
+  "ver":1.0,  //if you change this then change the file load verify function- this is used as a check - need a better way to do this
+  "type":"astroFile", // to check if the right file is imported
+  "name": "test",  //First and Last name
+  "city": "Mumbai", // 
+  "state": "Maharashtra",  // 
+  "country": "India",   // 
+  "birthdate": "11/05/1966", // 
+  "time": "13:40:00",  // 
+  "longitude": 72.8166667, //
+  "latitude": 18.9666667,  //  
+  "ascendant": 298.7014879,
+  "sun": 199.07001545248,
+  "moon": 101.505673940617,
+  "mercury": 219.718216555607,
+  "venus": 198.142409860512,
+  "mars": 140.559019472223,
+  "jupiter": 100.669422850587,
+  "saturn": 329.920879549186,
+  "rahu": 22.800941440735,
+  "ketu": 202.800941440735,
+};
+
+var outputObj = {
+  "planet_positions": [
+      {
+          "name": "ascendant",
+          "longitude": 298.7014879,
+          "is_retrograde": false,
+          "is_combust": false,
+          "is_ownsign":false,
+          "is_exhalted":false,
+          "is_debilitated":false,
+          "aspect":"none",
+          "position": 10,
+          "house": 1,
+          "degree": 28.7014879,
+          "min":42,
+          "sec":5,
+          "sign": "capricon"
+      },
+      {
+          "name": "sun",
+          "longitude": 199.07001545248,
+          "is_retrograde": false,
+          "is_combust": false,
+          "is_ownsign":false,
+          "is_exhalted":false,
+          "is_debilitated":true,
+          "aspect":"1,7",
+          "position": 7,
+          "house": 10,
+          "degree": 19.07001545,
+          "min":4,
+          "sec":12,
+          "sign":"libra"
+      },
+      {
+          "name": "moon",
+          "longitude": 101.505673940617,
+          "is_retrograde": false,
+          "is_combust": false,
+          "is_ownsign":false,
+          "is_exhalted":false,
+          "is_debilitated":false,
+          "aspect":"1,7",
+          "position": 4,
+          "house": 7,
+          "degree": 11.50567394,
+          "min":30,
+          "sec":20,
+          "sign":"cancer"
+      },
+      {
+          "name": "mars",
+          "longitude": 140.559019472223,
+          "is_retrograde": false,
+          "is_combust": false,
+          "is_ownsign":false,
+          "is_exhalted":false,
+          "is_debilitated":false,
+          "aspect":"1,7,4,8",
+          "position": 5,
+          "house": 8,
+          "degree": 20.55901947,
+          "min":33,
+          "sec":32,
+          "sign":"leo"
+      },
+      {
+          "name": "mercury",
+          "longitude": 219.718216555607,
+          "is_retrograde": false,
+          "is_combust": false,
+          "is_exhalted":false,
+          "is_ownsign":false,
+          "is_exhalted":false,
+          "is_debilitated":false,
+          "aspect":"1,7",
+          "position": 8,
+          "house": 11,
+          "degree": 9.718216556,
+          "min":43,
+          "sec":5,
+          "sign": "scorpio"
+      },
+      {
+          "name": "jupiter",
+          "longitude": 100.669422850587,
+          "is_retrograde": false,
+          "is_combust": false,
+          "is_exhalted":false,
+          "is_ownsign":false,
+          "is_exhalted":false,
+          "is_debilitated":false,
+          "aspect":"1,7,5,9",
+          "position": 4,
+          "house": 7,
+          "degree": 10.66942285,
+          "min":40,
+          "sec":9,
+          "sign":"cancer"
+      },
+      {
+          "name": "venus",
+          "longitude": 198.142409860512,
+          "is_retrograde": true,
+          "is_combust": false,
+          "is_exhalted":false,
+          "is_ownsign":true,
+          "is_exhalted":false,
+          "is_debilitated":false,
+          "aspect":"1,7",
+          "position": 7,
+          "house": 10,
+          "degree":18.14240986,
+          "min":8,
+          "sec":32,
+          "sign":"libra"
+      },
+      {
+          "name": "saturn",
+          "longitude": 329.920879549186,
+          "is_retrograde": true,
+          "is_combust": false,
+          "is_exhalted":false,
+          "is_ownsign":false,
+          "is_exhalted":false,
+          "is_debilitated":false,
+          "aspect":"1,7,3,10",
+          "position": 11,
+          "house": 2,
+          "degree": 29.92087955,
+          "min":55,
+          "sec":15,
+          "sign":"aquarius"
+      },
+      {
+          "name": "rahu",
+          "longitude": 22.800941440735,
+          "is_retrograde": false,
+          "is_combust": false,
+          "is_exhalted":false,
+          "is_ownsign":false,
+          "is_exhalted":false,
+          "is_debilitated":false,
+          "aspect":"1,7",
+          "position": 1,
+          "house": 4,
+          "degree": 22.80094144,
+          "min":48,
+          "sec":3,
+          "sign":"aries",
+      },
+      {
+          "name": "ketu",
+          "longitude": 202.800941440735,
+          "is_retrograde": false,
+          "is_combust": false,
+          "is_exhalted":false,
+          "is_ownsign":false,
+          "is_exhalted":false,
+          "is_debilitated":false,
+          "aspect":"1,7",
+          "position": 7,
+          "house": 10,
+          "degree": 22.80094144,
+          "min":48,
+          "sec":3,
+          "sign":"libra"
+      }
+  ],
+  calculate: updateChart
+}
+
+var smithObj = {
+              "ctx" : null,
+              "hitCtx" : null,
+              "title": '',
+              resetAll: function() { resetAll (this);}, // Resets all properties to its default values
+              redrawSmith: redrawSmith, // repaints smithChart with the current values
+              colorsHash: {},
+              houses : [{
+                num: '1', color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '2', color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '3', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '4', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '5', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '6', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '7', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '8', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '9', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '10', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '11', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
+                }, {
+                num: '12', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
+                }
+                ],
+               drawSmith: function() { drawSmith(this);},
+               test: function() { test(this);},
+               input:inputObj,
+               output:outputObj
+          };
+  var matchTipShown = false; 
+  smithObj.ctx = document.getElementById("smithMain").getContext('2d');
+  smithObj.hitCtx = document.getElementById("smithMainHit").getContext('2d');
+  
+  smithObj.ctx.canvas.addEventListener("mousemove", onMouseMove, false);
+  smithObj.ctx.canvas.addEventListener("dblclick", onMouseClick, false);
+  //window.addEventListener('load', smithObj.redrawSmith, false);  //  not necessary duplicates $('document').ready(function () at the top
+  window.addEventListener('resize',smithObj.redrawSmith, false); // resize,clear and redraw
+  document.getElementById('file-input1').addEventListener('change', handleFileImport, false);//file Import
+  document.getElementById('file-input').addEventListener('change', handleFileOpen, false);
+
+
+function updateChart(){
+}
+
+function test(context){
+  context.vswrCircle = '3.0';
+  context.drawVSWRCircles;
+  console.log(context.Z0);
+ }
+
+ $('document').ready(function () {
+        //alert (" ready 873");
+        console.log("init")
+        window.name = "parent";
+        //chart.currentDevicePixelRatio = window.devicePixelRatio || 1 ||  window.window.devicePixelRatio;
+    $('input[type=text]').bind('copy paste', function (e) {
+        e.preventDefault();
+    });   // this prenvents the copy/paste menu popping up in IOS when you touch the step box
+    resize(smithObj.ctx.canvas)// Smith chart drawn here
+    get(); // restore the last session if saved earlier
+    //updateUI();
+    //$(E1).trigger("touchspin.updatesettings", { step: 0.1 }); // make load element(RX(R)/G(Mag)) step size 0.1
+    // device detection
+    if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+        || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) isMobile = true;
+           
+})
+
 function getRandomColor() {
   const r = Math.round(Math.random() * 255);
   const g = Math.round(Math.random() * 255);
   const b = Math.round(Math.random() * 255);
   return `rgb(${r},${g},${b})`;
 }
+    // called by redrawSmith function
+function resize(canvas) {
+    //alert (" resize 1031");
+    // Our canvas must cover full height of screen
+    // regardless of the resolution
+    // var ht = window.innerHeight;
+    // var wd = window.innerWidth ;
+     var ht =  getMaximumHeight (canvas);
+     var wd =  getMaximumWidth (canvas);
+     const aspectRatio = true;
+     //var width = Math.max(0, Math.floor(window.innerWidth));
+     //var height = Math.max(0, Math.floor(aspectRatio ? width / aspectRatio : window.innerHeight));
+     var width = Math.max(0, Math.floor(wd));
+     var height = Math.max(0, Math.floor(aspectRatio ? width / aspectRatio : ht));
+      console.log( "NewWidth = " + width);
+      console.log( "NewHeight = " + height);
+      smithObj.ctx.canvas.width =chart.width= width;
+      smithObj.ctx.canvas.height =chart.height = height;
+      smithObj.ctx.canvas.style.width = width+'px';
+      smithObj.ctx.canvas.style.height = height+'px';
+      smithObj.hitCtx.canvas.width =chart.width= width;
+      smithObj.hitCtx.canvas.height =chart.height = height;
+      smithObj.hitCtx.canvas.style.width = width+'px';
+      smithObj.hitCtx.canvas.style.height = height+'px';
+      retinaScale(chart, smithObj);  
+      resize_done = true;
+  }
+  
+  function redrawSmith () {
+      console.log("Redrawing smith1 Begin");
+      var ctx = smithObj.ctx;
+      if(ctx ==null) return;
+     
+      resize(ctx.canvas)
+      console.log("Redrawing smith2 End");
+      smithObj.drawSmith(); // clears canvas too
+  }
 
 function drawSmith(me) {
   if(resize_done == false) return;
@@ -44,16 +384,6 @@ function drawSmith(me) {
   console.log("houses Object= " + str); // Logs output to dev tools console.
 
   drawCircle(ctx,0,0,r,"WhiteSmoke");  //constant resistance circles Rn = 0; small padding provide for the outer circle to avoid flatning.
-  // ctx.beginPath(); // draw a gray border - to be removed later
-  // ctx.lineWidth = "1";
-  // ctx.strokeStyle = "black";
-  // ctx.rect(0, 0,chart.width, chart.width);
-  // ctx.stroke();
-  // ctx.beginPath(); // draw a gray border - to be removed later
-  // ctx.lineWidth = "1";
-  // ctx.strokeStyle = "black";
-  // ctx.rect(250,0,r/2,r/2);
-  // ctx.stroke();
   drawRectangle(ctx,0,0,r,0,"black");
   drawLine(ctx,1,135,1,135+180,"black");
   drawLine(ctx,1,45,1,180+45,"black");
@@ -61,28 +391,8 @@ function drawSmith(me) {
   drawLine(ctx,1/Math.sqrt(2),180,1/Math.sqrt(2),270,"black");
   drawLine(ctx,1/Math.sqrt(2),270,1/Math.sqrt(2),360,"black");
   drawLine(ctx,1/Math.sqrt(2),0,1/Math.sqrt(2),90,"black");
-  //house 1
-  //ctx.save();
+
   ctx.beginPath();
-  //ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
-  // ctx.moveTo(75, 50);
-  // ctx.lineTo(100, 75);
-  // ctx.lineTo(100, 25);
-  // ctx.closePath();
-  // ctx.fillStyle = houses[0].color;
-  // ctx.fill();
-  // ctx.restore();
-  
-  // hitCtx.save();
-  // hitCtx.beginPath();
-  // //hitCtx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
-  // hitCtx.moveTo(75, 50);
-  // hitCtx.lineTo(100, 75);
-  // hitCtx.lineTo(100, 25);
-  // hitCtx.closePath();
-  // hitCtx.fillStyle = houses[0].colorKey;
-  // hitCtx.fill();
-  // hitCtx.restore();
   // House1
   var rarray = [0, 0.5, 1/Math.SQRT2, 0.5,0];
   var qarray = [0, 135, 90, 45,0];
@@ -147,22 +457,20 @@ function drawSmith(me) {
   
   // //drawSprite(ctx,0,0);
   //drawFilledCircle(ctx,0,0)
-  placeText(ctx,0,50,me.house1[0],"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+50,me.house2[0],"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+0,me.house3[0],"center","middle");
-  placeText(ctx,-50,0,me.house4[0],"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)+0,me.house5[0],"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)-50,me.house6[0],"center","middle");
-  placeText(ctx,0,-50,me.house7[0],"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)-50,me.house8[0],"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)+0,me.house9[0],"center","middle");
-  placeText(ctx,50,0,me.house10[0],"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+0,me.house11[0],"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+50,me.house12[0],"center","middle");
+  placeText(ctx,0,50,me.output.planet_positions[0].position ,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+50, (me.output.planet_positions[0].position)+1,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+0, (me.output.planet_positions[0].position)+2,"center","middle");
+  placeText(ctx,-50,0,(me.output.planet_positions[0].position)+3,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)+0, (me.output.planet_positions[0].position)+4,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)-50, (me.output.planet_positions[0].position)+5,"center","middle");
+  placeText(ctx,0,-50,(me.output.planet_positions[0].position)+6,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)-50, (me.output.planet_positions[0].position)+7,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)+0, (me.output.planet_positions[0].position)+8,"center","middle");
+  placeText(ctx,50,0,(me.output.planet_positions[0].position)+9,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+0, (me.output.planet_positions[0].position)+10,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+50, (me.output.planet_positions[0].position)+11,"center","middle");
   DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth");
 }
-
-
 
 function drawPath(ctx, [...rarray],[...qarray],color,fillcolor){
   ctx.save();
@@ -185,7 +493,6 @@ function drawPath(ctx, [...rarray],[...qarray],color,fillcolor){
   ctx.stroke(); // Draw it
   ctx.fill();
   ctx.restore();
-
 }
 
 function DrawImage(ctx,x,y,r,image) {
@@ -278,7 +585,6 @@ function drawMarker(me){
 }
 
 
-
 function drawFilledCircle(ctx,x,y) {
      var r=0.02*AXIS_RANGE;
      ctx.beginPath();
@@ -297,79 +603,6 @@ function drawFilledCircle(ctx,x,y) {
 }
 
 
-function drawSweep(me) {
-     var ctx = me.ctx;
-	  var datasets = me.sweepDatasets;
-     // if(datasets.length>0)
-     // {
-      // for (i = 0, ilen = datasets.length; i < ilen; ++i) // datasets.length=1 forcing to only dataset for now
-          drawData(ctx,datasets[0].dataM,datasets[0].dataQ,datasets[0].color);
-     // }
-}
-
-function dataPlot(me) {
-     var ctx = me.ctx;
-     // var i, ilen;
-	  var datasets = me.plotDatasets;
-     // if(datasets.length>0)
-     // {
-     //  for (i = 0, ilen = datasets.length; i < ilen; ++i) 
-          drawData(ctx,datasets[0].dataM,datasets[0].dataQ,datasets[0].color);
-     // }
-}
-
-function drawAdmitanceCircles(me) {
-     if(me.showAdmittace == true) me.showAdmittace = false; 
-     else me.showAdmittace = true;
-     var ctx = me.ctx;
-     console.log("ctx = " + me.showAdmittace);
-    // ctx.clearRect(0,0,chart.width,chart.height);
-    //  drawSmith(me);
-  }
-
- function drawVSWRCircles(me) {
-      var ctx = me.ctx;
-      // Constant VSWR cicles
-      var swr = parseFloat(me.vswrCircle);
-      console.log("VSWR " + swr);
-      if(swr <= 1.0) return;
-      var r1 = ((swr -1)/(1+swr)); 
-      var radius = (r1*AXIS_RANGE);
-      if(radius>0)Circle(ctx,0,0,radius,"blue");         
- }
-
- function drawQCircles(me)
-     { // Constant Q cicles
-      var ctx = me.ctx;
-      var q = parseFloat(me.qCircle);
-      if(q==0) return;
-      var r2 = 1/q;
-      var r3= Math.sqrt(1+r2*r2);
-      radius = Math.abs((r3*AXIS_RANGE)); 
-      center = Math.abs((r2*AXIS_RANGE));  
-      console.log( " r2 = " + radius + "r3 = " + center + " Q= " + q);
-      DrawArc(ctx,0,-center,radius,180,0,"#FF00FF"); //+Yaxis arc starting from -r,0 to r,0 
-      DrawArc(ctx,0,center,radius,0,180,"#FF00FF");//Magenta
-   }
-
-function drawGainCircles(me) {
-  var ctx = me.ctx;
-  if(me.circleR.length > 0){   
-      var i,ilen,radius1,ptx,pty;
-      for (i = 0, ilen = me.circleR.length; i < ilen; ++i)
-      {
-          radius1 = parseFloat(me.circleR[i]);
-            if(radius1 > 0) 
-             	{
-             		ptx = AXIS_RANGE * me.circleM[i] * Math.cos( me.circleQ[i]*Math.PI/180);
-            		pty = AXIS_RANGE * me.circleM[i] * Math.sin( me.circleQ[i]*Math.PI/180);
-                radius1 = radius1*AXIS_RANGE;
-                if(me.circleShow[i]==true)( drawCircle(ctx,ptx,pty,radius1,me.circleColor[i])); 
-              }
-      }
-    }
-}
-
 //---------------------------------------------------------------------------
 // Return TRUE if the given coordinates are inside of the Smith Chart
 //---------------------------------------------------------------------------
@@ -384,35 +617,8 @@ function InCircleR(x,y,r)
 { 
     return ((x * x)  + (y * y) <= (r*r));
 }
-
-
-
-// function inCirclePolar(r,q,radius)
-// { 
-//     var q_rad = q * Math.PI / 180;
-//     var x = r* Math.cos(q_rad);
-//     var y = r* Math.sin(q_rad);
-//     return ((x * x)  + (y * y) <= (radius*radius));
-// }
-
-
-// assuming we are already in Smith chart    3
-//    region                                1 2
-//   region                                  4
+                             4
 function getRegion(x,y){
-
-    var r= AXIS_RANGE/2;
-    var region = 0;
-    if (InCircleR(x+AXIS_RANGE/2,y-0,r) == true) {
-          region = 1;
-        }
-    else if (InCircleR(x-AXIS_RANGE/2,y-0,r) == true) {
-          region = 2;
-        }
-    else if (region==0 && y >= 0) region = 3;
-    else if (region==0 && y < 0 ) region = 4;
-    //else region = 0;
-    return region;
 }
 
 function scale(x,y,r) {
@@ -465,8 +671,6 @@ function drawCircle(ctx,x,y,r,color) {
   ctx.closePath();
 }
 
-
-
 function DrawArc(ctx,x,y,r,A1,A2,color) {
   ctx.beginPath();
   ctx.save();
@@ -505,7 +709,6 @@ function placeText(ctx,x,y,txt,textAlign,textBaseline){
 	  ctx.fillText(txt, scaled.X,scaled.Y); 
 	  ctx.closePath();
 }
-
 
 function drawData(ctx,dataM,dataQ,color){
     if(dataM.length > 0)
@@ -668,4 +871,293 @@ function getMaximumWidth (domNode) {
       };
 
     };
+
+function onMouseMove(evt) {
+   // var e = evt.originalEvent || evt;
+     //var mouseX = e.clientX-smithObj.ctx.canvas.offsetLeft;  // this works
+     //var mouseY = e.clientY-smithObj.ctx.canvas.offsetTop ;  // this is off by about 80px in this version but works with the stand alone component ?
+     // var mouseX = e.layerX; // this seems like working // does not work well with firefox
+     // var mouseY = e.layerY; // layerX returns the horizontal coordinate of the event relative to the current layer.
+    var m = getMousePosition(evt,chart);
+    var mouseX = m.x;
+    var mouseY  = m.y;
+    var house = getHouse(mouseX,mouseY);
+    //console.log( "mouseX =" + mouseX + " mouseY =" + mouseY  );
+    var descaled = descale(mouseX,mouseY);
+    var x= descaled.x;
+    var y=descaled.y;
+    var inSmith = InSmith(x,y)
+    if (inSmith) {
+        var r1 = math.sqrt(((x*x)+(y*y))); // convert to polar form
+        var q;
+        if(r1==0) q=0 ; else q= 180*math.asin(y/r1)/Math.PI;
+        if(x < 0 && y >=0) q= 180-q; if(x<0 && y<0) q= -180-q;  // Adjust for the second and third quadrant
+        var m= r1/AXIS_RANGE; 
+        var ZR= GToZR(m,q);
+        var ZI= GToZI(m,q);
+        if(q<0) q = q+ 360; // make it show 360 degree
+        //document.getElementById("Z1").value ="Z:" +Number(ZR).toFixed(2)+getSign(ZI)+Number(Math.abs(ZI)).toFixed(2)+"i";
+        document.getElementById("Z1").value ="H:" + house+ " R" +Number(m).toFixed(2)+' D'+Number(q).toFixed(2) + "  X:" +Number(x).toFixed(0)+' Y:'+Number(y).toFixed(0) ;
+    }
+    else  document.getElementById("Z1").value ="Z:";
+    if( isMobile ) return;    
+}
+
+function getHouse(x,y){
+    const pixel = smithObj.hitCtx.getImageData(x, y, 1, 1).data;
+    const color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
+    //console.log("color = " + color);
+    const shape = smithObj.colorsHash[color];
+    //console.log("shape = " + shape);
+    var retvalue = 0;
+    smithObj.houses.forEach(house => {
+        if (shape === house.colorKey) {
+            //console.log('click on house: ' + house.num);
+            retvalue = house.num;
+        }
+    });
+    return retvalue;
+}
+
+
+function onMouseClick(e) {
+    if( isMobile ) return;
+    // var mouseX = e.layerX; // this seems like working
+    // var mouseY = e.layerY; // layerX returns the horizontal coordinate of the event relative to the current layer.
+    var m = getMousePosition(e,chart);
+    var mouseX = m.x;
+    var mouseY  = m.y;
+    var house = getHouse(mouseX,mouseY);
+    console.log('house number: ' + house);
+    var msg = "House : " + house + "\n" ; 
+    ShowMessage_sm("AstroView",msg);
+
+    // var descaled = descale(mouseX,mouseY);
+    // var x= descaled.x;
+    // var y=descaled.y;
+    // var r1 = math.sqrt(((x*x)+(y*y))); // convert to polar form
+    // var q;
+    // if(r1==0) q=0 ; else q= 180*math.asin(y/r1)/Math.PI;
+	// if(x < 0 && y >=0) q= 180-q; if(x<0 && y<0) q= -180-q;  // Adjust for the second and third quadrant
+    // var m = r1/AXIS_RANGE; 
+    // var str1;
+    // if (InSmith(x,y) == true) {
+    //    // var msg =  x + " ," + y +"i";
+    //     if (m == 0)  m = 1e-16;
+    //     if (m == 1)  m = 0.9999999999;
+    //     var swr = (1 + m) / (1 - m);
+    //     var S11 = -20 * (Math.log(m) / Math.log(10));
+    //     if (S11 >= 720)  str1 = " > "; else str1 = "";
+    //     var msg = "Gamma [Mag]: " + Number(m).toFixed(2) + "\n" + "Gamma [Ang]: " + Number(q).toFixed(2) + '&#176' + '\n' + "VSWR: " + Number(swr).toFixed(2) + '\n' + "Return Loss: " + str1 + Number(S11).toFixed(2) + " dB" ; 
+    //     ShowMessage_sm("AstroView",msg);
+    //     //console.log("x= " + x + "y= " + y );
+    //     }
+    }
+
+
+function drawSweep(me) {
+    }
+    
+function dataPlot(me) {
+    }
+    
+function drawAdmitanceCircles(me) {
+    }
+    
+function drawVSWRCircles(me) {   
+    }
+    
+function drawQCircles(me){ // Constant Q cicles
+    }
+    
+function drawGainCircles(me) {
+    }
+    
+$("#sweepColor").change(function(){
+});
+
+function step_change1(id1) {
+}
+
+function spin_change1(id1) {
+    }
+
+$('input[name="spin1"]').TouchSpin({
+
+  });
+
+function set_click() {
+}
+
+function updateUI() {
+    smithObj.drawSmith();
+}
+
+function get_click(){
+         window.location.reload();
+}
+
+function get() {
+    // Get from local storage
+    var item = localStorage.getItem('schData');
+    if( item !== null)
+    {
+        var schObj1 =JSON.parse(item);
+        //console.log(schObj);
+        copy_schObj(schObj1);
+        //console.log("After copying");
+        //console.log(schObj);
+    }
+    else { console.log(" schData local storage not set");  };  
+
+    item = localStorage.getItem('smithData');
+    if( item !== null)
+    {
+        var smithObj1 =JSON.parse(item);
+        copy_smithObj(smithObj1);
+    }
+    else { console.log(" smithData local storage not set");  }; 
+    updateUI();
+    
+}
+
+function new_click() {
+    localStorage.removeItem('schData');
+    delete window.localStorage["schData"];
+    localStorage.removeItem('smithData');
+    localStorage.setItem("transferFlag", 'false');
+    delete window.localStorage["smithData"];
+    window.location.reload();
+}
+
+function save_click() {
+    saveJSONtoFile(schObj, "out.sch");
+}
+
+function saveCanvas_click(){
+    smithObj.ctx.canvas.toBlob(function(blob) {
+        saveAs(blob, "AstroView.png");
+    });
+}
+
+// export the last sweep data as a gam file 
+function export_click() {
+}
+
+
+function handleFileImport(e) {
+}
+
+function clear_import_click() {
+// smithObj.data = false; 
+
+}
+
+// export the sweep data as a gam file 
+function import_click() {
+  // document.getElementById('file-input1').click();
+}
+
+function myfunc() {
+    console.log("here");
+}
+
+function handleFileOpen(e) {
+}
+
+function load_click() {
+   document.getElementById('file-input').click();
+}
+
+function Zcalsweep(){ // this function simply calls Zcalsweep with the same arguments, and also updates the output results to the textbox
+}
+
+// here target id is the id of the component
+var start = function (e) {
+   }
+
+var enter = function (e) {
+    }
+
+var over = function (e) {
+}
+
+var drop = function (e) {   
+ }
+
+var end = function(e) {
+}
+
+function showComponentdialog(dropElementType, img, mySrcElement, targetIdNum, context) {
+}
+
+function componentValidate() {
+}
+
+function reply_click(clicked_id, value) {
+}
+
+function step_change(id1) {
+}
+    
+function step_change1(id1) {
+ }
+ $('input[name="spin1"]').taphold(function (e) {
+               step_change1($(e.target).attr("id"))  },
+               1000);
+
+$('input[name="spin2"]').on("keypress", function (e) {
+});
+
+$('input[name="spin2"]').TouchSpin({
+});
+
+
+$('input[name="spin2"]').qtip({ 
+});
+
+// uses the schObj object to update the ToolTip content
+function updateToolTip() {
+}
+
+function spin_change(id1) {
+}
+
+function options_click() {
+}
+
+function OnOptionSweepElemet_click()  // depending upon the tune element detemine where it needs a tune option or not ( incase of a two element)
+{
+}
+
+    // this function shows hides the file dialog depending on Multi/Single termination
+function yesnoFileDialog() {
+    }
+
+function optionValidate() {
+}
+
+var updateValue_disable = false;
+    $(function () {  
+    });
+
+function playSound() {
+        var sound = document.getElementById("audio");
+        sound.play();
+}
+
+function showTxEquivalents() {
+}
+function showMarkerDialog() {
+}
+function generateSweep() {
+}
+function clearSweep() {
+}
+function IL_open_click(){
+}
+function AMP_open_click(){
+}
+
+
 
