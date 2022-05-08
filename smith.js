@@ -12,7 +12,7 @@ const AXIS_RANGE = 1000;
 var resize_done = false;  // this is to avoid half shape canvas draw sometime when an attempt is made to draw with out scaling first
 var chart= {"width": 300, "height" : 300,  "currentDevicePixelRatio" : 1, "devicePixelRatio" : 1 };
 var isMobile = false; //initiate as false
-const signsArray = ['aries','taurus','gemini','cancer','leo','virgo','scorpio','sagittarius','capricorn','aquarius','pisces']; //rashis
+const signsArray = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces']; //rashis
 const planetsArray = ['ascendant','sun','moon','mars','mercury','jupiter','venus','saturn','rahu','ketu']; //rashis
 //console.log(signs.indexOf('taurus'));
 //console.log(signs.indexOf('cancer', 1)); // start from index 1
@@ -239,60 +239,67 @@ var smithObj = {
               redrawSmith: redrawSmith, // repaints smithChart with the current values
               colorsHash: {},
               houses : [{
-                num: '1', Signnum: '10', color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '1', signnum: '10', color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '2', Signnum: '11',  color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
+                num: '2', signnum: '113',  color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '3', Signnum: '12', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
+                num: '3', signnum: '123', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '4', Signnum: '1', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
+                num: '4', signnum: '13', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '5', Signnum: '2', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '5', signnum: '23', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '6', Signnum: '3', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '6', signnum: '33', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '7', Signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '7', signnum: '43', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '8', Signnum: '5', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
+                num: '8', signnum: '53', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '9', Signnum: '6', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
+                num: '9', signnum: '63', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '10', Signnum: '7', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
+                num: '10', signnum: '73', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '11', Signnum: '8', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '11', signnum: '83', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '12', Signnum: '9', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
+                num: '12', signnum: '93', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
                 }
                 ],
                drawSmith: function() { drawSmith(this);},
                test: function() { test(this);},
-               updateSigns: function() { updatesSigns (this);}, // Resets all properties to its default values
+               updateSigns: function() { updateSigns (this);}, // Resets all properties to its default values
                input:inputObj,
                output:outputObj
           };
-  var matchTipShown = false; 
-  smithObj.ctx = document.getElementById("smithMain").getContext('2d');
-  smithObj.hitCtx = document.getElementById("smithMainHit").getContext('2d');
-  
-  smithObj.ctx.canvas.addEventListener("mousemove", onMouseMove, false);
-  smithObj.ctx.canvas.addEventListener("dblclick", onMouseClick, false);
-  //window.addEventListener('load', smithObj.redrawSmith, false);  //  not necessary duplicates $('document').ready(function () at the top
-  window.addEventListener('resize',smithObj.redrawSmith, false); // resize,clear and redraw
-  document.getElementById('file-input1').addEventListener('change', handleFileImport, false);//file Import
-  document.getElementById('file-input').addEventListener('change', handleFileOpen, false);
+var matchTipShown = false; 
+smithObj.ctx = document.getElementById("smithMain").getContext('2d');
+smithObj.hitCtx = document.getElementById("smithMainHit").getContext('2d');
 
-  function updateSign(me){
+smithObj.ctx.canvas.addEventListener("mousemove", onMouseMove, false);
+smithObj.ctx.canvas.addEventListener("dblclick", onMouseClick, false);
+//window.addEventListener('load', smithObj.redrawSmith, false);  //  not necessary duplicates $('document').ready(function () at the top
+window.addEventListener('resize',smithObj.redrawSmith, false); // resize,clear and redraw
+document.getElementById('file-input1').addEventListener('change', handleFileImport, false);//file Import
+document.getElementById('file-input').addEventListener('change', handleFileOpen, false);
+
+function updateSigns(me){
   // get asendent and increment by 1 if >12 then reset it to 0
-  const ascendant =  me.output.planet_positions[0].position ;
+  var current_pos =  me.output.planet_positions[0].position ;
+  me.houses[0].signnum = current_pos;
+  for (let i = 1; i < 12; i++) {
+    current_pos = current_pos + 1
+    if (current_pos >= 13 ) current_pos = 1;
+    me.houses[i].signnum = current_pos;
+  }
+
 }
 
 function updateChart(){
 }
 
 function test(context){
-  context.vswrCircle = '3.0';
-  context.drawVSWRCircles;
-  console.log(context.Z0);
+  // context.vswrCircle = '3.0';
+  // context.drawVSWRCircles;
+  // console.log(context.Z0);
  }
 
  $('document').ready(function () {
@@ -384,9 +391,9 @@ function drawSmith(me) {
   } // end for
 
   str = JSON.stringify(me.colorsHash, null, 4); // (Optional) beautiful indented output.
-  console.log("colorHash Object= " + str); // Logs output to dev tools console.
+  //console.log("colorHash Object= " + str); // Logs output to dev tools console.
   str = JSON.stringify(me.houses, null, 4); // (Optional) beautiful indented output.
-  console.log("houses Object= " + str); // Logs output to dev tools console.
+  //console.log("houses Object= " + str); // Logs output to dev tools console.
 
   drawCircle(ctx,0,0,r,"WhiteSmoke");  //constant resistance circles Rn = 0; small padding provide for the outer circle to avoid flatning.
   drawRectangle(ctx,0,0,r,0,"black");
@@ -459,21 +466,23 @@ function drawSmith(me) {
   drawPath(ctx, [...rarray],[...qarray],me.houses[11].color,me.houses[11].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[11].colorKey,me.houses[11].colorKey); // line color, fill color
 
-  
   // //drawSprite(ctx,0,0);
   //drawFilledCircle(ctx,0,0)
-  placeText(ctx,0,50,me.output.planet_positions[0].position ,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+50, (me.output.planet_positions[0].position)+1,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+0, (me.output.planet_positions[0].position)+2,"center","middle");
-  placeText(ctx,-50,0,(me.output.planet_positions[0].position)+3,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)+0, (me.output.planet_positions[0].position)+4,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)-50, (me.output.planet_positions[0].position)+5,"center","middle");
-  placeText(ctx,0,-50,(me.output.planet_positions[0].position)+6,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)-50, (me.output.planet_positions[0].position)+7,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)+0, (me.output.planet_positions[0].position)+8,"center","middle");
-  placeText(ctx,50,0,(me.output.planet_positions[0].position)+9,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+0, (me.output.planet_positions[0].position)+10,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+50, (me.output.planet_positions[0].position)+11,"center","middle");
+  me.updateSigns(me);
+  str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
+  console.log("Smith Object= " + str); // Logs output to dev tools console.
+  placeText(ctx,0,50,me.houses[0].signnum ,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+50, me.houses[1].signnum,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+0, me.houses[2].signnum,"center","middle");
+  placeText(ctx,-50,0,me.houses[3].signnum,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)+0, me.houses[4].signnum,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)-50, me.houses[5].signnum,"center","middle");
+  placeText(ctx,0,-50,me.houses[6].signnum,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)-50, me.houses[7].signnum,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)+0, me.houses[8].signnum,"center","middle");
+  placeText(ctx,50,0,me.houses[9].signnum,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+0, me.houses[10].signnum,"center","middle");
+  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+50, me.houses[11].signnum,"center","middle");
   DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth");
 }
 
@@ -892,19 +901,71 @@ function onMouseMove(evt) {
     var x= descaled.x;
     var y=descaled.y;
     var inSmith = InSmith(x,y)
+    var signnum ;
+    var degree;
+    var longitude;
+    
     if (inSmith) {
         var r1 = math.sqrt(((x*x)+(y*y))); // convert to polar form
         var q;
         if(r1==0) q=0 ; else q= 180*math.asin(y/r1)/Math.PI;
         if(x < 0 && y >=0) q= 180-q; if(x<0 && y<0) q= -180-q;  // Adjust for the second and third quadrant
         var m= r1/AXIS_RANGE; 
-        var ZR= GToZR(m,q);
-        var ZI= GToZI(m,q);
         if(q<0) q = q+ 360; // make it show 360 degree
         //document.getElementById("Z1").value ="Z:" +Number(ZR).toFixed(2)+getSign(ZI)+Number(Math.abs(ZI)).toFixed(2)+"i";
-        document.getElementById("Z1").value ="H:" + house+ " R" +Number(m).toFixed(2)+' D'+Number(q).toFixed(2) + "  X:" +Number(x).toFixed(0)+' Y:'+Number(y).toFixed(0) ;
+        document.getElementById("Z1").value ="H:" + house+ ' \u2220' +Number(m).toFixed(2) +' ' + Number(q).toFixed(2)+'\u00B0'+ "  X:" +Number(x).toFixed(0)+' Y:'+Number(y).toFixed(0) ;
+        switch (house) {
+          case '1':
+            signnum = smithObj.houses[house-1].signnum;
+            degree = Number((q-45)/3).toFixed(2);
+            longitude = (q-45)/3 + 270.00;
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + Number(longitude).toFixed(2)+'\u00B0';
+            break;
+          case '2':
+            signnum = smithObj.houses[house-1].signnum;
+            degree = Number((q-0)/1).toFixed(2);
+            longitude = (q-0)/1 + 270.00;
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + Number(longitude).toFixed(2)+'\u00B0';
+            break;  
+          case '3':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;
+          case '4':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;
+          case '5':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;
+          case '6':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;  
+          case '7':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;
+          case '8':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;
+          case '9':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;
+          case '10':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;  
+          case '11':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;
+          case '12':
+            document.getElementById("L1").value ="LONG:" + house ;
+            break;
+          default:
+            console.log(`Sorry, we are out of ${house}.`);
+        }
+      }
+    else  {
+      document.getElementById("Z1").value ="Z:";
+      document.getElementById("L1").value ="LONG:";
     }
-    else  document.getElementById("Z1").value ="Z:";
+    
     if( isMobile ) return;    
 }
 

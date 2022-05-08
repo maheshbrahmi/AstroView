@@ -1,6 +1,18 @@
 
-// the main data structure in a centralized place so that all pages can access it.
+function toTitleCase(str) {
+    return str.replace(
+      /\w\S*/g,
+      function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      }
+    );
+//     const newStr = str.split(' ')
+//    .map(w => w[0].toUpperCase() + w.substring(1).toLowerCase())
+//    .join(' ');
+//     return newStr;
+  }
 
+// the main data structure in a centralized place so that all pages can access it.
 function copy_schObj(schObj1) {
 //  var ELEMENT_SRC = schObj1.ELEMENT;
 //  var ELEMENT_DEST = schObj.ELEMENT;
