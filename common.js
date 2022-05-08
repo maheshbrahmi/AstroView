@@ -275,6 +275,15 @@ function ZtoGammaM(ZXR, ZXI) {
     // return Math.sqrt(SR * SR + SI * SI);
 }
 
+function XYtoMQ(X, Y, AXIS_RANGE,show_360) {
+    var R1 = math.sqrt(((X*X)+(Y*Y))); // convert to polar form
+    var Q;
+    if(R1==0) Q=0 ; else Q= 180*math.asin(Y/R1)/Math.PI;
+    if(X < 0 && Y >=0) Q= 180-Q; if(X<0 && Y<0) Q= -180-Q;  // Adjust for the second and third quadrant
+    var M= R1/AXIS_RANGE; 
+    if(show_360 == true) if(Q<0) Q= Q+ 360; // make it show 360 degree
+    return [M,Q];
+}
 
 //Below is a simple jQuery plugin to catch a long click or long press:
 (function ($) {

@@ -906,56 +906,107 @@ function onMouseMove(evt) {
     var longitude;
     
     if (inSmith) {
-        var r1 = math.sqrt(((x*x)+(y*y))); // convert to polar form
-        var q;
-        if(r1==0) q=0 ; else q= 180*math.asin(y/r1)/Math.PI;
-        if(x < 0 && y >=0) q= 180-q; if(x<0 && y<0) q= -180-q;  // Adjust for the second and third quadrant
-        var m= r1/AXIS_RANGE; 
-        if(q<0) q = q+ 360; // make it show 360 degree
+        // var r1 = math.sqrt(((x*x)+(y*y))); // convert to polar form
+        // var q;
+        // if(r1==0) q=0 ; else q= 180*math.asin(y/r1)/Math.PI;
+        // if(x < 0 && y >=0) q= 180-q; if(x<0 && y<0) q= -180-q;  // Adjust for the second and third quadrant
+        // var m= r1/AXIS_RANGE; 
+        // if(q<0) q = q+ 360; // make it show 360 degree
+        const [m,q] = XYtoMQ(x, y, AXIS_RANGE,true);
+        var [R,Q] = [0,0];
+        var [M1,Q1] = [0,0];
         //document.getElementById("Z1").value ="Z:" +Number(ZR).toFixed(2)+getSign(ZI)+Number(Math.abs(ZI)).toFixed(2)+"i";
         document.getElementById("Z1").value ="H:" + house+ ' \u2220' +Number(m).toFixed(2) +' ' + Number(q).toFixed(2)+'\u00B0'+ "  X:" +Number(x).toFixed(0)+' Y:'+Number(y).toFixed(0) ;
         switch (house) {
           case '1':
             signnum = smithObj.houses[house-1].signnum;
-            degree = Number((q-45)/3).toFixed(2);
-            longitude = (q-45)/3 + 270.00;
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + Number(longitude).toFixed(2)+'\u00B0';
+            degree = Number(q/3-15).toFixed(2);
+            longitude = Number(q/3-15+270).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
             break;
           case '2':
             signnum = smithObj.houses[house-1].signnum;
-            degree = Number((q-0)/1).toFixed(2);
-            longitude = (q-0)/1 + 270.00;
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + Number(longitude).toFixed(2)+'\u00B0';
+            [R,Q] = XYtoMQ( x + 356, y - 356, AXIS_RANGE,true);
+            Q=Q/3;
+            degree = Number(Q-15).toFixed(2);
+            longitude = Number(Q-15+300).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;  
           case '3':
-            document.getElementById("L1").value ="LONG:" + house ;
+            signnum = smithObj.houses[house-1].signnum;
+            [R,Q] = XYtoMQ( x + 356, y - 356, AXIS_RANGE,true);
+            Q=Q/3;
+            degree = Number(Q-45).toFixed(2);
+            longitude = Number(Q-45+330).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; 
             break;
           case '4':
-            document.getElementById("L1").value ="LONG:" + house ;
+            signnum = smithObj.houses[house-1].signnum;
+            degree = Number(q/3-45).toFixed(2);
+            longitude = Number(q/3-45).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
             break;
           case '5':
-            document.getElementById("L1").value ="LONG:" + house ;
-            break;
-          case '6':
-            document.getElementById("L1").value ="LONG:" + house ;
+            signnum = smithObj.houses[house-1].signnum;
+            [R,Q] = XYtoMQ( x + 356, y + 356, AXIS_RANGE,true);
+            Q=Q/3;
+            degree = Number(Q-45).toFixed(2);
+            longitude = Number(Q-45+30).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;  
+          case '6':
+            signnum = smithObj.houses[house-1].signnum;
+            [R,Q] = XYtoMQ( x + 356, y + 356, AXIS_RANGE,true);
+            Q=Q/3;
+            degree = Number((Q-75)).toFixed(2);
+            longitude = Number(Q-75+ 60.00).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
+            break;
           case '7':
-            document.getElementById("L1").value ="LONG:" + house ;
+            signnum = smithObj.houses[house-1].signnum;
+            degree = Number((q/3)-75).toFixed(2);
+            longitude = Number((q/3)+15).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0';
             break;
           case '8':
-            document.getElementById("L1").value ="LONG:" + house ;
+            signnum = smithObj.houses[house-1].signnum;
+            [R,Q] = XYtoMQ( x - 356, y + 356, AXIS_RANGE,true);
+            Q=Q/3;
+            degree = Number(Q-75).toFixed(2);
+            longitude = Number((Q-75)+ 120.00).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '9':
-            document.getElementById("L1").value ="LONG:" + house ;
+            signnum = smithObj.houses[house-1].signnum;
+            [R,Q] = XYtoMQ( x - 356, y + 356, AXIS_RANGE,false);
+            Q=Q/3;
+            degree = Number(Q+15).toFixed(2);
+            longitude = Number(Q+15+150).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '10':
-            document.getElementById("L1").value ="LONG:" + house ;
-            break;  
+            [M1,Q1] = XYtoMQ(x, y, AXIS_RANGE,false);
+            signnum = smithObj.houses[house-1].signnum;
+            Q1=Q1/3;
+            degree = Number(Q1+15).toFixed(2);
+            longitude = Number(Q1+15+180).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
+            break;
           case '11':
-            document.getElementById("L1").value ="LONG:" + house ;
+            signnum = smithObj.houses[house-1].signnum;
+            [R,Q] = XYtoMQ( x - 356, y - 356, AXIS_RANGE,false);
+            Q=Q/3;
+            degree = Number(Q+15).toFixed(2);
+            longitude = Number(Q+15+210).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '12':
-            document.getElementById("L1").value ="LONG:" + house ;
+            signnum = smithObj.houses[house-1].signnum;
+            [R,Q] = XYtoMQ( x - 356, y - 356, AXIS_RANGE,false);
+            Q=Q/3;
+            degree = Number(Q-15).toFixed(2);
+            longitude = Number(Q-15+240).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           default:
             console.log(`Sorry, we are out of ${house}.`);
