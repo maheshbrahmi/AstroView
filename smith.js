@@ -39,11 +39,11 @@ const signObj = {  // RASI
 var inputObj = {
   "ver":1.0,  //if you change this then change the file load verify function- this is used as a check - need a better way to do this
   "type":"astroFile", // to check if the right file is imported
-  "name": "test",  //First and Last name
+  "name": "John Smith",  //First and Last name
   "city": "Mumbai", // 
   "state": "Maharashtra",  // 
   "country": "India",   // 
-  "birthdate": "11/05/1966", // 
+  "date": "11/05/1966", // 
   "time": "13:40:00",  // 
   "longitude": 72.8166667, //
   "latitude": 18.9666667,  //  
@@ -69,6 +69,7 @@ var outputObj = {
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
+          "is_digbala":false,
           "aspect":"none",
           "position": 10,
           "house": 1,
@@ -85,6 +86,7 @@ var outputObj = {
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":true,
+          "is_digbala":false,
           "aspect":"1,7",
           "position": 7,
           "house": 10,
@@ -101,6 +103,7 @@ var outputObj = {
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
+          "is_digbala":false,
           "aspect":"1,7",
           "position": 4,
           "house": 7,
@@ -117,6 +120,7 @@ var outputObj = {
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
+          "is_digbala":false,
           "aspect":"1,7,4,8",
           "position": 5,
           "house": 8,
@@ -134,6 +138,7 @@ var outputObj = {
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
+          "is_digbala":false,
           "aspect":"1,7",
           "position": 8,
           "house": 11,
@@ -151,6 +156,7 @@ var outputObj = {
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
+          "is_digbala":false,
           "aspect":"1,7,5,9",
           "position": 4,
           "house": 7,
@@ -168,6 +174,7 @@ var outputObj = {
           "is_ownsign":true,
           "is_exhalted":false,
           "is_debilitated":false,
+          "is_digbala":false,
           "aspect":"1,7",
           "position": 7,
           "house": 10,
@@ -185,6 +192,7 @@ var outputObj = {
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
+          "is_digbala":false,
           "aspect":"1,7,3,10",
           "position": 11,
           "house": 2,
@@ -202,6 +210,7 @@ var outputObj = {
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
+          "is_digbala":false,
           "aspect":"1,7",
           "position": 1,
           "house": 4,
@@ -219,6 +228,7 @@ var outputObj = {
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
+          "is_digbala":false,
           "aspect":"1,7",
           "position": 7,
           "house": 10,
@@ -228,7 +238,7 @@ var outputObj = {
           "sign":"libra"
       }
   ],
-  calculate: updateChart
+  update: function() { updateChart (this);}
 }
 
 var smithObj = {
@@ -292,8 +302,38 @@ function updateSigns(me){
   }
 
 }
+//calculate chart
+// $('#code').keyup(function() {
+//   var discountcode = this.value;
+//   console.log(discountcode);
+// });
+//outputObj.update();
 
-function updateChart(){
+function updateOutput(me){
+  
+}
+
+function updateChart(me){
+  var value;
+  value = $("#name").val();if( inputObj.name != value) inputObj.name = value;
+  value = $("#city").val();if( inputObj.city != value) inputObj.city = value;
+  value = $("#state").val();if( inputObj.state != value) inputObj.state = value;
+  value = $("#country").val();if( inputObj.country != value) inputObj.country = value;
+  value = $("#date").val();if( inputObj.date != value) inputObj.date = value;
+  value = $("#time").val();if( inputObj.time != value) inputObj.time = value;
+  value = $("#latitude").val();if( inputObj.latitude != value) inputObj.latitude = value;
+  value = $("#longitude").val();if( inputObj.longitude != value) inputObj.longitude = value;
+  value = $("#ascendant").val();if( inputObj.ascendant != value) inputObj.ascendant = value;
+  value = $("#sun").val();if( inputObj.sun != value) inputObj.sun = value;
+  value = $("#moon").val();if( inputObj.namoonme != value) inputObj.moon = value;
+  value = $("#mercury").val();if( inputObj.mercury != value) inputObj.mercury = value;
+  value = $("#venus").val();if( inputObj.venus != value) inputObj.venus = value;
+  value = $("#mars").val();if( inputObj.mars != value) inputObj.mars = value;
+  value = $("#jupiter").val();if( inputObj.jupiter != value) inputObj.jupiter = value;
+  value = $("#saturn").val();if( inputObj.saturn != value) inputObj.saturn = value;
+  value = $("#rahu").val();if( inputObj.rahu != value) inputObj.rahu = value;
+  value = $("#ketu").val();if( inputObj.ketu != value) inputObj.ketu = value;
+  alert("Form Updated");
 }
 
 function test(context){
@@ -362,6 +402,7 @@ function resize(canvas) {
       resize(ctx.canvas)
       console.log("Redrawing smith2 End");
       smithObj.drawSmith(); // clears canvas too
+      
   }
 
 function drawSmith(me) {
@@ -484,6 +525,24 @@ function drawSmith(me) {
   placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+0, me.houses[10].signnum,"center","middle");
   placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+50, me.houses[11].signnum,"center","middle");
   DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth");
+  $("#name").val(inputObj.name);
+  $("#city").val(inputObj.city);
+  $("#state").val(inputObj.state);
+  $("#country").val(inputObj.country);
+  $("#date").val(inputObj.date);
+  $("#time").val(inputObj.time);
+  $("#latitude").val(inputObj.latitude);
+  $("#longitude").val(inputObj.longitude);
+  $("#ascendant").val(inputObj.ascendant);
+  $("#sun").val(inputObj.sun);
+  $("#moon").val(inputObj.moon);
+  $("#mercury").val(inputObj.mercury);
+  $("#venus").val(inputObj.venus);
+  $("#mars").val(inputObj.mars);
+  $("#jupiter").val(inputObj.jupiter);
+  $("#saturn").val(inputObj.saturn);
+  $("#rahu").val(inputObj.rahu);
+  $("#ketu").val(inputObj.ketu);
 }
 
 function drawPath(ctx, [...rarray],[...qarray],color,fillcolor){
@@ -1009,7 +1068,7 @@ function onMouseMove(evt) {
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           default:
-            console.log(`Sorry, we are out of ${house}.`);
+            //console.log(`Sorry, we are out of ${house}.`);
         }
       }
     else  {
@@ -1045,30 +1104,53 @@ function onMouseClick(e) {
     var mouseX = m.x;
     var mouseY  = m.y;
     var house = getHouse(mouseX,mouseY);
-    console.log('house number: ' + house);
-    var msg = "House : " + house + "\n" ; 
-    ShowMessage_sm("AstroView",msg);
+    //console.log('house number: ' + house);
+    const signnum = smithObj.houses[house-1].signnum;
+    var msg1 = "House Num: " + house + "\n" + "House Sign: " + toTitleCase(signsArray[signnum-1]+'('+signnum+')');
+    var msg2 
+    switch (house) {
+      case '1':
+        msg2 = "Self"
+        break;
+      case '2':
+        msg2 = "Wealth"
+        break;
+      case '3':
+        msg2 = "Sibling"
+        break;
+      case '4':
+        msg2 = "Mother,land"
+        break;
+      case '5':
+        msg2 = "Child"
+        break;
+      case '6':
+        msg2 = "Enemes,service"
+        break;
+      case '7':
+        msg2 = "Spouse,others"
+        break;
+      case '8':
+        msg2 = "Losses,occult"
+        break;
+      case '9':
+        msg2 = "Father,guru"
+        break;
+      case '10':
+        msg2 = "Career,foreign"
+        break;
+      case '11':
+        msg2 = "Gain,spending"
+        break;
+      case '12':
+        msg2 = "Moksha"
+        break;
+      default:
+        console.log(`Sorry, we are out of ${house}.`);
+    }
 
-    // var descaled = descale(mouseX,mouseY);
-    // var x= descaled.x;
-    // var y=descaled.y;
-    // var r1 = math.sqrt(((x*x)+(y*y))); // convert to polar form
-    // var q;
-    // if(r1==0) q=0 ; else q= 180*math.asin(y/r1)/Math.PI;
-	// if(x < 0 && y >=0) q= 180-q; if(x<0 && y<0) q= -180-q;  // Adjust for the second and third quadrant
-    // var m = r1/AXIS_RANGE; 
-    // var str1;
-    // if (InSmith(x,y) == true) {
-    //    // var msg =  x + " ," + y +"i";
-    //     if (m == 0)  m = 1e-16;
-    //     if (m == 1)  m = 0.9999999999;
-    //     var swr = (1 + m) / (1 - m);
-    //     var S11 = -20 * (Math.log(m) / Math.log(10));
-    //     if (S11 >= 720)  str1 = " > "; else str1 = "";
-    //     var msg = "Gamma [Mag]: " + Number(m).toFixed(2) + "\n" + "Gamma [Ang]: " + Number(q).toFixed(2) + '&#176' + '\n' + "VSWR: " + Number(swr).toFixed(2) + '\n' + "Return Loss: " + str1 + Number(S11).toFixed(2) + " dB" ; 
-    //     ShowMessage_sm("AstroView",msg);
-    //     //console.log("x= " + x + "y= " + y );
-    //     }
+    ShowMessage_sm("AstroView",msg1+'\n'+msg2);
+
     }
 
 
@@ -1108,6 +1190,7 @@ function set_click() {
 
 function updateUI() {
     smithObj.drawSmith();
+    //outputObj.update();
 }
 
 function get_click(){
