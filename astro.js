@@ -39,7 +39,7 @@ const signObj = {  // RASI
 var inputObj = {
   "ver":1.0,  //if you change this then change the file load verify function- this is used as a check - need a better way to do this
   "type":"astroFile", // to check if the right file is imported
-  "name": "John Smith",  //First and Last name
+  "name": "John bosco",  //First and Last name
   "city": "Mumbai", // 
   "state": "Maharashtra",  // 
   "country": "India",   // 
@@ -242,40 +242,40 @@ var inputObj = {
  // update: function() { updateChart (this);}
 //}
 
-var smithObj = {
+var astroObj = {
               "ctx" : null,
               "hitCtx" : null,
               "title": '',
               resetAll: function() { resetAll (this);}, // Resets all properties to its default values
-              redrawSmith: redrawSmith, // repaints smithChart with the current values
+              redrawAstro: redrawAstro, // repaints astroChart with the current values
               colorsHash: {},
               houses : [{
                 num: '1', signnum: '10', color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '2', signnum: '113',  color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
+                num: '2', signnum: '11',  color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '3', signnum: '123', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
+                num: '3', signnum: '12', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '4', signnum: '13', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
+                num: '4', signnum: '1', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '5', signnum: '23', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '5', signnum: '2', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '6', signnum: '33', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '6', signnum: '3', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '7', signnum: '43', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '7', signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '8', signnum: '53', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
+                num: '8', signnum: '5', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '9', signnum: '63', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
+                num: '9', signnum: '6', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '10', signnum: '73', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
+                num: '10', signnum: '7', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '11', signnum: '83', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '11', signnum: '8', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '12', signnum: '93', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
+                num: '12', signnum: '9', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
                 }
                 ],
-               drawSmith: function() { drawSmith(this);},
+               drawAstro: function() { drawAstro(this);},
                updateOutput: function() { updateOutput(this);},
                test: function() { test(this);},
                updateSigns: function() { updateSigns (this);}, // Resets all properties to its default values
@@ -283,13 +283,13 @@ var smithObj = {
                output:outputObj
           };
 var matchTipShown = false; 
-smithObj.ctx = document.getElementById("smithMain").getContext('2d');
-smithObj.hitCtx = document.getElementById("smithMainHit").getContext('2d');
+astroObj.ctx = document.getElementById("astroMain").getContext('2d');
+astroObj.hitCtx = document.getElementById("astroMainHit").getContext('2d');
 
-smithObj.ctx.canvas.addEventListener("mousemove", onMouseMove, false);
-smithObj.ctx.canvas.addEventListener("dblclick", onMouseClick, false);
-//window.addEventListener('load', smithObj.redrawSmith, false);  //  not necessary duplicates $('document').ready(function () at the top
-window.addEventListener('resize',smithObj.redrawSmith, false); // resize,clear and redraw
+astroObj.ctx.canvas.addEventListener("mousemove", onMouseMove, false);
+astroObj.ctx.canvas.addEventListener("dblclick", onMouseClick, false);
+//window.addEventListener('load', astroObj.redrawAstro, false);  //  not necessary duplicates $('document').ready(function () at the top
+window.addEventListener('resize',astroObj.redrawAstro, false); // resize,clear and redraw
 document.getElementById('file-input1').addEventListener('change', handleFileImport, false);//file Import
 document.getElementById('file-input').addEventListener('change', handleFileOpen, false);
 
@@ -310,38 +310,41 @@ function updateSigns(me){
 //   console.log(discountcode);
 // });\
 function logitudeToPositions(long){
-let pos = 0;
-let pos_ctr=1;
+let pos = 1;
 let house = 0;
 let degree = 0;
 let mins = 0;
 let secs = 0;
-console.log("long = " +long);
-while(long>30){pos_ctr++; long = long -30;}
+//console.log("long = " +long);
+while(long>30){pos++; long = long -30;}
 degree = Number(long).toFixed(2);;
-console.log("pos_ctr = " +pos_ctr);
-console.log("degree = " +degree);
+//console.log("pos = " +pos);
+//console.log("degree = " +degree);
 mins = parseInt((long-parseInt(long))*60);
-console.log("mins = " +mins);
+//console.log("mins = " +mins);
 secs = parseInt(((long-parseInt(long))*60 - mins)*60);
-console.log("secs = " +secs);
+//console.log("secs = " +secs);
 let signNum = parseInt(signsArray.indexOf(outputObj[0].sign));
 signNum = signNum+1;
-console.log("signNum " +  signNum);
-console.log("sign " +  outputObj[0].sign);
-pos = pos_ctr - signNum; 
-console.log("pos = " +pos);
-if(pos < 0) house = pos+14
-else house = pos+2
-console.log("house = " +house);
+//console.log("signNum " +  signNum);
+//console.log("sign " +  outputObj[0].sign);
+var pos_dist = pos - signNum; 
+//console.log("pos_dist = " +pos_dist);
+if(pos_dist < 0) house = pos_dist+13
+else house = pos_dist+1
+//console.log("house = " +house);
 //=IF((D16-$D$35)<0,(D16 -$D$35)+12+1,D16-$D$35+1)
 return [pos,house,degree,mins,secs];
 }
 
-function calculate_positions(){
+function calculate_positions(){  // calculate postiions from Logitude
 
 }
 function updateOutput(me){
+  // first calcuate the postion of the ascendent
+  // then update house signPostions in Smit
+  
+
   let ascendent = 'Capricon';
   let long = Number(28.70000).toFixed(2);
   let degree = 0;
@@ -352,7 +355,8 @@ function updateOutput(me){
   let house = 0;
   let house1_str = "Ascendent " + ascendent +' ('+long +'\xB0'+mins+'\u2032'+secs+'\u2033'+')'+ " Ruled By " + planet ;
   $("#house1").val(house1_str);
-  [pos,house,degree,mins,secs] = logitudeToPositions(199.07001545248);
+  [pos,house,degree,mins,secs] = logitudeToPositions(219.718216555607);
+  console.log("pos = " +pos + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
 
 }
 
@@ -393,7 +397,7 @@ function test(context){
     $('input[type=text]').bind('copy paste', function (e) {
         e.preventDefault();
     });   // this prenvents the copy/paste menu popping up in IOS when you touch the step box
-    resize(smithObj.ctx.canvas)// Smith chart drawn here
+    resize(astroObj.ctx.canvas)// Astro chart drawn here
     get(); // restore the last session if saved earlier
     //updateUI();
     //$(E1).trigger("touchspin.updatesettings", { step: 0.1 }); // make load element(RX(R)/G(Mag)) step size 0.1
@@ -409,7 +413,7 @@ function getRandomColor() {
   const b = Math.round(Math.random() * 255);
   return `rgb(${r},${g},${b})`;
 }
-    // called by redrawSmith function
+    // called by redrawAstro function
 function resize(canvas) {
     //alert (" resize 1031");
     // Our canvas must cover full height of screen
@@ -425,32 +429,32 @@ function resize(canvas) {
      var height = Math.max(0, Math.floor(aspectRatio ? width / aspectRatio : ht));
       console.log( "NewWidth = " + width);
       console.log( "NewHeight = " + height);
-      smithObj.ctx.canvas.width =chart.width= width;
-      smithObj.ctx.canvas.height =chart.height = height;
-      smithObj.ctx.canvas.style.width = width+'px';
-      smithObj.ctx.canvas.style.height = height+'px';
-      smithObj.hitCtx.canvas.width =chart.width= width;
-      smithObj.hitCtx.canvas.height =chart.height = height;
-      smithObj.hitCtx.canvas.style.width = width+'px';
-      smithObj.hitCtx.canvas.style.height = height+'px';
-      retinaScale(chart, smithObj);  
+      astroObj.ctx.canvas.width =chart.width= width;
+      astroObj.ctx.canvas.height =chart.height = height;
+      astroObj.ctx.canvas.style.width = width+'px';
+      astroObj.ctx.canvas.style.height = height+'px';
+      astroObj.hitCtx.canvas.width =chart.width= width;
+      astroObj.hitCtx.canvas.height =chart.height = height;
+      astroObj.hitCtx.canvas.style.width = width+'px';
+      astroObj.hitCtx.canvas.style.height = height+'px';
+      retinaScale(chart, astroObj);  
       resize_done = true;
   }
   
-  function redrawSmith () {
-      console.log("Redrawing smith1 Begin");
-      var ctx = smithObj.ctx;
+  function redrawAstro () {
+      console.log("Redrawing astro1 Begin");
+      var ctx = astroObj.ctx;
       if(ctx ==null) return;
      
       resize(ctx.canvas)
-      console.log("Redrawing smith2 End");
-      smithObj.drawSmith(); // clears canvas too
+      console.log("Redrawing astro2 End");
+      astroObj.drawAstro(); // clears canvas too
       
   }
 
-function drawSmith(me) {
+function drawAstro(me) {
   if(resize_done == false) return;
-  //alert (" drawSmith 16");
+  //alert (" drawAstro 16");
   var ctx = me.ctx;
   var hitCtx = me.hitCtx;
  
@@ -554,7 +558,7 @@ function drawSmith(me) {
   //drawFilledCircle(ctx,0,0)
   me.updateSigns();
   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
-  console.log("Smith Object= " + str); // Logs output to dev tools console.
+  console.log("Astro Object= " + str); // Logs output to dev tools console.
   placeText(ctx,0,50,me.houses[0].signnum ,"center","middle");
   placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+50, me.houses[1].signnum,"center","middle");
   placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+0, me.houses[2].signnum,"center","middle");
@@ -722,9 +726,9 @@ function drawFilledCircle(ctx,x,y) {
 
 
 //---------------------------------------------------------------------------
-// Return TRUE if the given coordinates are inside of the Smith Chart
+// Return TRUE if the given coordinates are inside of the Astro Chart
 //---------------------------------------------------------------------------
-function InSmith(x,y)
+function InAstro(x,y)
 {
     var r;
     r = AXIS_RANGE; 
@@ -909,8 +913,8 @@ function getMaximumWidth (domNode) {
 
 		return 'none';
   }
-  //    retinaScale(chart, smithObject); 
-	function retinaScale(chart,smithObject) {
+  //    retinaScale(chart, astroObject); 
+	function retinaScale(chart,astroObject) {
     //var pixelRatio = chart.currentDevicePixelRatio = chart.devicePixelRatio || window.devicePixelRatio || 1;
      var pixelRatio = chart.currentDevicePixelRatio = window.devicePixelRatio ;
     console.log (" pixelRatio = "+pixelRatio );
@@ -922,17 +926,17 @@ function getMaximumWidth (domNode) {
 		var height = chart.height;
 		var width = chart.width;
 
-		smithObject.ctx.canvas.height = height * pixelRatio;
-		smithObject.ctx.canvas.width = width * pixelRatio;
-		smithObject.ctx.scale(pixelRatio, pixelRatio);
-	  smithObject.ctx.canvas.style.height = height + 'px';
-		smithObject.ctx.canvas.style.width = width + 'px';
+		astroObject.ctx.canvas.height = height * pixelRatio;
+		astroObject.ctx.canvas.width = width * pixelRatio;
+		astroObject.ctx.scale(pixelRatio, pixelRatio);
+	  astroObject.ctx.canvas.style.height = height + 'px';
+		astroObject.ctx.canvas.style.width = width + 'px';
 
-    smithObject.hitCtx.canvas.height = height * pixelRatio;
-		smithObject.hitCtx.canvas.width = width * pixelRatio;
-		smithObject.hitCtx.scale(pixelRatio, pixelRatio);
-	  smithObject.hitCtx.canvas.style.height = height + 'px';
-		smithObject.hitCtx.canvas.style.width = width + 'px';
+    astroObject.hitCtx.canvas.height = height * pixelRatio;
+		astroObject.hitCtx.canvas.width = width * pixelRatio;
+		astroObject.hitCtx.scale(pixelRatio, pixelRatio);
+	  astroObject.hitCtx.canvas.style.height = height + 'px';
+		astroObject.hitCtx.canvas.style.width = width + 'px';
   }
   
   	// Private helper function to convert max-width/max-height values that may be percentages into a number
@@ -992,8 +996,8 @@ function getMaximumWidth (domNode) {
 
 function onMouseMove(evt) {
    // var e = evt.originalEvent || evt;
-     //var mouseX = e.clientX-smithObj.ctx.canvas.offsetLeft;  // this works
-     //var mouseY = e.clientY-smithObj.ctx.canvas.offsetTop ;  // this is off by about 80px in this version but works with the stand alone component ?
+     //var mouseX = e.clientX-astroObj.ctx.canvas.offsetLeft;  // this works
+     //var mouseY = e.clientY-astroObj.ctx.canvas.offsetTop ;  // this is off by about 80px in this version but works with the stand alone component ?
      // var mouseX = e.layerX; // this seems like working // does not work well with firefox
      // var mouseY = e.layerY; // layerX returns the horizontal coordinate of the event relative to the current layer.
     var m = getMousePosition(evt,chart);
@@ -1004,12 +1008,12 @@ function onMouseMove(evt) {
     var descaled = descale(mouseX,mouseY);
     var x= descaled.x;
     var y=descaled.y;
-    var inSmith = InSmith(x,y)
+    var inAstro = InAstro(x,y)
     var signnum ;
     var degree;
     var longitude;
     
-    if (inSmith) {
+    if (inAstro) {
         // var r1 = math.sqrt(((x*x)+(y*y))); // convert to polar form
         // var q;
         // if(r1==0) q=0 ; else q= 180*math.asin(y/r1)/Math.PI;
@@ -1023,13 +1027,13 @@ function onMouseMove(evt) {
         document.getElementById("Z1").value ="H:" + house+ ' \u2220' +Number(m).toFixed(2) +' ' + Number(q).toFixed(2)+'\u00B0'+ "  X:" +Number(x).toFixed(0)+' Y:'+Number(y).toFixed(0) ;
         switch (house) {
           case '1':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             degree = Number(q/3-15).toFixed(2);
             longitude = Number(q/3-15+270).toFixed(2);
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
             break;
           case '2':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             [R,Q] = XYtoMQ( x + 356, y - 356, AXIS_RANGE,true);
             Q=Q/3;
             degree = Number(Q-15).toFixed(2);
@@ -1037,7 +1041,7 @@ function onMouseMove(evt) {
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;  
           case '3':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             [R,Q] = XYtoMQ( x + 356, y - 356, AXIS_RANGE,true);
             Q=Q/3;
             degree = Number(Q-45).toFixed(2);
@@ -1045,13 +1049,13 @@ function onMouseMove(evt) {
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; 
             break;
           case '4':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             degree = Number(q/3-45).toFixed(2);
             longitude = Number(q/3-45).toFixed(2);
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
             break;
           case '5':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             [R,Q] = XYtoMQ( x + 356, y + 356, AXIS_RANGE,true);
             Q=Q/3;
             degree = Number(Q-45).toFixed(2);
@@ -1059,7 +1063,7 @@ function onMouseMove(evt) {
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;  
           case '6':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             [R,Q] = XYtoMQ( x + 356, y + 356, AXIS_RANGE,true);
             Q=Q/3;
             degree = Number((Q-75)).toFixed(2);
@@ -1067,13 +1071,13 @@ function onMouseMove(evt) {
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '7':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             degree = Number((q/3)-75).toFixed(2);
             longitude = Number((q/3)+15).toFixed(2);
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0';
             break;
           case '8':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             [R,Q] = XYtoMQ( x - 356, y + 356, AXIS_RANGE,true);
             Q=Q/3;
             degree = Number(Q-75).toFixed(2);
@@ -1081,7 +1085,7 @@ function onMouseMove(evt) {
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '9':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             [R,Q] = XYtoMQ( x - 356, y + 356, AXIS_RANGE,false);
             Q=Q/3;
             degree = Number(Q+15).toFixed(2);
@@ -1090,14 +1094,14 @@ function onMouseMove(evt) {
             break;
           case '10':
             [M1,Q1] = XYtoMQ(x, y, AXIS_RANGE,false);
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             Q1=Q1/3;
             degree = Number(Q1+15).toFixed(2);
             longitude = Number(Q1+15+180).toFixed(2);
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
             break;
           case '11':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             [R,Q] = XYtoMQ( x - 356, y - 356, AXIS_RANGE,false);
             Q=Q/3;
             degree = Number(Q+15).toFixed(2);
@@ -1105,7 +1109,7 @@ function onMouseMove(evt) {
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '12':
-            signnum = smithObj.houses[house-1].signnum;
+            signnum = astroObj.houses[house-1].signnum;
             [R,Q] = XYtoMQ( x - 356, y - 356, AXIS_RANGE,false);
             Q=Q/3;
             degree = Number(Q-15).toFixed(2);
@@ -1125,13 +1129,13 @@ function onMouseMove(evt) {
 }
 
 function getHouse(x,y){
-    const pixel = smithObj.hitCtx.getImageData(x, y, 1, 1).data;
+    const pixel = astroObj.hitCtx.getImageData(x, y, 1, 1).data;
     const color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
     //console.log("color = " + color);
-    const shape = smithObj.colorsHash[color];
+    const shape = astroObj.colorsHash[color];
     //console.log("shape = " + shape);
     var retvalue = 0;
-    smithObj.houses.forEach(house => {
+    astroObj.houses.forEach(house => {
         if (shape === house.colorKey) {
             //console.log('click on house: ' + house.num);
             retvalue = house.num;
@@ -1150,7 +1154,7 @@ function onMouseClick(e) {
     var mouseY  = m.y;
     var house = getHouse(mouseX,mouseY);
     //console.log('house number: ' + house);
-    const signnum = smithObj.houses[house-1].signnum;
+    const signnum = astroObj.houses[house-1].signnum;
     var msg1 = "House Num: " + house + "\n" + "House Sign: " + toTitleCase(signsArray[signnum-1]+'('+signnum+')');
     var msg2 
     switch (house) {
@@ -1234,7 +1238,7 @@ function set_click() {
 }
 
 function updateUI() {
-    smithObj.drawSmith();
+    astroObj.drawAstro();
     //outputObj.update();
 }
 
@@ -1258,8 +1262,8 @@ function get() {
     item = localStorage.getItem('smithData');
     if( item !== null)
     {
-        var smithObj1 =JSON.parse(item);
-        copy_smithObj(smithObj1);
+        var astroObj1 =JSON.parse(item);
+        copy_astroObj(astroObj1);
     }
     else { console.log(" smithData local storage not set");  }; 
     updateUI();
@@ -1280,7 +1284,7 @@ function save_click() {
 }
 
 function saveCanvas_click(){
-    smithObj.ctx.canvas.toBlob(function(blob) {
+    astroObj.ctx.canvas.toBlob(function(blob) {
         saveAs(blob, "AstroView.png");
     });
 }
@@ -1294,7 +1298,7 @@ function handleFileImport(e) {
 }
 
 function clear_import_click() {
-// smithObj.data = false; 
+// astroObj.data = false; 
 
 }
 

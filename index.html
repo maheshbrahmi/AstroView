@@ -10,13 +10,13 @@
         gtag('js', new Date());
         gtag('config', 'UA-130803555-1');
     </script>
-    <meta name="description" content="AstroView - Free Interactive Open Source Smith chart for Web and Mobile for impedance matching - A Tutorial">
-    <meta name="keywords" content="Online, free, interactive, open source, impedance matching, RF design, SmithChart, Smith Chart, Transmission line, Reflection coefficients,interactive, impedance, GITHUB, softwarre">
+    <meta name="description" content="AstroView - Free Interactive Open Source Astro chart for Web and Mobile for impedance matching - A Tutorial">
+    <meta name="keywords" content="Online, free, interactive, open source, Astro View">
     <meta charset="utf-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=6.0, minimum-scale=.25, user-scalable=yes"/>
     <title>AstroView</title>
-    <link href="img/smith.ico" rel="icon" >
+    <link href="img/astro.ico" rel="icon" >
     <link href="css/bootstrap3.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/jquery.contextMenu.css" rel="stylesheet" type="text/css" media="screen">
@@ -34,7 +34,7 @@
     <script src="js/FileSaver.min.js"></script>  
     <script src="js/canvas-toBlob.js"></script>
     <script src="common.js"></script>
-    <!-- <script src="smith.js"></script> -->
+    <!-- <script src="astro.js"></script> -->
     <!-- <script src="sch.js"></script> -->
     <script src="js/jquery.contextMenu.js"></script>
     <script src="js/DragDropTouch.js"></script>    
@@ -124,9 +124,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-       <!-- <a class="navbar-brand" href="#"><img src="img/smith.ico">AstroView</a>  -->
-       <a class="navbar-brand" href="#" onclick ="redrawSmith()">
-          <img src="img/smith.ico" style="display: inline-block; margin-top:-7px; width:32px; height:32px">  
+       <!-- <a class="navbar-brand" href="#"><img src="img/astro.ico">AstroView</a>  -->
+       <a class="navbar-brand" href="#" onclick ="redrawAstro()">
+          <img src="img/astro.ico" style="display: inline-block; margin-top:-7px; width:32px; height:32px">  
         <span style="display: inline-block; color:blue">AstroView</span>
      </a> 
     </div>
@@ -157,7 +157,7 @@
             <li><a href="#">Series Eq</a></li> -->
           </ul>
         </li>
-        <!-- <li><a href="#" onclick= smithObj.drawSweep >Show Sweep</a></li> -->
+        <!-- <li><a href="#" onclick= astroObj.drawSweep >Show Sweep</a></li> -->
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sweep<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -177,9 +177,9 @@
           </ul>
         </li> 
 
-        <li><a href="#" onclick= smithObj.drawAdmitanceCircles() >Admittance Circles</a></li>
+        <li><a href="#" onclick= astroObj.drawAdmitanceCircles() >Admittance Circles</a></li>
       </ul>
-       <!-- <button class="btn btn-default navbar-btn" onclick= smithObj.drawAdmitanceCircles() >Admittance</button>   -->
+       <!-- <button class="btn btn-default navbar-btn" onclick= astroObj.drawAdmitanceCircles() >Admittance</button>   -->
       <ul class="nav navbar-nav navbar-right">
          <li class="hidden-xs" ><a href="#" onclick=IL_open_click() ><span class="glyphicon glyphicon-stats"></span> Insertion Loss</a></li>
         <li  ><a href="#" onclick=AMP_open_click()><span class="glyphicon glyphicon-pencil"></span> Amp. Design</a></li>
@@ -190,11 +190,11 @@
   </div>
 </nav>
 
- <!-- ********************************SMITH WINDOW************************************************* -->
+ <!-- ********************************ASTRO WINDOW************************************************* -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-8 col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 0px">
-                    <!-- <h4 style = "font-weight:bold" >Smith Chart</h4> -->
+                    <!-- <h4 style = "font-weight:bold" >astro Chart</h4> -->
             <table>
                 <tr>
                     <!-- <td><label style="font-size:12px" for="SM0" >LONG:</label> </td> -->
@@ -210,8 +210,8 @@
                 </tr>
             </table>
             <!--<div id='parent_div_5'  >-->
-            <canvas id="smithMain"  style="float: left; margin-top: 5px;margin-bottom: 5px;"></canvas>
-            <canvas class="HideMe" id="smithMainHit"  style="float: left; margin-top: 5px;margin-bottom: 5px;"></canvas>
+            <canvas id="astroMain"  style="float: left; margin-top: 5px;margin-bottom: 5px;"></canvas>
+            <canvas class="HideMe" id="astroMainHit"  style="float: left; margin-top: 5px;margin-bottom: 5px;"></canvas>
             <!--</div>-->
         </div>
                  <!-- ********************************SCHEMATIC WINDOW ************************************************* -->
@@ -457,7 +457,7 @@
                 <div class="modal-body">
                     <br />
                         <label id="imgLabel" for="IMG">SomeText</label>
-                        <img src="img/qsmith.bmp" id="IMG" class="img-thumbnail float-left" /><br /><br />
+                        <img src="img/astro.bmp" id="IMG" class="img-thumbnail float-left" /><br /><br />
                         <label id="V1Label" for="V1">Value2: </label>
                         <input type="text" id="V1" value="" style="width:100px" /><br />
                         <label id="V2Label" for="V2">Value2: </label>
@@ -477,7 +477,7 @@
   <input id="file-input" type="file" name="name" style="display: none;" />     <!-- this for helping with file load -->
   <input id="file-input1" type="file" name="name" style="display: none;" />     <!-- this for helping with gam export -->
 
-<script src="smith.js"></script>
+<script src="astro.js"></script>
 <script src="sch.js"></script>
 
 

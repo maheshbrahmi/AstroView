@@ -46,24 +46,24 @@ function copy_schObj(schObj1) {
 }
 
 
-function copy_smithObj(smithObj1) {
+function copy_astroObj(astroObj1) {
 
- for (var key in smithObj1) 
+ for (var key in astroObj1) 
     {
-        if (smithObj1.hasOwnProperty(key)) 
+        if (astroObj1.hasOwnProperty(key)) 
         {
             //if(key !== "sweepDatasets" || key !== "plotDatasets") 
             {
                 if(key !== "ctx") {
-                smithObj[key] = smithObj1[key];
-                //console.log(key + " -> " + smithObj[key]);
+                astroObj[key] = astroObj1[key];
+                //console.log(key + " -> " + astroObj[key]);
                 }
             }
         //     else if (key == "sweepDatasets")
         //     {
-        //         // console.log("SMITHOBJ sweepDatasets" );
-        //         var data1 = smithObj1.sweepDatasets;
-        //         var data = smithObj.sweepDatasets;
+        //         // console.log("astroObj sweepDatasets" );
+        //         var data1 = astroObj1.sweepDatasets;
+        //         var data = astroObj.sweepDatasets;
         //         for (var key2 in data1) 
         //             {
         //             //  console.log(key2 + " -> " + data1[key2]);
@@ -78,9 +78,9 @@ function copy_smithObj(smithObj1) {
         //     }
         //    else if (key == "plotDatasets")
         //     {
-        //         // console.log("SMITHOBJ sweepDatasets" );
-        //         var data1A = smithObj1.plotDatasets;
-        //         var dataA = smithObj.plotDatasets;
+        //         // console.log("astroObj sweepDatasets" );
+        //         var data1A = astroObj1.plotDatasets;
+        //         var dataA = astroObj.plotDatasets;
         //         for (var key4 in data1A) 
         //             {
         //             //  console.log(key2 + " -> " + data1[key2]);
