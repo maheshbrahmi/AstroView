@@ -59,8 +59,8 @@ var inputObj = {
   "ketu": 202.800941440735,
 };
 
-var outputObj = {
-  "planet_positions": [
+//var outputObj = {
+  var outputObj = [
       {
           "name": "ascendant",
           "longitude": 298.7014879,
@@ -76,7 +76,7 @@ var outputObj = {
           "degree": 28.7014879,
           "min":42,
           "sec":5,
-          "sign": "capricon"
+          "sign": "capricorn"
       },
       {
           "name": "sun",
@@ -238,9 +238,9 @@ var outputObj = {
           "sec":3,
           "sign":"libra"
       }
-  ],
-  update: function() { updateChart (this);}
-}
+  ];
+ // update: function() { updateChart (this);}
+//}
 
 var smithObj = {
               "ctx" : null,
@@ -276,6 +276,7 @@ var smithObj = {
                 }
                 ],
                drawSmith: function() { drawSmith(this);},
+               updateOutput: function() { updateOutput(this);},
                test: function() { test(this);},
                updateSigns: function() { updateSigns (this);}, // Resets all properties to its default values
                input:inputObj,
@@ -294,7 +295,7 @@ document.getElementById('file-input').addEventListener('change', handleFileOpen,
 
 function updateSigns(me){
   // get asendent and increment by 1 if >12 then reset it to 0
-  var current_pos =  me.output.planet_positions[0].position ;
+  var current_pos =  me.output[0].position ;
   me.houses[0].signnum = current_pos;
   for (let i = 1; i < 12; i++) {
     current_pos = current_pos + 1
@@ -307,10 +308,51 @@ function updateSigns(me){
 // $('#code').keyup(function() {
 //   var discountcode = this.value;
 //   console.log(discountcode);
-// });
-//outputObj.update();
+// });\
+function logitudeToPositions(long){
+let pos = 0;
+let pos_ctr=1;
+let house = 0;
+let degree = 0;
+let mins = 0;
+let secs = 0;
+console.log("long = " +long);
+while(long>30){pos_ctr++; long = long -30;}
+degree = Number(long).toFixed(2);;
+console.log("pos_ctr = " +pos_ctr);
+console.log("degree = " +degree);
+mins = parseInt((long-parseInt(long))*60);
+console.log("mins = " +mins);
+secs = parseInt(((long-parseInt(long))*60 - mins)*60);
+console.log("secs = " +secs);
+let signNum = parseInt(signsArray.indexOf(outputObj[0].sign));
+signNum = signNum+1;
+console.log("signNum " +  signNum);
+console.log("sign " +  outputObj[0].sign);
+pos = pos_ctr - signNum; 
+console.log("pos = " +pos);
+if(pos < 0) house = pos+14
+else house = pos+2
+console.log("house = " +house);
+//=IF((D16-$D$35)<0,(D16 -$D$35)+12+1,D16-$D$35+1)
+return [pos,house,degree,mins,secs];
+}
 
+function calculate_positions(){
+
+}
 function updateOutput(me){
+  let ascendent = 'Capricon';
+  let long = Number(28.70000).toFixed(2);
+  let degree = 0;
+  let mins = 42;
+  let secs = 5;
+  let planet='Saturn';
+  let pos = 0;
+  let house = 0;
+  let house1_str = "Ascendent " + ascendent +' ('+long +'\xB0'+mins+'\u2032'+secs+'\u2033'+')'+ " Ruled By " + planet ;
+  $("#house1").val(house1_str);
+  [pos,house,degree,mins,secs] = logitudeToPositions(199.07001545248);
 
 }
 
@@ -510,7 +552,7 @@ function drawSmith(me) {
 
   // //drawSprite(ctx,0,0);
   //drawFilledCircle(ctx,0,0)
-  me.updateSigns(me);
+  me.updateSigns();
   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
   console.log("Smith Object= " + str); // Logs output to dev tools console.
   placeText(ctx,0,50,me.houses[0].signnum ,"center","middle");
@@ -544,6 +586,8 @@ function drawSmith(me) {
   $("#saturn").val(inputObj.saturn);
   $("#rahu").val(inputObj.rahu);
   $("#ketu").val(inputObj.ketu);
+  me.updateOutput();
+
 }
 
 function drawPath(ctx, [...rarray],[...qarray],color,fillcolor){
@@ -1126,7 +1170,7 @@ function onMouseClick(e) {
         msg2 = "Child"
         break;
       case '6':
-        msg2 = "Enemes,service"
+        msg2 = "Enemies,service"
         break;
       case '7':
         msg2 = "Spouse,others"
