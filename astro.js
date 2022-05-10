@@ -341,22 +341,36 @@ function calculate_positions(){  // calculate postiions from Logitude
 
 }
 function updateOutput(me){
-  // first calcuate the postion of the ascendent
-  // then update house signPostions in Smit
-  
-
-  let ascendent = 'Capricon';
-  let long = Number(28.70000).toFixed(2);
+  // first calculate the postion of the ascendent
   let degree = 0;
   let mins = 42;
   let secs = 5;
   let planet='Saturn';
   let pos = 0;
   let house = 0;
-  let house1_str = "Ascendent " + ascendent +' ('+long +'\xB0'+mins+'\u2032'+secs+'\u2033'+')'+ " Ruled By " + planet ;
-  $("#house1").val(house1_str);
-  [pos,house,degree,mins,secs] = logitudeToPositions(219.718216555607);
+  [pos,house,degree,mins,secs] = logitudeToPositions(inputObj.ascendant);
   console.log("pos = " +pos + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
+  let ascendant = signsArray[pos-1];
+  // then update house signPostions in astroObj
+  
+ // thjen update all the house positions and outputObj
+ // write the results to the output form
+ // draw the planets in the chart
+ let house1_str = "Ascendant " + toTitleCase(ascendant) +' ('+degree +'\xB0'+mins+'\u2032'+secs+'\u2033'+')'+ " Ruled By " + planet ;
+// write the results to the output form
+ switch(house) {
+    case 1 :
+      $("#house1").val(house1_str);
+      break;
+    case 2 :
+      $("#house2").val(house1_str);
+      break;
+    default:
+      // code block
+  }
+ // draw the planets in the chart
+ 
+
 
 }
 
@@ -449,7 +463,6 @@ function resize(canvas) {
       resize(ctx.canvas)
       console.log("Redrawing astro2 End");
       astroObj.drawAstro(); // clears canvas too
-      
   }
 
 function drawAstro(me) {
