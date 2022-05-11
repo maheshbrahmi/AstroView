@@ -278,7 +278,7 @@ var astroObj = {
                drawAstro: function() { drawAstro(this);},
                updateOutput: function() { updateOutput(this);},
                test: function() { test(this);},
-               updateSigns: function() { updateSigns (this);}, // Resets all properties to its default values
+               //updateSigns: function() { updateSigns (this,ascendant_position );}, // Resets all properties to its default values
                input:inputObj,
                output:outputObj
           };
@@ -293,9 +293,9 @@ window.addEventListener('resize',astroObj.redrawAstro, false); // resize,clear a
 document.getElementById('file-input1').addEventListener('change', handleFileImport, false);//file Import
 document.getElementById('file-input').addEventListener('change', handleFileOpen, false);
 
-function updateSigns(me){
+function updateSigns(me, ascendant_position){
   // get asendent and increment by 1 if >12 then reset it to 0
-  var current_pos =  me.output[0].position ;
+  var current_pos =  ascendant_position ; //me.output[0].position
   me.houses[0].signnum = current_pos;
   for (let i = 1; i < 12; i++) {
     current_pos = current_pos + 1
@@ -351,11 +351,11 @@ function updateOutput(me){
   [pos,house,degree,mins,secs] = logitudeToPositions(inputObj.ascendant);
   console.log("pos = " +pos + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
   let ascendant = signsArray[pos-1];
-  // then update house signPostions in astroObj
-  
- // thjen update all the house positions and outputObj
+  // then update house signnum (SignPositions) in astroObj
+  updateSigns(me,pos);
+ // next update outputObj
+ 
  // write the results to the output form
- // draw the planets in the chart
  let house1_str = "Ascendant " + toTitleCase(ascendant) +' ('+degree +'\xB0'+mins+'\u2032'+secs+'\u2033'+')'+ " Ruled By " + planet ;
 // write the results to the output form
  switch(house) {
@@ -495,6 +495,7 @@ function drawAstro(me) {
   //console.log("colorHash Object= " + str); // Logs output to dev tools console.
   str = JSON.stringify(me.houses, null, 4); // (Optional) beautiful indented output.
   //console.log("houses Object= " + str); // Logs output to dev tools console.
+  me.updateOutput();
 
   drawCircle(ctx,0,0,r,"WhiteSmoke");  //constant resistance circles Rn = 0; small padding provide for the outer circle to avoid flatning.
   drawRectangle(ctx,0,0,r,0,"black");
@@ -569,7 +570,7 @@ function drawAstro(me) {
 
   // //drawSprite(ctx,0,0);
   //drawFilledCircle(ctx,0,0)
-  me.updateSigns();
+  //me.updateSigns();
   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
   console.log("Astro Object= " + str); // Logs output to dev tools console.
   placeText(ctx,0,50,me.houses[0].signnum ,"center","middle");
@@ -603,7 +604,7 @@ function drawAstro(me) {
   $("#saturn").val(inputObj.saturn);
   $("#rahu").val(inputObj.rahu);
   $("#ketu").val(inputObj.ketu);
-  me.updateOutput();
+ 
 
 }
 
