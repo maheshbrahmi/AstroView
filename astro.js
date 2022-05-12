@@ -64,57 +64,63 @@ var inputObj = {
       {
           "name": "ascendant",
           "longitude": 298.7014879,
+          "position": 10,
+          "sign": "capricorn",
+          "house": 1,
+          "degree": 28.7014879,
+          "mins":42,
+          "secs":5,
           "is_retrograde": false,
           "is_combust": false,
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":"none",
-          "position": 10,
-          "house": 1,
-          "degree": 28.7014879,
-          "min":42,
-          "sec":5,
-          "sign": "capricorn"
+          "aspect":"none"
       },
       {
           "name": "sun",
           "longitude": 199.07001545248,
+          "position": 7,
+          "sign":"libra",
+          "house": 10,
+          "degree": 19.07001545,
+          "mins":4,
+          "secs":12,
           "is_retrograde": false,
           "is_combust": false,
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":true,
           "is_digbala":false,
-          "aspect":"1,7",
-          "position": 7,
-          "house": 10,
-          "degree": 19.07001545,
-          "min":4,
-          "sec":12,
-          "sign":"libra"
+          "aspect":"1,7"
       },
       {
           "name": "moon",
           "longitude": 101.505673940617,
+          "position": 4,
+          "sign":"cancer",
+          "house": 7,
+          "degree": 11.50567394,
+          "mins":30,
+          "secs":20,
           "is_retrograde": false,
           "is_combust": false,
           "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":"1,7",
-          "position": 4,
-          "house": 7,
-          "degree": 11.50567394,
-          "min":30,
-          "sec":20,
-          "sign":"cancer"
+          "aspect":"1,7"
       },
       {
         "name": "mercury",
         "longitude": 219.718216555607,
+        "position": 8,
+        "sign": "scorpio",
+        "house": 11,
+        "degree": 9.718216556,
+        "mins":43,
+        "secs":5,
         "is_retrograde": false,
         "is_combust": false,
         "is_exhalted":false,
@@ -123,17 +129,17 @@ var inputObj = {
         "is_debilitated":false,
         "is_digbala":false,
         "aspect":"1,7",
-        "position": 8,
-        "house": 11,
-        "degree": 9.718216556,
-        "min":43,
-        "sec":5,
-        "sign": "scorpio"
       },
 
       {
         "name": "venus",
         "longitude": 198.142409860512,
+        "position": 7,
+        "sign":"libra",
+        "house": 10,
+        "degree":18.14240986,
+        "mins":8,
+        "secs":32,
         "is_retrograde": true,
         "is_combust": false,
         "is_exhalted":false,
@@ -142,16 +148,16 @@ var inputObj = {
         "is_debilitated":false,
         "is_digbala":false,
         "aspect":"1,7",
-        "position": 7,
-        "house": 10,
-        "degree":18.14240986,
-        "min":8,
-        "sec":32,
-        "sign":"libra"
     },
     {
       "name": "mars",
       "longitude": 140.559019472223,
+      "position": 5,
+      "sign":"leo",
+      "house": 8,
+      "degree": 20.55901947,
+      "mins":33,
+      "secs":32,
       "is_retrograde": false,
       "is_combust": false,
       "is_ownsign":false,
@@ -159,16 +165,16 @@ var inputObj = {
       "is_debilitated":false,
       "is_digbala":false,
       "aspect":"1,7,4,8",
-      "position": 5,
-      "house": 8,
-      "degree": 20.55901947,
-      "min":33,
-      "sec":32,
-      "sign":"leo"
     },
     {
       "name": "jupiter",
       "longitude": 100.669422850587,
+      "position": 4,
+      "sign":"cancer",
+      "house": 7,
+      "degree": 10.66942285,
+      "mins":40,
+      "secs":9,
       "is_retrograde": false,
       "is_combust": false,
       "is_exhalted":false,
@@ -177,16 +183,16 @@ var inputObj = {
       "is_debilitated":false,
       "is_digbala":false,
       "aspect":"1,7,5,9",
-      "position": 4,
-      "house": 7,
-      "degree": 10.66942285,
-      "min":40,
-      "sec":9,
-      "sign":"cancer"
     },
     {
         "name": "saturn",
         "longitude": 329.920879549186,
+        "position": 11,
+        "sign":"aquarius",
+        "house": 2,
+        "degree": 29.92087955,
+        "mins":55,
+        "secs":15,
         "is_retrograde": true,
         "is_combust": false,
         "is_exhalted":false,
@@ -195,16 +201,16 @@ var inputObj = {
         "is_debilitated":false,
         "is_digbala":false,
         "aspect":"1,7,3,10",
-        "position": 11,
-        "house": 2,
-        "degree": 29.92087955,
-        "min":55,
-        "sec":15,
-        "sign":"aquarius"
       },
       {
           "name": "rahu",
           "longitude": 22.800941440735,
+          "position": 1,
+          "sign":"aries",
+          "house": 4,
+          "degree": 22.80094144,
+          "mins":48,
+          "secs":3,
           "is_retrograde": false,
           "is_combust": false,
           "is_exhalted":false,
@@ -213,16 +219,16 @@ var inputObj = {
           "is_debilitated":false,
           "is_digbala":false,
           "aspect":"1,7",
-          "position": 1,
-          "house": 4,
-          "degree": 22.80094144,
-          "min":48,
-          "sec":3,
-          "sign":"aries",
       },
       {
           "name": "ketu",
           "longitude": 202.800941440735,
+          "position": 7,
+          "sign":"libra",
+          "house": 10,
+          "degree": 22.80094144,
+          "mins":48,
+          "secs":3,
           "is_retrograde": false,
           "is_combust": false,
           "is_exhalted":false,
@@ -231,12 +237,6 @@ var inputObj = {
           "is_debilitated":false,
           "is_digbala":false,
           "aspect":"1,7",
-          "position": 7,
-          "house": 10,
-          "degree": 22.80094144,
-          "min":48,
-          "sec":3,
-          "sign":"libra"
       }
   ];
  // update: function() { updateChart (this);}
@@ -309,32 +309,33 @@ function updateSigns(me, ascendant_position){
 //   var discountcode = this.value;
 //   console.log(discountcode);
 // });\
-function logitudeToPositions(long){
-let pos = 1;
+function logitudeToPositions(longitude){
+let position = 1;
 let house = 0;
 let degree = 0;
 let mins = 0;
 let secs = 0;
-//console.log("long = " +long);
-while(long>30){pos++; long = long -30;}
-degree = Number(long).toFixed(2);;
-//console.log("pos = " +pos);
+//console.log("longitude = " +longitude);
+while(longitude>30){position++; longitude = longitude -30;}
+degree = Number(longitude).toFixed(2);;
+//console.log("position = " +position);
 //console.log("degree = " +degree);
-mins = parseInt((long-parseInt(long))*60);
+mins = parseInt((longitude-parseInt(longitude))*60);
 //console.log("mins = " +mins);
-secs = parseInt(((long-parseInt(long))*60 - mins)*60);
+secs = parseInt(((longitude-parseInt(longitude))*60 - mins)*60);
 //console.log("secs = " +secs);
-let signNum = parseInt(signsArray.indexOf(outputObj[0].sign));
+//let signNum = parseInt(signsArray.indexOf(outputObj[0].sign));
+let signNum = 10;
 signNum = signNum+1;
 //console.log("signNum " +  signNum);
 //console.log("sign " +  outputObj[0].sign);
-var pos_dist = pos - signNum; 
+var pos_dist = position - signNum; 
 //console.log("pos_dist = " +pos_dist);
 if(pos_dist < 0) house = pos_dist+13
 else house = pos_dist+1
 //console.log("house = " +house);
 //=IF((D16-$D$35)<0,(D16 -$D$35)+12+1,D16-$D$35+1)
-return [pos,house,degree,mins,secs];
+return [position,house,degree,mins,secs];
 }
 
 function calculate_positions(){  // calculate postiions from Logitude
@@ -346,16 +347,29 @@ function updateOutput(me){
   let mins = 42;
   let secs = 5;
   let planet='Saturn';
-  let pos = 0;
+  let position = 0;
   let house = 0;
-  [pos,house,degree,mins,secs] = logitudeToPositions(inputObj.ascendant);
-  console.log("pos = " +pos + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
-  let ascendant = signsArray[pos-1];
-  // then update house signnum (SignPositions) in astroObj
-  updateSigns(me,pos);
+  [position,house,degree,mins,secs] = logitudeToPositions(inputObj.ascendant);
+  console.log(" Ascendent position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
+  let ascendant = signsArray[position-1]; // this is ascendant name a great starting point 
+  // then update house signnum (SignPositions) in astroObj given ascendant position
+  updateSigns(me,position);
  // next update outputObj
- 
+ //Ascendant
+ outputObj[0].longitude = inputObj.ascendant;
+ outputObj[0].position = position;
+ outputObj[0].sign = signsArray[position-1];
+ outputObj[0].house = house;
+ outputObj[0].degree = degree;
+ outputObj[0].mins = mins;
+ outputObj[0].secs = secs;
+ //Sun
+ [position,house,degree,mins,secs] = logitudeToPositions(inputObj.sun);
+  console.log(" Sun position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
+  outputObj[1].longitude = inputObj.sun;
+  
  // write the results to the output form
+
  let house1_str = "Ascendant " + toTitleCase(ascendant) +' ('+degree +'\xB0'+mins+'\u2032'+secs+'\u2033'+')'+ " Ruled By " + planet ;
 // write the results to the output form
  switch(house) {
@@ -491,9 +505,9 @@ function drawAstro(me) {
     console.log(me.colorsHash[colorKey]);
   } // end for
 
-  str = JSON.stringify(me.colorsHash, null, 4); // (Optional) beautiful indented output.
+  //str = JSON.stringify(me.colorsHash, null, 4); // (Optional) beautiful indented output.
   //console.log("colorHash Object= " + str); // Logs output to dev tools console.
-  str = JSON.stringify(me.houses, null, 4); // (Optional) beautiful indented output.
+  //str = JSON.stringify(me.houses, null, 4); // (Optional) beautiful indented output.
   //console.log("houses Object= " + str); // Logs output to dev tools console.
   me.updateOutput();
 
@@ -571,8 +585,7 @@ function drawAstro(me) {
   // //drawSprite(ctx,0,0);
   //drawFilledCircle(ctx,0,0)
   //me.updateSigns();
-  str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
-  console.log("Astro Object= " + str); // Logs output to dev tools console.
+
   placeText(ctx,0,50,me.houses[0].signnum ,"center","middle");
   placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+50, me.houses[1].signnum,"center","middle");
   placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+0, me.houses[2].signnum,"center","middle");
@@ -605,6 +618,8 @@ function drawAstro(me) {
   $("#rahu").val(inputObj.rahu);
   $("#ketu").val(inputObj.ketu);
  
+  str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
+  console.log("Astro Object= " + str); // Logs output to dev tools console.
 
 }
 
