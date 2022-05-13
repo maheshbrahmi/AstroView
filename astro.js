@@ -47,8 +47,9 @@ var inputObj = {
   "time": "13:40:00",  // 
   "longitude": 72.8166667, //
   "latitude": 18.9666667,  //  
-  "ascendant": 298.7014879,
-  "sun": 199.07001545248,
+  "graha": {
+  "ascendant":  298.7014879, 
+  "sun":  199.07001545248,
   "moon": 101.505673940617,
   "mercury": 219.718216555607,
   "venus": 198.142409860512,
@@ -56,13 +57,13 @@ var inputObj = {
   "jupiter": 100.669422850587,
   "saturn": 329.920879549186,
   "rahu": 22.800941440735,
-  "ketu": 202.800941440735,
+  "ketu": 202.800941440735
+  },
 };
 
 //var outputObj = {
-  var outputObj = [
-      {
-          "name": "ascendant",
+  var outputObj = {
+    "ascendant": {
           "longitude": 298.7014879,
           "position": 10,
           "sign": "capricorn",
@@ -78,8 +79,7 @@ var inputObj = {
           "is_digbala":false,
           "aspect":"none"
       },
-      {
-          "name": "sun",
+      "sun":{
           "longitude": 199.07001545248,
           "position": 7,
           "sign":"libra",
@@ -95,8 +95,7 @@ var inputObj = {
           "is_digbala":false,
           "aspect":"1,7"
       },
-      {
-          "name": "moon",
+      "moon":{
           "longitude": 101.505673940617,
           "position": 4,
           "sign":"cancer",
@@ -112,7 +111,7 @@ var inputObj = {
           "is_digbala":false,
           "aspect":"1,7"
       },
-      {
+      "mercury":{
         "name": "mercury",
         "longitude": 219.718216555607,
         "position": 8,
@@ -130,9 +129,7 @@ var inputObj = {
         "is_digbala":false,
         "aspect":"1,7",
       },
-
-      {
-        "name": "venus",
+      "venus": {
         "longitude": 198.142409860512,
         "position": 7,
         "sign":"libra",
@@ -149,8 +146,7 @@ var inputObj = {
         "is_digbala":false,
         "aspect":"1,7",
     },
-    {
-      "name": "mars",
+    "mars": {
       "longitude": 140.559019472223,
       "position": 5,
       "sign":"leo",
@@ -166,8 +162,7 @@ var inputObj = {
       "is_digbala":false,
       "aspect":"1,7,4,8",
     },
-    {
-      "name": "jupiter",
+    "jupiter": {
       "longitude": 100.669422850587,
       "position": 4,
       "sign":"cancer",
@@ -184,8 +179,7 @@ var inputObj = {
       "is_digbala":false,
       "aspect":"1,7,5,9",
     },
-    {
-        "name": "saturn",
+    "saturn": {
         "longitude": 329.920879549186,
         "position": 11,
         "sign":"aquarius",
@@ -202,8 +196,7 @@ var inputObj = {
         "is_digbala":false,
         "aspect":"1,7,3,10",
       },
-      {
-          "name": "rahu",
+      "rahu": {
           "longitude": 22.800941440735,
           "position": 1,
           "sign":"aries",
@@ -220,8 +213,7 @@ var inputObj = {
           "is_digbala":false,
           "aspect":"1,7",
       },
-      {
-          "name": "ketu",
+      "ketu": {
           "longitude": 202.800941440735,
           "position": 7,
           "sign":"libra",
@@ -238,7 +230,7 @@ var inputObj = {
           "is_digbala":false,
           "aspect":"1,7",
       }
-  ];
+    };
  // update: function() { updateChart (this);}
 //}
 
@@ -309,83 +301,98 @@ function updateSigns(me, ascendant_position){
 //   var discountcode = this.value;
 //   console.log(discountcode);
 // });\
+// if this is for an ascendant then give the ascendant name if not 
 function logitudeToPositions(longitude){
 let position = 1;
-let house = 0;
+//let house = 0;
 let degree = 0;
 let mins = 0;
 let secs = 0;
 //console.log("longitude = " +longitude);
 while(longitude>30){position++; longitude = longitude -30;}
 degree = Number(longitude).toFixed(2);;
-//console.log("position = " +position);
+console.log("position = " +position);
 //console.log("degree = " +degree);
 mins = parseInt((longitude-parseInt(longitude))*60);
 //console.log("mins = " +mins);
 secs = parseInt(((longitude-parseInt(longitude))*60 - mins)*60);
 //console.log("secs = " +secs);
-//let signNum = parseInt(signsArray.indexOf(outputObj[0].sign));
-let signNum = 10;
-signNum = signNum+1;
-//console.log("signNum " +  signNum);
-//console.log("sign " +  outputObj[0].sign);
-var pos_dist = position - signNum; 
-//console.log("pos_dist = " +pos_dist);
-if(pos_dist < 0) house = pos_dist+13
-else house = pos_dist+1
+// //let signNum = parseInt(signsArray.indexOf(outputObj[0].sign));
+// let signNum = 10;
+// signNum = signNum+1;
+// //console.log("signNum " +  signNum);
+// //console.log("sign " +  outputObj[0].sign);
+// var pos_dist = position - signNum; 
+// //console.log("pos_dist = " +pos_dist);
+// if(pos_dist < 0) house = pos_dist+13
+// else house = pos_dist+1
 //console.log("house = " +house);
 //=IF((D16-$D$35)<0,(D16 -$D$35)+12+1,D16-$D$35+1)
-return [position,house,degree,mins,secs];
+return [position,degree,mins,secs];
 }
 
-function calculate_positions(){  // calculate postiions from Logitude
-
-}
-function updateOutput(me){
-  // first calculate the postion of the ascendent
+function updateGrahas(graha_name){  // calculate postiions from Logitude
   let degree = 0;
   let mins = 42;
   let secs = 5;
-  let planet='Saturn';
-  let position = 0;
+  let planet='';
+  let position=0;
+  let ascendant_position = 0;
+  if(graha_name == "ascendant") ascendant_position = 0;
+  else ascendant_position = outputObj[ "ascendant"].position;
   let house = 0;
-  [position,house,degree,mins,secs] = logitudeToPositions(inputObj.ascendant);
-  console.log(" Ascendent position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
-  let ascendant = signsArray[position-1]; // this is ascendant name a great starting point 
+  [position,degree,mins,secs] = logitudeToPositions(inputObj.graha[graha_name]);
+  console.log(" Ascendent position = " +ascendant_position +  " Position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
+  //let ascendant = signsArray[ascendant_position-1]; // this is ascendant name a great starting point 
   // then update house signnum (SignPositions) in astroObj given ascendant position
-  updateSigns(me,position);
+  if(graha_name == "ascendant") {
+    updateSigns(astroObj,ascendant_position);
+    house = 1;
+  }
+  else {
+    const pos_dist = position - ascendant_position; 
+    if(pos_dist < 0) house = pos_dist+13; else house = pos_dist+1;
+  }
  // next update outputObj
  //Ascendant
- outputObj[0].longitude = inputObj.ascendant;
- outputObj[0].position = position;
- outputObj[0].sign = signsArray[position-1];
- outputObj[0].house = house;
- outputObj[0].degree = degree;
- outputObj[0].mins = mins;
- outputObj[0].secs = secs;
+ outputObj[graha_name].longitude = inputObj.graha["ascendant"];
+ outputObj[graha_name].position = position;
+ outputObj[graha_name].sign = signsArray[position-1];
+ outputObj[graha_name].house = house;
+ outputObj[graha_name].degree = degree;
+ outputObj[graha_name].mins = mins;
+ outputObj[graha_name].secs = secs;
+
+}
+function updateOutput(me){
+  // first calculate the postion of the ascendent here house number is always 1 
+ let planet='';
+ let ruler ='';
+ let graha = "ascendant";
+ var house1_str;
+ updateGrahas(graha);
+ house1_str = "Ascendant " + toTitleCase(outputObj[graha].sign) +":"+outputObj[graha].position+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')'+ " Ruled By " + planet ;
+ $("#house1").val(house1_str);
  //Sun
- [position,house,degree,mins,secs] = logitudeToPositions(inputObj.sun);
-  console.log(" Sun position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
-  outputObj[1].longitude = inputObj.sun;
-  
+ graha = "sun";
+ updateGrahas(graha);
+ house1_str = "Ascendant " + toTitleCase(outputObj[graha].sign) +":"+outputObj[graha].position+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')'+ " Ruled By " + planet ;
+ $("#house10").val(house1_str);
  // write the results to the output form
-
- let house1_str = "Ascendant " + toTitleCase(ascendant) +' ('+degree +'\xB0'+mins+'\u2032'+secs+'\u2033'+')'+ " Ruled By " + planet ;
-// write the results to the output form
- switch(house) {
-    case 1 :
-      $("#house1").val(house1_str);
-      break;
-    case 2 :
-      $("#house2").val(house1_str);
-      break;
-    default:
-      // code block
-  }
+//  $("#house1").val(house1_str);
+// // write the results to the output form
+//  switch(house) {
+//     case 1 :
+//       $("#house1").val(house1_str);
+//       break;
+//     case 2 :
+//       $("#house2").val(house1_str);
+//       break;
+//     default:
+//       // code block
+//   }
  // draw the planets in the chart
- 
-
-
+ //updateGrahas('inputObj');
 }
 
 function updateChart(me){
@@ -398,16 +405,16 @@ function updateChart(me){
   value = $("#time").val();if( inputObj.time != value) inputObj.time = value;
   value = $("#latitude").val();if( inputObj.latitude != value) inputObj.latitude = value;
   value = $("#longitude").val();if( inputObj.longitude != value) inputObj.longitude = value;
-  value = $("#ascendant").val();if( inputObj.ascendant != value) inputObj.ascendant = value;
-  value = $("#sun").val();if( inputObj.sun != value) inputObj.sun = value;
-  value = $("#moon").val();if( inputObj.namoonme != value) inputObj.moon = value;
-  value = $("#mercury").val();if( inputObj.mercury != value) inputObj.mercury = value;
-  value = $("#venus").val();if( inputObj.venus != value) inputObj.venus = value;
-  value = $("#mars").val();if( inputObj.mars != value) inputObj.mars = value;
-  value = $("#jupiter").val();if( inputObj.jupiter != value) inputObj.jupiter = value;
-  value = $("#saturn").val();if( inputObj.saturn != value) inputObj.saturn = value;
-  value = $("#rahu").val();if( inputObj.rahu != value) inputObj.rahu = value;
-  value = $("#ketu").val();if( inputObj.ketu != value) inputObj.ketu = value;
+  value = $("#ascendant").val();if( inputObj.graha["ascendant"] != value) inputObj.graha["ascendant"] = value;
+  value = $("#sun").val();if( inputObj.graha["sun"] != value) inputObj.graha["sun"] = value;
+  value = $("#moon").val();if( inputObj.graha["moon"] != value) inputObj.graha["moon"] = value;
+  value = $("#mercury").val();if(inputObj.graha["mecury"] != value) inputObj.graha["mercury"] = value;
+  value = $("#venus").val();if( inputObj.graha["venus"] != value) inputObj.graha["venus"] = value;
+  value = $("#mars").val();if( inputObj.graha["mars"] != value) inputObj.graha["mars"] = value;
+  value = $("#jupiter").val();if( inputObj.graha["jupiter"] != value) inputObj.graha["jupiter"] = value;
+  value = $("#saturn").val();if( inputObj.graha["saturn"] != value) inputObj.graha["saturn"] = value;
+  value = $("#rahu").val();if( inputObj.graha["rahu"] != value) inputObj.graha["rahu"] = value;
+  value = $("#ketu").val();if( inputObj.graha["ketu"] != value) inputObj.graha["ketu"] = value;
   alert("Form Updated");
 }
 
@@ -607,16 +614,16 @@ function drawAstro(me) {
   $("#time").val(inputObj.time);
   $("#latitude").val(inputObj.latitude);
   $("#longitude").val(inputObj.longitude);
-  $("#ascendant").val(inputObj.ascendant);
-  $("#sun").val(inputObj.sun);
-  $("#moon").val(inputObj.moon);
-  $("#mercury").val(inputObj.mercury);
-  $("#venus").val(inputObj.venus);
-  $("#mars").val(inputObj.mars);
-  $("#jupiter").val(inputObj.jupiter);
-  $("#saturn").val(inputObj.saturn);
-  $("#rahu").val(inputObj.rahu);
-  $("#ketu").val(inputObj.ketu);
+  $("#ascendant").val(inputObj.graha["ascendant"]);
+  $("#sun").val(inputObj.graha["sun"]);
+  $("#moon").val(inputObj.graha["moon"]);
+  $("#mercury").val(inputObj.graha["mercury"]);
+  $("#venus").val(inputObj.graha["venus"]);
+  $("#mars").val(inputObj.graha["mars"]);
+  $("#jupiter").val(inputObj.graha["jupiter"]);
+  $("#saturn").val(inputObj.graha["saturn"]);
+  $("#rahu").val(inputObj.graha["rahu"]);
+  $("#ketu").val(inputObj.graha["ketu"]);
  
   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
   console.log("Astro Object= " + str); // Logs output to dev tools console.
