@@ -16,8 +16,23 @@ const signsArray = ['aries','taurus','gemini','cancer','leo','virgo','libra','sc
 const planetsArray = ['ascendant','sun','moon','mars','mercury','jupiter','venus','saturn','rahu','ketu']; //rashis
 //console.log(signs.indexOf('taurus'));
 //console.log(signs.indexOf('cancer', 1)); // start from index 1
-const signObj = {  // RASI
-"signs": 
+// var outputObj = {
+//   "ascendant": {
+// const signObj = {  // RASI
+// "aries":      {"position": "1",  "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"      },
+// "taurus":     {"position": "2",  "ruledby": "venus",   "exaltation": "moon",      "debilitation": "rahu/ketu"   },
+// "gemini":     {"position": "3",  "ruledby": "mercury", "exaltation": "none",      "debilitation": "none"        },
+// "cancer":     {"position": "4",  "ruledby": "moon",    "exaltation": "jupiter",   "debilitation": "mars"        },
+// "leo":        {"position": "5",  "ruledby": "sun",     "exaltation": "none",      "debilitation": "none"        },
+// "virgo":      {"position": "6",  "ruledby": "mercury", "exaltation": "mercury",   "debilitation": "venus"       },
+// "libra":      {"position": "7",  "ruledby": "venus",   "exaltation": "saturn",    "debilitation": "sun"         },
+// "scorpio":    {"position": "8",  "ruledby": "mars",    "exaltation": "rahu/ketu", "debilitation": "moon"        },
+// "sagittarius":{"position": "9",  "ruledby": "jupiter", "exaltation": "none",      "debilitation": "none"        },
+// "capricon":   {"position": "10", "ruledby": "saturn",  "exaltation": "mars",      "debilitation": "jupiter"     },
+// "aquarius":   {"position": "11", "ruledby": "saturn",  "exaltation": "none",      "debilitation": "none"        },
+// "pisces":     {"position": "12", "ruledby": "jupiter", "exaltation": "venus",     "debilitation": "mercury"     }
+// }
+const signObj =   // RASI
         [
             {"position": "1",       "name": "aries",      "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"   },
             {"position": "2",       "name": "taurus",     "ruledby": "venus",   "exaltation": "moon",      "debilitation": "rahu/ketu"},
@@ -31,9 +46,9 @@ const signObj = {  // RASI
             {"position": "10",      "name": "capricon",   "ruledby": "saturn",  "exaltation": "mars",      "debilitation": "jupiter"  },
             {"position": "11",      "name": "aquarius",   "ruledby": "saturn",  "exaltation": "none",      "debilitation": "none"     },
             {"position": "12",      "name": "pisces",     "ruledby": "jupiter", "exaltation": "venus",     "debilitation": "mercury"  }
-        ]
+        ];
 
-}
+
 // schObj is used to save schematic - for load file to work it needs to be less the 1024 bytes and the first key should be "ver"
 //Input
 var inputObj = {
@@ -67,6 +82,7 @@ var inputObj = {
           "longitude": 298.7014879,
           "position": 10,
           "sign": "capricorn",
+          "ruledby":"saturn1",
           "house": 1,
           "degree": 28.7014879,
           "mins":42,
@@ -83,6 +99,7 @@ var inputObj = {
           "longitude": 199.07001545248,
           "position": 7,
           "sign":"libra",
+          "ruledby":"venus1",
           "house": 10,
           "degree": 19.07001545,
           "mins":4,
@@ -99,6 +116,7 @@ var inputObj = {
           "longitude": 101.505673940617,
           "position": 4,
           "sign":"cancer",
+          "ruledby":"moon1",
           "house": 7,
           "degree": 11.50567394,
           "mins":30,
@@ -116,6 +134,7 @@ var inputObj = {
         "longitude": 219.718216555607,
         "position": 8,
         "sign": "scorpio",
+        "ruledby":"mars1",
         "house": 11,
         "degree": 9.718216556,
         "mins":43,
@@ -133,6 +152,7 @@ var inputObj = {
         "longitude": 198.142409860512,
         "position": 7,
         "sign":"libra",
+        "ruledby":"venus1",
         "house": 10,
         "degree":18.14240986,
         "mins":8,
@@ -150,6 +170,7 @@ var inputObj = {
       "longitude": 140.559019472223,
       "position": 5,
       "sign":"leo",
+      "ruledby":"sun1",
       "house": 8,
       "degree": 20.55901947,
       "mins":33,
@@ -166,6 +187,7 @@ var inputObj = {
       "longitude": 100.669422850587,
       "position": 4,
       "sign":"cancer",
+      "ruledby":"moon1",
       "house": 7,
       "degree": 10.66942285,
       "mins":40,
@@ -183,6 +205,7 @@ var inputObj = {
         "longitude": 329.920879549186,
         "position": 11,
         "sign":"aquarius",
+        "ruledby":"saturn1",
         "house": 2,
         "degree": 29.92087955,
         "mins":55,
@@ -200,6 +223,7 @@ var inputObj = {
           "longitude": 22.800941440735,
           "position": 1,
           "sign":"aries",
+          "ruledby":"mars1",
           "house": 4,
           "degree": 22.80094144,
           "mins":48,
@@ -217,6 +241,7 @@ var inputObj = {
           "longitude": 202.800941440735,
           "position": 7,
           "sign":"libra",
+          "ruledby":"venus1",
           "house": 10,
           "degree": 22.80094144,
           "mins":48,
@@ -364,6 +389,34 @@ function updateGrahas(graha_name){  // calculate postiions from Logitude
  outputObj[graha_name].degree = degree;
  outputObj[graha_name].mins = mins;
  outputObj[graha_name].secs = secs;
+ //"aries":      {"position": "1",  "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"      },
+ outputObj[graha_name].ruledby = signObj[position-1].ruledby;
+if( outputObj[graha_name].sign ==  signObj[position-1].ruledby) outputObj[graha_name].is_ownsign = true;
+else outputObj[graha_name].is_ownsign = false;
+
+if(graha_name != "ascendant") {
+  if( graha_name == signObj[position-1].exaltation) outputObj[graha_name].is_exhalted = true;
+  else outputObj[graha_name].is_exhalted = false;
+  if( graha_name == signObj[position-1].debilitation) outputObj[graha_name].is_debilitated = true;
+  else outputObj[graha_name].is_debilitated = false;
+
+ 
+  // Digbala(Directional Strength), is another thing to look to know if a particular planet has extra strength.
+  // 1) Jupiter or  Mercury in first house is a source Digbala
+  // 2) Moon or Venus in Fourth House is a source of Digbala
+  // 3)Saturn in the seventh house is a source of Digbala
+  // 4)Mars or Sun in 10 house is a source of Digbala
+  if(graha_name == "jupiter" ||  graha_name == "mercury" &&  house == 1)outputObj[graha_name].is_digbala = true;
+  else if ( graha_name == "moon" ||  graha_name == "venus" &&  house == 4)outputObj[graha_name].is_digbala = true;
+  else if ( graha_name == "Saturn" &&  house == 7)outputObj[graha_name].is_digbala = true;
+  else if ( graha_name == "mars" ||  graha_name == "sun" &&  house == 10)outputObj[graha_name].is_digbala = true;
+  else outputObj[graha_name].is_digbala = false;
+
+  outputObj[graha_name].is_retrograde = false;
+  // if in the same house as the SUN and withing 6 degrees from the sun
+  if(graha_name != "sun"  &&  outputObj["sun"].house == house && (parseInt(outputObj["sun"].degree)- parseInt(degree)) <=6  ) outputObj[graha_name].is_combust = true;
+  outputObj[graha_name].is_combust = false;
+}
 
 }
 function addTextarea(id,text){
