@@ -346,7 +346,9 @@ function updateGrahas(graha_name){  // calculate postiions from Logitude
   //let ascendant = signsArray[ascendant_position-1]; // this is ascendant name a great starting point 
   // then update house signnum (SignPositions) in astroObj given ascendant position
   if(graha_name == "ascendant") {
-    updateSigns(astroObj,ascendant_position);
+    updateSigns(astroObj,position);
+    console.log("graha_name = " +graha_name);
+
     house = 1;
   }
   else {
@@ -364,6 +366,12 @@ function updateGrahas(graha_name){  // calculate postiions from Logitude
  outputObj[graha_name].secs = secs;
 
 }
+function addTextarea(id,text){
+  const val = $(id).val();
+  $(id).attr('rows', parseInt($(id).attr('rows'))+(parseInt(1))); // increase row size by one
+  if (val == "")  $(id).val(text);
+  else $(id).val(val+'\n'+ text);
+}
 function updateOutput(me){
   // first calculate the postion of the ascendent here house number is always 1 
  let planet='';
@@ -372,7 +380,14 @@ function updateOutput(me){
  var house1_str;
  updateGrahas(graha);
  house1_str = "Ascendant " + toTitleCase(outputObj[graha].sign) +":"+outputObj[graha].position+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')'+ " Ruled By " + planet ;
- $("#house1").val(house1_str);
+ //$('#house1').attr('rows', parseInt($('#house1').attr('rows'))+(parseInt(1)));
+ //$('#house1').autogrow();
+ //$("#house1").val(house1_str);
+ //var val = $("#house1").val();
+ //$('#house1').attr('rows', parseInt($('#house1').attr('rows'))+(parseInt(1))); // increase row size by one
+ //$("#house1").val(val+'\n'+ house1_str);
+ addTextarea("#house1",house1_str);
+ addTextarea("#house1",house1_str);
  //Sun
  graha = "sun";
  updateGrahas(graha);
