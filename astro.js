@@ -424,43 +424,73 @@ if(graha_name != "ascendant") {
 }
 function addTextarea(id,text){
   const val = $(id).val();
-  console.log("Current text = " + val);
-  $(id).attr('rows', parseInt($(id).attr('rows'))+(parseInt(1))); // increase row size by one
+  //const rownum =  $(id).attr('rows');
+  //console.log("Current text = " + val + "Current id = " + id + "rownum = " + rownum);
+  //if(rownum!=1) $(id).attr('rows', parseInt($(id).attr('rows'))+(parseInt(1))); // increase row size by one
   if (val == "")  $(id).val(text);
-  else $(id).val(val+'\n'+ text);
+  else{ 
+    $(id).attr('rows', parseInt($(id).attr('rows'))+(parseInt(1))); // increase row size by one
+    $(id).val(val+'\n'+ text); 
+  }
   console.log("New text = " + text);
 }
+
+function clearOutput(){
+  var id ;
+  for(let i=1; i <=12; i++){
+  id = "#house"+i;
+  //console.log("house = ", id);
+  $(id).attr('rows', 1);
+  $(id).val("");
+  }
+}
+
 function updateOutput(me){
+  clearOutput();
   // first calculate the postion of the ascendent here house number is always 1 
- var house1_str; var house;
+  var house1_str; var house;
   for (let graha in outputObj) {
     console.log(graha, outputObj[graha].house);
     house = outputObj[graha].house;
     updateGraha(graha);
-    if(graha == ascendant){
-      house1_str = toTitleCase(outputObj[graha].sign) +":"+outputObj[graha].position+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')'+ " RuledBy " + toTitleCase(outputObj[graha].ruledby) ;
+  }
+
+  //Update zodiac signs
+  for(let i=1; i <13; i++){
+    id = "#sign"+i;
+    //$(id).text(parseInt(astroObj.houses[i-1].signnum) - parseInt(0));
+    var str = toTitleCase(signsArray[astroObj.houses[i-1].signnum-1] + '(' + astroObj.houses[i-1].signnum +')')
+    $(id).text(str);
+    //$(id).text(signsArray[i-1]);
+    //$(id).text("test");
+  }
+  //Updates planets in the output
+  for (let graha in outputObj){
+    house = outputObj[graha].house;
+    if(graha == "ascendant"){
+      house1_str = "Ascendant" +' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')'+ " RuledBy " + toTitleCase(outputObj[graha].ruledby) ;
     }
     else {
-      house1_str = toTitleCase(graha)+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' + " ZodiacSign " + toTitleCase(outputObj[graha].sign) +":"+outputObj[graha].position+ " RuledBy " + toTitleCase(outputObj[graha].ruledby) ;
+      house1_str = toTitleCase(graha)+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' + " RuledBy " + toTitleCase(outputObj[graha].ruledby) ;
     }
-
     switch(house) {
-    case 1 :  addTextarea("#house1",house1_str);break;
-    case 2 :  addTextarea("#house2",house1_str);break;
-    case 3 :  addTextarea("#house3",house1_str);break;
-    case 4 :  addTextarea("#house4",house1_str);break;
-    case 5 :  addTextarea("#house5",house1_str);break;
-    case 6 :  addTextarea("#house6",house1_str);break;
-    case 7 :  addTextarea("#house7",house1_str);break;
-    case 8 :  addTextarea("#house8",house1_str);break;
-    case 9 :  addTextarea("#house9",house1_str);break;
-    case 10 : addTextarea("#house10",house1_str);break;
-    case 11 : addTextarea("#house11",house1_str);break;
-    case 12 : addTextarea("#house12",house1_str);break;      
-    default:
-      // code block
+    case 1 :  {addTextarea("#house1",house1_str);break;}
+    case 2 :  {addTextarea("#house2",house1_str);break;}
+    case 3 :  {addTextarea("#house3",house1_str);break;}
+    case 4 :  {addTextarea("#house4",house1_str);break;}
+    case 5 :  {addTextarea("#house5",house1_str);break;}
+    case 6 :  {addTextarea("#house6",house1_str);break;}
+    case 7 :  {addTextarea("#house7",house1_str);break;}
+    case 8 :  {addTextarea("#house8",house1_str);break;}
+    case 9 :  {addTextarea("#house9",house1_str);break;}
+    case 10 : {addTextarea("#house10",house1_str);break;}
+    case 11 : {addTextarea("#house11",house1_str);break;}
+    case 12 : {addTextarea("#house12",house1_str);break;}
+    default: break;
   }
-    
+  
+
+   //signsArray[astroObj.houses.signnum]
   }
   // now write the results to the output form
 //  $("#house1").val(house1_str);
