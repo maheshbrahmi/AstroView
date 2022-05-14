@@ -457,7 +457,7 @@ function updateOutput(me){
 
   //Update zodiac signs
   for(let i=1; i <13; i++){
-    id = "#sign"+i;
+    let id = "#sign"+i;
     //$(id).text(parseInt(astroObj.houses[i-1].signnum) - parseInt(0));
     var str = toTitleCase(signsArray[astroObj.houses[i-1].signnum-1] + '(' + astroObj.houses[i-1].signnum +')')
     $(id).text(str);
@@ -473,24 +473,8 @@ function updateOutput(me){
     else {
       house1_str = toTitleCase(graha)+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' + " RuledBy " + toTitleCase(outputObj[graha].ruledby) ;
     }
-    switch(house) {
-    case 1 :  {addTextarea("#house1",house1_str);break;}
-    case 2 :  {addTextarea("#house2",house1_str);break;}
-    case 3 :  {addTextarea("#house3",house1_str);break;}
-    case 4 :  {addTextarea("#house4",house1_str);break;}
-    case 5 :  {addTextarea("#house5",house1_str);break;}
-    case 6 :  {addTextarea("#house6",house1_str);break;}
-    case 7 :  {addTextarea("#house7",house1_str);break;}
-    case 8 :  {addTextarea("#house8",house1_str);break;}
-    case 9 :  {addTextarea("#house9",house1_str);break;}
-    case 10 : {addTextarea("#house10",house1_str);break;}
-    case 11 : {addTextarea("#house11",house1_str);break;}
-    case 12 : {addTextarea("#house12",house1_str);break;}
-    default: break;
-  }
-  
-
-   //signsArray[astroObj.houses.signnum]
+    let id = "#house"+house;
+    addTextarea(id,house1_str); // write to the output form
   }
   // now write the results to the output form
 //  $("#house1").val(house1_str);
