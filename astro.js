@@ -356,7 +356,7 @@ secs = parseInt(((longitude-parseInt(longitude))*60 - mins)*60);
 return [position,degree,mins,secs];
 }
 
-function updateGrahas(graha_name){  // calculate postiions from Logitude
+function updateGraha(graha_name){  // calculate postiions from Logitude
   let degree = 0;
   let mins = 42;
   let secs = 5;
@@ -367,7 +367,7 @@ function updateGrahas(graha_name){  // calculate postiions from Logitude
   else ascendant_position = outputObj[ "ascendant"].position;
   let house = 0;
   [position,degree,mins,secs] = logitudeToPositions(inputObj.graha[graha_name]);
-  console.log(" Ascendent position = " +ascendant_position +  " Position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
+  
   //let ascendant = signsArray[ascendant_position-1]; // this is ascendant name a great starting point 
   // then update house signnum (SignPositions) in astroObj given ascendant position
   if(graha_name == "ascendant") {
@@ -380,6 +380,7 @@ function updateGrahas(graha_name){  // calculate postiions from Logitude
     const pos_dist = position - ascendant_position; 
     if(pos_dist < 0) house = pos_dist+13; else house = pos_dist+1;
   }
+  console.log("graha_name: "+graha_name+ " Ascendent position = " +ascendant_position +  " position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
  // next update outputObj
  //Ascendant
  outputObj[graha_name].longitude = inputObj.graha["ascendant"];
@@ -391,10 +392,12 @@ function updateGrahas(graha_name){  // calculate postiions from Logitude
  outputObj[graha_name].secs = secs;
  //"aries":      {"position": "1",  "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"      },
  outputObj[graha_name].ruledby = signObj[position-1].ruledby;
-if( outputObj[graha_name].sign ==  signObj[position-1].ruledby) outputObj[graha_name].is_ownsign = true;
-else outputObj[graha_name].is_ownsign = false;
+
 
 if(graha_name != "ascendant") {
+  console.log(" I AM HERE");
+  if( graha_name ==  signObj[position-1].ruledby) outputObj[graha_name].is_ownsign = true;
+  else outputObj[graha_name].is_ownsign = false;
   if( graha_name == signObj[position-1].exaltation) outputObj[graha_name].is_exhalted = true;
   else outputObj[graha_name].is_exhalted = false;
   if( graha_name == signObj[position-1].debilitation) outputObj[graha_name].is_debilitated = true;
@@ -421,32 +424,45 @@ if(graha_name != "ascendant") {
 }
 function addTextarea(id,text){
   const val = $(id).val();
+  console.log("Current text = " + val);
   $(id).attr('rows', parseInt($(id).attr('rows'))+(parseInt(1))); // increase row size by one
   if (val == "")  $(id).val(text);
   else $(id).val(val+'\n'+ text);
+  console.log("New text = " + text);
 }
 function updateOutput(me){
   // first calculate the postion of the ascendent here house number is always 1 
- let planet='';
- let ruler ='';
- let graha = "ascendant";
- var house1_str;
- updateGrahas(graha);
- house1_str = "Ascendant " + toTitleCase(outputObj[graha].sign) +":"+outputObj[graha].position+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')'+ " Ruled By " + planet ;
- //$('#house1').attr('rows', parseInt($('#house1').attr('rows'))+(parseInt(1)));
- //$('#house1').autogrow();
- //$("#house1").val(house1_str);
- //var val = $("#house1").val();
- //$('#house1').attr('rows', parseInt($('#house1').attr('rows'))+(parseInt(1))); // increase row size by one
- //$("#house1").val(val+'\n'+ house1_str);
- addTextarea("#house1",house1_str);
- addTextarea("#house1",house1_str);
- //Sun
- graha = "sun";
- updateGrahas(graha);
- house1_str = "Ascendant " + toTitleCase(outputObj[graha].sign) +":"+outputObj[graha].position+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')'+ " Ruled By " + planet ;
- $("#house10").val(house1_str);
- // write the results to the output form
+ var house1_str; var house;
+  for (let graha in outputObj) {
+    console.log(graha, outputObj[graha].house);
+    house = outputObj[graha].house;
+    updateGraha(graha);
+    if(graha == ascendant){
+      house1_str = toTitleCase(outputObj[graha].sign) +":"+outputObj[graha].position+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')'+ " RuledBy " + toTitleCase(outputObj[graha].ruledby) ;
+    }
+    else {
+      house1_str = toTitleCase(graha)+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' + " ZodiacSign " + toTitleCase(outputObj[graha].sign) +":"+outputObj[graha].position+ " RuledBy " + toTitleCase(outputObj[graha].ruledby) ;
+    }
+
+    switch(house) {
+    case 1 :  addTextarea("#house1",house1_str);break;
+    case 2 :  addTextarea("#house2",house1_str);break;
+    case 3 :  addTextarea("#house3",house1_str);break;
+    case 4 :  addTextarea("#house4",house1_str);break;
+    case 5 :  addTextarea("#house5",house1_str);break;
+    case 6 :  addTextarea("#house6",house1_str);break;
+    case 7 :  addTextarea("#house7",house1_str);break;
+    case 8 :  addTextarea("#house8",house1_str);break;
+    case 9 :  addTextarea("#house9",house1_str);break;
+    case 10 : addTextarea("#house10",house1_str);break;
+    case 11 : addTextarea("#house11",house1_str);break;
+    case 12 : addTextarea("#house12",house1_str);break;      
+    default:
+      // code block
+  }
+    
+  }
+  // now write the results to the output form
 //  $("#house1").val(house1_str);
 // // write the results to the output form
 //  switch(house) {
@@ -462,6 +478,10 @@ function updateOutput(me){
  // draw the planets in the chart
  //updateGrahas('inputObj');
 }
+
+// function myFunction(item, index, arr) {
+//   console.log(item);
+// }
 
 function updateChart(me){
   var value;
