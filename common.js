@@ -13,35 +13,35 @@ function toTitleCase(str) {
   }
 
 // the main data structure in a centralized place so that all pages can access it.
-function copy_schObj(schObj1) {
-//  var ELEMENT_SRC = schObj1.ELEMENT;
-//  var ELEMENT_DEST = schObj.ELEMENT;
-//  for (var key in schObj1) 
-//     {
-//         if (schObj1.hasOwnProperty(key)) 
-//         {
-//             if(key !== "ELEMENT") 
-//             {
-//                 schObj[key] = schObj1[key];
-//                // console.log(key + " -> " + schObj[key]);
-//             }
-//         else
-//             {
-//             //    console.log("SCHOBJ ELEMENT" );
-//             for (var key2 in ELEMENT_SRC) 
-//                 {
-//                     var item1 = ELEMENT_SRC[key2];
-//                     var item = ELEMENT_DEST[key2];
-//                         for (var key3 in item1) 
-//                         {
-//                            //   console.log(key3 + " -> " + item1[key3]);
-//                             item[key3] = item1[key3];
-//                         }
-//                 }
-//             }
+function copy_inputObj(inputObj1) {
+ var ELEMENT_SRC = inputObj1.ELEMENT;
+ var ELEMENT_DEST = inputObj.ELEMENT;
+ for (var key in inputObj1) 
+    {
+        if (inputObj1.hasOwnProperty(key)) 
+        {
+            if(key !== "ELEMENT") 
+            {
+                inputObj[key] = inputObj1[key];
+               // console.log(key + " -> " + schObj[key]);
+            }
+        else
+            {
+            //    console.log("SCHOBJ ELEMENT" );
+            for (var key2 in ELEMENT_SRC) 
+                {
+                    var item1 = ELEMENT_SRC[key2];
+                    var item = ELEMENT_DEST[key2];
+                        for (var key3 in item1) 
+                        {
+                           //   console.log(key3 + " -> " + item1[key3]);
+                            item[key3] = item1[key3];
+                        }
+                }
+            }
 
-//         }
-//     }
+        }
+    }
 
 }
 

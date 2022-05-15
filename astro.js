@@ -32,7 +32,7 @@ const planetsArray = ['ascendant','sun','moon','mars','mercury','jupiter','venus
 // "aquarius":   {"position": "11", "ruledby": "saturn",  "exaltation": "none",      "debilitation": "none"        },
 // "pisces":     {"position": "12", "ruledby": "jupiter", "exaltation": "venus",     "debilitation": "mercury"     }
 // }
-const signObj =   // RASI
+var signObj =   // RASI
         [
             {"position": "1",       "name": "aries",      "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"   },
             {"position": "2",       "name": "taurus",     "ruledby": "venus",   "exaltation": "moon",      "debilitation": "rahu/ketu"},
@@ -43,7 +43,7 @@ const signObj =   // RASI
             {"position": "7",       "name": "libra",      "ruledby": "venus",   "exaltation": "saturn",    "debilitation": "sun"      },
             {"position": "8",       "name": "scorpio",    "ruledby": "mars",    "exaltation": "rahu/ketu", "debilitation": "moon"     },
             {"position": "9",       "name": "sagittarius","ruledby": "jupiter", "exaltation": "none",      "debilitation": "none"     },
-            {"position": "10",      "name": "capricon",   "ruledby": "saturn",  "exaltation": "mars",      "debilitation": "jupiter"  },
+            {"position": "10",      "name": "capricorn",   "ruledby": "saturn",  "exaltation": "mars",      "debilitation": "jupiter"  },
             {"position": "11",      "name": "aquarius",   "ruledby": "saturn",  "exaltation": "none",      "debilitation": "none"     },
             {"position": "12",      "name": "pisces",     "ruledby": "jupiter", "exaltation": "venus",     "debilitation": "mercury"  }
         ];
@@ -54,7 +54,7 @@ const signObj =   // RASI
 var inputObj = {
   "ver":1.0,  //if you change this then change the file load verify function- this is used as a check - need a better way to do this
   "type":"astroFile", // to check if the right file is imported
-  "name": "John bosco",  //First and Last name
+  "name": "John Doe",  //First and Last name
   "city": "Mumbai", // 
   "state": "Maharashtra",  // 
   "country": "India",   // 
@@ -87,9 +87,9 @@ var inputObj = {
           "degree": 28.7014879,
           "mins":42,
           "secs":5,
+          "is_ownsign":false,
           "is_retrograde": false,
           "is_combust": false,
-          "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
@@ -104,11 +104,11 @@ var inputObj = {
           "degree": 19.07001545,
           "mins":4,
           "secs":12,
+          "is_ownsign":false,
           "is_retrograde": false,
           "is_combust": false,
-          "is_ownsign":false,
           "is_exhalted":false,
-          "is_debilitated":true,
+          "is_debilitated":false,
           "is_digbala":false,
           "aspect":"1,7"
       },
@@ -121,9 +121,9 @@ var inputObj = {
           "degree": 11.50567394,
           "mins":30,
           "secs":20,
+          "is_ownsign":false,
           "is_retrograde": false,
           "is_combust": false,
-          "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
@@ -139,10 +139,9 @@ var inputObj = {
         "degree": 9.718216556,
         "mins":43,
         "secs":5,
+        "is_ownsign":false,
         "is_retrograde": false,
         "is_combust": false,
-        "is_exhalted":false,
-        "is_ownsign":false,
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
@@ -157,10 +156,9 @@ var inputObj = {
         "degree":18.14240986,
         "mins":8,
         "secs":32,
-        "is_retrograde": true,
+        "is_ownsign":false,
+        "is_retrograde": false,
         "is_combust": false,
-        "is_exhalted":false,
-        "is_ownsign":true,
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
@@ -175,9 +173,9 @@ var inputObj = {
       "degree": 20.55901947,
       "mins":33,
       "secs":32,
+      "is_ownsign":false,
       "is_retrograde": false,
       "is_combust": false,
-      "is_ownsign":false,
       "is_exhalted":false,
       "is_debilitated":false,
       "is_digbala":false,
@@ -192,10 +190,9 @@ var inputObj = {
       "degree": 10.66942285,
       "mins":40,
       "secs":9,
+      "is_ownsign":false,
       "is_retrograde": false,
       "is_combust": false,
-      "is_exhalted":false,
-      "is_ownsign":false,
       "is_exhalted":false,
       "is_debilitated":false,
       "is_digbala":false,
@@ -210,10 +207,9 @@ var inputObj = {
         "degree": 29.92087955,
         "mins":55,
         "secs":15,
-        "is_retrograde": true,
-        "is_combust": false,
-        "is_exhalted":false,
         "is_ownsign":false,
+        "is_retrograde": false,
+        "is_combust": false,
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
@@ -228,10 +224,9 @@ var inputObj = {
           "degree": 22.80094144,
           "mins":48,
           "secs":3,
+          "is_ownsign":false,
           "is_retrograde": false,
           "is_combust": false,
-          "is_exhalted":false,
-          "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
@@ -246,10 +241,9 @@ var inputObj = {
           "degree": 22.80094144,
           "mins":48,
           "secs":3,
+          "is_ownsign":false,
           "is_retrograde": false,
           "is_combust": false,
-          "is_exhalted":false,
-          "is_ownsign":false,
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
@@ -360,7 +354,6 @@ function updateGraha(graha_name){  // calculate postiions from Logitude
   let degree = 0;
   let mins = 42;
   let secs = 5;
-  let planet='';
   let position=0;
   let ascendant_position = 0;
   if(graha_name == "ascendant") ascendant_position = 0;
@@ -373,7 +366,6 @@ function updateGraha(graha_name){  // calculate postiions from Logitude
   if(graha_name == "ascendant") {
     updateSigns(astroObj,position);
     console.log("graha_name = " +graha_name);
-
     house = 1;
   }
   else {
@@ -381,47 +373,47 @@ function updateGraha(graha_name){  // calculate postiions from Logitude
     if(pos_dist < 0) house = pos_dist+13; else house = pos_dist+1;
   }
   console.log("graha_name: "+graha_name+ " Ascendent position = " +ascendant_position +  " position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
- // next update outputObj
- //Ascendant
- outputObj[graha_name].longitude = inputObj.graha["ascendant"];
- outputObj[graha_name].position = position;
- outputObj[graha_name].sign = signsArray[position-1];
- outputObj[graha_name].house = house;
- outputObj[graha_name].degree = degree;
- outputObj[graha_name].mins = mins;
- outputObj[graha_name].secs = secs;
- //"aries":      {"position": "1",  "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"      },
- outputObj[graha_name].ruledby = signObj[position-1].ruledby;
-
-
-if(graha_name != "ascendant") {
-  console.log(" I AM HERE");
-  if( graha_name ==  signObj[position-1].ruledby) outputObj[graha_name].is_ownsign = true;
-  else outputObj[graha_name].is_ownsign = false;
-  if( graha_name == signObj[position-1].exaltation) outputObj[graha_name].is_exhalted = true;
-  else outputObj[graha_name].is_exhalted = false;
-  if( graha_name == signObj[position-1].debilitation) outputObj[graha_name].is_debilitated = true;
-  else outputObj[graha_name].is_debilitated = false;
+  // next update outputObj
+  //Ascendant
+  outputObj[graha_name].longitude = inputObj.graha["ascendant"];
+  outputObj[graha_name].position = position;
+  outputObj[graha_name].sign = signsArray[position-1];
+  outputObj[graha_name].house = house;
+  outputObj[graha_name].degree = degree;
+  outputObj[graha_name].mins = mins;
+  outputObj[graha_name].secs = secs;
+  //"aries":      {"position": "1",  "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"      },
+  outputObj[graha_name].ruledby = signObj[position-1].ruledby;
+  if(graha_name != "ascendant") {
+    //console.log(" I AM HERE");
+    if( graha_name ==  signObj[position-1].ruledby) outputObj[graha_name].is_ownsign = true;
+    else outputObj[graha_name].is_ownsign = false;
+    if( graha_name == signObj[position-1].exaltation) outputObj[graha_name].is_exhalted = true;
+    else outputObj[graha_name].is_exhalted = false;
+    if( graha_name == signObj[position-1].debilitation) outputObj[graha_name].is_debilitated = true;
+    else outputObj[graha_name].is_debilitated = false;
 
  
-  // Digbala(Directional Strength), is another thing to look to know if a particular planet has extra strength.
-  // 1) Jupiter or  Mercury in first house is a source Digbala
-  // 2) Moon or Venus in Fourth House is a source of Digbala
-  // 3)Saturn in the seventh house is a source of Digbala
-  // 4)Mars or Sun in 10 house is a source of Digbala
-  if(graha_name == "jupiter" ||  graha_name == "mercury" &&  house == 1)outputObj[graha_name].is_digbala = true;
-  else if ( graha_name == "moon" ||  graha_name == "venus" &&  house == 4)outputObj[graha_name].is_digbala = true;
-  else if ( graha_name == "Saturn" &&  house == 7)outputObj[graha_name].is_digbala = true;
-  else if ( graha_name == "mars" ||  graha_name == "sun" &&  house == 10)outputObj[graha_name].is_digbala = true;
-  else outputObj[graha_name].is_digbala = false;
+    // Digbala(Directional Strength), is another thing to look to know if a particular planet has extra strength.
+    // 1) Jupiter or  Mercury in first house is a source Digbala
+    // 2) Moon or Venus in Fourth House is a source of Digbala
+    // 3)Saturn in the seventh house is a source of Digbala
+    // 4)Mars or Sun in 10 house is a source of Digbala
+    if((graha_name == "jupiter" ||  graha_name == "mercury") &&  house == 1)outputObj[graha_name].is_digbala = true;
+    else if ( (graha_name == "moon" ||  graha_name == "venus") &&  house == 4)outputObj[graha_name].is_digbala = true;
+    else if ( (graha_name == "saturn") &&  house == 7)outputObj[graha_name].is_digbala = true;
+    else if ( (graha_name == "mars" ||  graha_name == "sun") &&  house == 10)outputObj[graha_name].is_digbala = true;
+    else outputObj[graha_name].is_digbala = false;
 
-  outputObj[graha_name].is_retrograde = false;
-  // if in the same house as the SUN and withing 6 degrees from the sun
-  if(graha_name != "sun"  &&  outputObj["sun"].house == house && (parseInt(outputObj["sun"].degree)- parseInt(degree)) <=6  ) outputObj[graha_name].is_combust = true;
-  outputObj[graha_name].is_combust = false;
+    outputObj[graha_name].is_retrograde = false;
+    // if in the same house as the SUN and withing 6 degrees from the sun
+    if((graha_name != "sun"  &&  outputObj["sun"].house == house) && (parseInt(outputObj["sun"].degree)- parseInt(degree)) <=6  ) outputObj[graha_name].is_combust = true;
+    else outputObj[graha_name].is_combust = false;
+    // if(graha_name != "sun" ) outputObj[graha_name].is_combust = true;
+    // outputObj[graha_name].is_combust = false;
+  }
 }
 
-}
 function addTextarea(id,text){
   const val = $(id).val();
   //const rownum =  $(id).attr('rows');
@@ -446,56 +438,63 @@ function clearOutput(){
 }
 
 function updateOutput(me){
-  clearOutput();
-  // first calculate the postion of the ascendent here house number is always 1 
-  var house1_str; var house;
-  for (let graha in outputObj) {
-    console.log(graha, outputObj[graha].house);
-    house = outputObj[graha].house;
-    updateGraha(graha);
+    clearOutput(); // creat the output form
+    //update outputObj, start with ascendant  
+    for (let graha in outputObj) {
+      console.log(graha, outputObj[graha].house);
+      house = outputObj[graha].house;
+      updateGraha(graha);
+    }
+    //update positions in singobj
+    //var signObj =   // RASI
+    for(let i=0; i <12; i++){
+
+      //signObj[i].position =  astroObj.houses[i].signnum
+      //console.log("Position= " + signObj[i].position + " New Positon " + astroObj.houses[i].signnum )
+    }
+    //Update zodiac signs
+    for(let i=0; i <12; i++){
+      let id = "#sign"+(i+1);
+      var signnum = astroObj.houses[i].signnum;
+      //var signnum1 = signnum-1;
+      //console.log("SIGNNUM: " + signnum + "SIGNNAME: " +  signObj[signnum].name)
+      var element;
+      let index = signObj.findIndex(
+        element => element.name === signsArray[signnum-1]
+      );
+      //console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signsArray[signnum-1]);
+
+      console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby );
+      
+      // var index = signObj.findIndex("name" => "name".value === "cancer");
+      // 
+      var str = toTitleCase(signsArray[signnum-1] + '(' + signnum +')') + "Ruler:" + toTitleCase(signObj[index].ruledby);
+      let len = str.length;
+      //14 is the maximum length
+      for (let k=len; k<28; k++)str = str + '\u00A0';
+      //str =str+ str.length;
+      $(id).text(str);
+    }
+    //Updates planets in the output form
+    for (let graha in outputObj){
+        house = outputObj[graha].house;
+        if(graha == "ascendant"){
+          house1_str = "Ascendant" +' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' ;
+        }
+        else {
+          house1_str = toTitleCase(graha)+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' ;
+          if(outputObj[graha].is_ownsign) house1_str = house1_str + " Ownsign";
+          if(outputObj[graha].is_retrograde) house1_str = house1_str + " Retrogate";
+          if(outputObj[graha].is_combust) house1_str = house1_str + " Combust";
+          if(outputObj[graha].is_exhalted) house1_str = house1_str + " Exhalted";
+          if(outputObj[graha].is_debilitated) house1_str = house1_str + " Debilitated";
+          if(outputObj[graha].is_digbala) house1_str = house1_str + " Digbala";
+        }
+        let id = "#house"+house;
+        addTextarea(id,house1_str); // write to the output form
+    }
   }
 
-  //Update zodiac signs
-  for(let i=1; i <13; i++){
-    let id = "#sign"+i;
-    //$(id).text(parseInt(astroObj.houses[i-1].signnum) - parseInt(0));
-    var str = toTitleCase(signsArray[astroObj.houses[i-1].signnum-1] + '(' + astroObj.houses[i-1].signnum +')')
-    $(id).text(str);
-    //$(id).text(signsArray[i-1]);
-    //$(id).text("test");
-  }
-  //Updates planets in the output
-  for (let graha in outputObj){
-    house = outputObj[graha].house;
-    if(graha == "ascendant"){
-      house1_str = "Ascendant" +' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')'+ " RuledBy " + toTitleCase(outputObj[graha].ruledby) ;
-    }
-    else {
-      house1_str = toTitleCase(graha)+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' + " RuledBy " + toTitleCase(outputObj[graha].ruledby) ;
-    }
-    let id = "#house"+house;
-    addTextarea(id,house1_str); // write to the output form
-  }
-  // now write the results to the output form
-//  $("#house1").val(house1_str);
-// // write the results to the output form
-//  switch(house) {
-//     case 1 :
-//       $("#house1").val(house1_str);
-//       break;
-//     case 2 :
-//       $("#house2").val(house1_str);
-//       break;
-//     default:
-//       // code block
-//   }
- // draw the planets in the chart
- //updateGrahas('inputObj');
-}
-
-// function myFunction(item, index, arr) {
-//   console.log(item);
-// }
 
 function updateChart(me){
   var value;
@@ -517,7 +516,10 @@ function updateChart(me){
   value = $("#saturn").val();if( inputObj.graha["saturn"] != value) inputObj.graha["saturn"] = value;
   value = $("#rahu").val();if( inputObj.graha["rahu"] != value) inputObj.graha["rahu"] = value;
   value = $("#ketu").val();if( inputObj.graha["ketu"] != value) inputObj.graha["ketu"] = value;
-  alert("Form Updated");
+  //alert("Form Updated");
+  console.log(" Form Updated");
+  redrawAstro();
+
 }
 
 function test(context){
@@ -1373,6 +1375,16 @@ $('input[name="spin1"]').TouchSpin({
   });
 
 function set_click() {
+    // save state to local storage
+    localStorage.setItem('inputData', JSON.stringify(inputObj));
+    //console.log(JSON.stringify(schObj));
+    // clear off data arrays - no need to save data
+    // smithObj.sweepDatasets[0].dataM.splice(0,smithObj.sweepDatasets[0].dataM.length); // clear Sweep data
+    // smithObj.sweepDatasets[0].dataQ.splice(0,smithObj.sweepDatasets[0].dataQ.length);
+    // smithObj.plotDatasets[0].dataM.splice(0,smithObj.plotDatasets[0].dataM.length); // clear Plot data
+    // smithObj.plotDatasets[0].dataQ.splice(0,smithObj.plotDatasets[0].dataQ.length);
+    // localStorage.setItem('smithData', JSON.stringify(smithObj));
+    //console.log(JSON.stringify(smithObj));
 }
 
 function updateUI() {
@@ -1386,39 +1398,39 @@ function get_click(){
 
 function get() {
     // Get from local storage
-    var item = localStorage.getItem('schData');
+    var item = localStorage.getItem('inputData');
     if( item !== null)
     {
-        var schObj1 =JSON.parse(item);
+        var inputObj1 =JSON.parse(item);
         //console.log(schObj);
-        copy_schObj(schObj1);
+        copy_inputObj(inputObj1);
         //console.log("After copying");
         //console.log(schObj);
     }
-    else { console.log(" schData local storage not set");  };  
+    else { console.log(" inputData local storage not set");  };  
 
-    item = localStorage.getItem('smithData');
-    if( item !== null)
-    {
-        var astroObj1 =JSON.parse(item);
-        copy_astroObj(astroObj1);
-    }
-    else { console.log(" smithData local storage not set");  }; 
+    // item = localStorage.getItem('smithData');
+    // if( item !== null)
+    // {
+    //     var astroObj1 =JSON.parse(item);
+    //     copy_astroObj(astroObj1);
+    // }
+    // else { console.log(" smithData local storage not set");  }; 
     updateUI();
     
 }
 
 function new_click() {
-    localStorage.removeItem('schData');
-    delete window.localStorage["schData"];
-    localStorage.removeItem('smithData');
+    localStorage.removeItem('inputData');
+    delete window.localStorage["inputData"];
+   // localStorage.removeItem('smithData');
     localStorage.setItem("transferFlag", 'false');
-    delete window.localStorage["smithData"];
+    //delete window.localStorage["smithData"];
     window.location.reload();
 }
 
 function save_click() {
-    saveJSONtoFile(schObj, "out.sch");
+    saveJSONtoFile(inputObj, "save.json");
 }
 
 function saveCanvas_click(){
@@ -1450,7 +1462,151 @@ function myfunc() {
 }
 
 function handleFileOpen(e) {
+    var file = e.target.files[0];
+    //var files = evt.target.files; // FileList object
+    console.log(file);
+    if (!file) {
+        return;
+    }
+    // else if (!file.type.match('text.*')) 
+    // {
+  //   alert(file.name + " is not a valid text file");
+    // } 
+    else if(file) 
+    {
+        var reader = new FileReader();
+        reader.onload = function(e)
+            {
+                var contents = reader.result;
+                // alert( "Got the file. " 
+                //         +"name: " + file.name + "\n "
+                //         +"type: " + file.type + "\n "
+                //         +"size: " + file.size + " bytes\n"
+                //         + "starts with: " + contents.substr(1, contents.indexOf("n"))
+                //         + " " + contents.substr(2, 3)
+                //     );
+                var inputObj1 =tryParseJSON(contents);
+                if( inputObj1 && file.size < 65536 &&  inputObj1.ver == "1")  // added a 64K requirement- to have some bounds
+                  {
+                    //alert (" Verified");
+                    //var schObj1 =JSON.parse(contents);
+                    copy_inputObj(inputObj1);
+                    console.log(JSON.stringify(inputObj));
+                    updateUI(); // update the ui elements
+                  }  
+                else ShowMessage_sm("AstroView","File too long (>64K) or the of the wrong format")
+                
+            }
+        reader.readAsText(file); 
+        $('input[type="file"]').val(null); // this clears the file read 
+    }
+  else
+  {
+        alert("Failed to load file");
+  }
+
 }
+
+// export the last sweep data as a gam file 
+function export_click() {
+  // var gamObj = {  
+  // "name": "QuickSmith GAM",
+  // "Z0": 50.0, // characteristic impedance
+  // "gamData" : {
+  //               "label": "Data Plot",
+  //               "color" : "#000000",
+  //               "dataX"  : [],
+  //               "dataM" : [],
+  //               "dataQ" : []
+  //              }
+  // }
+  //   gamObj.Z0 = smithObj.Z0;
+    // var start = parseFloat(schObj.SS);
+    // var stop = parseFloat(schObj.ST);
+    // var step = parseFloat(schObj.SST);
+    // var points = Math.abs((stop-start)/step)+1;
+    // var i; var thisStep;
+    // var points = Math.abs((stop-start)/step)+1; // eg: start=1, stop=100, step=1; number of points = 99+1=100 0-99 values from 1, 2, 3, .. 100
+    // for ( i=0; i < points; i++) {
+    //     thisStep = step*i;
+    //     gamObj.gamData.dataX=Number(math.add(start,thisStep)).toFixed(4); 
+    // } 
+    // gamObj.gamData.dataM = smithObj.sweepDatasets[0].dataM;
+    // gamObj.gamData.dataQ = smithObj.sweepDatasets[0].dataQ;
+    // var start = parseFloat(schObj.SS);
+    // var step = parseFloat(schObj.SST);
+    // var points = smithObj.sweepDatasets[0].dataM.length; // if a sweep was performed then we use its length to store the length data, if not it is zero
+    // console.log(" Number of Points= "+points);
+    // for ( i=0; i < points; i++) {
+    //     thisStep = step*i;
+    //     gamObj.gamData.dataX[i]=Number(math.add(start,thisStep)).toFixed(4); 
+    // } 
+    // for Safari compatibility
+    saveJSONtoFile(astroObj, "astroView.json");
+}
+
+
+function handleFileImport(e) {
+    var file = e.target.files[0];
+    //var files = evt.target.files; // FileList object
+    console.log(file);
+    if (!file) {
+        return;
+    }
+    // else if (!file.type.match('/text.*/')) 
+    // {
+	//   alert(file.name + " is not a valid text file");
+    // } 
+    else if(file) 
+    {
+        var reader = new FileReader();
+        reader.onload = function(e)
+             {
+                var contents = reader.result;
+                // alert( "Got the file. " 
+                //         +"name: " + file.name + "\n "
+                //         +"type: " + file.type + "\n "
+                //         +"size: " + file.size + " bytes\n"
+                //         + "starts with: " + contents.substr(9, 14)
+                //     );
+                var gamObj = tryParseJSON(contents);
+                //if( contents.substr(9, 14) == "QuickSmith GAM")
+                if(gamObj && gamObj.name === "QuickSmith GAM")
+                   {
+                    // alert (" Verified");
+                    // var gamObj =JSON.parse(contents);
+                     smithObj.Z0= gamObj.Z0;
+                     var points = gamObj.gamData.dataX.length;
+                     if(points > 0){
+                     schObj.SS =  parseFloat(gamObj.gamData.dataX[0]);
+                     schObj.ST =  parseFloat(gamObj.gamData.dataX[points-1]);
+                     schObj.SST = Number(Math.abs(math.subtract(schObj.ST,schObj.SS))/(points-1)).toFixed(3);
+                     smithObj.plotDatasets[0].dataM = gamObj.gamData.dataM ;
+                     smithObj.plotDatasets[0].dataQ = gamObj.gamData.dataQ ;
+                     updateUI(); // update the ui elements
+                     smithObj.data = true;
+                     smithObj.redrawSmith(); 
+                     }
+                   } 
+                else    alert (" File not Verified");
+                
+            }
+        reader.readAsText(file); 
+        $("#file-input1").val(null); // this clears the file read 
+   }
+   else
+   {
+        alert("Failed to load file");
+   }
+
+}
+
+function clear_import_click() {
+ //astroObj.data = false; 
+ astroObj.redrawAstro();  
+}
+
+
 
 function load_click() {
    document.getElementById('file-input').click();
