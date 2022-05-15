@@ -14,6 +14,8 @@ var chart= {"width": 300, "height" : 300,  "currentDevicePixelRatio" : 1, "devic
 var isMobile = false; //initiate as false
 const signsArray = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces']; //rashis
 const planetsArray = ['ascendant','sun','moon','mars','mercury','jupiter','venus','saturn','rahu','ketu']; //rashis
+//const pl5_exportformat =['First_last_name' ,'Gender','Ankavalue','City','State','Country','Birthdate','Time','Birthdate_time_Julian','Timezone', 'DST','Longitude' ,'Latitude','Longitudes_Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn','Rahu','Ketu','Dhuma','Vyatipata','Parivesha','Indrachapa','Upaketu','Gulika','Prana Pada','Uranus','Neptune','Pluto','Ascendant'];
+
 //console.log(signs.indexOf('taurus'));
 //console.log(signs.indexOf('cancer', 1)); // start from index 1
 // var outputObj = {
@@ -1439,22 +1441,11 @@ function saveCanvas_click(){
     });
 }
 
-// export the last sweep data as a gam file 
-function export_click() {
-}
 
-
-function handleFileImport(e) {
-}
-
-function clear_import_click() {
-// astroObj.data = false; 
-
-}
 
 // export the sweep data as a gam file 
 function import_click() {
-  // document.getElementById('file-input1').click();
+   document.getElementById('file-input1').click();
 }
 
 function myfunc() {
@@ -1546,10 +1537,22 @@ function export_click() {
 }
 
 
+// document.getElementById('file').onchange = function(){
+//   var file = this.files[0];
+//   var reader = new FileReader();
+//   reader.onload = function(progressEvent){    
+//     var fileContentArray = this.result.split(/\r\n|\n/);
+//     for(var line = 0; line < lines.length-1; line++){
+//       console.log(line + " --> "+ lines[line]);
+//     }
+//   };
+//   reader.readAsText(file);
+// };
+
 function handleFileImport(e) {
     var file = e.target.files[0];
     //var files = evt.target.files; // FileList object
-    console.log(file);
+    //console.log(file);
     if (!file) {
         return;
     }
@@ -1569,27 +1572,83 @@ function handleFileImport(e) {
                 //         +"size: " + file.size + " bytes\n"
                 //         + "starts with: " + contents.substr(9, 14)
                 //     );
-                var gamObj = tryParseJSON(contents);
-                //if( contents.substr(9, 14) == "QuickSmith GAM")
-                if(gamObj && gamObj.name === "QuickSmith GAM")
-                   {
-                    // alert (" Verified");
-                    // var gamObj =JSON.parse(contents);
-                     smithObj.Z0= gamObj.Z0;
-                     var points = gamObj.gamData.dataX.length;
-                     if(points > 0){
-                     schObj.SS =  parseFloat(gamObj.gamData.dataX[0]);
-                     schObj.ST =  parseFloat(gamObj.gamData.dataX[points-1]);
-                     schObj.SST = Number(Math.abs(math.subtract(schObj.ST,schObj.SS))/(points-1)).toFixed(3);
-                     smithObj.plotDatasets[0].dataM = gamObj.gamData.dataM ;
-                     smithObj.plotDatasets[0].dataQ = gamObj.gamData.dataQ ;
-                     updateUI(); // update the ui elements
-                     smithObj.data = true;
-                     smithObj.redrawSmith(); 
-                     }
-                   } 
-                else    alert (" File not Verified");
-                
+                if(file.type != "text/plain" || file.size >= 65536)
+                {
+                  alert (" File not a text file or it is > 64K bytes");
+                  return;
+                }
+                var lines = contents.split(/\r\n|\n/);
+                // for(var line = 0; line < lines.length-1; line++){
+                // //console.log(line + " --> "+ lines[line]);
+                // }
+                // the PL5.0 export file is tab delimeted
+                var firstline = lines[0];
+                console.log("firstline" + " --> "+ firstline);
+                let result = [];
+                let s = firstline.trim().split(/[\t]/);
+                result.push({
+                  First_last_name : s[0],
+                  Gender : s[1],
+                  Ankavalue : s[2],
+                  City : s[3],
+                  State : s[4],
+                  Country : s[5],
+                  Birthdate : s[6],
+                  Time : s[7],
+                  Birthdate_time_Julian : s[8],
+                  Timezone : s[9],
+                  DST : s[10],
+                  Longitude  : s[11],
+                  Latitude : s[12],
+                  Longitudes_Sun : s[13],
+                  Moon : s[14],
+                  Mars : s[15],
+                  Mercury : s[16],
+                  Jupiter : s[17],
+                  Venus : s[18],
+                  Saturn : s[19],
+                  Rahu : s[20],
+                  Ketu : s[21],
+                  Dhuma : s[22],
+                  Vyatipata : s[23],
+                  Parivesha : s[24],
+                  Indrachapa : s[25],
+                  Upaketu : s[26],
+                  Gulika : s[27],
+                  Prana_Pada : s[28],
+                  Uranus : s[29],
+                  Neptune : s[30],
+                  Pluto : s[31],
+                  Ascendant : s[32]
+                  });     
+                  
+                var str = JSON.stringify(result, null, 4); // (Optional) beautiful indented output.
+                console.log("result= " + str); // Logs output to dev tools console.
+                var str = JSON.stringify(inputObj, null, 4); // (Optional) beautiful indented output.
+                console.log("inputObj Before= " + str); // Logs output to dev tools console.
+                //console.log("result.First_last_name " + result[0].First_last_name); // Logs output to dev tools console.
+                //now update inputObj and the input form now
+                inputObj.name = result[0].First_last_name;
+                inputObj.city = result[0].City;
+                inputObj.state = result[0].State;
+                inputObj.country = result[0].Country;
+                inputObj.date = result[0].Birthdate;
+                inputObj.time = result[0].Time;
+                inputObj.latitude = result[0].Latitude;
+                inputObj.longitude = result[0].Longitude;
+                inputObj.graha["ascendant"] = result[0].Ascendant;
+                inputObj.graha["sun"] = result[0].Longitudes_Sun;
+                inputObj.graha["moon"] = result[0].Moon;
+                inputObj.graha["mercury"] = result[0].Mercury;
+                inputObj.graha["venus"] = result[0].Venus;
+                inputObj.graha["mars"] = result[0].Mars;
+                inputObj.graha["jupiter"] = result[0].Jupiter;
+                inputObj.graha["saturn"] = result[0].Saturn;
+                inputObj.graha["rahu"] = result[0].Rahu;
+                inputObj.graha["ketu"] = result[0].Ketu;
+                updateUI();
+                var str = JSON.stringify(inputObj, null, 4); // (Optional) beautiful indented output.
+                console.log("inputObj After= " + str); // Logs output to dev tools console.               
             }
         reader.readAsText(file); 
         $("#file-input1").val(null); // this clears the file read 
@@ -1602,8 +1661,26 @@ function handleFileImport(e) {
 }
 
 function clear_import_click() {
- //astroObj.data = false; 
- astroObj.redrawAstro();  
+  inputObj.name ="";
+  inputObj.city = "";
+  inputObj.state = "";
+  inputObj.country = "";
+  inputObj.date = "";
+  inputObj.time = "";
+  inputObj.latitude = "";
+  inputObj.longitude = "";
+  inputObj.graha["ascendant"] = "";
+  inputObj.graha["sun"] = "";
+  inputObj.graha["moon"] = "";
+  inputObj.graha["mercury"] = "";
+  inputObj.graha["venus"] = "";
+  inputObj.graha["mars"] = "";
+  inputObj.graha["jupiter"] = "";
+  inputObj.graha["saturn"] = "";
+  inputObj.graha["rahu"] = "";
+  inputObj.graha["ketu"] = "";
+
+  updateUI(); 
 }
 
 
