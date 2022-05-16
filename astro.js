@@ -768,10 +768,31 @@ function drawAstro(me) {
   DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,315,45,"violet"); //10
 
   DrawSign(ctx,MQtoX(0.25,120),MQtoY(0.25,120),0.018*AXIS_RANGE,"capricorn");
+  //DrawSignTranslate(ctx,-300/AXIS_RANGE,0,MQtoX(0.25,120),MQtoY(0.25,120),0.018*AXIS_RANGE,"capricorn");
   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
   console.log("Astro Object= " + str); // Logs output to dev tools console.
 
 }
+
+// function DrawSignTranslate(ctx,newx,newy,x,y,r,image) {
+//   ctx.save();
+//   var img = document.getElementById(image);
+//   var scaled1 = scale(newx,newy,r);
+//   var scaled = scale(x,y,r);
+//   if(scaled.R <2) scaled.R = 2;
+//   console.log(" x= " + scaled.X + " y = " + scaled.Y + " r =  " + scaled.R);
+//   console.log(" img.width= " + img.width + "  img.height = " +  img.height);
+//   console.log(" chart.width= " + chart.width+ "  chart.height = " +  chart.width);
+//   var img_width = img.width * (scaled.R/60);
+//   var img_height = img.height * (scaled.R/60);
+//   ctx.translate(scaled1.X, scaled1.Y);
+//   //ctx.translate(newx, newy);
+//   //ctx.drawImage(img, scaled.X, scaled.Y - img_height / 2,  img_width, img_height );
+//   ctx.drawImage(img, scaled.X - img_width / 2, scaled.Y - img_height / 2,  img_width, img_height );
+//   //ctx.arc(scaled.X, scaled.Y, scaled.R, (Math.PI/180)*0, (Math.PI/180)*360, false);
+//   ctx.restore();
+
+// }
 
 function DrawSign(ctx,x,y,r,image) {
   ctx.save();
