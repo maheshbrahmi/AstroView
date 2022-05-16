@@ -275,6 +275,15 @@ function ZtoGammaM(ZXR, ZXI) {
     // return Math.sqrt(SR * SR + SI * SI);
 }
 
+function MQtoX(M, Q) {
+    return (M*Math.cos(Math.PI*Q/180)*AXIS_RANGE);
+}
+
+function MQtoY(M, Q) {
+    return (M*Math.sin(Math.PI*Q/180)*AXIS_RANGE);
+}
+
+
 function XYtoMQ(X, Y, AXIS_RANGE,show_360) {
     var R1 = math.sqrt(((X*X)+(Y*Y))); // convert to polar form
     var Q;

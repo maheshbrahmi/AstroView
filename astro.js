@@ -263,32 +263,33 @@ var astroObj = {
               redrawAstro: redrawAstro, // repaints astroChart with the current values
               colorsHash: {},
               houses : [{
-                num: '1', signnum: '10', color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '1', signnum: '10', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '2', signnum: '11',  color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
+                num: '2', signnum: '11',  color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '3', signnum: '12', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
+                num: '3', signnum: '12', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '4', signnum: '1', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
+                num: '4', signnum: '1', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '5', signnum: '2', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '5', signnum: '2', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '6', signnum: '3', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '6', signnum: '3', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '7', signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '7', signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '8', signnum: '5', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
+                num: '8', signnum: '5', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '9', signnum: '6', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
+                num: '9', signnum: '6', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '10', signnum: '7', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
+                num: '10', signnum: '7', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '11', signnum: '8', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
+                num: '11', signnum: '8', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
-                num: '12', signnum: '9', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
+                num: '12', signnum: '9', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }
                 ],
                drawAstro: function() { drawAstro(this);},
+               showAspect: function() { showAspect(this);},
                updateOutput: function() { updateOutput(this);},
                test: function() { test(this);},
                //updateSigns: function() { updateSigns (this,ascendant_position );}, // Resets all properties to its default values
@@ -316,6 +317,10 @@ function updateSigns(me, ascendant_position){
     me.houses[i].signnum = current_pos;
   }
 
+}
+
+function showAspect(me) {
+console.log(" Show Aspect code to do");
 }
 //calculate chart
 // $('#code').keyup(function() {
@@ -545,7 +550,6 @@ function test(context){
     // device detection
     if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
         || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) isMobile = true;
-           
 })
 
 function getRandomColor() {
@@ -592,6 +596,13 @@ function resize(canvas) {
       astroObj.drawAstro(); // clears canvas too
   }
 
+function convertDegreeToCoordinates(house_num, degrees){
+  // give a house number and degrees  convert it to X Y number
+
+
+  return [X,Y]
+}
+
 function drawAstro(me) {
   if(resize_done == false) return;
   //alert (" drawAstro 16");
@@ -622,9 +633,28 @@ function drawAstro(me) {
   //console.log("colorHash Object= " + str); // Logs output to dev tools console.
   //str = JSON.stringify(me.houses, null, 4); // (Optional) beautiful indented output.
   //console.log("houses Object= " + str); // Logs output to dev tools console.
+  
+  $("#name").val(inputObj.name);
+  $("#city").val(inputObj.city);
+  $("#state").val(inputObj.state);
+  $("#country").val(inputObj.country);
+  $("#date").val(inputObj.date);
+  $("#time").val(inputObj.time);
+  $("#latitude").val(inputObj.latitude);
+  $("#longitude").val(inputObj.longitude);
+  $("#ascendant").val(inputObj.graha["ascendant"]);
+  $("#sun").val(inputObj.graha["sun"]);
+  $("#moon").val(inputObj.graha["moon"]);
+  $("#mercury").val(inputObj.graha["mercury"]);
+  $("#venus").val(inputObj.graha["venus"]);
+  $("#mars").val(inputObj.graha["mars"]);
+  $("#jupiter").val(inputObj.graha["jupiter"]);
+  $("#saturn").val(inputObj.graha["saturn"]);
+  $("#rahu").val(inputObj.graha["rahu"]);
+  $("#ketu").val(inputObj.graha["ketu"]);
   me.updateOutput();
-
-  drawCircle(ctx,0,0,r,"WhiteSmoke");  //constant resistance circles Rn = 0; small padding provide for the outer circle to avoid flatning.
+  
+  drawCircle(ctx,0,0,r,"lightgray");  //constant resistance circles Rn = 0; small padding provide for the outer circle to avoid flatning.
   drawRectangle(ctx,0,0,r,0,"black");
   drawLine(ctx,1,135,1,135+180,"black");
   drawLine(ctx,1,45,1,180+45,"black");
@@ -633,7 +663,7 @@ function drawAstro(me) {
   drawLine(ctx,1/Math.sqrt(2),270,1/Math.sqrt(2),360,"black");
   drawLine(ctx,1/Math.sqrt(2),0,1/Math.sqrt(2),90,"black");
 
-  ctx.beginPath();
+  //ctx.beginPath();
   // House1
   var rarray = [0, 0.5, 1/Math.SQRT2, 0.5,0];
   var qarray = [0, 135, 90, 45,0];
@@ -684,55 +714,80 @@ function drawAstro(me) {
   qarray = [0, 315, 0, 45,0];
   drawPath(ctx, [...rarray],[...qarray],me.houses[9].color,me.houses[9].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[9].colorKey,me.houses[9].colorKey); // line color, fill color  
-  // House11
+  //House11
   rarray = [0.5, 1, 1/Math.SQRT2, 0.5];
   qarray = [45, 45, 360, 45];
   drawPath(ctx, [...rarray],[...qarray],me.houses[10].color,me.houses[10].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[10].colorKey,me.houses[10].colorKey); // line color, fill color
   // House12
-  rarray = [0, 1, 1/Math.SQRT2, 0.5];
+  rarray = [0.5, 1, 1/Math.SQRT2, 0.5];
   qarray = [45, 45, 90, 45];
   drawPath(ctx, [...rarray],[...qarray],me.houses[11].color,me.houses[11].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[11].colorKey,me.houses[11].colorKey); // line color, fill color
-
+  //ctx.closePath();
   // //drawSprite(ctx,0,0);
   //drawFilledCircle(ctx,0,0)
   //me.updateSigns();
-
+   
   placeText(ctx,0,50,me.houses[0].signnum ,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+50, me.houses[1].signnum,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*135/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*135/180)*AXIS_RANGE)+0, me.houses[2].signnum,"center","middle");
+  placeText(ctx,MQtoX(0.5,135)+0,MQtoY(0.5,135)+50, me.houses[1].signnum,"center","middle");
+  placeText(ctx,MQtoX(0.5,135)-50,MQtoY(0.5,135)+0, me.houses[2].signnum,"center","middle");
   placeText(ctx,-50,0,me.houses[3].signnum,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)-50,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)+0, me.houses[4].signnum,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*225/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*225/180)*AXIS_RANGE)-50, me.houses[5].signnum,"center","middle");
+  placeText(ctx,MQtoX(0.5,225)-50,MQtoY(0.5,225)+0, me.houses[4].signnum,"center","middle");
+  placeText(ctx,MQtoX(0.5,225)+0,MQtoY(0.5,225)-50, me.houses[5].signnum,"center","middle");
   placeText(ctx,0,-50,me.houses[6].signnum,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)-50, me.houses[7].signnum,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*315/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*315/180)*AXIS_RANGE)+0, me.houses[8].signnum,"center","middle");
+  placeText(ctx,MQtoX(0.5,315)+0,MQtoY(0.5,315)-50, me.houses[7].signnum,"center","middle");
+  placeText(ctx,MQtoX(0.5,315)+50,MQtoY(0.5,315)+0, me.houses[8].signnum,"center","middle");
   placeText(ctx,50,0,me.houses[9].signnum,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+50,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+0, me.houses[10].signnum,"center","middle");
-  placeText(ctx,(0.5*Math.cos(Math.PI*45/180)*AXIS_RANGE)+0,(0.5*Math.sin(Math.PI*45/180)*AXIS_RANGE)+50, me.houses[11].signnum,"center","middle");
+  placeText(ctx,MQtoX(0.5,45)+50,MQtoY(0.5,45)+0, me.houses[10].signnum,"center","middle");
+  placeText(ctx,MQtoX(0.5,45)+0,MQtoY(0.5,45)+50, me.houses[11].signnum,"center","middle");
   DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth");
-  $("#name").val(inputObj.name);
-  $("#city").val(inputObj.city);
-  $("#state").val(inputObj.state);
-  $("#country").val(inputObj.country);
-  $("#date").val(inputObj.date);
-  $("#time").val(inputObj.time);
-  $("#latitude").val(inputObj.latitude);
-  $("#longitude").val(inputObj.longitude);
-  $("#ascendant").val(inputObj.graha["ascendant"]);
-  $("#sun").val(inputObj.graha["sun"]);
-  $("#moon").val(inputObj.graha["moon"]);
-  $("#mercury").val(inputObj.graha["mercury"]);
-  $("#venus").val(inputObj.graha["venus"]);
-  $("#mars").val(inputObj.graha["mars"]);
-  $("#jupiter").val(inputObj.graha["jupiter"]);
-  $("#saturn").val(inputObj.graha["saturn"]);
-  $("#rahu").val(inputObj.graha["rahu"]);
-  $("#ketu").val(inputObj.graha["ketu"]);
- 
+  //drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
+  
+  drawCircle(ctx,0,0,0.25*AXIS_RANGE,"lightgray");
+  drawCircle(ctx,0,0,0.4*AXIS_RANGE,"lightgray");
+  DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.30*AXIS_RANGE,225,45,"lightgray");
+  DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.40*AXIS_RANGE,225,315,"brown"); //12
+  DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.40*AXIS_RANGE,315,45,"darkblue");//11
+
+  DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.30*AXIS_RANGE,315,135,"lightgray");
+  DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.40*AXIS_RANGE,315,45,"darkred"); //9
+  DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.40*AXIS_RANGE,45,135,"darkgreen");//8
+
+  DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.30*AXIS_RANGE,45,225,"lightgray");
+  DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.40*AXIS_RANGE,45,135,"magenta");//6
+  DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.40*AXIS_RANGE,135,225,"olive"); //5
+
+  DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.30*AXIS_RANGE,135,315,"lightgray");
+  DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.40*AXIS_RANGE,135,225,"violet"); //3
+  DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.40*AXIS_RANGE,225,315,"brown"); //2
+
+  DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,225,315,"purple"); //1
+  DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,135,225,"blue"); //4
+  DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,45,135,"green"); //7
+  DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,315,45,"violet"); //10
+
+  DrawSign(ctx,MQtoX(0.25,120),MQtoY(0.25,120),0.018*AXIS_RANGE,"capricorn");
   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
   console.log("Astro Object= " + str); // Logs output to dev tools console.
+
+}
+
+function DrawSign(ctx,x,y,r,image) {
+  ctx.save();
+  var img = document.getElementById(image);
+  var scaled = scale(x,y,r);
+  if(scaled.R <2) scaled.R = 2;
+  console.log(" x= " + scaled.X + " y = " + scaled.Y + " r =  " + scaled.R);
+  console.log(" img.width= " + img.width + "  img.height = " +  img.height);
+  console.log(" chart.width= " + chart.width+ "  chart.height = " +  chart.width);
+  var img_width = img.width * (scaled.R/60);
+  var img_height = img.height * (scaled.R/60);
+  
+  //ctx.drawImage(img, scaled.X, scaled.Y - img_height / 2,  img_width, img_height );
+  ctx.drawImage(img, scaled.X - img_width / 2, scaled.Y - img_height / 2,  img_width, img_height );
+  //ctx.arc(scaled.X, scaled.Y, scaled.R, (Math.PI/180)*0, (Math.PI/180)*360, false);
+  ctx.restore();
 
 }
 
@@ -1166,7 +1221,7 @@ function onMouseMove(evt) {
         var [R,Q] = [0,0];
         var [M1,Q1] = [0,0];
         //document.getElementById("Z1").value ="Z:" +Number(ZR).toFixed(2)+getSign(ZI)+Number(Math.abs(ZI)).toFixed(2)+"i";
-        document.getElementById("Z1").value ="H:" + house+ ' \u2220' +Number(m).toFixed(2) +' ' + Number(q).toFixed(2)+'\u00B0'+ "  X:" +Number(x).toFixed(0)+' Y:'+Number(y).toFixed(0) ;
+        document.getElementById("Z1").value ="H:" + house +' ' +Number(m).toFixed(2) + '\u2220'+ Number(q).toFixed(2)+'\u00B0'+ "  X:" +Number(x).toFixed(0)+' Y:'+Number(y).toFixed(0) ;
         switch (house) {
           case '1':
             signnum = astroObj.houses[house-1].signnum;
@@ -1679,7 +1734,6 @@ function clear_import_click() {
   inputObj.graha["saturn"] = "";
   inputObj.graha["rahu"] = "";
   inputObj.graha["ketu"] = "";
-
   updateUI(); 
 }
 
