@@ -262,6 +262,32 @@ var astroObj = {
               resetAll: function() { resetAll (this);}, // Resets all properties to its default values
               redrawAstro: redrawAstro, // repaints astroChart with the current values
               colorsHash: {},
+              // houses : [{
+              //   num: '1', signnum: '10', color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '2', signnum: '11',  color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '3', signnum: '12', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '4', signnum: '1', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '5', signnum: '2', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '6', signnum: '3', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '7', signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '8', signnum: '5', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '9', signnum: '6', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '10', signnum: '7', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '11', signnum: '8', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
+              //   }, {
+              //   num: '12', signnum: '9', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
+              //   }
+              //   ],
               houses : [{
                 num: '1', signnum: '10', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
                 }, {
@@ -582,7 +608,7 @@ function resize(canvas) {
       astroObj.hitCtx.canvas.height =chart.height = height;
       astroObj.hitCtx.canvas.style.width = width+'px';
       astroObj.hitCtx.canvas.style.height = height+'px';
-      retinaScale(chart, astroObj);  
+      //retinaScale(chart, astroObj);  
       resize_done = true;
   }
   
@@ -596,12 +622,6 @@ function resize(canvas) {
       astroObj.drawAstro(); // clears canvas too
   }
 
-function convertDegreeToCoordinates(house_num, degrees){
-  // give a house number and degrees  convert it to X Y number
-
-
-  return [X,Y]
-}
 
 function drawAstro(me) {
   if(resize_done == false) return;
@@ -742,7 +762,7 @@ function drawAstro(me) {
   placeText(ctx,MQtoX(0.5,45)+50,MQtoY(0.5,45)+0, me.houses[10].signnum,"center","middle");
   placeText(ctx,MQtoX(0.5,45)+0,MQtoY(0.5,45)+50, me.houses[11].signnum,"center","middle");
   DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth");
-  //drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
+  drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
   
   drawCircle(ctx,0,0,0.25*AXIS_RANGE,"lightgray");
   drawCircle(ctx,0,0,0.4*AXIS_RANGE,"lightgray");
@@ -766,9 +786,13 @@ function drawAstro(me) {
   DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,135,225,"blue"); //4
   DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,45,135,"green"); //7
   DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,315,45,"violet"); //10
-
-  DrawSign(ctx,MQtoX(0.25,120),MQtoY(0.25,120),0.018*AXIS_RANGE,"capricorn");
-  //DrawSignTranslate(ctx,-300/AXIS_RANGE,0,MQtoX(0.25,120),MQtoY(0.25,120),0.018*AXIS_RANGE,"capricorn");
+   var x1,y1;
+   [x1,y1] = degreeToXY(5,0.25,12);
+  console.log(" deg x= " + x1+ "  deg y = " + y1 + " r =  " + r);
+  DrawSign(ctx,x1,y1,0.018*AXIS_RANGE,"capricorn");
+  //var scaled1 = scale(356,356,1);
+  //alert(scaled1.X);
+ // DrawSign(ctx,0+scaled1.X,0+scaled1.Y,0.018*AXIS_RANGE,"capricorn");
   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
   console.log("Astro Object= " + str); // Logs output to dev tools console.
 
@@ -785,7 +809,7 @@ function drawAstro(me) {
 //   console.log(" chart.width= " + chart.width+ "  chart.height = " +  chart.width);
 //   var img_width = img.width * (scaled.R/60);
 //   var img_height = img.height * (scaled.R/60);
-//   ctx.translate(scaled1.X, scaled1.Y);
+//   ctx.transform(1,0,0,1,newx, newy);
 //   //ctx.translate(newx, newy);
 //   //ctx.drawImage(img, scaled.X, scaled.Y - img_height / 2,  img_width, img_height );
 //   ctx.drawImage(img, scaled.X - img_width / 2, scaled.Y - img_height / 2,  img_width, img_height );
@@ -983,17 +1007,38 @@ function scale(x,y,r) {
     };
 }
 
-function descale(X,Y) {
+function scalexy(x,y) {
   var  wby2 = chart.width/2;
   var  hby2 = chart.height/2;
-  var y = Y - Math.round(hby2);
+  // if (r !== null && r !== undefined && !isNaN(r)) 
+  // 		r = Math.round(r * parseFloat(wby2/AXIS_RANGE));
+  // else  r = 0;
+  if (x !== null && x !== undefined && !isNaN(x)) 
+  		x = Math.round(x * parseFloat(wby2/AXIS_RANGE));
+  else  x = 0;
+  if (y !== null && y !== undefined && !isNaN(y)) 
+  		y = Math.round(y * parseFloat(hby2/AXIS_RANGE));
+  else  y = 0;
+  x = x + Math.round(wby2);
   y=-y;
-  y= Math.round(y/parseFloat(hby2/AXIS_RANGE));
-  var x = X - Math.round(wby2);
-  x= Math.round(x/parseFloat(wby2/AXIS_RANGE));
+  y = y + Math.round(hby2);
   return {
-        x: x,
-        y: y
+        X: x,
+        Y: y,
+    };
+}
+
+function descale(x,y) {
+  var  wby2 = chart.width/2;
+  var  hby2 = chart.height/2;
+  var y1 = y - Math.round(hby2);
+  y1=-y1;
+  y1= Math.round(y1/parseFloat(hby2/AXIS_RANGE));
+  var x1 = x - Math.round(wby2);
+  x1= Math.round(x1/parseFloat(wby2/AXIS_RANGE));
+  return {
+        X: x1,
+        Y: y1
     };
 }
 
@@ -1212,6 +1257,126 @@ function getMaximumWidth (domNode) {
 
     };
 
+function degreeToXY(house,m,degree)
+{
+  var q1; var m1; var x1; var y1;
+  switch (house) {
+    case 1:
+      q1 = (degree +15)*3;
+      m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      //console.log( "x =" + x1 + " y =" + y1  );
+      var scaled = scalexy(x1,y1);
+      //console.log( "Back scaled x =" + scaled.X + " scaled y =" + scaled.Y  );
+      break;
+    case 2:
+      q1 = (degree +15)*3;
+      m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      x1 = x1 - 356;
+      y1 = y1 + 356;
+      break;  
+    case 3:
+      // signnum = astroObj.houses[house-1].signnum;
+      // [R,Q] = XYtoMQ( x + 356, y - 356, AXIS_RANGE,true);
+      // Q=Q/3;
+      // degree = Number(Q-45).toFixed(2);
+      q1 = (degree +45)*3;
+      m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      x1 = x1 - 356;
+      y1 = y1 + 356;
+      break;
+    case 4:
+      //degree = Number(q/3-45).toFixed(2);
+      q1 = (degree +45)*3;
+      var m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      break;
+    case 5:
+      // signnum = astroObj.houses[house-1].signnum;
+      // [R,Q] = XYtoMQ( x + 356, y + 356, AXIS_RANGE,true);
+      // Q=Q/3;
+      // degree = Number(Q-45).toFixed(2);
+      q1 = (degree +45)*3;
+      m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      x1 = x1 - 356;
+      y1 = y1 - 356;
+      break;  
+    case 6:
+      // signnum = astroObj.houses[house-1].signnum;
+      // [R,Q] = XYtoMQ( x + 356, y + 356, AXIS_RANGE,true);
+      // Q=Q/3;
+      // degree = Number((Q-75)).toFixed(2);
+      q1 = (degree +75)*3;
+      m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      x1 = x1 - 356;
+      y1 = y1 - 356;
+      break;
+    case 7:
+      q1 = (degree +75)*3;
+      var m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      break;
+    case 8:
+      // signnum = astroObj.houses[house-1].signnum;
+      // [R,Q] = XYtoMQ( x - 356, y + 356, AXIS_RANGE,true);
+      // Q=Q/3;
+      // degree = Number(Q-75).toFixed(2);
+      q1 = (degree +75)*3;
+      m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      x1 = x1 + 356;
+      y1 = y1 - 356;
+      break;
+    case 9:
+      // signnum = astroObj.houses[house-1].signnum;
+      // [R,Q] = XYtoMQ( x - 356, y + 356, AXIS_RANGE,false);
+      // Q=Q/3;
+      // degree = Number(Q+15).toFixed(2);
+      q1 = (degree - 15)*3;
+      m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      x1 = x1 + 356;
+      y1 = y1 - 356;
+      break;
+    case 10:
+      q1 = (degree -15)*3;
+      var m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      break;
+    case 11:
+      // signnum = astroObj.houses[house-1].signnum;
+      // [R,Q] = XYtoMQ( x - 356, y - 356, AXIS_RANGE,false);
+      // Q=Q/3;
+      // degree = Number(Q+15).toFixed(2);
+      q1 = (degree - 15 )*3;
+      m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      x1 = x1 + 356;
+      y1 = y1 + 356;
+      break;
+    case 12:
+      // signnum = astroObj.houses[house-1].signnum;
+      // [R,Q] = XYtoMQ( x - 356, y - 356, AXIS_RANGE,false);
+      // Q=Q/3;
+      // degree = Number(Q-15).toFixed(2);
+      q1 = (degree + 15)*3;
+      m1 = m;
+      [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+      x1 = x1 + 356;
+      y1 = y1 + 356;
+      break;
+    default:
+      
+      //console.log(`Sorry, we are out of ${house}.`);
+  }
+  return [x1,y1];
+}
+
+
 function onMouseMove(evt) {
    // var e = evt.originalEvent || evt;
      //var mouseX = e.clientX-astroObj.ctx.canvas.offsetLeft;  // this works
@@ -1224,8 +1389,8 @@ function onMouseMove(evt) {
     var house = getHouse(mouseX,mouseY);
     //console.log( "mouseX =" + mouseX + " mouseY =" + mouseY  );
     var descaled = descale(mouseX,mouseY);
-    var x= descaled.x;
-    var y=descaled.y;
+    var x= descaled.X;
+    var y=descaled.Y;
     var inAstro = InAstro(x,y)
     var signnum ;
     var degree;
@@ -1238,7 +1403,11 @@ function onMouseMove(evt) {
         // if(x < 0 && y >=0) q= 180-q; if(x<0 && y<0) q= -180-q;  // Adjust for the second and third quadrant
         // var m= r1/AXIS_RANGE; 
         // if(q<0) q = q+ 360; // make it show 360 degree
+        //console.log( "x =" + x + " y =" + y  );
         const [m,q] = XYtoMQ(x, y, AXIS_RANGE,true);
+        //console.log( "m =" + m + " q =" + q  );
+        //const [x1,y1] = MQtoXY(m,q,AXIS_RANGE);
+        //console.log( "x =" + x1 + " y =" + y1  );
         var [R,Q] = [0,0];
         var [M1,Q1] = [0,0];
         //document.getElementById("Z1").value ="Z:" +Number(ZR).toFixed(2)+getSign(ZI)+Number(Math.abs(ZI)).toFixed(2)+"i";
@@ -1246,9 +1415,17 @@ function onMouseMove(evt) {
         switch (house) {
           case '1':
             signnum = astroObj.houses[house-1].signnum;
+            var d = q/3-15;
             degree = Number(q/3-15).toFixed(2);
             longitude = Number(q/3-15+270).toFixed(2);
             document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
+            var q1 = (d +15)*3;
+            var m1 = m;
+            const [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
+            //console.log( "x =" + x1 + " y =" + y1  );
+            var scaled = scalexy(x1,y1);
+            //console.log( "Back scaled x =" + scaled.X + " scaled y =" + scaled.Y  );
+
             break;
           case '2':
             signnum = astroObj.houses[house-1].signnum;

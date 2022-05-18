@@ -294,6 +294,15 @@ function XYtoMQ(X, Y, AXIS_RANGE,show_360) {
     return [M,Q];
 }
 
+function MQtoXY(M, Q, AXIS_RANGE) {
+    //if(show_360 == true) if(Q<0) Q= Q+ 360; // make it show 360 degree
+    //return [M,Q];
+    X = M*Math.cos(Math.PI*Q/180)*AXIS_RANGE;
+    Y = M*Math.sin(Math.PI*Q/180)*AXIS_RANGE;
+    return [X,Y];
+
+}
+
 //Below is a simple jQuery plugin to catch a long click or long press:
 (function ($) {
   $.fn.longClick = function (callback, timeout) {
