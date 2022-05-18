@@ -485,7 +485,7 @@ function updateOutput(me){
       //signObj[i].position =  astroObj.houses[i].signnum
       //console.log("Position= " + signObj[i].position + " New Positon " + astroObj.houses[i].signnum )
     }
-    //Update zodiac signs
+    //get zodiac signs
     for(let i=0; i <12; i++){
       let id = "#sign"+(i+1);
       var signnum = astroObj.houses[i].signnum;
@@ -503,7 +503,7 @@ function updateOutput(me){
       // 
       var str = toTitleCase(signsArray[signnum-1] + '(' + signnum +')') + "Ruler:" + toTitleCase(signObj[index].ruledby);
       let len = str.length;
-      //14 is the maximum length
+      //28 is the maximum length
       for (let k=len; k<28; k++)str = str + '\u00A0';
       //str =str+ str.length;
       $(id).text(str);
@@ -786,15 +786,55 @@ function drawAstro(me) {
   DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,135,225,"blue"); //4
   DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,45,135,"green"); //7
   DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,315,45,"violet"); //10
-   var x1,y1;
-   [x1,y1] = degreeToXY(5,0.25,12);
-  console.log(" deg x= " + x1+ "  deg y = " + y1 + " r =  " + r);
-  DrawSign(ctx,x1,y1,0.018*AXIS_RANGE,"capricorn");
+  // var [x1,y1] = degreeToXY(3,0.25,12);
+  // console.log(" deg x= " + x1+ "  deg y = " + y1 + " r =  " + r);
+  //DrawSign(ctx,x1,y1,0.018*AXIS_RANGE,"capricorn");
+  DrawAllSigns(ctx);
+  DrawAllGrahas(ctx);
   //var scaled1 = scale(356,356,1);
   //alert(scaled1.X);
  // DrawSign(ctx,0+scaled1.X,0+scaled1.Y,0.018*AXIS_RANGE,"capricorn");
   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
   console.log("Astro Object= " + str); // Logs output to dev tools console.
+
+}
+
+function DrawAllSigns(ctx){
+  //astroObj.houses[0].signnum 
+  //get assendant degree
+  let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
+  var x1, y1;
+  for(let i=0; i <12; i++){
+    //let id = "#sign"+(i+1);
+    var signnum = astroObj.houses[i].signnum;
+    var element;
+    //method returns the index (position) of the first element that passes a test.
+    let index = signObj.findIndex( element => element.name === signsArray[signnum-1]);
+    //let housenum = signObj.findIndex( element => element.num === signsArray[signnum-1]);
+    let housenum = astroObj.houses[i].num;
+    //console.log("INDEX: " + index + " HOUSENUM: " + housenum +  " signnum "+ signnum+ " Name: " + signsArray[signnum-1] + " Position: " + signObj[index].position);
+    if(ascendant_degree>= 20.00) ascendant_degree = 20.00; // avoid hitting the boudaries
+    if(ascendant_degree<= 10.00) ascendant_degree = 10.00;
+    [x1,y1] = degreeToXY(i+1,0.2,ascendant_degree);
+    //console.log(" deg x= " + x1+ "  deg y = " + y1);
+    DrawSign(ctx,x1,y1,0.016*AXIS_RANGE, signsArray[signnum-1]);
+    //console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby );
+  }
+}
+
+function DrawAllGrahas(){
+  let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
+  var x1, y1;
+ // planetsArray
+  for(let i=1; i <planetsArray.length; i++){
+    console.log("PLANETS " + planetsArray[i]);
+    // const degree = parseFloat(outputObj.planetsArray[1].degree);
+    // const house = parseInt(outputObj.planetsArray[i].house);
+    // if(degree>= 20.00) degree = 20.00; // avoid hitting the boudaries
+    // if(degree<= 10.00) degree = 10.00;
+    // [x1,y1] = degreeToXY(house,0.4,degree);
+    // DrawSign(ctx,x1,y1,0.016*AXIS_RANGE, planetsArray[i]);
+  }
 
 }
 
@@ -829,8 +869,8 @@ function DrawSign(ctx,x,y,r,image) {
   var img_width = img.width * (scaled.R/60);
   var img_height = img.height * (scaled.R/60);
   
-  //ctx.drawImage(img, scaled.X, scaled.Y - img_height / 2,  img_width, img_height );
-  ctx.drawImage(img, scaled.X - img_width / 2, scaled.Y - img_height / 2,  img_width, img_height );
+  //ctx.drawImage(img, scaled.X, scaled.Y - img_height / 2,  img_width, img_height ); // top left
+  ctx.drawImage(img, scaled.X - img_width / 2, scaled.Y - img_height / 2,  img_width, img_height ); // center point
   //ctx.arc(scaled.X, scaled.Y, scaled.R, (Math.PI/180)*0, (Math.PI/180)*360, false);
   ctx.restore();
 
@@ -1260,7 +1300,7 @@ function getMaximumWidth (domNode) {
 function degreeToXY(house,m,degree)
 {
   var q1; var m1; var x1; var y1;
-  switch (house) {
+  switch (parseInt(house)) {
     case 1:
       q1 = (degree +15)*3;
       m1 = m;
