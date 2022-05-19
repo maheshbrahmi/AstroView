@@ -761,7 +761,7 @@ function drawAstro(me) {
   placeText(ctx,50,0,me.houses[9].signnum,"center","middle");
   placeText(ctx,MQtoX(0.5,45)+50,MQtoY(0.5,45)+0, me.houses[10].signnum,"center","middle");
   placeText(ctx,MQtoX(0.5,45)+0,MQtoY(0.5,45)+50, me.houses[11].signnum,"center","middle");
-  DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth");
+  DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth_img");
   drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
   
   drawCircle(ctx,0,0,0.25*AXIS_RANGE,"lightgray");
@@ -822,18 +822,26 @@ function DrawAllSigns(ctx){
   }
 }
 
-function DrawAllGrahas(){
-  let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
-  var x1, y1;
+function DrawAllGrahas(ctx){
+  //let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
+  var x1, y1, degree, planet, house;
  // planetsArray
-  for(let i=1; i <planetsArray.length; i++){
-    console.log("PLANETS " + planetsArray[i]);
+  for(let i=1; i <planetsArray.length-1; i++){
+    
+    degree = parseFloat(outputObj[ planetsArray[i]].degree);
+    planet = planetsArray[i];
+    house = outputObj[ planetsArray[i]].house;
+    console.log("PLANETS " + planet, "DEGREE " + degree, "HOUSE " + house);
+    
     // const degree = parseFloat(outputObj.planetsArray[1].degree);
     // const house = parseInt(outputObj.planetsArray[i].house);
-    // if(degree>= 20.00) degree = 20.00; // avoid hitting the boudaries
-    // if(degree<= 10.00) degree = 10.00;
-    // [x1,y1] = degreeToXY(house,0.4,degree);
-    // DrawSign(ctx,x1,y1,0.016*AXIS_RANGE, planetsArray[i]);
+     if(degree>= 25.00) degree = 25.00; // avoid hitting the boudaries
+     if(degree<= 5.00) degree = 5.00;
+     [x1,y1] = degreeToXY(house,0.32,degree);
+     console.log(" x= " + x1 + " y = " + y1 );
+    //  planet = "moon";
+     planet = planet+"_img";
+     DrawSign(ctx,x1,y1,0.1*AXIS_RANGE, planet);
   }
 
 }
@@ -1590,44 +1598,44 @@ function onMouseClick(e) {
     var house = getHouse(mouseX,mouseY);
     //console.log('house number: ' + house);
     const signnum = astroObj.houses[house-1].signnum;
-    var msg1 = "House Num: " + house + "\n" + "House Sign: " + toTitleCase(signsArray[signnum-1]+'('+signnum+')');
+    var msg1 = "House Num: " + house + "\n" + "House Sign: " + toTitleCase(signsArray[signnum-1]+'('+signnum+')')+ "\n" + "Ruler: " + toTitleCase(signObj[signnum-1].ruledby);
     var msg2 
     switch (house) {
       case '1':
-        msg2 = "Self"
+        msg2 = "Signifies Self"
         break;
       case '2':
-        msg2 = "Wealth"
+        msg2 = "Signifies Wealth"
         break;
       case '3':
-        msg2 = "Sibling"
+        msg2 = "Signifies Sibling"
         break;
       case '4':
-        msg2 = "Mother,land"
+        msg2 = "Signifies Mother,land"
         break;
       case '5':
-        msg2 = "Child"
+        msg2 = "Signifies Child"
         break;
       case '6':
-        msg2 = "Enemies,service"
+        msg2 = "Signifies Enemies,service"
         break;
       case '7':
-        msg2 = "Spouse,others"
+        msg2 = "Signifies Spouse,others"
         break;
       case '8':
-        msg2 = "Losses,occult"
+        msg2 = "Signifies Losses,occult"
         break;
       case '9':
-        msg2 = "Father,guru"
+        msg2 = "Signifies Father,guru"
         break;
       case '10':
-        msg2 = "Career,foreign"
+        msg2 = "Signifies Career,foreign"
         break;
       case '11':
-        msg2 = "Gain,spending"
+        msg2 = "Signifies Gain,spending"
         break;
       case '12':
-        msg2 = "Moksha"
+        msg2 = "Signifies Moksha"
         break;
       default:
         console.log(`Sorry, we are out of ${house}.`);
