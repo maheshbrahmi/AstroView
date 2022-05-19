@@ -761,7 +761,7 @@ function drawAstro(me) {
   placeText(ctx,50,0,me.houses[9].signnum,"center","middle");
   placeText(ctx,MQtoX(0.5,45)+50,MQtoY(0.5,45)+0, me.houses[10].signnum,"center","middle");
   placeText(ctx,MQtoX(0.5,45)+0,MQtoY(0.5,45)+50, me.houses[11].signnum,"center","middle");
-  DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth_img");
+  DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth_img1");
   drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
   
   drawCircle(ctx,0,0,0.25*AXIS_RANGE,"lightgray");
@@ -812,12 +812,12 @@ function DrawAllSigns(ctx){
     let index = signObj.findIndex( element => element.name === signsArray[signnum-1]);
     //let housenum = signObj.findIndex( element => element.num === signsArray[signnum-1]);
     let housenum = astroObj.houses[i].num;
-    //console.log("INDEX: " + index + " HOUSENUM: " + housenum +  " signnum "+ signnum+ " Name: " + signsArray[signnum-1] + " Position: " + signObj[index].position);
-    if(ascendant_degree>= 20.00) ascendant_degree = 20.00; // avoid hitting the boudaries
-    if(ascendant_degree<= 10.00) ascendant_degree = 10.00;
-    [x1,y1] = degreeToXY(i+1,0.2,ascendant_degree);
+    console.log("INDEX: " + index + " HOUSENUM: " + housenum +  " signnum "+ signnum+ " Name: " + signsArray[signnum-1] + " Position: " + signObj[index].position);
+    if(ascendant_degree>= 24.00) ascendant_degree = 24.00; // avoid hitting the boudaries
+    if(ascendant_degree<= 5.00) ascendant_degree = 5.00;
+    [x1,y1] = degreeToXY(i+1,0.15,ascendant_degree);
     //console.log(" deg x= " + x1+ "  deg y = " + y1);
-    DrawSign(ctx,x1,y1,0.016*AXIS_RANGE, signsArray[signnum-1]);
+    DrawSign(ctx,x1,y1,0.15*AXIS_RANGE, signsArray[signnum-1]);
     //console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby );
   }
 }
@@ -826,7 +826,7 @@ function DrawAllGrahas(ctx){
   //let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
   var x1, y1, degree, planet, house;
  // planetsArray
-  for(let i=1; i <planetsArray.length-1; i++){
+  for(let i=1; i <planetsArray.length; i++){
     
     degree = parseFloat(outputObj[ planetsArray[i]].degree);
     planet = planetsArray[i];
@@ -835,13 +835,16 @@ function DrawAllGrahas(ctx){
     
     // const degree = parseFloat(outputObj.planetsArray[1].degree);
     // const house = parseInt(outputObj.planetsArray[i].house);
-     if(degree>= 25.00) degree = 25.00; // avoid hitting the boudaries
-     if(degree<= 5.00) degree = 5.00;
-     [x1,y1] = degreeToXY(house,0.32,degree);
+     if(degree>= 26.00) degree = 26.00; // avoid hitting the boudaries
+     if(degree<= 4.00) degree = 4.00;
+     [x1,y1] = degreeToXY(house,0.4,degree);
      console.log(" x= " + x1 + " y = " + y1 );
     //  planet = "moon";
      planet = planet+"_img";
-     DrawSign(ctx,x1,y1,0.1*AXIS_RANGE, planet);
+     DrawSign(ctx,x1,y1,0.2*AXIS_RANGE, planet);
+     if(outputObj[ planetsArray[i]].is_exhalted) DrawSign(ctx,x1,y1,0.2*AXIS_RANGE, "exhalted");
+     else if (outputObj[ planetsArray[i]].is_debilitated) DrawSign(ctx,x1,y1,0.2*AXIS_RANGE, "debilitated");
+     else if (outputObj[ planetsArray[i]].is_ownsign) DrawSign(ctx,x1,y1,0.2*AXIS_RANGE, "ownhouse");
   }
 
 }
