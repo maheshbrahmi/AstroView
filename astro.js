@@ -791,11 +791,30 @@ function drawAstro(me) {
   //DrawSign(ctx,x1,y1,0.018*AXIS_RANGE,"capricorn");
   DrawAllSigns(ctx);
   DrawAllGrahas(ctx);
-  //var scaled1 = scale(356,356,1);
-  //alert(scaled1.X);
- // DrawSign(ctx,0+scaled1.X,0+scaled1.Y,0.018*AXIS_RANGE,"capricorn");
-  str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
-  console.log("Astro Object= " + str); // Logs output to dev tools console.
+
+//   let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
+//   ascendant_degree = 0;
+//   var x1, y1;
+//   var i=11
+//   var radius = 0.15;
+//   //for(let i=0; i <12; i++){
+//     //let id = "#sign"+(i+1);
+//     var signnum = astroObj.houses[i].signnum;
+//     var element;
+//     let index = signObj.findIndex( element => element.name === signsArray[signnum-1]);
+//     let housenum = astroObj.houses[i].num;
+//     console.log("INDEX: " + index + " HOUSENUM: " + housenum +  " signnum "+ signnum+ " Name: " + signsArray[signnum-1] + " Position: " + signObj[index].position);
+//     // if(ascendant_degree>= 24.00) ascendant_degree = 24.00; // avoid hitting the boudaries
+//     // if(ascendant_degree<= 5.00) ascendant_degree = 5.00;
+//     [x1,y1] = degreeToXY(i+1,radius,ascendant_degree);
+//     //console.log(" deg x= " + x1+ "  deg y = " + y1);
+//     DrawSign(ctx,x1,y1,0.15*AXIS_RANGE, signsArray[signnum-1]);
+
+//   //var scaled1 = scale(356,356,1);
+//   //alert(scaled1.X);
+//  // DrawSign(ctx,0+scaled1.X,0+scaled1.Y,0.018*AXIS_RANGE,"capricorn");
+//   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
+//   console.log("Astro Object= " + str); // Logs output to dev tools console.
 
 }
 
@@ -813,8 +832,8 @@ function DrawAllSigns(ctx){
     //let housenum = signObj.findIndex( element => element.num === signsArray[signnum-1]);
     let housenum = astroObj.houses[i].num;
     console.log("INDEX: " + index + " HOUSENUM: " + housenum +  " signnum "+ signnum+ " Name: " + signsArray[signnum-1] + " Position: " + signObj[index].position);
-    if(ascendant_degree>= 24.00) ascendant_degree = 24.00; // avoid hitting the boudaries
-    if(ascendant_degree<= 5.00) ascendant_degree = 5.00;
+    if(ascendant_degree>= 26.00) ascendant_degree = 26.00; // avoid hitting the boudaries
+    if(ascendant_degree<= 4.00) ascendant_degree = 4.00;
     [x1,y1] = degreeToXY(i+1,0.15,ascendant_degree);
     //console.log(" deg x= " + x1+ "  deg y = " + y1);
     DrawSign(ctx,x1,y1,0.15*AXIS_RANGE, signsArray[signnum-1]);
@@ -1469,7 +1488,7 @@ function onMouseMove(evt) {
             var d = q/3-15;
             degree = Number(q/3-15).toFixed(2);
             longitude = Number(q/3-15+270).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0 '  + "Ruler " + toTitleCase(signObj[signnum-1].ruledby);
             var q1 = (d +15)*3;
             var m1 = m;
             const [x1,y1] = MQtoXY(m1,q1,AXIS_RANGE);
@@ -1484,7 +1503,7 @@ function onMouseMove(evt) {
             Q=Q/3;
             degree = Number(Q-15).toFixed(2);
             longitude = Number(Q-15+300).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0 '  + "Ruler " + toTitleCase(signObj[signnum-1].ruledby); //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;  
           case '3':
             signnum = astroObj.houses[house-1].signnum;
@@ -1492,13 +1511,13 @@ function onMouseMove(evt) {
             Q=Q/3;
             degree = Number(Q-45).toFixed(2);
             longitude = Number(Q-45+330).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; 
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0 ' + "Ruler " + toTitleCase(signObj[signnum-1].ruledby); 
             break;
           case '4':
             signnum = astroObj.houses[house-1].signnum;
             degree = Number(q/3-45).toFixed(2);
             longitude = Number(q/3-45).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0 ' + "Ruler " + toTitleCase(signObj[signnum-1].ruledby);
             break;
           case '5':
             signnum = astroObj.houses[house-1].signnum;
@@ -1506,7 +1525,7 @@ function onMouseMove(evt) {
             Q=Q/3;
             degree = Number(Q-45).toFixed(2);
             longitude = Number(Q-45+30).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0 ' + "Ruler " + toTitleCase(signObj[signnum-1].ruledby); //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;  
           case '6':
             signnum = astroObj.houses[house-1].signnum;
@@ -1514,13 +1533,13 @@ function onMouseMove(evt) {
             Q=Q/3;
             degree = Number((Q-75)).toFixed(2);
             longitude = Number(Q-75+ 60.00).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0 '  + "Ruler " + toTitleCase(signObj[signnum-1].ruledby); //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '7':
             signnum = astroObj.houses[house-1].signnum;
             degree = Number((q/3)-75).toFixed(2);
             longitude = Number((q/3)+15).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0';
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0 ' + "Ruler " + toTitleCase(signObj[signnum-1].ruledby);
             break;
           case '8':
             signnum = astroObj.houses[house-1].signnum;
@@ -1528,7 +1547,7 @@ function onMouseMove(evt) {
             Q=Q/3;
             degree = Number(Q-75).toFixed(2);
             longitude = Number((Q-75)+ 120.00).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0 '  + "Ruler " + toTitleCase(signObj[signnum-1].ruledby); //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '9':
             signnum = astroObj.houses[house-1].signnum;
@@ -1536,7 +1555,7 @@ function onMouseMove(evt) {
             Q=Q/3;
             degree = Number(Q+15).toFixed(2);
             longitude = Number(Q+15+150).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0 ' + "Ruler " + toTitleCase(signObj[signnum-1].ruledby); //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '10':
             [M1,Q1] = XYtoMQ(x, y, AXIS_RANGE,false);
@@ -1544,7 +1563,7 @@ function onMouseMove(evt) {
             Q1=Q1/3;
             degree = Number(Q1+15).toFixed(2);
             longitude = Number(Q1+15+180).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0';
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0 ' + "Ruler " + toTitleCase(signObj[signnum-1].ruledby);
             break;
           case '11':
             signnum = astroObj.houses[house-1].signnum;
@@ -1552,7 +1571,7 @@ function onMouseMove(evt) {
             Q=Q/3;
             degree = Number(Q+15).toFixed(2);
             longitude = Number(Q+15+210).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" + longitude+'\u00B0 ' + "Ruler " + toTitleCase(signObj[signnum-1].ruledby); //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           case '12':
             signnum = astroObj.houses[house-1].signnum;
@@ -1560,7 +1579,7 @@ function onMouseMove(evt) {
             Q=Q/3;
             degree = Number(Q-15).toFixed(2);
             longitude = Number(Q-15+240).toFixed(2);
-            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0'; //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
+            document.getElementById("L1").value = toTitleCase(signsArray[signnum-1])+'('+signnum+')'+" Deg:" + degree+'\u00B0'+" Long:" +longitude+'\u00B0 ' + "Ruler " + toTitleCase(signObj[signnum-1].ruledby); //+" XY:" + X + ' ' +Y +" RQ:" + Number(R).toFixed(2)+ ' ' + Number(Q).toFixed(2);
             break;
           default:
             //console.log(`Sorry, we are out of ${house}.`);
