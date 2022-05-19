@@ -509,13 +509,15 @@ function updateOutput(me){
       $(id).text(str);
     }
     //Updates planets in the output form
+    var house, degree;
     for (let graha in outputObj){
         house = outputObj[graha].house;
+        degree = parseInt(outputObj[graha].degree);
         if(graha == "ascendant"){
-          house1_str = "Ascendant" +' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' ;
+          house1_str = "Ascendant" +' ('+degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' ;
         }
         else {
-          house1_str = toTitleCase(graha)+' ('+outputObj[graha].degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' ;
+          house1_str = toTitleCase(graha)+' ('+degree +'\xB0'+outputObj[graha].mins+'\u2032'+outputObj[graha].secs+'\u2033'+')' ;
           if(outputObj[graha].is_ownsign) house1_str = house1_str + " Ownsign";
           if(outputObj[graha].is_retrograde) house1_str = house1_str + " Retrogate";
           if(outputObj[graha].is_combust) house1_str = house1_str + " Combust";
