@@ -765,10 +765,10 @@ function drawAstro(me) {
   placeText(ctx,MQtoX(0.5,45)+0,MQtoY(0.5,45)+50, me.houses[11].signnum,"center","middle");
   DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth_img1");
   //place East, West, North, South
-  DrawImage(ctx,MQtoX(1/Math.SQRT2,90),MQtoY(1/Math.SQRT2,80)+100,0.025*AXIS_RANGE,"east");
-  DrawImage(ctx,MQtoX(1/Math.SQRT2,270),MQtoY(1/Math.SQRT2,270)-90,0.025*AXIS_RANGE,"west");
-  DrawImage(ctx,MQtoX(1/Math.SQRT2,180)-80,MQtoY(1/Math.SQRT2,180),0.025*AXIS_RANGE,"north");
-  DrawImage(ctx,MQtoX(1/Math.SQRT2,0)+80,MQtoY(1/Math.SQRT2,0),0.025*AXIS_RANGE,"south");
+  DrawImage(ctx,MQtoX(1/Math.SQRT2,90),MQtoY(1/Math.SQRT2,80)+120,0.022*AXIS_RANGE,"east");
+  DrawImage(ctx,MQtoX(1/Math.SQRT2,270),MQtoY(1/Math.SQRT2,270)-110,0.022*AXIS_RANGE,"west");
+  DrawImage(ctx,MQtoX(1/Math.SQRT2,180)-100,MQtoY(1/Math.SQRT2,180),0.022*AXIS_RANGE,"north");
+  DrawImage(ctx,MQtoX(1/Math.SQRT2,0)+100,MQtoY(1/Math.SQRT2,0),0.022*AXIS_RANGE,"south");
   //drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
   // drawCircle(ctx,0,0,0.25*AXIS_RANGE,"lightgray");
   // drawCircle(ctx,0,0,0.4*AXIS_RANGE,"lightgray");
