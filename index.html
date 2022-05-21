@@ -147,7 +147,7 @@
             <!-- <div class="hidden-xs"> -->
                 <li class="hidden-xs"><a href="#" onclick ="load_click()" >Load File</a></li> 
                 <li class="hidden-xs" ><a href="#" onclick ="save_click()" >Save File</a></li>
-                <li class="hidden-xs"><a href="#" onclick ="saveCanvas_click()" >Capture Chart</a></li> 
+                <li class="hidden-xs"><a href="#" onclick ="saveCanvas_click()" >Capture Chart Image</a></li> 
                 <!-- <li class="hidden-xs"><a href="#">Import</a></li>
                 <li class="hidden-xs" ><a href="#">Export</a></li> -->
             <!-- </div> -->
@@ -304,7 +304,7 @@
 
                 <div class="panel panel-info" >
                     <div style="padding: 8px;" class="panel-heading">
-                        <h5  class="panel-title">HOUSES</h5>
+                        <h5  class="panel-title">Bhava(Houses)</h5>
                     </div>
                     <div class="panel-body">
                         <div class="input-group input-group-sm readonly">
@@ -407,6 +407,10 @@
                     <img id="pisces"  src="img/pisces.png" alt="Pisces">
                     <img id="exhalted"  src="img/exhalted.svg" alt="Happy">
                     <img id="debilitated"  src="img/debilitated.png" alt="Sad">
+                    <img id="east"  src="img/east.png" alt="East">
+                    <img id="west"  src="img/west.png" alt="West">
+                    <img id="north"  src="img/north.png" alt="North">
+                    <img id="south"  src="img/south.png" alt="South">
                     <!-- <img id="normal"  src="img/skeptic.png" alt="Skeptic"> -->
                     <img id="ownhouse"  src="img/ownhouse.svg" alt="Sanguine">
                 </div>
@@ -426,9 +430,8 @@
 
 <audio id="audio" src="img/button-3.wav" autostart="false"> </audio>
  <!-- ************************MODAL OPTION DIALOG BEGINS************************************************************************************** -->
-    <div id="optionsModal" class="modal fade" role="dialog">
+    <!-- <div id="optionsModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-sm">
-            <!-- Options/Settings Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -496,13 +499,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 <!-- ************************MODAL OPTION DIALOG ENDS************************************************************************************** -->
 
 <!-- ************************MODAL COMPONENT DIALOG BEGINS************************************************************************************** -->
-    <div id="componentsModal" class="modal fade" role="dialog">
+    <!-- <div id="componentsModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-sm">
-            <!-- Options/Settings Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -532,10 +534,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- ************************MODAL COMPONENT DIALOG ENDS************************************************************************************** -->
-  <input id="file-input" type="file" name="name" style="display: none;" />     <!-- this for helping with file load -->
-  <input id="file-input1" type="file" name="name" style="display: none;" />     <!-- this for helping with gam export -->
+  <input id="file-input" type="file" name="name" style="display: none;" accept=".json"/>     <!-- this for helping with file load -->
+  <input id="file-input1" type="file" name="name" style="display: none;" accept=".txt" />     <!-- this for helping with txt export -->
 
 <script src="astro.js"></script>
 </body>

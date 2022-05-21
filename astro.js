@@ -430,8 +430,8 @@ function updateGraha(graha_name){  // calculate postiions from Logitude
     // Digbala(Directional Strength), is another thing to look to know if a particular planet has extra strength.
     // 1) Jupiter or  Mercury in first house is a source Digbala
     // 2) Moon or Venus in Fourth House is a source of Digbala
-    // 3)Saturn in the seventh house is a source of Digbala
-    // 4)Mars or Sun in 10 house is a source of Digbala
+    // 3) Saturn in the seventh house is a source of Digbala
+    // 4) Mars or Sun in 10 house is a source of Digbala
     if((graha_name == "jupiter" ||  graha_name == "mercury") &&  house == 1)outputObj[graha_name].is_digbala = true;
     else if ( (graha_name == "moon" ||  graha_name == "venus") &&  house == 4)outputObj[graha_name].is_digbala = true;
     else if ( (graha_name == "saturn") &&  house == 7)outputObj[graha_name].is_digbala = true;
@@ -764,7 +764,11 @@ function drawAstro(me) {
   placeText(ctx,MQtoX(0.5,45)+50,MQtoY(0.5,45)+0, me.houses[10].signnum,"center","middle");
   placeText(ctx,MQtoX(0.5,45)+0,MQtoY(0.5,45)+50, me.houses[11].signnum,"center","middle");
   DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth_img1");
- 
+  //place East, West, North, South
+  DrawImage(ctx,MQtoX(1/Math.SQRT2,90),MQtoY(1/Math.SQRT2,80)+100,0.025*AXIS_RANGE,"east");
+  DrawImage(ctx,MQtoX(1/Math.SQRT2,270),MQtoY(1/Math.SQRT2,270)-90,0.025*AXIS_RANGE,"west");
+  DrawImage(ctx,MQtoX(1/Math.SQRT2,180)-80,MQtoY(1/Math.SQRT2,180),0.025*AXIS_RANGE,"north");
+  DrawImage(ctx,MQtoX(1/Math.SQRT2,0)+80,MQtoY(1/Math.SQRT2,0),0.025*AXIS_RANGE,"south");
   //drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
   // drawCircle(ctx,0,0,0.25*AXIS_RANGE,"lightgray");
   // drawCircle(ctx,0,0,0.4*AXIS_RANGE,"lightgray");
@@ -860,14 +864,14 @@ function DrawAllGrahas(ctx){
     if(planet=="sun")
     {
       distance = 0.25;
-      size = 0.75*multiplier;
-      alpha=0.6;
+      size = 0.65*multiplier;
+      alpha=0.9;
       
     }
     else if (planet=="moon"){
       distance = 0.12;
       size = 0.4*multiplier;
-      alpha=0.6;
+      alpha=0.8;
       
     }
     else if (planet=="mercury"){
@@ -888,7 +892,7 @@ function DrawAllGrahas(ctx){
     else if (planet=="jupiter"){
       distance = 0.20;
       size = 0.6*multiplier;
-      alpha=0.6;
+      alpha=0.7;
     }
     else if (planet=="saturn"){
       distance = 0.270;
@@ -898,7 +902,7 @@ function DrawAllGrahas(ctx){
     else if (planet=="rahu" || planet =="ketu"){
       distance = 0.12;
       size = 0.4*multiplier;
-      alpha=0.6;
+      alpha=0.5;
     }
     else {
       distance = 0.3;
@@ -1213,7 +1217,8 @@ function placeText(ctx,x,y,txt,textAlign,textBaseline){
 	  ctx.beginPath();
 	  var ratio = fontSize / fontBase;   // calc ratio
     var size = chart.width * ratio;   // get font size based on current width 
-  	ctx.font = (size|0) + 'px System';
+  	ctx.font = 'bold ' + (size|0) + 'px System';
+    //ctx.font = 'bold' +  ' 12pt' +  ' Courier';
   	ctx.fillStyle = "black";
     ctx.textAlign = textAlign;  
 	  ctx.textBaseline = textBaseline;
@@ -1812,12 +1817,18 @@ function new_click() {
 }
 
 function save_click() {
-    saveJSONtoFile(inputObj, "save.json");
+    var  name = inputObj.name;
+    name = name.replace(/\s/g, '')
+    name= name +".json";
+    saveJSONtoFile(inputObj, name);
 }
 
 function saveCanvas_click(){
     astroObj.ctx.canvas.toBlob(function(blob) {
-        saveAs(blob, "AstroView.png");
+      var  name = inputObj.name;
+      name = name.replace(/\s/g, '')
+      name= name +".png";
+      saveAs(blob, name);
     });
 }
 
