@@ -764,33 +764,35 @@ function drawAstro(me) {
   placeText(ctx,MQtoX(0.5,45)+50,MQtoY(0.5,45)+0, me.houses[10].signnum,"center","middle");
   placeText(ctx,MQtoX(0.5,45)+0,MQtoY(0.5,45)+50, me.houses[11].signnum,"center","middle");
   DrawImage(ctx,0,0,0.02*AXIS_RANGE,"earth_img1");
-  drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
-  
-  drawCircle(ctx,0,0,0.25*AXIS_RANGE,"lightgray");
-  drawCircle(ctx,0,0,0.4*AXIS_RANGE,"lightgray");
-  DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.30*AXIS_RANGE,225,45,"lightgray");
-  DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.40*AXIS_RANGE,225,315,"brown"); //12
-  DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.40*AXIS_RANGE,315,45,"darkblue");//11
+ 
+  //drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
+  // drawCircle(ctx,0,0,0.25*AXIS_RANGE,"lightgray");
+  // drawCircle(ctx,0,0,0.4*AXIS_RANGE,"lightgray");
+  // DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.30*AXIS_RANGE,225,45,"lightgray");
+  // DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.40*AXIS_RANGE,225,315,"brown"); //12
+  // DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.40*AXIS_RANGE,315,45,"darkblue");//11
 
-  DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.30*AXIS_RANGE,315,135,"lightgray");
-  DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.40*AXIS_RANGE,315,45,"darkred"); //9
-  DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.40*AXIS_RANGE,45,135,"darkgreen");//8
+  // DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.30*AXIS_RANGE,315,135,"lightgray");
+  // DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.40*AXIS_RANGE,315,45,"darkred"); //9
+  // DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.40*AXIS_RANGE,45,135,"darkgreen");//8
 
-  DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.30*AXIS_RANGE,45,225,"lightgray");
-  DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.40*AXIS_RANGE,45,135,"magenta");//6
-  DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.40*AXIS_RANGE,135,225,"olive"); //5
+  // DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.30*AXIS_RANGE,45,225,"lightgray");
+  // DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.40*AXIS_RANGE,45,135,"magenta");//6
+  // DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.40*AXIS_RANGE,135,225,"olive"); //5
 
-  DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.30*AXIS_RANGE,135,315,"lightgray");
-  DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.40*AXIS_RANGE,135,225,"violet"); //3
-  DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.40*AXIS_RANGE,225,315,"brown"); //2
+  // DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.30*AXIS_RANGE,135,315,"lightgray");
+  // DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.40*AXIS_RANGE,135,225,"violet"); //3
+  // DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.40*AXIS_RANGE,225,315,"brown"); //2
 
-  DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,225,315,"purple"); //1
-  DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,135,225,"blue"); //4
-  DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,45,135,"green"); //7
-  DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,315,45,"violet"); //10
+  // DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,225,315,"purple"); //1
+  // DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,135,225,"blue"); //4
+  // DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,45,135,"green"); //7
+  // DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,315,45,"violet"); //10
   // var [x1,y1] = degreeToXY(3,0.25,12);
   // console.log(" deg x= " + x1+ "  deg y = " + y1 + " r =  " + r);
   //DrawSign(ctx,x1,y1,0.018*AXIS_RANGE,"capricorn");
+  //ctx.globalAlpha = 0.4;
+  // ctx.globalCompositeOperation = "lighter";
   DrawAllSigns(ctx);
   DrawAllGrahas(ctx);
 
@@ -836,7 +838,7 @@ function DrawAllSigns(ctx){
     console.log("INDEX: " + index + " HOUSENUM: " + housenum +  " signnum "+ signnum+ " Name: " + signsArray[signnum-1] + " Position: " + signObj[index].position);
     if(ascendant_degree>= 26.00) ascendant_degree = 26.00; // avoid hitting the boudaries
     if(ascendant_degree<= 4.00) ascendant_degree = 4.00;
-    [x1,y1] = degreeToXY(i+1,0.12,ascendant_degree);
+    [x1,y1] = degreeToXY(i+1,0.11,ascendant_degree);
     //console.log(" deg x= " + x1+ "  deg y = " + y1);
     DrawSign(ctx,x1,y1,0.15*AXIS_RANGE, signsArray[signnum-1]);
     //console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby );
@@ -845,66 +847,80 @@ function DrawAllSigns(ctx){
 
 function DrawAllGrahas(ctx){
   //let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
-  var x1, y1, degree, planet, house, distance, size;
+  var x1, y1, degree, planet, house, distance, size,alpha,multiplier;
  // planetsArray
   for(let i=1; i <planetsArray.length; i++){
     
     degree = parseFloat(outputObj[ planetsArray[i]].degree);
     planet = planetsArray[i];
     house = outputObj[ planetsArray[i]].house;
+    alpha=1;
+    multiplier = 0.5;
     console.log("PLANETS " + planet, "DEGREE " + degree, "HOUSE " + house);
     if(planet=="sun")
     {
-      distance = 0.3;
-      size = 0.3;
+      distance = 0.25;
+      size = 0.75*multiplier;
+      alpha=0.6;
+      
     }
     else if (planet=="moon"){
       distance = 0.12;
-      size = 0.1;
+      size = 0.4*multiplier;
+      alpha=0.6;
+      
     }
     else if (planet=="mercury"){
-      distance = 0.3;
-      size = 0.1;
+      distance = 0.15;
+      size = 0.3*multiplier;
+      alpha=0.6;
     }
     else if (planet=="venus"){
-      distance = 0.3;
-      size = 0.18;
+      distance = 0.175;
+      size = 0.5*multiplier;
+      alpha=0.6;
     }
     else if (planet=="mars"){
-      distance = 0.2;
-      size = 0.15;
+      distance = 0.125;
+      size = 0.4*multiplier;
+      alpha=0.6;
     }
     else if (planet=="jupiter"){
-      distance = 0.3;
-      size = 0.25;
+      distance = 0.20;
+      size = 0.6*multiplier;
+      alpha=0.6;
     }
     else if (planet=="saturn"){
-      distance = 0.3;
-      size = 0.23;
+      distance = 0.270;
+      size = 0.55*multiplier;
+      alpha=0.6;
     }
     else if (planet=="rahu" || planet =="ketu"){
-      distance = 0.15;
-      size = 0.1;
+      distance = 0.12;
+      size = 0.4*multiplier;
+      alpha=0.6;
     }
     else {
-      distance = 0.25;
-      size = 0.2;
+      distance = 0.3;
+      size = 0.2*multiplier;
+      alpha = 1;
     }
 
     // const degree = parseFloat(outputObj.planetsArray[1].degree);
     // const house = parseInt(outputObj.planetsArray[i].house);
      if(degree>= 26.00) degree = 26.00; // avoid hitting the boudaries
      if(degree<= 4.00) degree = 4.00;
-     degree = 15;
-     house = 1;
+     //degree = 15;
+     //house = 1;
+     if(house == 1 || house == 4 || house == 7 || house == 10) distance = distance *2;
      [x1,y1] = degreeToXY(house,distance,degree);
      console.log(" x= " + x1 + " y = " + y1 );
     //  planet = "moon";
      planet = planet+"_img";
-     DrawSign(ctx,x1,y1,size*AXIS_RANGE, planet);
-     if(outputObj[ planetsArray[i]].is_exhalted) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "exhalted");
-     else if (outputObj[ planetsArray[i]].is_debilitated) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "debilitated");
-     else if (outputObj[ planetsArray[i]].is_ownsign) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "ownhouse");
+     DrawSign(ctx,x1,y1,size*AXIS_RANGE, planet,alpha);
+     if(outputObj[ planetsArray[i]].is_exhalted) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "exhalted",alpha);
+     else if (outputObj[ planetsArray[i]].is_debilitated) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "debilitated",alpha);
+     else if (outputObj[ planetsArray[i]].is_ownsign) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "ownhouse",alpha);
   }
 
 }
@@ -929,7 +945,7 @@ function DrawAllGrahas(ctx){
 
 // }
 
-function DrawSign(ctx,x,y,r,image) {
+function DrawSign(ctx,x,y,r,image,alpha) {
   ctx.save();
   var img = document.getElementById(image);
   var scaled = scale(x,y,r);
@@ -939,7 +955,7 @@ function DrawSign(ctx,x,y,r,image) {
   console.log(" chart.width= " + chart.width+ "  chart.height = " +  chart.width);
   var img_width = img.width * (scaled.R/60);
   var img_height = img.height * (scaled.R/60);
-  
+  ctx.globalAlpha  = alpha;
   //ctx.drawImage(img, scaled.X, scaled.Y - img_height / 2,  img_width, img_height ); // top left
   ctx.drawImage(img, scaled.X - img_width / 2, scaled.Y - img_height / 2,  img_width, img_height ); // center point
   //ctx.arc(scaled.X, scaled.Y, scaled.R, (Math.PI/180)*0, (Math.PI/180)*360, false);
