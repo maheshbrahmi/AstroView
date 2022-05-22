@@ -14,6 +14,7 @@ var chart= {"width": 300, "height" : 300,  "currentDevicePixelRatio" : 1, "devic
 var isMobile = false; //initiate as false
 const signsArray = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces']; //rashis
 const planetsArray = ['ascendant','sun','moon','mars','mercury','jupiter','venus','saturn','rahu','ketu']; //rashis
+const planetsColor=  ['black','black','black','black','black','black','black','black','black','black']; 
 //const pl5_exportformat =['First_last_name' ,'Gender','Ankavalue','City','State','Country','Birthdate','Time','Birthdate_time_Julian','Timezone', 'DST','Longitude' ,'Latitude','Longitudes_Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn','Rahu','Ketu','Dhuma','Vyatipata','Parivesha','Indrachapa','Upaketu','Gulika','Prana Pada','Uranus','Neptune','Pluto','Ascendant'];
 
 //console.log(signs.indexOf('taurus'));
@@ -95,7 +96,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":"none"
+          "aspect":"none",
+          "x": 0,
+          "y": 0
       },
       "sun":{
           "longitude": 199.07001545248,
@@ -112,7 +115,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":"1,7"
+          "aspect":[1,7],
+          "x": 0,
+          "y": 0
       },
       "moon":{
           "longitude": 101.505673940617,
@@ -129,7 +134,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":"1,7"
+          "aspect":[1,7],
+          "x": 0,
+          "y": 0
       },
       "mercury":{
         "name": "mercury",
@@ -147,7 +154,9 @@ var inputObj = {
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
-        "aspect":"1,7",
+        "aspect":[1,7],
+        "x": 0,
+        "y": 0
       },
       "venus": {
         "longitude": 198.142409860512,
@@ -164,7 +173,9 @@ var inputObj = {
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
-        "aspect":"1,7",
+        "aspect":[1,7],
+        "x": 0,
+        "y": 0
     },
     "mars": {
       "longitude": 140.559019472223,
@@ -181,7 +192,9 @@ var inputObj = {
       "is_exhalted":false,
       "is_debilitated":false,
       "is_digbala":false,
-      "aspect":"1,7,4,8",
+      "aspect":[1,7,4,8],
+      "x": 0,
+      "y": 0
     },
     "jupiter": {
       "longitude": 100.669422850587,
@@ -198,7 +211,9 @@ var inputObj = {
       "is_exhalted":false,
       "is_debilitated":false,
       "is_digbala":false,
-      "aspect":"1,7,5,9",
+      "aspect":[1,7,5,9],
+      "x": 0,
+      "y": 0
     },
     "saturn": {
         "longitude": 329.920879549186,
@@ -215,7 +230,9 @@ var inputObj = {
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
-        "aspect":"1,7,3,10",
+        "aspect":[1,7,3,10],
+        "x": 0,
+        "y": 0
       },
       "rahu": {
           "longitude": 22.800941440735,
@@ -232,7 +249,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":"1,7",
+          "aspect":[1,7],
+          "x": 0,
+          "y": 0
       },
       "ketu": {
           "longitude": 202.800941440735,
@@ -249,7 +268,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":"1,7",
+          "aspect":[1,7],
+          "x": 0,
+          "y": 0
       }
     };
  // update: function() { updateChart (this);}
@@ -262,60 +283,35 @@ var astroObj = {
               resetAll: function() { resetAll (this);}, // Resets all properties to its default values
               redrawAstro: redrawAstro, // repaints astroChart with the current values
               colorsHash: {},
-              // houses : [{
-              //   num: '1', signnum: '10', color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '2', signnum: '11',  color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '3', signnum: '12', color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '4', signnum: '1', color: 'rgb(255,255,0)', fillcolor: 'rgb(255,255,0)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '5', signnum: '2', color: 'rgb(0,255,255)', fillcolor: 'rgb(0,255,255)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '6', signnum: '3', color: 'rgb(255,255,255)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '7', signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(0,0,0)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '8', signnum: '5', color: 'rgb(255,0,255)', fillcolor: 'rgb(255,0,255)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '9', signnum: '6', color: 'rgb(0,128,128)', fillcolor: 'rgb(0,128,128)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '10', signnum: '7', color: 'rgb(128,128,128)', fillcolor: 'rgb(128,128,128)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '11', signnum: '8', color: 'rgb(128,0,0)', fillcolor: 'rgb(128,0,0)', colorKey: 'rgb(0,0,0)'
-              //   }, {
-              //   num: '12', signnum: '9', color: 'rgb(128,0,128)', fillcolor: 'rgb(128,0,128)', colorKey: 'rgb(0,0,0)'
-              //   }
-              //   ],
               houses : [{
-                num: '1', signnum: '10', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '1', signnum: '10', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)', centerx : 0, centery : 356
                 }, {
-                num: '2', signnum: '11',  color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '2', signnum: '11',  color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)', centerx : -356, centery : 593
                 }, {
-                num: '3', signnum: '12', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '3', signnum: '12', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -593, centery : 356
                 }, {
-                num: '4', signnum: '1', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '4', signnum: '1', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -356, centery : 0
                 }, {
-                num: '5', signnum: '2', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '5', signnum: '2', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -593, centery : -356
                 }, {
-                num: '6', signnum: '3', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '6', signnum: '3', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -356, centery : -593
                 }, {
-                num: '7', signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '7', signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 0, centery : -356
                 }, {
-                num: '8', signnum: '5', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '8', signnum: '5', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 356, centery : -593
                 }, {
-                num: '9', signnum: '6', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '9', signnum: '6', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 593, centery : -356
                 }, {
-                num: '10', signnum: '7', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '10', signnum: '7', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 356, centery : 0
                 }, {
-                num: '11', signnum: '8', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '11', signnum: '8', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 593, centery : 356
                 }, {
-                num: '12', signnum: '9', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)'
+                num: '12', signnum: '9', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 356, centery : 593
                 }
                 ],
+               showAspect: false,
                drawAstro: function() { drawAstro(this);},
-               showAspect: function() { showAspect(this);},
+               drawAspect: function() { drawAspect(this);},
                updateOutput: function() { updateOutput(this);},
                test: function() { test(this);},
                //updateSigns: function() { updateSigns (this,ascendant_position );}, // Resets all properties to its default values
@@ -345,9 +341,14 @@ function updateSigns(me, ascendant_position){
 
 }
 
-function showAspect(me) {
-console.log(" Show Aspect code to do");
-}
+function drawAspect(me) {
+  if(me.showAspect == true) me.showAspect = false; 
+  else me.showAspect = true;
+  var ctx = me.ctx;
+  //console.log("ctx = " + me.showAspect);
+ // ctx.clearRect(0,0,chart.width,chart.height);
+   drawAstro(me);
+  }
 //calculate chart
 // $('#code').keyup(function() {
 //   var discountcode = this.value;
@@ -363,7 +364,7 @@ let secs = 0;
 //console.log("longitude = " +longitude);
 while(longitude>30){position++; longitude = longitude -30;}
 degree = Number(longitude).toFixed(2);;
-console.log("position = " +position);
+//console.log("position = " +position);
 //console.log("degree = " +degree);
 mins = parseInt((longitude-parseInt(longitude))*60);
 //console.log("mins = " +mins);
@@ -398,14 +399,14 @@ function updateGraha(graha_name){  // calculate postiions from Logitude
   // then update house signnum (SignPositions) in astroObj given ascendant position
   if(graha_name == "ascendant") {
     updateSigns(astroObj,position);
-    console.log("graha_name = " +graha_name);
+    //console.log("graha_name = " +graha_name);
     house = 1;
   }
   else {
     const pos_dist = position - ascendant_position; 
     if(pos_dist < 0) house = pos_dist+13; else house = pos_dist+1;
   }
-  console.log("graha_name: "+graha_name+ " Ascendent position = " +ascendant_position +  " position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
+  //console.log("graha_name: "+graha_name+ " Ascendent position = " +ascendant_position +  " position = " +position + " house = " +house + " degree = " +degree + " mins = " +mins + " secs = " +secs);
   // next update outputObj
   //Ascendant
   outputObj[graha_name].longitude = inputObj.graha["ascendant"];
@@ -457,7 +458,7 @@ function addTextarea(id,text){
     $(id).attr('rows', parseInt($(id).attr('rows'))+(parseInt(1))); // increase row size by one
     $(id).val(val+'\n'+ text); 
   }
-  console.log("New text = " + text);
+  //console.log("New text = " + text);
 }
 
 function clearOutput(){
@@ -474,7 +475,7 @@ function updateOutput(me){
     clearOutput(); // creat the output form
     //update outputObj, start with ascendant  
     for (let graha in outputObj) {
-      console.log(graha, outputObj[graha].house);
+      //console.log(graha, outputObj[graha].house);
       house = outputObj[graha].house;
       updateGraha(graha);
     }
@@ -497,7 +498,7 @@ function updateOutput(me){
       );
       //console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signsArray[signnum-1]);
 
-      console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby );
+      //console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby );
       
       // var index = signObj.findIndex("name" => "name".value === "cancer");
       // 
@@ -638,7 +639,7 @@ function drawAstro(me) {
   var  hby2 = chart.height/2;
   colorsHash = {};
   const propOwn = Object.keys(me.houses);
-  console.log("House Object length= " + propOwn.length); // 1
+  //console.log("House Object length= " + propOwn.length); // 1
 
   for (let i = 0; i < propOwn.length; ++i) {
     //console.log(houses[i].color);
@@ -647,8 +648,8 @@ function drawAstro(me) {
         me.houses[i].colorKey = colorKey;
           me.colorsHash[colorKey] = me.houses[i].colorKey;
     }
-    console.log(me.houses[i].colorKey);
-    console.log(me.colorsHash[colorKey]);
+    //console.log(me.houses[i].colorKey);
+    //console.log(me.colorsHash[colorKey]);
   } // end for
 
   //str = JSON.stringify(me.colorsHash, null, 4); // (Optional) beautiful indented output.
@@ -799,6 +800,26 @@ function drawAstro(me) {
   // ctx.globalCompositeOperation = "lighter";
   DrawAllSigns(ctx);
   DrawAllGrahas(ctx);
+  if(astroObj.showAspect == true)
+  {
+    var ctx = me.ctx;
+    var planet, x, y, aspect,house,final_aspect;
+    for(let i=1; i <planetsArray.length; i++){
+      planet = planetsArray[i];
+      house = outputObj[planet].house;
+      x = outputObj[planet].x;
+      y = outputObj[planet].y;
+      aspect = outputObj[planet].aspect;
+      aspect.forEach(function(aspecting) {
+        console.log(planet+' house: '+house+' '+x+' '+y+" => aspecting " + aspecting + " " + " "+ astroObj.houses[aspecting].centerx  + " "+ astroObj.houses[aspecting].centery);
+        final_aspect  = house + aspecting - 1;
+        if(final_aspect >12) final_aspect = final_aspect - 12
+        DrawLinewithArrow(ctx,x,y,astroObj.houses[final_aspect-1].centerx,astroObj.houses[final_aspect-1].centery,planetsColor[i] );
+      });
+    }
+    console.log("show Aspect")
+  }
+  console.log("drawAstro done");
 
 //   let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
 //   ascendant_degree = 15;
@@ -826,6 +847,37 @@ function drawAstro(me) {
 
 }
 
+
+function DrawLinewithArrow(ctx, x1,y1,x2,y2,color) {
+  var headlen = 10; // length of head in pixels
+  // var x1 = AXIS_RANGE*r1*Math.cos(d1*Math.PI/180);
+  // var y1 = AXIS_RANGE*r1*Math.sin(d1*Math.PI/180);
+  // var x2 = AXIS_RANGE*r2*Math.cos(d2*Math.PI/180);
+  // var y2 = AXIS_RANGE*r2*Math.sin(d2*Math.PI/180);
+  var scaled1 = scale(x1,y1,1);
+  var scaled2 = scale(x2,y2,1);
+  fromx = scaled1.X;
+  fromy = scaled1.Y;
+  tox = scaled2.X;
+  toy = scaled2.Y;
+  var dx = tox - fromx;
+  var dy = toy - fromy;
+  var angle = Math.atan2(dy, dx);
+  ctx.save();
+  ctx.beginPath();
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = color;
+  ctx.moveTo(fromx, fromy);
+  ctx.lineTo(tox, toy);
+  ctx.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+  ctx.moveTo(tox, toy);
+  ctx.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+  ctx.stroke();
+  ctx.closePath();
+  ctx.restore();
+ 
+}
+
 function DrawAllSigns(ctx){
   //astroObj.houses[0].signnum 
   //get assendant degree
@@ -839,10 +891,14 @@ function DrawAllSigns(ctx){
     let index = signObj.findIndex( element => element.name === signsArray[signnum-1]);
     //let housenum = signObj.findIndex( element => element.num === signsArray[signnum-1]);
     let housenum = astroObj.houses[i].num;
-    console.log("INDEX: " + index + " HOUSENUM: " + housenum +  " signnum "+ signnum+ " Name: " + signsArray[signnum-1] + " Position: " + signObj[index].position);
+    //console.log("INDEX: " + index + " HOUSENUM: " + housenum +  " signnum "+ signnum+ " Name: " + signsArray[signnum-1] + " Position: " + signObj[index].position);
     if(ascendant_degree>= 26.00) ascendant_degree = 26.00; // avoid hitting the boudaries
     if(ascendant_degree<= 4.00) ascendant_degree = 4.00;
     [x1,y1] = degreeToXY(i+1,0.11,ascendant_degree);
+    if(housenum == 1){
+      outputObj["ascendant"].x = x1;
+      outputObj["ascendant"].y = y1;
+    }
     //console.log(" deg x= " + x1+ "  deg y = " + y1);
     DrawSign(ctx,x1,y1,0.15*AXIS_RANGE, signsArray[signnum-1]);
     //console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby );
@@ -860,7 +916,7 @@ function DrawAllGrahas(ctx){
     house = outputObj[ planetsArray[i]].house;
     alpha=1;
     multiplier = 0.5;
-    console.log("PLANETS " + planet, "DEGREE " + degree, "HOUSE " + house);
+    //console.log("PLANETS " + planet, "DEGREE " + degree, "HOUSE " + house);
     if(planet=="sun")
     {
       distance = 0.25;
@@ -918,7 +974,9 @@ function DrawAllGrahas(ctx){
      //house = 1;
      if(house == 1 || house == 4 || house == 7 || house == 10) distance = distance *2;
      [x1,y1] = degreeToXY(house,distance,degree);
-     console.log(" x= " + x1 + " y = " + y1 );
+     //console.log(" x= " + x1 + " y = " + y1 );
+     outputObj[planet].x = x1;
+     outputObj[planet].y = y1;
     //  planet = "moon";
      planet = planet+"_img";
      DrawSign(ctx,x1,y1,size*AXIS_RANGE, planet,alpha);
@@ -929,34 +987,15 @@ function DrawAllGrahas(ctx){
 
 }
 
-// function DrawSignTranslate(ctx,newx,newy,x,y,r,image) {
-//   ctx.save();
-//   var img = document.getElementById(image);
-//   var scaled1 = scale(newx,newy,r);
-//   var scaled = scale(x,y,r);
-//   if(scaled.R <2) scaled.R = 2;
-//   console.log(" x= " + scaled.X + " y = " + scaled.Y + " r =  " + scaled.R);
-//   console.log(" img.width= " + img.width + "  img.height = " +  img.height);
-//   console.log(" chart.width= " + chart.width+ "  chart.height = " +  chart.width);
-//   var img_width = img.width * (scaled.R/60);
-//   var img_height = img.height * (scaled.R/60);
-//   ctx.transform(1,0,0,1,newx, newy);
-//   //ctx.translate(newx, newy);
-//   //ctx.drawImage(img, scaled.X, scaled.Y - img_height / 2,  img_width, img_height );
-//   ctx.drawImage(img, scaled.X - img_width / 2, scaled.Y - img_height / 2,  img_width, img_height );
-//   //ctx.arc(scaled.X, scaled.Y, scaled.R, (Math.PI/180)*0, (Math.PI/180)*360, false);
-//   ctx.restore();
-
-// }
 
 function DrawSign(ctx,x,y,r,image,alpha) {
   ctx.save();
   var img = document.getElementById(image);
   var scaled = scale(x,y,r);
   if(scaled.R <2) scaled.R = 2;
-  console.log(" x= " + scaled.X + " y = " + scaled.Y + " r =  " + scaled.R);
-  console.log(" img.width= " + img.width + "  img.height = " +  img.height);
-  console.log(" chart.width= " + chart.width+ "  chart.height = " +  chart.width);
+  //console.log(" x= " + scaled.X + " y = " + scaled.Y + " r =  " + scaled.R);
+  //console.log(" img.width= " + img.width + "  img.height = " +  img.height);
+  //console.log(" chart.width= " + chart.width+ "  chart.height = " +  chart.width);
   var img_width = img.width * (scaled.R/60);
   var img_height = img.height * (scaled.R/60);
   ctx.globalAlpha  = alpha;
@@ -995,9 +1034,9 @@ function DrawImage(ctx,x,y,r,image) {
   var img = document.getElementById(image);
   var scaled = scale(x,y,r);
   if(scaled.R <2) scaled.R = 2;
-  console.log(" x= " + scaled.X + " y = " + scaled.Y + " r =  " + scaled.R);
-  console.log(" img.width= " + img.width + "  img.height = " +  img.height);
-  console.log(" chart.width= " + chart.width+ "  chart.height = " +  chart.width);
+  //console.log(" x= " + scaled.X + " y = " + scaled.Y + " r =  " + scaled.R);
+  //console.log(" img.width= " + img.width + "  img.height = " +  img.height);
+  //console.log(" chart.width= " + chart.width+ "  chart.height = " +  chart.width);
   var img_width = img.width * (scaled.R/10);
   var img_height = img.height * (scaled.R/10);
   
@@ -1023,7 +1062,7 @@ function drawdataSprite(me) {
 }
 
 function drawRectangle(ctx,x,y,r,rotate,color) {
-  console.log(" x= " + x + " y = " + y + " r =  " + r);
+  //console.log(" x= " + x + " y = " + y + " r =  " + r);
   ctx.beginPath();
   ctx.save();
   ctx.strokeStyle = color;
@@ -1035,7 +1074,7 @@ function drawRectangle(ctx,x,y,r,rotate,color) {
   ctx.rotate(rotate*Math.PI/180);
   ctx.rect(scaled.X,scaled.Y,2*scaled.R/Math.sqrt(2),2*scaled.R/Math.sqrt(2));
   
-  console.log(" Sx= " + scaled.X + " Sy = " + scaled.Y + " Sr =  " + scaled.R + " A =  " + a);
+  //console.log(" Sx= " + scaled.X + " Sy = " + scaled.Y + " Sr =  " + scaled.R + " A =  " + a);
   ctx.stroke();
   ctx.restore(); // now the default solid line is restored
   ctx.closePath();
@@ -1175,7 +1214,7 @@ function descale(x,y) {
 
 
 function drawCircle(ctx,x,y,r,color) {
-  console.log(" x= " + x + " y = " + y + " r =  " + r);
+  //console.log(" x= " + x + " y = " + y + " r =  " + r);
   ctx.beginPath();
   ctx.save();
   ctx.strokeStyle = color;
@@ -1213,7 +1252,7 @@ function DrawArcA(ctx,x,y,r,A1,A2) {
 }
 
 function placeText(ctx,x,y,txt,textAlign,textBaseline){
-    console.log(" x= " + x + " y = " + y );
+    //console.log(" x= " + x + " y = " + y );
 	  ctx.beginPath();
 	  var ratio = fontSize / fontBase;   // calc ratio
     var size = chart.width * ratio;   // get font size based on current width 
@@ -1265,8 +1304,8 @@ function getMaximumWidth (domNode) {
 		var paddingBottom = parseInt(getStyle(container, 'padding-bottom'), 10);
 		var h = container.clientHeight - paddingTop - paddingBottom;
 		var ch = getConstraintHeight(domNode);
-        console.log("CH ="+ ch);
-        console.log("h ="+ h);
+        //console.log("CH ="+ ch);
+        //console.log("h ="+ h);
 		return isNaN(ch)? h : Math.min(h, ch);
 	}
 
@@ -1312,7 +1351,7 @@ function getMaximumWidth (domNode) {
 	function retinaScale(chart,astroObject) {
     //var pixelRatio = chart.currentDevicePixelRatio = chart.devicePixelRatio || window.devicePixelRatio || 1;
      var pixelRatio = chart.currentDevicePixelRatio = window.devicePixelRatio ;
-    console.log (" pixelRatio = "+pixelRatio );
+    //console.log (" pixelRatio = "+pixelRatio );
 		if (pixelRatio === 1) {
 			return;
 		}
@@ -1846,7 +1885,7 @@ function myfunc() {
 function handleFileOpen(e) {
     var file = e.target.files[0];
     //var files = evt.target.files; // FileList object
-    console.log(file);
+    //console.log(file);
     if (!file) {
         return;
     }
