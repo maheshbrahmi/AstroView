@@ -14,7 +14,7 @@ var chart= {"width": 300, "height" : 300,  "currentDevicePixelRatio" : 1, "devic
 var isMobile = false; //initiate as false
 const signsArray = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces']; //rashis
 const planetsArray = ['ascendant','sun','moon','mars','mercury','jupiter','venus','saturn','rahu','ketu']; //rashis
-const planetsColor=  ['black','black','black','black','black','black','black','black','black','black']; 
+const planetsColor=  ['black','#E75F35','#E7AA35','#C21313','#888888','#C1694F','#EEEA90','#7F9DCB','#E7AA35','#E7AA35']; 
 //const pl5_exportformat =['First_last_name' ,'Gender','Ankavalue','City','State','Country','Birthdate','Time','Birthdate_time_Julian','Timezone', 'DST','Longitude' ,'Latitude','Longitudes_Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn','Rahu','Ketu','Dhuma','Vyatipata','Parivesha','Indrachapa','Upaketu','Gulika','Prana Pada','Uranus','Neptune','Pluto','Ascendant'];
 
 //console.log(signs.indexOf('taurus'));
@@ -115,7 +115,7 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":[1,7],
+          "aspect":[7],
           "x": 0,
           "y": 0
       },
@@ -134,7 +134,7 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":[1,7],
+          "aspect":[7],
           "x": 0,
           "y": 0
       },
@@ -154,7 +154,7 @@ var inputObj = {
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
-        "aspect":[1,7],
+        "aspect":[7],
         "x": 0,
         "y": 0
       },
@@ -173,7 +173,7 @@ var inputObj = {
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
-        "aspect":[1,7],
+        "aspect":[7],
         "x": 0,
         "y": 0
     },
@@ -192,7 +192,7 @@ var inputObj = {
       "is_exhalted":false,
       "is_debilitated":false,
       "is_digbala":false,
-      "aspect":[1,7,4,8],
+      "aspect":[7,4,8],
       "x": 0,
       "y": 0
     },
@@ -211,7 +211,7 @@ var inputObj = {
       "is_exhalted":false,
       "is_debilitated":false,
       "is_digbala":false,
-      "aspect":[1,7,5,9],
+      "aspect":[7,5,9],
       "x": 0,
       "y": 0
     },
@@ -230,7 +230,7 @@ var inputObj = {
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
-        "aspect":[1,7,3,10],
+        "aspect":[7,3,10],
         "x": 0,
         "y": 0
       },
@@ -249,7 +249,7 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":[1,7],
+          "aspect":[7],
           "x": 0,
           "y": 0
       },
@@ -268,7 +268,7 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
-          "aspect":[1,7],
+          "aspect":[7],
           "x": 0,
           "y": 0
       }
@@ -806,6 +806,7 @@ function drawAstro(me) {
     var planet, x, y, aspect,house,final_aspect;
     for(let i=1; i <planetsArray.length; i++){
       planet = planetsArray[i];
+      if(inputObj.graha[planet]=="") break;
       house = outputObj[planet].house;
       x = outputObj[planet].x;
       y = outputObj[planet].y;
@@ -813,7 +814,8 @@ function drawAstro(me) {
       aspect.forEach(function(aspecting) {
         console.log(planet+' house: '+house+' '+x+' '+y+" => aspecting " + aspecting + " " + " "+ astroObj.houses[aspecting].centerx  + " "+ astroObj.houses[aspecting].centery);
         final_aspect  = house + aspecting - 1;
-        if(final_aspect >12) final_aspect = final_aspect - 12
+        if(final_aspect >12) final_aspect = final_aspect - 12;
+        console.log("final aspect : " + final_aspect);
         DrawLinewithArrow(ctx,x,y,astroObj.houses[final_aspect-1].centerx,astroObj.houses[final_aspect-1].centery,planetsColor[i] );
       });
     }
@@ -878,9 +880,18 @@ function DrawLinewithArrow(ctx, x1,y1,x2,y2,color) {
  
 }
 
+function sun_click(){
+  console.log(" Sun was clicked");
+}
+
+function mercury_click(){
+  console.log(" Mercury was clicked");
+}
+
 function DrawAllSigns(ctx){
   //astroObj.houses[0].signnum 
   //get assendant degree
+  if(inputObj.graha["ascendant"]=="") return;
   let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
   var x1, y1;
   for(let i=0; i <12; i++){
@@ -913,6 +924,7 @@ function DrawAllGrahas(ctx){
     
     degree = parseFloat(outputObj[ planetsArray[i]].degree);
     planet = planetsArray[i];
+    if(inputObj.graha[planet]=="") break;
     house = outputObj[ planetsArray[i]].house;
     alpha=1;
     multiplier = 0.5;
