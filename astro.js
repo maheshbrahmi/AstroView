@@ -1989,14 +1989,17 @@ function handleFileImport(e) {
                   return;
                 }
                 var lines = contents.split(/\r\n|\n/);
-                // for(var line = 0; line < lines.length-1; line++){
-                // //console.log(line + " --> "+ lines[line]);
-                // }
+                for(var line = 0; line < lines.length-1; line++){
+                console.log(line + " --> "+ lines[line]);
+                }
                 // the PL5.0 export file is tab delimeted
                 var firstline = lines[0];
+                var lastline = lines[lines.length-2];
+                console.log("Number of Lines: " + " --> "+ lines.length);
                 console.log("firstline" + " --> "+ firstline);
+                console.log("lastline" + " --> "+ lastline);
                 let result = [];
-                let s = firstline.trim().split(/[\t]/);
+                let s = lastline.trim().split(/[\t]/);
                 result.push({
                   First_last_name : s[0],
                   Gender : s[1],
