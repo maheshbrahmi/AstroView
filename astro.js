@@ -1734,83 +1734,52 @@ function onMouseClick(e) {
     //console.log('house number: ' + house);
     const signnum = astroObj.houses[house-1].signnum;
     var msg1 = "House Num: " + house + "\n" + "House Sign: " + toTitleCase(signsArray[signnum-1]+'('+signnum+')')+ "\n" + "Ruler: " + toTitleCase(signObj[signnum-1].ruledby);
-    var msg2 
+    var msg2; 
     switch (house) {
       case '1':
-        msg2 = "Signifies Self"
+        msg2 = "Self,body,charisma,health"
         break;
       case '2':
-        msg2 = "Signifies Wealth"
+        msg2 = "Food,nourishment,money,family,face,fashion,speech"
         break;
       case '3':
-        msg2 = "Signifies Sibling"
+        msg2 = "Arts, skills, hands, physics, courage, publishing, computers"
         break;
       case '4':
-        msg2 = "Signifies Mother,land"
+        msg2 = "Home, mother, education, immovable property, psychology, cars & transportation"
         break;
       case '5':
-        msg2 = "Signifies Child"
+        msg2 = "Children, creativity, ministry, art, intelect"
         break;
       case '6':
-        msg2 = "Signifies Enemies,service"
+        msg2 = "Service, disease/health, competition, debt, adoption, enemies, acute disease, divorce, debt"
         break;
       case '7':
-        msg2 = "Signifies Spouse,others"
+        msg2 = "Relationships, the 'other',independence, business, Spouse"
         break;
       case '8':
-        msg2 = "Signifies Losses,occult"
+        msg2 = "Death, sex organs, losses, scandal, bankruptcy, occult, yoga, ayurveda"
         break;
       case '9':
-        msg2 = "Signifies Father,guru"
+        msg2 = "Travel, higher education, guru, father"
         break;
       case '10':
-        msg2 = "Signifies Career,foreign"
+        msg2 = "Career, fame &triump,'up'"
         break;
       case '11':
-        msg2 = "Signifies Gain,spending"
+        msg2 = "Gain, investement, social-life/friends, wish-fulfillment "
         break;
       case '12':
-        msg2 = "Signifies Moksha"
+        msg2 = "Loss, moksha, isolation, incarceration, immigration, foriegn-contact"
         break;
       default:
         console.log(`Sorry, we are out of ${house}.`);
     }
 
-    ShowMessage_sm("AstroView",msg1+'\n'+msg2);
+    ShowMessage("AstroView",msg1+'\n'+msg2);
 
     }
 
-
-function drawSweep(me) {
-    }
-    
-function dataPlot(me) {
-    }
-    
-function drawAdmitanceCircles(me) {
-    }
-    
-function drawVSWRCircles(me) {   
-    }
-    
-function drawQCircles(me){ // Constant Q cicles
-    }
-    
-function drawGainCircles(me) {
-    }
-    
-$("#sweepColor").change(function(){
-});
-
-function step_change1(id1) {
-}
-
-function spin_change1(id1) {
-    }
-
-$('input[name="spin1"]').TouchSpin({
-
-  });
 
 function set_click() {
     // save state to local storage
