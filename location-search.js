@@ -1,10 +1,3 @@
-TODO
-1) Drag and Drop Planets
-2) Integrate a form to bring Planet positions from Prokerela API
-You may use our location search widget
-https://gist.github.com/JoyceBabu/84389de1b53ba42198af92500955a46f
-https://client-api.prokerala.com/static/js/location.min.js
-Or use Geonames.org database to create your own location search service.
 // Visit https://api.prokerala.com/demo/birth-details.php to see the following code in action
 const PK_API_CLIENT_ID = '';
 (function () {
