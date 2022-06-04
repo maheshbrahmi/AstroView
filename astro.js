@@ -1737,40 +1737,40 @@ function onMouseClick(e) {
     var msg2; 
     switch (house) {
       case '1':
-        msg2 = "Self,body,charisma,health"
+        msg2 = "Self, physical body, complexion, appearance, head, intelligence, strength, energy, fame, success, nature of birth, caste"
         break;
       case '2':
-        msg2 = "Food,nourishment,money,family,face,fashion,speech"
+        msg2 = "Food, nourishment, money, family, face, fashion, wealth, assets, speech, eyes, mouth, face, voice, food"
         break;
       case '3':
-        msg2 = "Arts, skills, hands, physics, courage, publishing, computers"
+        msg2 = "Arts, skills, hands, physics, courage, publishing, computers, Younger co-borns, confidants, courage, mental strength, communication skills, creativity, throat, ears, arms, fathers death (7th from 9th), expenditure on vehicles and house (12th from 4th), travels"
         break;
       case '4':
-        msg2 = "Home, mother, education, immovable property, psychology, cars & transportation"
+        msg2 = "Home, mother, education, immovable property, psychology, vehicles, house, lands, immovable property, motherland, childhood, wealth from real estate, education, relatives, happiness, comforts, pleasures, peace, state of mind, heart"
         break;
       case '5':
-        msg2 = "Children, creativity, ministry, art, intelect"
+        msg2 = "Children, creativity, advisor, art, intelect, poorvapunya (good deeds of previous lives), intelligence, knowledge & scholarship, devotion, mantras (prayers), stomach, digestive system, authority/power, fame, love, affection, emotions, judgment, speculation"
         break;
       case '6':
-        msg2 = "Service, disease/health, competition, debt, adoption, enemies, acute disease, divorce, debt"
+        msg2 = "Service, disease/health, competition, debt, adoption, enemies, acute disease, divorce, debt, servants, relatives, mental tension, injuries, health, diseases, agriculture, accidents, mental affliction, mother’s younger brother, hips"
         break;
       case '7':
-        msg2 = "Relationships, the 'other',independence, business, Spouse"
+        msg2 = "Relationships, the 'other',independence, business, Spouse, marriage, marital life, life partner, sex, passion (and related happiness),long journeys, partners, business, death, the portion of the body below the navel."
         break;
       case '8':
-        msg2 = "Death, sex organs, losses, scandal, bankruptcy, occult, yoga, ayurveda"
+        msg2 = "Death, sex organs, losses, scandal, bankruptcy, occult, yoga, ayurveda, longevity, debts, disease, ill-fame, inheritance, loss of friends, occult studies, evils, gifts, unearned wealth, windfall, disgrace, secrets, genitals"
         break;
       case '9':
-        msg2 = "Travel, higher education, guru, father"
+        msg2 = "Travel, higher education, guru, father, teacher, boss, fortune, religiousness, spirituality, God, higher studies & high knowledge, fortune in a foreign land, foreign trips, diksha (joining a grandchildren), principles, dharma, intuition, compassion, sympathy, leadership, charity, thighs."
         break;
       case '10':
-        msg2 = "Career, fame &triump,'up'"
+        msg2 = "Career, growth, profession, career, karma (action), conduct in society, fame, honors, awards, self-respect, dignity, knees"
         break;
       case '11':
-        msg2 = "Gain, investement, social-life/friends, wish-fulfillment "
+        msg2 = "Gain, investement, social-life/friends, wish-fulfillment, elder co-borns, income, gains, realization of hopes, friends, ankles "
         break;
       case '12':
-        msg2 = "Loss, moksha, isolation, incarceration, immigration, foriegn-contact"
+        msg2 = "Loss, isolation, incarceration, immigration, foriegn-contact, expenditure, punishment, imprisonment, hospitalization, pleasures in bed, misfortune, bad habits, sleep, meditation, donation, secret enemies, heaven, left eye, feet, residence away from the place of birth, moksha (emancipation/liberation)"
         break;
       default:
         console.log(`Sorry, we are out of ${house}.`);
