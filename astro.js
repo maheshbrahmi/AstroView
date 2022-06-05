@@ -1743,7 +1743,7 @@ function onMouseClick(e) {
         msg2 = "Food, nourishment, money, family, face, fashion, wealth, assets, speech, eyes, mouth, face, voice, food"
         break;
       case '3':
-        msg2 = "Arts, skills, hands, physics, courage, publishing, computers, Younger co-borns, confidants, courage, mental strength, communication skills, creativity, throat, ears, arms, fathers death (7th from 9th), expenditure on vehicles and house (12th from 4th), travels"
+        msg2 = "Arts, skills, hands, physics, courage, publishing, computers, younger co-borns, confidants, courage, mental strength, communication skills, creativity, throat, ears, arms, fathers death (7th from 9th), expenditure on vehicles and house (12th from 4th), travels"
         break;
       case '4':
         msg2 = "Home, mother, education, immovable property, psychology, vehicles, house, lands, immovable property, motherland, childhood, wealth from real estate, education, relatives, happiness, comforts, pleasures, peace, state of mind, heart"
