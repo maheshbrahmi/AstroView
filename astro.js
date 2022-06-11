@@ -115,6 +115,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
+          "is_enemysign" : false,
+          "is_friendsign":false,
+          "is_neutralsign":false,
           "aspect":[7],
           "x": 0,
           "y": 0
@@ -134,6 +137,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
+          "is_enemysign" : false,
+          "is_friendsign":false,
+          "is_neutralsign":false,
           "aspect":[7],
           "x": 0,
           "y": 0
@@ -154,6 +160,9 @@ var inputObj = {
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
+        "is_enemysign" : false,
+        "is_friendsign":false,
+        "is_neutralsign":false,
         "aspect":[7],
         "x": 0,
         "y": 0
@@ -173,6 +182,9 @@ var inputObj = {
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
+        "is_enemysign" : false,
+        "is_friendsign":false,
+        "is_neutralsign":false,
         "aspect":[7],
         "x": 0,
         "y": 0
@@ -192,6 +204,9 @@ var inputObj = {
       "is_exhalted":false,
       "is_debilitated":false,
       "is_digbala":false,
+      "is_enemysign" : false,
+      "is_friendsign":false,
+      "is_neutralsign":false,
       "aspect":[7,4,8],
       "x": 0,
       "y": 0
@@ -211,6 +226,9 @@ var inputObj = {
       "is_exhalted":false,
       "is_debilitated":false,
       "is_digbala":false,
+      "is_enemysign" : false,
+      "is_friendsign":false,
+      "is_neutralsign":false,
       "aspect":[7,5,9],
       "x": 0,
       "y": 0
@@ -230,6 +248,9 @@ var inputObj = {
         "is_exhalted":false,
         "is_debilitated":false,
         "is_digbala":false,
+        "is_enemysign" : false,
+        "is_friendsign":false,
+        "is_neutralsign":false,
         "aspect":[7,3,10],
         "x": 0,
         "y": 0
@@ -249,6 +270,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
+          "is_enemysign" : false,
+          "is_friendsign":false,
+          "is_neutralsign":false,
           "aspect":[7],
           "x": 0,
           "y": 0
@@ -268,6 +292,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
+          "is_enemysign" : false,
+          "is_friendsign":false,
+          "is_neutralsign":false,
           "aspect":[7],
           "x": 0,
           "y": 0
@@ -443,6 +470,34 @@ function updateGraha(graha_name){  // calculate postiions from Logitude
     // if in the same house as the SUN and withing 6 degrees from the sun
     if((graha_name != "sun"  &&  outputObj["sun"].house == house) && (parseInt(outputObj["sun"].degree)- parseInt(degree)) <=6  ) outputObj[graha_name].is_combust = true;
     else outputObj[graha_name].is_combust = false;
+    const planet_ruledby = signObj[position-1].ruledby;
+    if((graha_name == "sun" &&  (planet_ruledby == "moon" || planet_ruledby == "mars"|| planet_ruledby == "jupiter" )))outputObj[graha_name].is_friendsign = true;
+    if((graha_name == "sun" &&  (planet_ruledby == "mercury")))outputObj[graha_name].is_neutralsign = true;
+    if((graha_name == "sun" &&  (planet_ruledby == "venus" || planet_ruledby == "saturn" )))outputObj[graha_name].is_enemysign = true;
+
+    if((graha_name == "moon" &&  (planet_ruledby == "sun" || planet_ruledby == "mercury")))outputObj[graha_name].is_friendsign = true;
+    if((graha_name == "moon" &&  (planet_ruledby == "mars" || planet_ruledby == "jupiter" || planet_ruledby == "venus" || planet_ruledby == "saturn")))outputObj[graha_name].is_neutralsign = true;
+    //if((graha_name == "moon" &&  (planet_ruledby == "venus" || planet_ruledby == "saturn" )))outputObj[graha_name].is_enemysign = true;
+    
+    if((graha_name == "mars" &&  (planet_ruledby == "sun" || planet_ruledby == "moon"|| planet_ruledby == "jupiter" )))outputObj[graha_name].is_friendsign = true;
+    if((graha_name == "mars" &&  (planet_ruledby == "venus" || planet_ruledby == "saturn")))outputObj[graha_name].is_neutralsign = true;
+    if((graha_name == "mars" &&  (planet_ruledby == "mercury")))outputObj[graha_name].is_enemysign = true;
+
+    if((graha_name == "mercury" &&  (planet_ruledby == "sun" || planet_ruledby == "venus")))outputObj[graha_name].is_friendsign = true;
+    if((graha_name == "mercury" &&  (planet_ruledby == "mars" || planet_ruledby == "jupiter" || planet_ruledby == "saturn")))outputObj[graha_name].is_neutralsign = true;
+    if((graha_name == "mercury" &&  (planet_ruledby == "moon")))outputObj[graha_name].is_enemysign = true;
+    
+    if((graha_name == "jupiter" &&  (planet_ruledby == "sun" || planet_ruledby == "moon"|| planet_ruledby == "mars" )))outputObj[graha_name].is_friendsign = true;
+    if((graha_name == "jupiter" &&  (planet_ruledby == "saturn")))outputObj[graha_name].is_neutralsign = true;
+    if((graha_name == "jupiter" &&  (planet_ruledby == "mercury" || planet_ruledby == "venus" )))outputObj[graha_name].is_enemysign = true;
+    
+    if((graha_name == "venus" &&  (planet_ruledby == "mercury" || planet_ruledby == "saturn")))outputObj[graha_name].is_friendsign = true;
+    if((graha_name == "venus" &&  (planet_ruledby == "mars" || planet_ruledby == "jupiter" )))outputObj[graha_name].is_neutralsign = true;
+    if((graha_name == "venus" &&  (planet_ruledby == "sun" || planet_ruledby == "moon" )))outputObj[graha_name].is_enemysign = true;
+
+    if((graha_name == "saturn" &&  (planet_ruledby == "mercury" || planet_ruledby == "venus" )))outputObj[graha_name].is_friendsign = true;
+    if((graha_name == "saturn" &&  (planet_ruledby == "jupiter")))outputObj[graha_name].is_neutralsign = true;
+    if((graha_name == "saturn" &&  (planet_ruledby == "sun" || planet_ruledby == "moon" || planet_ruledby == "mars" )))outputObj[graha_name].is_enemysign = true;
     // if(graha_name != "sun" ) outputObj[graha_name].is_combust = true;
     // outputObj[graha_name].is_combust = false;
   }
@@ -525,6 +580,10 @@ function updateOutput(me){
           if(outputObj[graha].is_exhalted) house1_str = house1_str + " Exhalted";
           if(outputObj[graha].is_debilitated) house1_str = house1_str + " Debilitated";
           if(outputObj[graha].is_digbala) house1_str = house1_str + " Digbala";
+          if(outputObj[graha].is_friendsign) house1_str = house1_str + " Friend";
+          if(outputObj[graha].is_neutralsign) house1_str = house1_str + " Neutral";
+          if(outputObj[graha].is_enemysign) house1_str = house1_str + " Enemy";
+
         }
         let id = "#house"+house;
         addTextarea(id,house1_str); // write to the output form
@@ -915,7 +974,8 @@ function DrawAllSigns(ctx){
     //console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby );
   }
 }
-
+// SUN 0.65, JUPITER 0.6 SATURN 0.55 VENUS 0.5 MOON 0.4 MARS 0.4  RAHU/KETHU 0.4 MERCURY 0.3 
+// SUN 0.55, JUPITER 0.5 SATURN 0.45 VENUS 0.45 MOON 0.4  RAHU/KETHU 0.4 MARS 0.35 MERCURY 0.35
 function DrawAllGrahas(ctx){
   //let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
   var x1, y1, degree, planet, house, distance, size,alpha,multiplier;
@@ -932,7 +992,7 @@ function DrawAllGrahas(ctx){
     if(planet=="sun")
     {
       distance = 0.25;
-      size = 0.65*multiplier;
+      size = 0.55*multiplier;
       alpha=0.9;
       
     }
@@ -944,31 +1004,31 @@ function DrawAllGrahas(ctx){
     }
     else if (planet=="mercury"){
       distance = 0.15;
-      size = 0.3*multiplier;
+      size = 0.35*multiplier;
       alpha=0.6;
     }
     else if (planet=="venus"){
       distance = 0.175;
-      size = 0.5*multiplier;
+      size = 0.45*multiplier;
       alpha=0.6;
     }
     else if (planet=="mars"){
       distance = 0.125;
-      size = 0.4*multiplier;
+      size = 0.35*multiplier;
       alpha=0.6;
     }
     else if (planet=="jupiter"){
       distance = 0.20;
-      size = 0.6*multiplier;
+      size = 0.5*multiplier;
       alpha=0.7;
     }
     else if (planet=="saturn"){
       distance = 0.270;
-      size = 0.55*multiplier;
+      size = 0.45*multiplier;
       alpha=0.6;
     }
     else if (planet=="rahu" || planet =="ketu"){
-      distance = 0.12;
+      distance = 0.16;
       size = 0.4*multiplier;
       alpha=0.5;
     }
