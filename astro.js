@@ -85,7 +85,7 @@ var inputObj = {
           "longitude": 298.7014879,
           "position": 10,
           "sign": "capricorn",
-          "ruledby":"saturn1",
+          "ruledby":"saturn",
           "house": 1,
           "degree": 28.7014879,
           "mins":42,
@@ -104,7 +104,7 @@ var inputObj = {
           "longitude": 199.07001545248,
           "position": 7,
           "sign":"libra",
-          "ruledby":"venus1",
+          "ruledby":"venus",
           "house": 10,
           "degree": 19.07001545,
           "mins":4,
@@ -126,7 +126,7 @@ var inputObj = {
           "longitude": 101.505673940617,
           "position": 4,
           "sign":"cancer",
-          "ruledby":"moon1",
+          "ruledby":"moon",
           "house": 7,
           "degree": 11.50567394,
           "mins":30,
@@ -149,7 +149,7 @@ var inputObj = {
         "longitude": 219.718216555607,
         "position": 8,
         "sign": "scorpio",
-        "ruledby":"mars1",
+        "ruledby":"mars",
         "house": 11,
         "degree": 9.718216556,
         "mins":43,
@@ -193,7 +193,7 @@ var inputObj = {
       "longitude": 140.559019472223,
       "position": 5,
       "sign":"leo",
-      "ruledby":"sun1",
+      "ruledby":"sun",
       "house": 8,
       "degree": 20.55901947,
       "mins":33,
@@ -215,7 +215,7 @@ var inputObj = {
       "longitude": 100.669422850587,
       "position": 4,
       "sign":"cancer",
-      "ruledby":"moon1",
+      "ruledby":"moon",
       "house": 7,
       "degree": 10.66942285,
       "mins":40,
@@ -237,7 +237,7 @@ var inputObj = {
         "longitude": 329.920879549186,
         "position": 11,
         "sign":"aquarius",
-        "ruledby":"saturn1",
+        "ruledby":"saturn",
         "house": 2,
         "degree": 29.92087955,
         "mins":55,
@@ -259,7 +259,7 @@ var inputObj = {
           "longitude": 22.800941440735,
           "position": 1,
           "sign":"aries",
-          "ruledby":"mars1",
+          "ruledby":"mars",
           "house": 4,
           "degree": 22.80094144,
           "mins":48,
@@ -281,7 +281,7 @@ var inputObj = {
           "longitude": 202.800941440735,
           "position": 7,
           "sign":"libra",
-          "ruledby":"venus1",
+          "ruledby":"venus",
           "house": 10,
           "degree": 22.80094144,
           "mins":48,
@@ -471,6 +471,7 @@ function updateGraha(graha_name){  // calculate postiions from Logitude
     if((graha_name != "sun"  &&  outputObj["sun"].house == house) && (parseInt(outputObj["sun"].degree)- parseInt(degree)) <=6  ) outputObj[graha_name].is_combust = true;
     else outputObj[graha_name].is_combust = false;
     const planet_ruledby = signObj[position-1].ruledby;
+    //console.log(graha_name + " Planet RULED BY: " + planet_ruledby);
     if((graha_name == "sun" &&  (planet_ruledby == "moon" || planet_ruledby == "mars"|| planet_ruledby == "jupiter" )))outputObj[graha_name].is_friendsign = true;
     if((graha_name == "sun" &&  (planet_ruledby == "mercury")))outputObj[graha_name].is_neutralsign = true;
     if((graha_name == "sun" &&  (planet_ruledby == "venus" || planet_ruledby == "saturn" )))outputObj[graha_name].is_enemysign = true;
@@ -529,6 +530,7 @@ function clearOutput(){
 function updateOutput(me){
     clearOutput(); // creat the output form
     //update outputObj, start with ascendant  
+    
     for (let graha in outputObj) {
       //console.log(graha, outputObj[graha].house);
       house = outputObj[graha].house;
@@ -536,11 +538,11 @@ function updateOutput(me){
     }
     //update positions in singobj
     //var signObj =   // RASI
-    for(let i=0; i <12; i++){
+    // for(let i=0; i <12; i++){
 
-      //signObj[i].position =  astroObj.houses[i].signnum
-      //console.log("Position= " + signObj[i].position + " New Positon " + astroObj.houses[i].signnum )
-    }
+    //   //signObj[i].position =  astroObj.houses[i].signnum
+    //   //console.log("Position= " + signObj[i].position + " New Positon " + astroObj.houses[i].signnum )
+    // }
     //get zodiac signs
     for(let i=0; i <12; i++){
       let id = "#sign"+(i+1);
@@ -622,11 +624,13 @@ function test(context){
   // context.drawVSWRCircles;
   // console.log(context.Z0);
  }
-
+ //var defaultObj;
+// onload start
  $('document').ready(function () {
         //alert (" ready 873");
         console.log("init")
         window.name = "parent";
+        //defaultObj = astroObj;
         //chart.currentDevicePixelRatio = window.devicePixelRatio || 1 ||  window.window.devicePixelRatio;
     $('input[type=text]').bind('copy paste', function (e) {
         e.preventDefault();
@@ -686,6 +690,8 @@ function resize(canvas) {
 
 
 function drawAstro(me) {
+ // str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
+ // console.log("Astro Object= " + str); // Logs output to dev tools console.
   if(resize_done == false) return;
   //alert (" drawAstro 16");
   var ctx = me.ctx;
@@ -903,8 +909,8 @@ function drawAstro(me) {
 //   //var scaled1 = scale(356,356,1);
 //   //alert(scaled1.X);
 //  // DrawSign(ctx,0+scaled1.X,0+scaled1.Y,0.018*AXIS_RANGE,"capricorn");
-//   str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
-//   console.log("Astro Object= " + str); // Logs output to dev tools console.
+ //  str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
+ //  console.log("Astro Object= " + str); // Logs output to dev tools console.
 
 }
 
@@ -1054,7 +1060,10 @@ function DrawAllGrahas(ctx){
      DrawSign(ctx,x1,y1,size*AXIS_RANGE, planet,alpha);
      if(outputObj[ planetsArray[i]].is_exhalted) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "exhalted",alpha);
      else if (outputObj[ planetsArray[i]].is_debilitated) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "debilitated",alpha);
+     else if (outputObj[ planetsArray[i]].is_enemysign) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "enemy",alpha);
      else if (outputObj[ planetsArray[i]].is_ownsign) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "ownhouse",alpha);
+     else if (outputObj[ planetsArray[i]].is_friendsign) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "friend",alpha);
+     if(outputObj[ planetsArray[i]].is_combust && planetsArray[i] != "rahu" && planetsArray[i] != "ketu") DrawSign(ctx,x1,y1,size*AXIS_RANGE, "combust",alpha);
   }
 
 }
@@ -1922,7 +1931,7 @@ function import_click() {
 function myfunc() {
     console.log("here");
 }
-
+// open JSON file
 function handleFileOpen(e) {
     var file = e.target.files[0];
     //var files = evt.target.files; // FileList object
@@ -1952,8 +1961,10 @@ function handleFileOpen(e) {
                   {
                     //alert (" Verified");
                     //var schObj1 =JSON.parse(contents);
+                    clear_all();
                     copy_inputObj(inputObj1);
                     console.log(JSON.stringify(inputObj));
+                    
                     updateUI(); // update the ui elements
                   }  
                 else ShowMessage_sm("AstroView","File too long (>64K) or the of the wrong format")
@@ -2134,7 +2145,11 @@ function handleFileImport(e) {
 
 }
 
-function clear_import_click() {
+function clear_all(){
+  //astroObj = defaultObj;
+  //var str = JSON.stringify(defaultObj, null, 4); // (Optional) beautiful indented output.
+  //console.log("inputObj on clear= " + str); // Logs output to dev tools console.
+  
   inputObj.name ="";
   inputObj.city = "";
   inputObj.state = "";
@@ -2153,6 +2168,26 @@ function clear_import_click() {
   inputObj.graha["saturn"] = "";
   inputObj.graha["rahu"] = "";
   inputObj.graha["ketu"] = "";
+  for (let graha in outputObj) {
+    // house = outputObj[graha].house;
+    // updateGraha(graha);
+    outputObj[graha].is_ownsign =false;
+    outputObj[graha].is_retrograde =false;
+    outputObj[graha].is_combust =false;
+    outputObj[graha].is_exhalted =false;
+    outputObj[graha].is_debilitated =false;
+    outputObj[graha].is_digbala =false;
+    outputObj[graha].is_enemysign =false;
+    outputObj[graha].is_friendsign =false;
+    outputObj[graha].is_neutralsign =false;
+    //console.log("Graha = " + graha);
+  }
+
+}
+
+function clear_import_click() {
+  clear_all();
+ // updateOutput(astroObj.ctx);
   updateUI(); 
 }
 
@@ -2206,7 +2241,7 @@ $('input[name="spin2"]').TouchSpin({
 });
 
 
-$('input[name="spin2"]').qtip({ 
+$('input[name="spin2"]').qtip({
 });
 
 // uses the schObj object to update the ToolTip content
