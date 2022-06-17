@@ -96,6 +96,9 @@ var inputObj = {
           "is_exhalted":false,
           "is_debilitated":false,
           "is_digbala":false,
+          "is_enemysign" : false,
+          "is_friendsign":false,
+          "is_neutralsign":false,
           "aspect":"none",
           "x": 0,
           "y": 0
@@ -1063,6 +1066,7 @@ function DrawAllGrahas(ctx){
      else if (outputObj[ planetsArray[i]].is_enemysign) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "enemy",alpha);
      else if (outputObj[ planetsArray[i]].is_ownsign) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "ownhouse",alpha);
      else if (outputObj[ planetsArray[i]].is_friendsign) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "friend",alpha);
+     else if (outputObj[ planetsArray[i]].is_neutralsign) DrawSign(ctx,x1,y1,size*AXIS_RANGE, "neutral",alpha);
      if(outputObj[ planetsArray[i]].is_combust && planetsArray[i] != "rahu" && planetsArray[i] != "ketu") DrawSign(ctx,x1,y1,size*AXIS_RANGE, "combust",alpha);
   }
 
