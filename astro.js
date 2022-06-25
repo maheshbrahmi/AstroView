@@ -37,18 +37,18 @@ const planetsColor=  ['black','#E75F35','#E7AA35','#C21313','#888888','#C1694F',
 // }
 var signObj =   // RASI
         [
-            {"position": "1",       "name": "aries",      "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn",    "x": 0, "y": 0},
-            {"position": "2",       "name": "taurus",     "ruledby": "venus",   "exaltation": "moon",      "debilitation": "rahu/ketu", "x": 0, "y": 0},
-            {"position": "3",       "name": "gemini",     "ruledby": "mercury", "exaltation": "none",      "debilitation": "none",      "x": 0, "y": 0},
-            {"position": "4",       "name": "cancer",     "ruledby": "moon",    "exaltation": "jupiter",   "debilitation": "mars",      "x": 0, "y": 0},
-            {"position": "5",       "name": "leo",        "ruledby": "sun",     "exaltation": "none",      "debilitation": "none",      "x": 0, "y": 0},
-            {"position": "6",       "name": "virgo",      "ruledby": "mercury", "exaltation": "mercury",   "debilitation": "venus",     "x": 0, "y": 0},
-            {"position": "7",       "name": "libra",      "ruledby": "venus",   "exaltation": "saturn",    "debilitation": "sun",       "x": 0, "y": 0},
-            {"position": "8",       "name": "scorpio",    "ruledby": "mars",    "exaltation": "rahu/ketu", "debilitation": "moon",      "x": 0, "y": 0},
-            {"position": "9",       "name": "sagittarius","ruledby": "jupiter", "exaltation": "none",      "debilitation": "none" ,     "x": 0, "y": 0},
-            {"position": "10",      "name": "capricorn",   "ruledby": "saturn", "exaltation": "mars",      "debilitation": "jupiter",   "x": 0, "y": 0},
-            {"position": "11",      "name": "aquarius",   "ruledby": "saturn",  "exaltation": "none",      "debilitation": "none",      "x": 0, "y": 0},
-            {"position": "12",      "name": "pisces",     "ruledby": "jupiter", "exaltation": "venus",     "debilitation": "mercury",   "x": 0, "y": 0}
+            {"position": "1",       "name": "aries",      "ruledby": "mars",    "exaltation": "sun",        "element": "fire",    "debilitation": "saturn",    "x": 0, "y": 0},
+            {"position": "2",       "name": "taurus",     "ruledby": "venus",   "exaltation": "moon",       "element": "earth",   "debilitation": "rahu/ketu", "x": 0, "y": 0},
+            {"position": "3",       "name": "gemini",     "ruledby": "mercury", "exaltation": "none",       "element": "air",     "debilitation": "none",      "x": 0, "y": 0},
+            {"position": "4",       "name": "cancer",     "ruledby": "moon",    "exaltation": "jupiter",    "element": "water",   "debilitation": "mars",      "x": 0, "y": 0},
+            {"position": "5",       "name": "leo",        "ruledby": "sun",     "exaltation": "none",       "element": "fire",    "debilitation": "none",      "x": 0, "y": 0},
+            {"position": "6",       "name": "virgo",      "ruledby": "mercury", "exaltation": "mercury",    "element": "earth",   "debilitation": "venus",     "x": 0, "y": 0},
+            {"position": "7",       "name": "libra",      "ruledby": "venus",   "exaltation": "saturn",     "element": "air",     "debilitation": "sun",       "x": 0, "y": 0},
+            {"position": "8",       "name": "scorpio",    "ruledby": "mars",    "exaltation": "rahu/ketu",  "element": "water",   "debilitation": "moon",      "x": 0, "y": 0},
+            {"position": "9",       "name": "sagittarius","ruledby": "jupiter", "exaltation": "none",       "element": "fire",    "debilitation": "none" ,     "x": 0, "y": 0},
+            {"position": "10",      "name": "capricorn",   "ruledby": "saturn", "exaltation": "mars",       "element": "earth",   "debilitation": "jupiter",   "x": 0, "y": 0},
+            {"position": "11",      "name": "aquarius",   "ruledby": "saturn",  "exaltation": "none",       "element": "air",     "debilitation": "none",      "x": 0, "y": 0},
+            {"position": "12",      "name": "pisces",     "ruledby": "jupiter", "exaltation": "venus",      "element": "water",   "debilitation": "mercury",   "x": 0, "y": 0}
         ];
 
 
@@ -1878,6 +1878,7 @@ function onMouseClick(e) {
     const signnum = astroObj.houses[house-1].signnum;
     var msg1 = "House Num: " + house + "\n" + "House Sign: " + toTitleCase(signsArray[signnum-1]+'('+signnum+')')+ "\n" + "Ruler: " + toTitleCase(signObj[signnum-1].ruledby);
     var msg2; 
+    var msg3 = "Element: " + signObj[signnum-1].element
     switch (house) {
       case '1':
         msg2 = "Self, physical body, complexion, appearance, head, intelligence, strength, energy, fame, success, nature of birth, caste"
@@ -1919,7 +1920,7 @@ function onMouseClick(e) {
         console.log(`Sorry, we are out of ${house}.`);
     }
 
-    ShowMessage("AstroView",msg1+'\n'+msg2);
+    ShowMessage("AstroView",msg1+'\n' +msg3+'\n' +msg2 );
 
     }
 
