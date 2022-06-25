@@ -37,18 +37,18 @@ const planetsColor=  ['black','#E75F35','#E7AA35','#C21313','#888888','#C1694F',
 // }
 var signObj =   // RASI
         [
-            {"position": "1",       "name": "aries",      "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn"   },
-            {"position": "2",       "name": "taurus",     "ruledby": "venus",   "exaltation": "moon",      "debilitation": "rahu/ketu"},
-            {"position": "3",       "name": "gemini",     "ruledby": "mercury", "exaltation": "none",      "debilitation": "none"     },
-            {"position": "4",       "name": "cancer",     "ruledby": "moon",    "exaltation": "jupiter",   "debilitation": "mars"     },
-            {"position": "5",       "name": "leo",        "ruledby": "sun",     "exaltation": "none",      "debilitation": "none"     },
-            {"position": "6",       "name": "virgo",      "ruledby": "mercury", "exaltation": "mercury",   "debilitation": "venus"    },
-            {"position": "7",       "name": "libra",      "ruledby": "venus",   "exaltation": "saturn",    "debilitation": "sun"      },
-            {"position": "8",       "name": "scorpio",    "ruledby": "mars",    "exaltation": "rahu/ketu", "debilitation": "moon"     },
-            {"position": "9",       "name": "sagittarius","ruledby": "jupiter", "exaltation": "none",      "debilitation": "none"     },
-            {"position": "10",      "name": "capricorn",   "ruledby": "saturn",  "exaltation": "mars",      "debilitation": "jupiter"  },
-            {"position": "11",      "name": "aquarius",   "ruledby": "saturn",  "exaltation": "none",      "debilitation": "none"     },
-            {"position": "12",      "name": "pisces",     "ruledby": "jupiter", "exaltation": "venus",     "debilitation": "mercury"  }
+            {"position": "1",       "name": "aries",      "ruledby": "mars",    "exaltation": "sun",       "debilitation": "saturn",    "x": 0, "y": 0},
+            {"position": "2",       "name": "taurus",     "ruledby": "venus",   "exaltation": "moon",      "debilitation": "rahu/ketu", "x": 0, "y": 0},
+            {"position": "3",       "name": "gemini",     "ruledby": "mercury", "exaltation": "none",      "debilitation": "none",      "x": 0, "y": 0},
+            {"position": "4",       "name": "cancer",     "ruledby": "moon",    "exaltation": "jupiter",   "debilitation": "mars",      "x": 0, "y": 0},
+            {"position": "5",       "name": "leo",        "ruledby": "sun",     "exaltation": "none",      "debilitation": "none",      "x": 0, "y": 0},
+            {"position": "6",       "name": "virgo",      "ruledby": "mercury", "exaltation": "mercury",   "debilitation": "venus",     "x": 0, "y": 0},
+            {"position": "7",       "name": "libra",      "ruledby": "venus",   "exaltation": "saturn",    "debilitation": "sun",       "x": 0, "y": 0},
+            {"position": "8",       "name": "scorpio",    "ruledby": "mars",    "exaltation": "rahu/ketu", "debilitation": "moon",      "x": 0, "y": 0},
+            {"position": "9",       "name": "sagittarius","ruledby": "jupiter", "exaltation": "none",      "debilitation": "none" ,     "x": 0, "y": 0},
+            {"position": "10",      "name": "capricorn",   "ruledby": "saturn", "exaltation": "mars",      "debilitation": "jupiter",   "x": 0, "y": 0},
+            {"position": "11",      "name": "aquarius",   "ruledby": "saturn",  "exaltation": "none",      "debilitation": "none",      "x": 0, "y": 0},
+            {"position": "12",      "name": "pisces",     "ruledby": "jupiter", "exaltation": "venus",     "debilitation": "mercury",   "x": 0, "y": 0}
         ];
 
 
@@ -76,7 +76,7 @@ var inputObj = {
   "saturn": 329.920879549186,
   "rahu": 22.800941440735,
   "ketu": 202.800941440735
-  },
+  }
 };
 
 //var outputObj = {
@@ -340,13 +340,18 @@ var astroObj = {
                 }
                 ],
                showAspect: false,
+               showNakshatra:false,
+               showLords:false,
                drawAstro: function() { drawAstro(this);},
                drawAspect: function() { drawAspect(this);},
+               drawLords: function() { drawLords(this);},
+               drawNakshatra: function() { drawNakshatra(this);},
                updateOutput: function() { updateOutput(this);},
                test: function() { test(this);},
                //updateSigns: function() { updateSigns (this,ascendant_position );}, // Resets all properties to its default values
                input:inputObj,
-               output:outputObj
+               output:outputObj,
+               sign:signObj
           };
 var matchTipShown = false; 
 astroObj.ctx = document.getElementById("astroMain").getContext('2d');
@@ -371,14 +376,28 @@ function updateSigns(me, ascendant_position){
 
 }
 
+function drawNakshatra(me) {
+  if(me.showNakshatra == true) me.showNakshatra = false; 
+  else me.showNakshatra = true;
+  //var ctx = me.ctx;
+  console.log("Draw Nakshatra");
+  drawAstro(me);
+}
+
+function drawLords(me) {
+  if(me.showLords == true) me.showLords = false; 
+  else me.showLords = true;
+  //var ctx = me.ctx;
+  console.log("Draw Lords");
+  drawAstro(me);
+}
+
 function drawAspect(me) {
   if(me.showAspect == true) me.showAspect = false; 
   else me.showAspect = true;
-  var ctx = me.ctx;
-  //console.log("ctx = " + me.showAspect);
- // ctx.clearRect(0,0,chart.width,chart.height);
-   drawAstro(me);
-  }
+  //var ctx = me.ctx;
+  drawAstro(me);
+}
 //calculate chart
 // $('#code').keyup(function() {
 //   var discountcode = this.value;
@@ -889,6 +908,53 @@ function drawAstro(me) {
     }
     console.log("show Aspect")
   }
+  if(astroObj.showANakshatra == true)
+  {
+    var ctx = me.ctx;
+    var planet, x, y, aspect,house,final_aspect;
+    // for(let i=1; i <planetsArray.length; i++){
+    //   planet = planetsArray[i];
+    //   if(inputObj.graha[planet]=="") break;
+    //   house = outputObj[planet].house;
+    //   x = outputObj[planet].x;
+    //   y = outputObj[planet].y;
+    //   aspect = outputObj[planet].aspect;
+    //   aspect.forEach(function(aspecting) {
+    //     console.log(planet+' house: '+house+' '+x+' '+y+" => aspecting " + aspecting + " " + " "+ astroObj.houses[aspecting].centerx  + " "+ astroObj.houses[aspecting].centery);
+    //     final_aspect  = house + aspecting - 1;
+    //     if(final_aspect >12) final_aspect = final_aspect - 12;
+    //     console.log("final aspect : " + final_aspect);
+    //     DrawLinewithArrow(ctx,x,y,astroObj.houses[final_aspect-1].centerx,astroObj.houses[final_aspect-1].centery,planetsColor[i] );
+    //   });
+    //}
+    console.log("show Nakshatra")
+  }
+  
+  if(astroObj.showLords == true)
+  {
+    var ctx = me.ctx;
+    var signnum, x, y, aspect,ruler,house_num;
+    //get zodiac signs
+    for(let i=0; i <12; i++)
+    {
+      let id = "#sign"+(i+1);
+      signnum = astroObj.houses[i].signnum;
+      let index = signObj.findIndex(
+        element => element.name === signsArray[signnum-1]
+      );
+      //console.log("HOUSE: " + (i+1) + " INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby +" x: " + signObj[index].x + " y: " + signObj[index].y );
+      // var index = signObj.findIndex("name" => "name".value === "cancer");
+      x = signObj[index].x;
+      y = signObj[index].y;
+      ruler = signObj[index].ruledby;
+      //which house is this lord(ruler) placed in
+      house_num = outputObj[ruler].house;
+      //console.log("ruler: " + ruler + " HOUSE: " +house_num)  ;
+      DrawLinewithArrow(ctx,x,y,astroObj.houses[house_num-1].centerx,astroObj.houses[house_num-1].centery,'rgb(0,0,255)' );
+    }
+
+  }
+
   console.log("drawAstro done");
 
 //   let ascendant_degree = parseFloat(outputObj[ "ascendant"].degree);
@@ -912,9 +978,10 @@ function drawAstro(me) {
 //   //var scaled1 = scale(356,356,1);
 //   //alert(scaled1.X);
 //  // DrawSign(ctx,0+scaled1.X,0+scaled1.Y,0.018*AXIS_RANGE,"capricorn");
- //  str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
- //  console.log("Astro Object= " + str); // Logs output to dev tools console.
-
+  // str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
+  // console.log("Astro Object= " + str); // Logs output to dev tools console.
+  // str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
+  // console.log("Astro Object= " + str); // Logs output to dev tools console.
 }
 
 
@@ -978,6 +1045,9 @@ function DrawAllSigns(ctx){
       outputObj["ascendant"].x = x1;
       outputObj["ascendant"].y = y1;
     }
+    signObj[index].x = x1; 
+    signObj[index].y = y1;
+    //console.log(" deg x= "
     //console.log(" deg x= " + x1+ "  deg y = " + y1);
     DrawSign(ctx,x1,y1,0.15*AXIS_RANGE, signsArray[signnum-1]);
     //console.log("INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby );
