@@ -314,29 +314,29 @@ var astroObj = {
               redrawAstro: redrawAstro, // repaints astroChart with the current values
               colorsHash: {},
               houses : [{
-                num: '1', signnum: '10', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)', centerx : 0, centery : 356
+                num: '1', signnum: '10', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)', centerx : 0, centery : 356, rarray : [], qarray: []
                 }, {
-                num: '2', signnum: '11',  color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)', centerx : -356, centery : 593
+                num: '2', signnum: '11',  color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)', centerx : -356, centery : 593, rarray : [], qarray: []
                 }, {
-                num: '3', signnum: '12', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -593, centery : 356
+                num: '3', signnum: '12', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -593, centery : 356, rarray : [], qarray: []
                 }, {
-                num: '4', signnum: '1', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -356, centery : 0
+                num: '4', signnum: '1', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -356, centery : 0, rarray : [], qarray: []
                 }, {
-                num: '5', signnum: '2', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -593, centery : -356
+                num: '5', signnum: '2', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -593, centery : -356, rarray : [], qarray: []
                 }, {
-                num: '6', signnum: '3', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -356, centery : -593
+                num: '6', signnum: '3', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : -356, centery : -593, rarray : [], qarray: []
                 }, {
-                num: '7', signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 0, centery : -356
+                num: '7', signnum: '4', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 0, centery : -356, rarray : [], qarray: []
                 }, {
-                num: '8', signnum: '5', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 356, centery : -593
+                num: '8', signnum: '5', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 356, centery : -593, rarray : [], qarray: []
                 }, {
-                num: '9', signnum: '6', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 593, centery : -356
+                num: '9', signnum: '6', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 593, centery : -356, rarray : [], qarray: []
                 }, {
-                num: '10', signnum: '7', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 356, centery : 0
+                num: '10', signnum: '7', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 356, centery : 0, rarray : [], qarray: []
                 }, {
-                num: '11', signnum: '8', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 593, centery : 356
+                num: '11', signnum: '8', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 593, centery : 356, rarray : [], qarray: []
                 }, {
-                num: '12', signnum: '9', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 356, centery : 593
+                num: '12', signnum: '9', color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)' , centerx : 356, centery : 593, rarray : [], qarray: []
                 }
                 ],
                showAspect: false,
@@ -764,7 +764,7 @@ function drawAstro(me) {
   $("#ketu").val(inputObj.graha["ketu"]);
   me.updateOutput();
   
-  drawCircle(ctx,0,0,r,"lightgray");  //constant resistance circles Rn = 0; small padding provide for the outer circle to avoid flatning.
+  drawCircle(ctx,0,0,r,"lightgray");  
   drawRectangle(ctx,0,0,r,0,"black");
   drawLine(ctx,1,135,1,135+180,"black");
   drawLine(ctx,1,45,1,180+45,"black");
@@ -775,63 +775,75 @@ function drawAstro(me) {
 
   //ctx.beginPath();
   // House1
-  var rarray = [0, 0.5, 1/Math.SQRT2, 0.5,0];
-  var qarray = [0, 135, 90, 45,0];
+  var rarray = [0, 0.5, 1/Math.SQRT2, 0.5, 0];
+  var qarray = [0, 45,  90,           135, 0];
+  me.houses[0].rarray = rarray;  me.houses[0].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[0].color,me.houses[0].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[0].colorKey,me.houses[0].colorKey); // line color, fill color
   // House2
-  rarray = [0.5, 1, 1/Math.SQRT2, 0.5];
-  qarray = [135, 135, 90, 135];
+  rarray = [0.5,  1/Math.SQRT2, 1,   0.5];
+  qarray = [135,  90,           135, 135];
+  me.houses[1].rarray = rarray;  me.houses[1].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[1].color,me.houses[1].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[1].colorKey,me.houses[1].colorKey); // line color, fill color
   // House3
-  rarray = [0.5, 1/Math.SQRT2, 1, 0.5];
-  qarray = [135, 180, 135, 135];
+  rarray = [0.5, 1,   1/Math.SQRT2, 0.5];
+  qarray = [135, 135, 180,          135];
+  me.houses[2].rarray = rarray;  me.houses[2].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[2].color,me.houses[2].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[2].colorKey,me.houses[2].colorKey); // line color, fill color
   // House4
-  rarray = [0, 0.5, 1/Math.SQRT2, 0.5, 0];
-  qarray = [0, 135, 180, 225,0];
+  rarray = [0, 0.5, 1/Math.SQRT2, 0.5,  0];
+  qarray = [0, 135, 180,          225,  0];
+  me.houses[3].rarray = rarray;  me.houses[3].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[3].color,me.houses[3].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[3].colorKey,me.houses[3].colorKey); // line color, fill color
   // House5
-  rarray = [0.5, 1/Math.SQRT2, 1, 0.5];
-  qarray = [225, 180, 225, 225];
+  rarray = [0.5, 1/Math.SQRT2, 1,   0.5];
+  qarray = [225, 180,          225, 225];
+  me.houses[4].rarray = rarray;  me.houses[4].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[4].color,me.houses[4].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[4].colorKey,me.houses[4].colorKey); // line color, fill color
   // House6
-  rarray = [0.5, 1, 1/Math.SQRT2, 0.5];
-  qarray = [225, 225, 270, 225];
+  rarray = [0.5,  1/Math.SQRT2, 1,   0.5];
+  qarray = [225,  270,          225, 225];
+  me.houses[5].rarray = rarray;  me.houses[5].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[5].color,me.houses[5].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[5].colorKey,me.houses[5].colorKey); // line color, fill color  
   // House7
   rarray = [0, 0.5, 1/Math.SQRT2, 0.5, 0];
-  qarray = [0, 225, 270, 315,0];
+  qarray = [0, 225, 270,          315, 0];
+  me.houses[6].rarray = rarray;  me.houses[6].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[6].color,me.houses[6].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[6].colorKey,me.houses[6].colorKey); // line color, fill color
   //House8
-  rarray = [0.5, 1, 1/Math.SQRT2, 0.5];
-  qarray = [315, 315, 270, 315];
+  rarray = [0.5, 1/Math.SQRT2, 1,   0.5];
+  qarray = [315, 270,          315, 315];
+  me.houses[7].rarray = rarray;  me.houses[7].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[7].color,me.houses[7].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[7].colorKey,me.houses[7].colorKey); // line color, fill color
   // House9
-  rarray = [0.5, 1/Math.SQRT2, 1, 0.5];
-  qarray = [315, 360, 315, 315];
+  rarray = [0.5, 1,   1/Math.SQRT2,  0.5];
+  qarray = [315, 315, 360,           315];
+  me.houses[8].rarray = rarray;  me.houses[8].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[8].color,me.houses[8].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[8].colorKey,me.houses[8].colorKey); // line color, fill color
   // House10
   rarray = [0, 0.5, 1/Math.SQRT2, 0.5, 0];
-  qarray = [0, 315, 0, 45,0];
+  qarray = [0, 315, 0,            45,  0];
+  me.houses[9].rarray = rarray;  me.houses[9].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[9].color,me.houses[9].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[9].colorKey,me.houses[9].colorKey); // line color, fill color  
   //House11
-  rarray = [0.5, 1, 1/Math.SQRT2, 0.5];
-  qarray = [45, 45, 360, 45];
+  rarray = [0.5, 1/Math.SQRT2, 1,  0.5];
+  qarray = [45,  360,          45, 45];
+  me.houses[10].rarray = rarray;  me.houses[10].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[10].color,me.houses[10].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[10].colorKey,me.houses[10].colorKey); // line color, fill color
   // House12
   rarray = [0.5, 1, 1/Math.SQRT2, 0.5];
-  qarray = [45, 45, 90, 45];
+  qarray = [45, 45, 90,           45];
+  me.houses[11].rarray = rarray;  me.houses[11].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[11].color,me.houses[11].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[11].colorKey,me.houses[11].colorKey); // line color, fill color
   //ctx.closePath();
@@ -857,39 +869,11 @@ function drawAstro(me) {
   DrawImage(ctx,MQtoX(1/Math.SQRT2,270),MQtoY(1/Math.SQRT2,270)-110,0.022*AXIS_RANGE,"west");
   DrawImage(ctx,MQtoX(1/Math.SQRT2,180)-100,MQtoY(1/Math.SQRT2,180),0.022*AXIS_RANGE,"north");
   DrawImage(ctx,MQtoX(1/Math.SQRT2,0)+100,MQtoY(1/Math.SQRT2,0),0.022*AXIS_RANGE,"south");
-  //drawCircle(ctx,0,0,0.70*AXIS_RANGE,"lightgray");
-  // drawCircle(ctx,0,0,0.25*AXIS_RANGE,"lightgray");
-  // drawCircle(ctx,0,0,0.4*AXIS_RANGE,"lightgray");
-  // DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.30*AXIS_RANGE,225,45,"lightgray");
-  // DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.40*AXIS_RANGE,225,315,"brown"); //12
-  // DrawArc(ctx,MQtoX(0.5,45),MQtoY(0.5,45),0.40*AXIS_RANGE,315,45,"darkblue");//11
-
-  // DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.30*AXIS_RANGE,315,135,"lightgray");
-  // DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.40*AXIS_RANGE,315,45,"darkred"); //9
-  // DrawArc(ctx,MQtoX(0.5,315),MQtoY(0.5,315),0.40*AXIS_RANGE,45,135,"darkgreen");//8
-
-  // DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.30*AXIS_RANGE,45,225,"lightgray");
-  // DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.40*AXIS_RANGE,45,135,"magenta");//6
-  // DrawArc(ctx,MQtoX(0.5,225),MQtoY(0.5,225),0.40*AXIS_RANGE,135,225,"olive"); //5
-
-  // DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.30*AXIS_RANGE,135,315,"lightgray");
-  // DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.40*AXIS_RANGE,135,225,"violet"); //3
-  // DrawArc(ctx,MQtoX(0.5,135),MQtoY(0.5,135),0.40*AXIS_RANGE,225,315,"brown"); //2
-
-  // DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,225,315,"purple"); //1
-  // DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,135,225,"blue"); //4
-  // DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,45,135,"green"); //7
-  // DrawArc(ctx,MQtoX(0,0),MQtoY(0,0),0.30*AXIS_RANGE,315,45,"violet"); //10
-  // var [x1,y1] = degreeToXY(3,0.25,12);
-  // console.log(" deg x= " + x1+ "  deg y = " + y1 + " r =  " + r);
-  //DrawSign(ctx,x1,y1,0.018*AXIS_RANGE,"capricorn");
-  //ctx.globalAlpha = 0.4;
-  // ctx.globalCompositeOperation = "lighter";
   DrawAllSigns(ctx);
   DrawAllGrahas(ctx);
   if(astroObj.showAspect == true)
   {
-    var ctx = me.ctx;
+    //var ctx = me.ctx;
     var planet, x, y, aspect,house,final_aspect;
     for(let i=1; i <planetsArray.length; i++){
       planet = planetsArray[i];
@@ -908,10 +892,19 @@ function drawAstro(me) {
     }
     console.log("show Aspect")
   }
-  if(astroObj.showANakshatra == true)
+  if(astroObj.showNakshatra == true)
   {
-    var ctx = me.ctx;
-    var planet, x, y, aspect,house,final_aspect;
+    nakshatraObj.ctx = ctx;
+    nakshatraObj.drawNakshatra_();
+   // nakshatraObj.print_();
+    nakshatraObj.update_();
+    //var ctx = me.ctx;
+    //var planet, x, y, aspect,house,final_aspect;
+    // DrawTriangle(ctx,0,0,0.5,135,0.55,160,"red","red");
+    // DrawTriangle(ctx,0,0,0.55,160,0.71,180,"red","red");
+    // DrawTriangle(ctx,0,0,0.71,180,0.55,200,"red","red");
+    // DrawTriangle(ctx,0,0,0.55,200,0.5,225,"red","red");
+    //DrawTriangle(ctx,0,0,0.5,135,0.55,160,"red","red");
     // for(let i=1; i <planetsArray.length; i++){
     //   planet = planetsArray[i];
     //   if(inputObj.graha[planet]=="") break;
@@ -927,7 +920,7 @@ function drawAstro(me) {
     //     DrawLinewithArrow(ctx,x,y,astroObj.houses[final_aspect-1].centerx,astroObj.houses[final_aspect-1].centery,planetsColor[i] );
     //   });
     //}
-    console.log("show Nakshatra")
+    console.log("show Nakshatra1")
   }
   
   if(astroObj.showLords == true)
@@ -983,6 +976,7 @@ function drawAstro(me) {
   // str = JSON.stringify(me, null, 4); // (Optional) beautiful indented output.
   // console.log("Astro Object= " + str); // Logs output to dev tools console.
 }
+
 
 
 function DrawLinewithArrow(ctx, x1,y1,x2,y2,color) {
