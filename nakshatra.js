@@ -1,5 +1,7 @@
 //Nakshatra obj
-
+var nakshatra_degree = 360.0/(13+(20/60));
+var nakshatra_padha = 360.0/(13+(20/60))/4;
+var nakshatra_90 = 10; //each padha is 10 degrees
 // var nakshatraObj =   // RASI
 //         [
 //             {"position": "1",       "name": "aries",      "ruledby": "mars",    "exaltation": "sun",        "element": "fire",    "debilitation": "saturn",    "x": 0, "y": 0},
@@ -22,7 +24,7 @@ var nakshatraObj = {
         num: '1', name: 'Ashwini', startsign_name: "aries", startdegree: 0, startmins: 0,
         ruler: 'ketu', symbol: 'Horses Head', deity: 'Ashwini Kumar', nature: 'swift', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)', 
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)', 
         qualities: ''
         }, {
         num: '2', name: 'Bharani', startsign_name: "aries",  startdegree: 13, startmins: 20,
@@ -210,9 +212,21 @@ function update_(me) {
     nakshatraObj.nakshatras[0].qarray[0] = houseobj.qarray[0];
     nakshatraObj.nakshatras[0].rarray[1] = houseobj.rarray[1];
     nakshatraObj.nakshatras[0].qarray[1] = houseobj.qarray[1];
-    nakshatraObj.nakshatras[0].rarray[2] = houseobj.rarray[1]/Math.cos(30*Math.PI/180);
-    nakshatraObj.nakshatras[0].qarray[2] = houseobj.qarray[1]+30;
-    DrawTriangle(me.ctx,nakshatraObj.nakshatras[0].rarray,nakshatraObj.nakshatras[0].qarray,"red","red")
+    nakshatraObj.nakshatras[0].rarray[2] = (houseobj.rarray[1]/Math.cos(10*4*Math.PI/180));
+    nakshatraObj.nakshatras[0].qarray[2] = houseobj.qarray[1]+10*4;
+    console.log(nakshatraObj.nakshatras[0]);
+    DrawTriangle(me.ctx,nakshatraObj.nakshatras[0].rarray,nakshatraObj.nakshatras[0].qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+    houseobj = astroObj.houses.find(o => o.signnum === 2);
+    console.log(houseobj);
+    nakshatraObj.nakshatras[1].rarray[0] = houseobj.rarray[0];
+    nakshatraObj.nakshatras[1].qarray[0] = houseobj.qarray[0];
+    nakshatraObj.nakshatras[1].rarray[1] = houseobj.rarray[1];
+    nakshatraObj.nakshatras[1].qarray[1] = houseobj.qarray[1];
+    nakshatraObj.nakshatras[1].rarray[2] = (houseobj.rarray[1]/Math.cos(10*4*Math.PI/180));
+    nakshatraObj.nakshatras[1].qarray[2] = houseobj.qarray[1]+10*4;
+    console.log(nakshatraObj.nakshatras[1]);
+    DrawTriangle(me.ctx,nakshatraObj.nakshatras[1].rarray,nakshatraObj.nakshatras[1].qarray,nakshatraObj.nakshatras[1].color,nakshatraObj.nakshatras[1].fillcolor);
+    
     // for(let i=0; i <12; i++)
     // {
     //   //let id = "#sign"+(i+1);
@@ -232,11 +246,48 @@ function update_(me) {
    //console.log("Sign Object= " + str); // Logs output to dev tools console.
 }
 
+// this function does not need the last point to be set to the first point for closure, it does it internally
+function drawPathClose(ctx, [...rarray],[...qarray],color,fillcolor){
+    ctx.save();
+    ctx.beginPath();
+    var x1 = AXIS_RANGE*rarray[0]*Math.cos(qarray[0]*Math.PI/180);
+    var y1 = AXIS_RANGE*rarray[0]*Math.sin(qarray[0]*Math.PI/180);
+    var r1 =0.02*AXIS_RANGE;
+    var scaled1 = scale(x1,y1,r1);
+    ctx.moveTo(scaled1.X, scaled1.Y);
+    for(let i = 1; i < rarray.length; i++) {
+      let x1 = AXIS_RANGE*rarray[i]*Math.cos(qarray[i]*Math.PI/180);
+      let y1 = AXIS_RANGE*rarray[i]*Math.sin(qarray[i]*Math.PI/180);
+      let scaled2 = scale(x1,y1,r1);
+      ctx.lineTo(scaled2.X, scaled2.Y);
+    }
+    x1 = AXIS_RANGE*rarray[0]*Math.cos(qarray[0]*Math.PI/180);
+    y1 = AXIS_RANGE*rarray[0]*Math.sin(qarray[0]*Math.PI/180);
+    let scaled3 = scale(x1,y1,r1);
+    ctx.lineTo(scaled3.X, scaled3.Y);
+    ctx.closePath();
+    ctx.lineWidth = "1";
+    ctx.strokeStyle = color; // Green path
+    ctx.fillStyle = fillcolor;
+    ctx.stroke(); // Draw it
+    ctx.fill();
+    ctx.restore();
+  }
+
+// function DrawTriangle(ctx,[...r],[...q],color,fillcolor){
+//     ctx.save();
+//     var rarray = [r[0], r[1], r[2], r[0]];
+//     var qarray = [q[0], q[1], q[2], q[0]];
+//     ctx.globalAlpha  = 0.2;
+//     drawPath(ctx, [...rarray],[...qarray],color,fillcolor); // line color, fill color
+//     ctx.restore();
+// }
 function DrawTriangle(ctx,[...r],[...q],color,fillcolor){
-ctx.save();
+    ctx.save();
     var rarray = [r[0], r[1], r[2], r[0]];
     var qarray = [q[0], q[1], q[2], q[0]];
     ctx.globalAlpha  = 0.2;
-    drawPath(ctx, [...rarray],[...qarray],color,fillcolor); // line color, fill color
+    drawPathClose(ctx, [...r],[...q],color,fillcolor); // line color, fill color
     ctx.restore();
 }
+
