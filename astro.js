@@ -824,7 +824,7 @@ function drawAstro(me) {
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[7].colorKey,me.houses[7].colorKey); // line color, fill color
   // House9
   rarray = [0.5, 1,   1/Math.SQRT2,  0.5];
-  qarray = [315, 315, 360,           315];
+  qarray = [315, 315, 0,           315];
   me.houses[8].rarray = rarray;  me.houses[8].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[8].color,me.houses[8].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[8].colorKey,me.houses[8].colorKey); // line color, fill color
@@ -836,7 +836,7 @@ function drawAstro(me) {
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[9].colorKey,me.houses[9].colorKey); // line color, fill color  
   //House11
   rarray = [0.5, 1/Math.SQRT2, 1,  0.5];
-  qarray = [45,  360,          45, 45];
+  qarray = [45,  0,          45, 45];
   me.houses[10].rarray = rarray;  me.houses[10].qarray = qarray;
   drawPath(ctx, [...rarray],[...qarray],me.houses[10].color,me.houses[10].fillcolor); // line color, fill color
   drawPath(hitCtx, [...rarray],[...qarray],me.houses[10].colorKey,me.houses[10].colorKey); // line color, fill color

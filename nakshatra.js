@@ -30,13 +30,13 @@ var nakshatraObj = {
         num: '2', name: 'Bharani', startsign_name: "aries",  startdegree: 13, startmins: 20,
         ruler: 'venus', symbol: 'Yoni', deity: 'Yama',  nature: 'fierce', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0, rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '3', name: 'Kritika', startsign_name: "aries", startdegree: 26, startmins: 40,
         ruler: 'sun', symbol: 'Razor', deity: 'Agni',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '4', name: 'Rohini', startsign_name: "taurus", startdegree: 10, startmins: 00,
@@ -206,26 +206,31 @@ function print_(me) {
       }
 function update_(me) {
     // get the house number of position 1(Aries) first
+    var houseType, padha;
     let houseobj = astroObj.houses.find(o => o.signnum === 1);
+    if(houseobj.num == 1 || houseobj.num == 4 ||houseobj.num == 7 || houseobj.num == 10) {houseType = "Kendra"; padha =10;}
+    else {houseType = "Trikona"; padha = 5;}
+    
     console.log(houseobj);
     nakshatraObj.nakshatras[0].rarray[0] = houseobj.rarray[0];
     nakshatraObj.nakshatras[0].qarray[0] = houseobj.qarray[0];
     nakshatraObj.nakshatras[0].rarray[1] = houseobj.rarray[1];
     nakshatraObj.nakshatras[0].qarray[1] = houseobj.qarray[1];
-    nakshatraObj.nakshatras[0].rarray[2] = (houseobj.rarray[1]/Math.cos(10*4*Math.PI/180));
-    nakshatraObj.nakshatras[0].qarray[2] = houseobj.qarray[1]+10*4;
+    nakshatraObj.nakshatras[0].rarray[2] = (houseobj.rarray[1]/Math.cos(padha*4*Math.PI/180));
+    nakshatraObj.nakshatras[0].qarray[2] = houseobj.qarray[1]+padha*4;
     console.log(nakshatraObj.nakshatras[0]);
     DrawTriangle(me.ctx,nakshatraObj.nakshatras[0].rarray,nakshatraObj.nakshatras[0].qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-    houseobj = astroObj.houses.find(o => o.signnum === 2);
-    console.log(houseobj);
-    nakshatraObj.nakshatras[1].rarray[0] = houseobj.rarray[0];
-    nakshatraObj.nakshatras[1].qarray[0] = houseobj.qarray[0];
-    nakshatraObj.nakshatras[1].rarray[1] = houseobj.rarray[1];
-    nakshatraObj.nakshatras[1].qarray[1] = houseobj.qarray[1];
-    nakshatraObj.nakshatras[1].rarray[2] = (houseobj.rarray[1]/Math.cos(10*4*Math.PI/180));
-    nakshatraObj.nakshatras[1].qarray[2] = houseobj.qarray[1]+10*4;
-    console.log(nakshatraObj.nakshatras[1]);
-    DrawTriangle(me.ctx,nakshatraObj.nakshatras[1].rarray,nakshatraObj.nakshatras[1].qarray,nakshatraObj.nakshatras[1].color,nakshatraObj.nakshatras[1].fillcolor);
+    
+    //houseobj = astroObj.houses.find(o => o.signnum === 2);
+    //console.log(houseobj);
+    // nakshatraObj.nakshatras[1].rarray[0] = houseobj.rarray[0];
+    // nakshatraObj.nakshatras[1].qarray[0] = houseobj.qarray[0];
+    // nakshatraObj.nakshatras[1].rarray[1] = houseobj.rarray[1];
+    // nakshatraObj.nakshatras[1].qarray[1] = houseobj.qarray[1];
+    // nakshatraObj.nakshatras[1].rarray[2] = (houseobj.rarray[1]/Math.cos(10*4*Math.PI/180));
+    // nakshatraObj.nakshatras[1].qarray[2] = houseobj.qarray[1]+10*4;
+    // console.log(nakshatraObj.nakshatras[1]);
+    // DrawTriangle(me.ctx,nakshatraObj.nakshatras[1].rarray,nakshatraObj.nakshatras[1].qarray,nakshatraObj.nakshatras[1].color,nakshatraObj.nakshatras[1].fillcolor);
     
     // for(let i=0; i <12; i++)
     // {
