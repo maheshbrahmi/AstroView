@@ -2117,6 +2117,7 @@ function handleFileImport(e) {
         reader.onload = function(e)
              {
                 var contents = reader.result;
+                clear_all();
                 // alert( "Got the file. " 
                 //         +"name: " + file.name + "\n "
                 //         +"type: " + file.type + "\n "
