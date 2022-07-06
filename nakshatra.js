@@ -206,20 +206,125 @@ function print_(me) {
       }
 function update_(me) {
     // get the house number of position 1(Aries) first
-    var houseType, padha;
+    var houseType, padha; var rarray = []; var qarray = [];
     let houseobj = astroObj.houses.find(o => o.signnum === 1);
     if(houseobj.num == 1 || houseobj.num == 4 ||houseobj.num == 7 || houseobj.num == 10) {houseType = "Kendra"; padha =10;}
     else {houseType = "Trikona"; padha = 5;}
     
+    var startr = houseobj.rarray[0]; var startq = houseobj.qarray[0];
+    var startr1 =  houseobj.rarray[1];  var startq1 =  houseobj.qarray[1];
+    var x = 0; 
+    var y = 0;
     console.log(houseobj);
-    nakshatraObj.nakshatras[0].rarray[0] = houseobj.rarray[0];
-    nakshatraObj.nakshatras[0].qarray[0] = houseobj.qarray[0];
-    nakshatraObj.nakshatras[0].rarray[1] = houseobj.rarray[1];
-    nakshatraObj.nakshatras[0].qarray[1] = houseobj.qarray[1];
-    nakshatraObj.nakshatras[0].rarray[2] = (houseobj.rarray[1]/Math.cos(padha*4*Math.PI/180));
-    nakshatraObj.nakshatras[0].qarray[2] = houseobj.qarray[1]+padha*4;
-    console.log(nakshatraObj.nakshatras[0]);
-    DrawTriangle(me.ctx,nakshatraObj.nakshatras[0].rarray,nakshatraObj.nakshatras[0].qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+    rarray[0] = startr;
+    qarray[0] = startq;
+
+    rarray[1] = startr1;
+    qarray[1] = startq1;
+    if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+    else x = x + 1;
+    //x = x + 1; 
+    y = y + 1;
+    rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
+   // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
+   // rarray[2] =(Math.sin(45*Math.PI/180)*1)/Math.sin((180-(45+padha))*Math.PI/180);
+    //rarray[2] =(Math.sin((180-(45+padha))*Math.PI/180)*rarray[1])/Math.sin(45*Math.PI/180);
+    qarray[2] = startq1+padha*y;
+    DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+    console.log("r[0]= " + rarray[0] +  " q[0]= " + qarray[0] +  " r[1]= " + rarray[1] + " q[1]= " + qarray[1]);
+    console.log("r[2]= " + rarray[2] +  " q[2]= " + qarray[2] );
+
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+    // else x = x + 1;
+    // y = y + 1;
+    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
+    // qarray[2] = startq1+padha*y;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+    // else x = x + 1;
+    // y = y + 1;
+    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
+    // qarray[2] = startq1+padha*y;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+    // else x = x + 1;
+    // y = y + 1;
+    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
+    // qarray[2] = startq1+padha*y;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+    // else x = x + 1;
+    // y = y + 1;
+    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
+    // qarray[2] = startq1+padha*y;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+    
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+    // else x = x + 1;
+    // y = y + 1;
+    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
+    // qarray[2] = startq1+padha*y;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+
+
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+    // else x = x + 1;
+    // y = y + 1;
+    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
+    // qarray[2] = startq1+padha*y;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+
+
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+    // else x = x + 1;
+    // y = y + 1;
+    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
+    // qarray[2] = startq1+padha*y;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    
+    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+    // else x = x + 1;
+    // console.log("padha*y = " + padha*y +  " x = " + x);
+    // y = y + 1;
+    // rarray[2] = startr1/Math.cos(padha*(x)*Math.PI/180);
+    // qarray[2] = startq1+padha*y;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+
+    // rarray[0] = startr;
+    // qarray[0] = startq;
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    // rarray[2] = r/Math.cos(padha*3*Math.PI/180);
+    // qarray[2] = q+padha*3;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
+
+    // rarray[0] = startr;
+    // qarray[0] = startq;
+    // rarray[1] = rarray[2];
+    // qarray[1] = qarray[2];
+    // rarray[2] = r/Math.cos(padha*4*Math.PI/180);
+    // qarray[2] = q+padha*4;
+    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
     
     //houseobj = astroObj.houses.find(o => o.signnum === 2);
     //console.log(houseobj);
