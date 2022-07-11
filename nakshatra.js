@@ -225,11 +225,17 @@ function update_(me) {
     else x = x + 1;
     //x = x + 1; 
     y = y + 1;
-    rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
-   // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
-   // rarray[2] =(Math.sin(45*Math.PI/180)*1)/Math.sin((180-(45+padha))*Math.PI/180);
-    //rarray[2] =(Math.sin((180-(45+padha))*Math.PI/180)*rarray[1])/Math.sin(45*Math.PI/180);
+    var r1;
+    if(houseType == "Kendra") r1 = 0.5; else r1 = 1/Math.SQRT2;
     qarray[2] = startq1+padha*y;
+    var angle = 180 - ((padha * y) + 45 + 45);
+    
+    //rarray[2] = -r1/Math.cos(qarray[2]*Math.PI/180);
+    if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =(Math.sin(45*Math.PI/180)*1)/Math.sin(angle*Math.PI/180);
+   
+  
+    //rarray[2] =(Math.sin((180-(45+padha))*Math.PI/180)*rarray[1])/Math.sin(45*Math.PI/180);
+    
     DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
     console.log("r[0]= " + rarray[0] +  " q[0]= " + qarray[0] +  " r[1]= " + rarray[1] + " q[1]= " + qarray[1]);
     console.log("r[2]= " + rarray[2] +  " q[2]= " + qarray[2] );
