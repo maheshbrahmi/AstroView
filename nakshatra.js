@@ -226,14 +226,17 @@ function update_(me) {
     //x = x + 1; 
     y = y + 1;
     var r1;
-    if(houseType == "Kendra") r1 = 0.5; else r1 = 1/Math.SQRT2;
-    qarray[2] = startq1+padha*y;
-    var angle = 180 - ((padha * y) + 45 + 45);
+    if(houseType == "Kendra") r1 = 0.5; else r1 = 0.5
+    var angle = 180 - ((padha * y) + 45 + 0);
     
     //rarray[2] = -r1/Math.cos(qarray[2]*Math.PI/180);
-    if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =(Math.sin(45*Math.PI/180)*1)/Math.sin(angle*Math.PI/180);
-   
-  
+    if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =(Math.sin(45*Math.PI/180)*0.5)/Math.sin(angle*Math.PI/180)+0.5;
+    //rarray[2] = 0.46+0.5;
+    if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 2.5;
+  //  if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =r1/Math.cos(padha*x*Math.PI/180);
+  //  if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
+  //  if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =r1/Math.cos(padha*x*Math.PI/180);
+  //  if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
     //rarray[2] =(Math.sin((180-(45+padha))*Math.PI/180)*rarray[1])/Math.sin(45*Math.PI/180);
     
     DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
