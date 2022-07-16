@@ -226,19 +226,41 @@ function update_(me) {
     //x = x + 1; 
     y = y + 1;
     var r1;
-    if(houseType == "Kendra") r1 = 0.5; else r1 = 0.5
-    var angle = 180 - ((padha * y) + 45 + 0);
-    
+    if(houseType == "Kendra") r1 = 0.5; else r1 = 1/Math.SQRT2;
+     var angle1 = 180 - ((padha * y) + 45 + 0);
+     angle1 = 130;
+     var angle2 = 45;
+    console.log("angle1= " + angle1 +  " angle2= " + angle2);
     //rarray[2] = -r1/Math.cos(qarray[2]*Math.PI/180);
-    if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =(Math.sin(45*Math.PI/180)*0.5)/Math.sin(angle*Math.PI/180)+0.5;
+   // if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =(Math.sin(angle2*Math.PI/180)*0.5)/Math.sin(angle1*Math.PI/180);
     //rarray[2] = 0.46+0.5;
-    if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 2.5;
+    // var start_angle = 0;
+    // if (houseType == "Trikona"){
+    //   if(houseobj.num == 3) { start_angle =135; radius = 1;}
+    //   if(houseobj.num == 11) { start_angle =135; radius = 0.707;}
+    //  }
+    if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
   //  if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =r1/Math.cos(padha*x*Math.PI/180);
   //  if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
   //  if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =r1/Math.cos(padha*x*Math.PI/180);
   //  if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
-    //rarray[2] =(Math.sin((180-(45+padha))*Math.PI/180)*rarray[1])/Math.sin(45*Math.PI/180);
-    
+  //if(houseType == "Trikona") rarray[2] =(Math.sin(((90+padha))*Math.PI/180)*rarray[2])/Math.sin((45-padha)*Math.PI/180);
+
+    if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] = r1/Math.cos(angle1*Math.PI/180);
+
+    //if(houseType == "Trikona") rarray[2] =(Math.sin(((45))*Math.PI/180)*radius)/Math.sin((130)*Math.PI/180);
+
+    if (houseType == "Trikona"){
+      if(houseobj.num == 3) { rarray[2] =(Math.sin(((45))*Math.PI/180)*1)/Math.sin((130)*Math.PI/180);}
+      if(houseobj.num == 11) { rarray[2] =  0.707/Math.sin(85*Math.PI/180);}
+      if(houseobj.num == 8) { rarray[2] = 0.707/Math.sin(85*Math.PI/180);}
+      if(houseobj.num == 9) { rarray[2] =(Math.sin(((45))*Math.PI/180)*1)/Math.sin((130)*Math.PI/180);}
+     }
+
+   // rarray[2] = radius/Math.cos(5*Math.PI/180);
+   // rarray[2] = radius/Math.sin(85*Math.PI/180);
+
+    if( rarray[2] < 0)rarray[2] = rarray[2] * (-1);
     DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
     console.log("r[0]= " + rarray[0] +  " q[0]= " + qarray[0] +  " r[1]= " + rarray[1] + " q[1]= " + qarray[1]);
     console.log("r[2]= " + rarray[2] +  " q[2]= " + qarray[2] );
