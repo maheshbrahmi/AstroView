@@ -30,157 +30,157 @@ var nakshatraObj = {
         num: '2', name: 'Bharani', startsign_name: "aries",  startdegree: 13, startmins: 20,
         ruler: 'venus', symbol: 'Yoni', deity: 'Yama',  nature: 'fierce', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0, rarray : [], qarray: [],
-        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '3', name: 'Kritika', startsign_name: "aries", startdegree: 26, startmins: 40,
         ruler: 'sun', symbol: 'Razor', deity: 'Agni',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '4', name: 'Rohini', startsign_name: "taurus", startdegree: 10, startmins: 00,
         ruler: 'moon', symbol: 'Chariot', deity: 'Brahma',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '5', name: 'Mrigasira', startsign_name: "tarus", startdegree: 23, startmins: 20,  
         ruler: 'mars', symbol: 'Deer`s head', deity: 'Chandra',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '6', name: 'Aardra', startsign_name: "gemini", startdegree: 6, startmins: 40,
         ruler: 'rahu', symbol: 'Tear Drop', deity: 'Rudra',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '7', name: 'Punarvasu', startsign_name: "gemini", startdegree: 20, startmins: 00,
         ruler: 'jupiter', symbol: 'Quiver', deity: 'Aditi',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '8', name: 'Pushyami', startsign_name: "cancer", startdegree: 3, startmins: 20, 
         ruler: 'saturn',  symbol: 'Udder', deity: 'Brihaspati', nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '9', name: 'Ashlesha', startsign_name: "cancer",startdegree: 16, startmins: 40, 
         ruler: 'mercury',  deity: 'Nag', symbol: 'Serpent', nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '10', name: 'Magha', startsign_name: "leo", startdegree: 0, startmins: 00, 
         ruler: 'ketu', symbol: 'Throne', deity: 'Pitras',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '11', name: 'Purva Phalguni', startsign_name: "leo", startdegree: 13, startmins: 20, 
         ruler: 'venus', symbol: 'Hammock', deity: 'Bhaga',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '12', name: 'Uttra Phalguni', startsign_name: "leo", startdegree: 26, startmins: 40, 
         ruler: 'sun', symbol: 'Fig Tree', deity: 'Aryaman',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '13', name: 'Hasta',startsign_name: "virgo", startdegree: 10, startmins: 00, 
         ruler: 'moon', symbol: 'Hand', deity: 'Surya',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '14', name: 'Chitra',startsign_name: "virgo", startdegree: 23, startmins: 20, 
         ruler: 'mars', symbol: 'jewel', deity: 'Viswakarma',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '15', name: 'Swati', startsign_name: "libra", startdegree: 6, startmins: 40, 
         ruler: 'rahu', symbol: 'Coral', deity: 'Vaayu',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '16', name: 'Vishakaha', startsign_name: "libra", startdegree: 20, startmins: 00, 
         ruler: 'jupiter', symbol: 'Arch', deity: 'Indira',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '17', name: 'Anuradha', startsign_name: "scorpio", startdegree: 3, startmins: 20, 
         ruler: 'saturn', symbol: 'Lotus', deity: 'Mithra',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '18', name: 'Jyeshtha', startsign_name: "scorpio", startdegree: 16, startmins: 40, 
         ruler: 'mercury', symbol: 'Amulet', deity: 'Indra',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '19', name: 'Mula', startsign_name: "sagittarius", startdegree: 0, startmins: 00, 
         ruler: 'ketu', symbol: 'roots', deity: 'Nirriti',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '20', name: 'Purva Ashadha', startsign_name: "sagittarius", startdegree: 13, startmins: 20, 
         ruler: 'venus', symbol: 'A fan', deity: 'Varuna',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '21', name: 'Uttara Ashadha', startsign_name: "sagittarius", startdegree: 26, startmins: 40, 
         ruler: 'sun', symbol: 'Tusk', deity: 'Vishvadevas',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '22', name: 'Shravana', startsign_name: "capricorn", startdegree: 23, startmins: 20, 
         ruler: 'moon', symbol: 'An Ear', deity: 'Vishnu',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '23', name: 'Dhanistha', startsign_name: "capricorn", startdegree: 23, startmins: 20, 
         ruler: 'mars', symbol: 'Drum', deity: 'Vasus',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '24', name: 'Satabhishak', startsign_name: "aquarius", startdegree: 6, startmins: 40, 
         ruler: 'rahu', symbol: '1000 Stars', deity: 'Varuna',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         },{
         num: '25', name: 'Purva Bhadra', startsign_name: "aquarius", startdegree: 20, startmins: 00, 
         ruler: 'jupiter', symbol: 'Funeral cot', deity: 'Ajaikapada',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '26', name: 'Uttara Bhadra', startsign_name: "pisces", startdegree: 3, startmins: 20, 
         ruler: 'saturn', symbol: 'Water Snake', deity: 'Ahirbudhnyua',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '27', name: 'Revati', startsign_name: "pisces", startdegree: 16, startmins: 40, 
         ruler: 'mercury', symbol: 'A fish', deity: 'Pushan',  nature: '', 
         postion: 1, house: 1, longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
-        color: 'rgb(0,0,0)', fillcolor: 'rgb(255,255,255)', colorKey: 'rgb(0,0,0)',
+        color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }
         ],
@@ -207,184 +207,57 @@ function print_(me) {
 function update_(me) {
     // get the house number of position 1(Aries) first
     var houseType, padha; var rarray = []; var qarray = [];
-    let houseobj = astroObj.houses.find(o => o.signnum === 1);
-    if(houseobj.num == 1 || houseobj.num == 4 ||houseobj.num == 7 || houseobj.num == 10) {houseType = "Kendra"; padha =10;}
-    else {houseType = "Trikona"; padha = 5;}
-    
-    var startr = houseobj.rarray[0]; var startq = houseobj.qarray[0];
-    var startr1 =  houseobj.rarray[1];  var startq1 =  houseobj.qarray[1];
-    var x = 0; 
-    var y = 0;
-    console.log(houseobj);
-    rarray[0] = startr;
-    qarray[0] = startq;
-
-    rarray[1] = startr1;
-    qarray[1] = startq1;
-    if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
-    else x = x + 1;
-    //x = x + 1; 
-    y = y + 1;
-    var r1;
-    if(houseType == "Kendra") r1 = 0.5; else r1 = 1/Math.SQRT2;
-     var angle1 = 180 - ((padha * y) + 45 + 0);
-     angle1 = 130;
-     var angle2 = 45;
-    console.log("angle1= " + angle1 +  " angle2= " + angle2);
-    //rarray[2] = -r1/Math.cos(qarray[2]*Math.PI/180);
-   // if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =(Math.sin(angle2*Math.PI/180)*0.5)/Math.sin(angle1*Math.PI/180);
-    //rarray[2] = 0.46+0.5;
-    // var start_angle = 0;
-    // if (houseType == "Trikona"){
-    //   if(houseobj.num == 3) { start_angle =135; radius = 1;}
-    //   if(houseobj.num == 11) { start_angle =135; radius = 0.707;}
-    //  }
-    if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
-  //  if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =r1/Math.cos(padha*x*Math.PI/180);
-  //  if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
-  //  if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] =r1/Math.cos(padha*x*Math.PI/180);
-  //  if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
-  //if(houseType == "Trikona") rarray[2] =(Math.sin(((90+padha))*Math.PI/180)*rarray[2])/Math.sin((45-padha)*Math.PI/180);
-
-    if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); else rarray[2] = r1/Math.cos(angle1*Math.PI/180);
-
-    //if(houseType == "Trikona") rarray[2] =(Math.sin(((45))*Math.PI/180)*radius)/Math.sin((130)*Math.PI/180);
-
-    if (houseType == "Trikona"){
-      if(houseobj.num == 3) { rarray[2] =(Math.sin(((45))*Math.PI/180)*1)/Math.sin((130)*Math.PI/180);}
-      if(houseobj.num == 11) { rarray[2] =  0.707/Math.sin(85*Math.PI/180);}
-      if(houseobj.num == 8) { rarray[2] = 0.707/Math.sin(85*Math.PI/180);}
-      if(houseobj.num == 9) { rarray[2] =(Math.sin(((45))*Math.PI/180)*1)/Math.sin((130)*Math.PI/180);}
-     }
-
-   // rarray[2] = radius/Math.cos(5*Math.PI/180);
-   // rarray[2] = radius/Math.sin(85*Math.PI/180);
-
-    if( rarray[2] < 0)rarray[2] = rarray[2] * (-1);
-    DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-    console.log("r[0]= " + rarray[0] +  " q[0]= " + qarray[0] +  " r[1]= " + rarray[1] + " q[1]= " + qarray[1]);
-    console.log("r[2]= " + rarray[2] +  " q[2]= " + qarray[2] );
-
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
-    // else x = x + 1;
-    // y = y + 1;
-    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
-    // qarray[2] = startq1+padha*y;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
-    // else x = x + 1;
-    // y = y + 1;
-    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
-    // qarray[2] = startq1+padha*y;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
-    // else x = x + 1;
-    // y = y + 1;
-    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
-    // qarray[2] = startq1+padha*y;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
-    // else x = x + 1;
-    // y = y + 1;
-    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
-    // qarray[2] = startq1+padha*y;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-    
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
-    // else x = x + 1;
-    // y = y + 1;
-    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
-    // qarray[2] = startq1+padha*y;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-
-
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
-    // else x = x + 1;
-    // y = y + 1;
-    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
-    // qarray[2] = startq1+padha*y;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-
-
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
-    // else x = x + 1;
-    // y = y + 1;
-    // rarray[2] = startr1/Math.cos(padha*x*Math.PI/180);
-    // qarray[2] = startq1+padha*y;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    
-    // if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
-    // else x = x + 1;
-    // console.log("padha*y = " + padha*y +  " x = " + x);
-    // y = y + 1;
-    // rarray[2] = startr1/Math.cos(padha*(x)*Math.PI/180);
-    // qarray[2] = startq1+padha*y;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-
-    // rarray[0] = startr;
-    // qarray[0] = startq;
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    // rarray[2] = r/Math.cos(padha*3*Math.PI/180);
-    // qarray[2] = q+padha*3;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-
-    // rarray[0] = startr;
-    // qarray[0] = startq;
-    // rarray[1] = rarray[2];
-    // qarray[1] = qarray[2];
-    // rarray[2] = r/Math.cos(padha*4*Math.PI/180);
-    // qarray[2] = q+padha*4;
-    // DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[0].color,nakshatraObj.nakshatras[0].fillcolor);
-    
-    //houseobj = astroObj.houses.find(o => o.signnum === 2);
-    //console.log(houseobj);
-    // nakshatraObj.nakshatras[1].rarray[0] = houseobj.rarray[0];
-    // nakshatraObj.nakshatras[1].qarray[0] = houseobj.qarray[0];
-    // nakshatraObj.nakshatras[1].rarray[1] = houseobj.rarray[1];
-    // nakshatraObj.nakshatras[1].qarray[1] = houseobj.qarray[1];
-    // nakshatraObj.nakshatras[1].rarray[2] = (houseobj.rarray[1]/Math.cos(10*4*Math.PI/180));
-    // nakshatraObj.nakshatras[1].qarray[2] = houseobj.qarray[1]+10*4;
-    // console.log(nakshatraObj.nakshatras[1]);
-    // DrawTriangle(me.ctx,nakshatraObj.nakshatras[1].rarray,nakshatraObj.nakshatras[1].qarray,nakshatraObj.nakshatras[1].color,nakshatraObj.nakshatras[1].fillcolor);
-    
-    // for(let i=0; i <12; i++)
-    // {
-    //   //let id = "#sign"+(i+1);
-    //   signnum = astroObj.houses[i].signnum;
-    //   let index = signObj.findIndex(
-    //     element => element.name === signsArray[signnum-1]
-    //   );
-    //   console.log("HOUSE: " + (i+1) + " INDEX: " + index + " signnum "+ signnum+ " Name: " + signObj[index].name + " Position: " + signObj[index].position + " Ruledby: " + signObj[index].ruledby +" x: " + signObj[index].x + " y: " + signObj[index].y );
-    //   // var index = signObj.findIndex("name" => "name".value === "cancer");
-    //   ruler = signObj[index].ruledby;
-    //   //which house is this lord(ruler) placed in
-    //   house_num = outputObj[ruler].house;
-    //   //console.log("ruler: " + ruler + " HOUSE: " +house_num)  ;
-    //   //DrawLinewithArrow(ctx,x,y,astroObj.houses[house_num-1].centerx,astroObj.houses[house_num-1].centery,'rgb(0,0,255)' );
-    // }
-    //str = JSON.stringify(signObj, null, 4); // (Optional) beautiful indented output.
-   //console.log("Sign Object= " + str); // Logs output to dev tools console.
+    var k,i;
+    var current_house_position = 1; var nakshatra_num = 0;
+    for (i =0; i<12; i++){
+      let houseobj = astroObj.houses.find(o => o.signnum === current_house_position);
+      if(houseobj.num == 1 || houseobj.num == 4 ||houseobj.num == 7 || houseobj.num == 10) {houseType = "Kendra"; padha =10;}
+      else {houseType = "Trikona"; padha = 5;}
+      var x = 0; 
+      var y = 0;
+      console.log(houseobj);
+      rarray[0] =houseobj.rarray[0]; ;
+      qarray[0] = houseobj.qarray[0];
+      rarray[1] =  houseobj.rarray[1];
+      qarray[1] = houseobj.qarray[1];
+     
+      for (k=0; k<9; k++) {
+        console.log("current_house_position= " + current_house_position);
+        if(houseType == "Kendra") {if(padha*y == 40)  x = x - 0; else if (padha*y > 40)  x = x - 1; else if (padha*y < 40)  x = x + 1;}
+        else x = x + 1;
+        y = y + 1;
+        if((9*i+k) % 4 ==0) nakshatra_num = nakshatra_num+1;
+        console.log("nakshatra_num= " + nakshatra_num);
+        console.log("nakshatra_name= " + nakshatraObj.nakshatras[nakshatra_num-1].name);
+        var r1;
+        var _0_707 =  1/Math.SQRT2;
+        if(houseType == "Kendra") r1 = 0.5; else r1 = _0_707;
+        if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
+        if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); 
+        if (houseType == "Trikona"){
+          let houseobj1 = astroObj.houses.find(o => o.signnum === current_house_position);
+          if(houseobj1.num == 2) { rarray[2] = r1/Math.sin((90-padha*x)*Math.PI/180);}
+          if(houseobj1.num == 3) { rarray[2] = (Math.sin(((45))*Math.PI/180)*1)/Math.sin((180-45-padha*x)*Math.PI/180);}
+          if(houseobj1.num == 5) { rarray[2] =  r1/Math.sin((90-padha*x)*Math.PI/180);}
+          if(houseobj1.num == 6) { rarray[2] = (Math.sin(((45))*Math.PI/180)*1)/Math.sin((180-45-padha*x)*Math.PI/180);}
+          if(houseobj1.num  == 8) { rarray[2] = r1/Math.sin((90-padha*x)*Math.PI/180);}
+          if(houseobj1.num  == 9) { rarray[2] = (Math.sin(((45))*Math.PI/180)*1)/Math.sin((180-45-padha*x)*Math.PI/180);}
+          if(houseobj1.num == 11) { rarray[2] = r1/Math.sin((90-padha*x)*Math.PI/180);}
+          if(houseobj1.num == 12) { rarray[2] = (Math.sin(((45))*Math.PI/180)*1)/Math.sin((180-45-padha*x)*Math.PI/180);}
+        }
+        if( rarray[2] < 0)rarray[2] = rarray[2] * (-1);
+        DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[nakshatra_num-1].color,nakshatraObj.nakshatras[nakshatra_num-1].fillcolor);
+        placeText(me.ctx,MQtoX(rarray[1],qarray[1]),MQtoY(rarray[1],qarray[1]),nakshatra_num,"center","middle");
+        if((9*i+k) % 4 ==0)  placeText(me.ctx,MQtoX(rarray[1]-0.05,qarray[1]+10),MQtoY(rarray[1]-0.05,qarray[1]+10),nakshatraObj.nakshatras[nakshatra_num-1].name,"center","middle");
+        console.log("r[0]= " + rarray[0] +  " q[0]= " + qarray[0] +  " r[1]= " + rarray[1] + " q[1]= " + qarray[1]);
+        console.log("r[2]= " + rarray[2] +  " q[2]= " + qarray[2] );
+        rarray[1] = rarray[2];
+        qarray[1] = qarray[2];
+      }
+      let houseobj2 = astroObj.houses.find(o => o.signnum === current_house_position);
+      console.log("current_house_number= " + houseobj2.num);
+      current_house_position = current_house_position + 1;
+    }
 }
 
 // this function does not need the last point to be set to the first point for closure, it does it internally
