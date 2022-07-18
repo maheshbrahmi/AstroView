@@ -273,8 +273,8 @@ function update_(me) {
         
         DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[nakshatra_num-1].color,nakshatraObj.nakshatras[nakshatra_num-1].fillcolor);
         console.log("degree= " +  qarray[1] );
-        Nakshatra_placeText(me.ctx,MQtoX(rarray[1],qarray[1]),MQtoY(rarray[1],qarray[1]),nakshatra_num+(padha_num/10),"center","middle",'italic','normal',3,'arial');
-        if((9*i+k) % 4 ==0)  Nakshatra_placeText(me.ctx,MQtoX(rarray[1]-0.1,qarray[1]+15),MQtoY(rarray[1]-0.1,qarray[1]+15),nakshatraObj.nakshatras[nakshatra_num-1].name,"center","middle",'italic','bold',4,'arial');
+        Nakshatra_placeText(me.ctx,MQtoX(rarray[1],qarray[1]),MQtoY(rarray[1],qarray[1]),nakshatra_num+(padha_num/10),"center","middle",'italic','normal',4,'arial','black');
+        if((9*i+k) % 4 ==0)  Nakshatra_placeText(me.ctx,MQtoX(rarray[1]-0.125,qarray[1]+10),MQtoY(rarray[1]-0.125,qarray[1]+10),nakshatraObj.nakshatras[nakshatra_num-1].name,"center","middle",'italic','bold',4,'arial','blue');
         console.log("r[0]= " + rarray[0] +  " q[0]= " + qarray[0] +  " r[1]= " + rarray[1] + " q[1]= " + qarray[1]);
         console.log("r[2]= " + rarray[2] +  " q[2]= " + qarray[2] );
         rarray[1] = rarray[2];
@@ -331,7 +331,7 @@ function DrawTriangle(ctx,[...r],[...q],color,fillcolor){
     ctx.restore();
 }
 
-function Nakshatra_placeText(ctx,x,y,txt,textAlign,textBaseline,fontStyle,fontWeight,fontSize,fontFamily){
+function Nakshatra_placeText(ctx,x,y,txt,textAlign,textBaseline,fontStyle,fontWeight,fontSize,fontFamily,color){
   //console.log(" x= " + x + " y = " + y );
   //Default value:	10px sans-serif
   //"italic small-caps bold 12px arial";
@@ -354,7 +354,7 @@ function Nakshatra_placeText(ctx,x,y,txt,textAlign,textBaseline,fontStyle,fontWe
   //console.log ("font= ", txt1);
   //console.log ("font= ", ctx.font);
   //ctx.font = "italic small-caps bold 10px arial"
-  ctx.fillStyle = "black";
+  ctx.fillStyle = color;
   ctx.textAlign = textAlign;  
   ctx.textBaseline = textBaseline;
   var scaled = scale(x,y,0);
