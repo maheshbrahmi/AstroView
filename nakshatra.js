@@ -231,19 +231,23 @@ function update_(me) {
         console.log("nakshatra_name= " + nakshatraObj.nakshatras[nakshatra_num-1].name);
         var r1;
         var _0_707 =  1/Math.SQRT2;
+        var step_size = (1-_0_707)/9;
         if(houseType == "Kendra") r1 = 0.5; else r1 = _0_707;
         if(houseType == "Kendra")  qarray[2] = qarray[1]+ 10 ; else qarray[2] = qarray[1] + 5;
         if(houseType == "Kendra")  rarray[2] = r1/Math.cos(padha*x*Math.PI/180); 
         if (houseType == "Trikona"){
           let houseobj1 = astroObj.houses.find(o => o.signnum === current_house_position);
-          if(houseobj1.num == 2) { rarray[2] = r1/Math.sin((90-padha*x)*Math.PI/180);}
-          if(houseobj1.num == 3) { rarray[2] = (Math.sin(((45))*Math.PI/180)*1)/Math.sin((180-45-padha*x)*Math.PI/180);}
-          if(houseobj1.num == 5) { rarray[2] =  r1/Math.sin((90-padha*x)*Math.PI/180);}
-          if(houseobj1.num == 6) { rarray[2] = (Math.sin(((45))*Math.PI/180)*1)/Math.sin((180-45-padha*x)*Math.PI/180);}
-          if(houseobj1.num  == 8) { rarray[2] = r1/Math.sin((90-padha*x)*Math.PI/180);}
-          if(houseobj1.num  == 9) { rarray[2] = (Math.sin(((45))*Math.PI/180)*1)/Math.sin((180-45-padha*x)*Math.PI/180);}
-          if(houseobj1.num == 11) { rarray[2] = r1/Math.sin((90-padha*x)*Math.PI/180);}
-          if(houseobj1.num == 12) { rarray[2] = (Math.sin(((45))*Math.PI/180)*1)/Math.sin((180-45-padha*x)*Math.PI/180);}
+          //if(houseobj1.num == 2) { rarray[2] = r1/Math.sin((90-padha*x)*Math.PI/180);}
+          if(houseobj1.num == 2) { rarray[2] =  (_0_707+(step_size*(k+1)));}
+          //if(houseobj1.num == 3) { rarray[2] = (Math.sin(((45))*Math.PI/180)*1)/Math.sin((180-45-padha*x)*Math.PI/180);}
+          if(houseobj1.num == 3) { rarray[2] =  (1-(step_size*(k+1)));}
+          //if(houseobj1.num == 5) { rarray[2] =  r1/Math.sin((90-padha*x)*Math.PI/180);}
+          if(houseobj1.num == 5) { rarray[2] =  (_0_707+(step_size*(k+1)));}
+          if(houseobj1.num == 6) { rarray[2] =  (1-(step_size*(k+1)));}
+          if(houseobj1.num  == 8) { rarray[2] = (_0_707+(step_size*(k+1)));}
+          if(houseobj1.num  == 9) { rarray[2] = (1-(step_size*(k+1)));}
+          if(houseobj1.num == 11) { rarray[2] = (_0_707+(step_size*(k+1)));}
+          if(houseobj1.num == 12) { rarray[2] = (1-(step_size*(k+1)));}
         }
         if( rarray[2] < 0)rarray[2] = rarray[2] * (-1);
         if(padha_num==0){
@@ -263,8 +267,8 @@ function update_(me) {
           nakshatraObj.nakshatras[nakshatra_num-1].qarray[1]= rarray[1];
           nakshatraObj.nakshatras[nakshatra_num-1].rarray[2]= rarray[2];
           nakshatraObj.nakshatras[nakshatra_num-1].qarray[2]= rarray[2];
-          nakshatraObj.nakshatras[nakshatra_num-1].rarray[3]= rarray[0];
-          nakshatraObj.nakshatras[nakshatra_num-1].qarray[3]= qarray[0];
+          nakshatraObj.nakshatras[nakshatra_num-1].rarray[0]= rarray[0];
+          nakshatraObj.nakshatras[nakshatra_num-1].qarray[0]= qarray[0];
         }
         
         DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[nakshatra_num-1].color,nakshatraObj.nakshatras[nakshatra_num-1].fillcolor);
