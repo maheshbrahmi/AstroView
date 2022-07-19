@@ -359,6 +359,10 @@ astroObj.hitCtx = document.getElementById("astroMainHit").getContext('2d');
 
 astroObj.ctx.canvas.addEventListener("mousemove", onMouseMove, false);
 astroObj.ctx.canvas.addEventListener("dblclick", onMouseDblClick, false);
+$(astroObj.ctx.canvas).on('taphold', function(e){
+  alert('X: ' + holdCords.holdX + ' Y: ' + holdCords.holdY ); 
+});
+
 //window.addEventListener('load', astroObj.redrawAstro, false);  //  not necessary duplicates $('document').ready(function () at the top
 window.addEventListener('resize',astroObj.redrawAstro, false); // resize,clear and redraw
 document.getElementById('file-input1').addEventListener('change', handleFileImport, false);//file Import
