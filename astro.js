@@ -359,11 +359,12 @@ astroObj.hitCtx = document.getElementById("astroMainHit").getContext('2d');
 
 astroObj.ctx.canvas.addEventListener("mousemove", onMouseMove, false);
 astroObj.ctx.canvas.addEventListener("dblclick", onMouseDblClick, false);
-var $c = $('#astroMain');
-var ctx1 = $c.get(0).getContext('2d');
-ctx1.on('taphold', function(e){
-  alert('X: ' + holdCords.holdX + ' Y: ' + holdCords.holdY ); 
-});
+// need to figure out why this does not work. For now use double tab on mobile
+// var $c = $('#astroMain');
+// var ctx1 = $c.get(0).getContext('2d');
+// ctx1.on('taphold', function(e){
+//   alert('X: ' + holdCords.holdX + ' Y: ' + holdCords.holdY ); 
+// });
 
 //window.addEventListener('load', astroObj.redrawAstro, false);  //  not necessary duplicates $('document').ready(function () at the top
 window.addEventListener('resize',astroObj.redrawAstro, false); // resize,clear and redraw
