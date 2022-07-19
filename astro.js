@@ -358,7 +358,7 @@ astroObj.ctx = document.getElementById("astroMain").getContext('2d');
 astroObj.hitCtx = document.getElementById("astroMainHit").getContext('2d');
 
 astroObj.ctx.canvas.addEventListener("mousemove", onMouseMove, false);
-astroObj.ctx.canvas.addEventListener("dblclick", onMouseClick, false);
+astroObj.ctx.canvas.addEventListener("dblclick", onMouseDblClick, false);
 //window.addEventListener('load', astroObj.redrawAstro, false);  //  not necessary duplicates $('document').ready(function () at the top
 window.addEventListener('resize',astroObj.redrawAstro, false); // resize,clear and redraw
 document.getElementById('file-input1').addEventListener('change', handleFileImport, false);//file Import
@@ -1859,9 +1859,23 @@ function getHouse(x,y){
     return retvalue;
 }
 
+// $(document).on('vmousedown', function(event){
+//   holdCords.holdX = event.pageX;
+//   holdCords.holdY = event.pageY;
+// });
 
-function onMouseClick(e) {
-    if( isMobile ) return;
+// $(document).on('taphold', function(e){
+//   alert('X: ' + holdCords.holdX + ' Y: ' + holdCords.holdY ); 
+// });
+
+// var holdCords = {
+//   holdX : 0,
+//   holdY : 0
+// }
+
+
+function onMouseDblClick(e) {
+  //  if( isMobile ) return;
     // var mouseX = e.layerX; // this seems like working
     // var mouseY = e.layerY; // layerX returns the horizontal coordinate of the event relative to the current layer.
     var m = getMousePosition(e,chart);
@@ -2300,19 +2314,19 @@ function step_change(id1) {
     
 function step_change1(id1) {
  }
- $('input[name="spin1"]').taphold(function (e) {
-               step_change1($(e.target).attr("id"))  },
-               1000);
+//  $('input[name="spin1"]').taphold(function (e) {
+//                step_change1($(e.target).attr("id"))  },
+//                1000);
 
-$('input[name="spin2"]').on("keypress", function (e) {
-});
+// $('input[name="spin2"]').on("keypress", function (e) {
+// });
 
-$('input[name="spin2"]').TouchSpin({
-});
+// $('input[name="spin2"]').TouchSpin({
+// });
 
 
-$('input[name="spin2"]').qtip({
-});
+// $('input[name="spin2"]').qtip({
+// });
 
 // uses the schObj object to update the ToolTip content
 function updateToolTip() {
