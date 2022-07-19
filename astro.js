@@ -359,7 +359,7 @@ astroObj.hitCtx = document.getElementById("astroMainHit").getContext('2d');
 
 astroObj.ctx.canvas.addEventListener("mousemove", onMouseMove, false);
 astroObj.ctx.canvas.addEventListener("dblclick", onMouseDblClick, false);
-$(astroObj.ctx.canvas).on('taphold', function(e){
+$("astroMain").get(0).on('taphold', function(e){
   alert('X: ' + holdCords.holdX + ' Y: ' + holdCords.holdY ); 
 });
 
