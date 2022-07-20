@@ -1843,7 +1843,7 @@ function onMouseMove(evt) {
         }
       }
     else  {
-      document.getElementById("Z1").value ="Z:";
+      document.getElementById("Z1").value ="H:";
       document.getElementById("L1").value ="LONG:";
     }
     
