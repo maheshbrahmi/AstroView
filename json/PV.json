@@ -1,0 +1,24 @@
+﻿{
+	"ver": 1,
+	"type": "astroFile",
+	"name": "PVR Narasimha Rao",
+	"city": "Manchilipatnam",
+	"state": "Andhra Pradesh",
+	"country": "India",
+	"date": "04:04:1970",
+	"time": "17:50:40",
+	"longitude": "-81.133333333333",
+	"latitude": "16.166666666667",
+	"graha": {
+		"ascendant": "164.977021870290",
+		"sun": "350.872117176774",
+		"moon": "328.591381967220",
+		"mercury": "3.118655113081",
+		"venus": "7.907583476137",
+		"mars": "26.669556625504",
+		"jupiter": "189.766862907857",
+		"saturn": "15.096883205244",
+		"rahu": "318.138470349698",
+		"ketu": "138.138470349698"
+	}
+}
