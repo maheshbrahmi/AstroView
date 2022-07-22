@@ -257,10 +257,11 @@ function update_(me) {
           nakshatraObj.nakshatras[nakshatra_num-1].postion=current_house_position;
           nakshatraObj.nakshatras[nakshatra_num-1].house= houseobj2.num;
           nakshatraObj.nakshatras[nakshatra_num-1].type=houseType;
-          nakshatraObj.nakshatras[nakshatra_num-1].longitude= 0; 
-          nakshatraObj.nakshatras[nakshatra_num-1].degree= 28.7014879; 
-          nakshatraObj.nakshatras[nakshatra_num-1].mins=42; 
-          nakshatraObj.nakshatras[nakshatra_num-1].secs=0;
+          let nakshtra = nakshatraObj.nakshatras.find(o => o.postion === current_house_position);
+          nakshatraObj.nakshatras[nakshatra_num-1].longitude= nakshtra.longitude; 
+          nakshatraObj.nakshatras[nakshatra_num-1].degree=  nakshtra.degree; 
+          nakshatraObj.nakshatras[nakshatra_num-1].mins= nakshtra.mins; 
+          nakshatraObj.nakshatras[nakshatra_num-1].secs= nakshtra.secs;
           nakshatraObj.nakshatras[nakshatra_num-1].rarray[0]= rarray[0];
           nakshatraObj.nakshatras[nakshatra_num-1].qarray[0]= qarray[0];
           nakshatraObj.nakshatras[nakshatra_num-1].rarray[1]= rarray[1];
