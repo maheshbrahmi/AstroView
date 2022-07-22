@@ -23,163 +23,163 @@ var nakshatraObj = {
     nakshatras : [{
         num: '1', name: 'Ashwini', startsign_name: "aries", startdegree: 0, startmins: 0,
         ruler: 'ketu', symbol: 'Horses Head', deity: 'Ashwini Kumar', nature: 'swift', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 1, house: 1, type:'', longitude: 0, degree: 0, mins:0, secs:0,rarray : [], qarray: [],
         color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)', 
         qualities: ''
         }, {
         num: '2', name: 'Bharani', startsign_name: "aries",  startdegree: 13, startmins: 20,
         ruler: 'venus', symbol: 'Yoni', deity: 'Yama',  nature: 'fierce', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 1, house: 1, type:'', longitude: 13.334, degree: 13, mins:20, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '3', name: 'Kritika', startsign_name: "aries", startdegree: 26, startmins: 40,
         ruler: 'sun', symbol: 'Razor', deity: 'Agni',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 1, house: 1, type:'', longitude: 26.667, degree: 26, mins:40, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '4', name: 'Rohini', startsign_name: "taurus", startdegree: 10, startmins: 00,
         ruler: 'moon', symbol: 'Chariot', deity: 'Brahma',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 2, house: 2, type:'', longitude: 40.00, degree: 10, mins:0, secs:0,rarray : [], qarray: [],
         color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '5', name: 'Mrigasira', startsign_name: "tarus", startdegree: 23, startmins: 20,  
         ruler: 'mars', symbol: 'Deer`s head', deity: 'Chandra',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 2, house: 2, type:'', longitude: 53.334, degree: 23, mins:20, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '6', name: 'Aardra', startsign_name: "gemini", startdegree: 6, startmins: 40,
         ruler: 'rahu', symbol: 'Tear Drop', deity: 'Rudra',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 3, house: 3, type:'', longitude: 66.667, degree: 6, mins:40, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '7', name: 'Punarvasu', startsign_name: "gemini", startdegree: 20, startmins: 00,
         ruler: 'jupiter', symbol: 'Quiver', deity: 'Aditi',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 3, house: 3, type:'', longitude:80.00, degree: 20, mins:0, secs:0,rarray : [], qarray: [],
         color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '8', name: 'Pushyami', startsign_name: "cancer", startdegree: 3, startmins: 20, 
         ruler: 'saturn',  symbol: 'Udder', deity: 'Brihaspati', nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 4, house: 4, type:'', longitude: 93.33, degree: 3, mins:20, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '9', name: 'Ashlesha', startsign_name: "cancer",startdegree: 16, startmins: 40, 
         ruler: 'mercury',  deity: 'Nag', symbol: 'Serpent', nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 4, house: 4, type:'', longitude: 106.667, degree: 16, mins:40, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '10', name: 'Magha', startsign_name: "leo", startdegree: 0, startmins: 00, 
         ruler: 'ketu', symbol: 'Throne', deity: 'Pitras',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 5, house: 5, type:'', longitude: 120.00, degree: 30, mins:0, secs:0,rarray : [], qarray: [],
         color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '11', name: 'Purva Phalguni', startsign_name: "leo", startdegree: 13, startmins: 20, 
         ruler: 'venus', symbol: 'Hammock', deity: 'Bhaga',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 5, house: 5, type:'', longitude: 133.334, degree: 13, mins:20, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '12', name: 'Uttra Phalguni', startsign_name: "leo", startdegree: 26, startmins: 40, 
         ruler: 'sun', symbol: 'Fig Tree', deity: 'Aryaman',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 5, house: 5, type:'', longitude: 146.667, degree: 26, mins:40, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '13', name: 'Hasta',startsign_name: "virgo", startdegree: 10, startmins: 00, 
         ruler: 'moon', symbol: 'Hand', deity: 'Surya',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 6, house: 6, type:'', longitude: 160.00, degree:10, mins:0, secs:0,rarray : [], qarray: [],
         color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '14', name: 'Chitra',startsign_name: "virgo", startdegree: 23, startmins: 20, 
         ruler: 'mars', symbol: 'jewel', deity: 'Viswakarma',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 6, house: 6, type:'', longitude: 173.334, degree: 23, mins:20, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '15', name: 'Swati', startsign_name: "libra", startdegree: 6, startmins: 40, 
         ruler: 'rahu', symbol: 'Coral', deity: 'Vaayu',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 7, house: 7, type:'', longitude: 186.667, degree: 6, mins:40, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '16', name: 'Vishakaha', startsign_name: "libra", startdegree: 20, startmins: 00, 
         ruler: 'jupiter', symbol: 'Arch', deity: 'Indira',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 7, house: 7, type:'', longitude: 210.00, degree: 20, mins:0, secs:0,rarray : [], qarray: [],
         color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '17', name: 'Anuradha', startsign_name: "scorpio", startdegree: 3, startmins: 20, 
         ruler: 'saturn', symbol: 'Lotus', deity: 'Mithra',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 8, house: 8, type:'', longitude: 213.33, degree: 3, mins:20, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '18', name: 'Jyeshtha', startsign_name: "scorpio", startdegree: 16, startmins: 40, 
         ruler: 'mercury', symbol: 'Amulet', deity: 'Indra',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 8, house: 8, type:'', longitude: 226.67, degree:16, mins:40, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '19', name: 'Mula', startsign_name: "sagittarius", startdegree: 0, startmins: 00, 
         ruler: 'ketu', symbol: 'roots', deity: 'Nirriti',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 9, house: 9, type:'', longitude: 240.00, degree: 30, mins:0, secs:0,rarray : [], qarray: [],
         color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '20', name: 'Purva Ashadha', startsign_name: "sagittarius", startdegree: 13, startmins: 20, 
         ruler: 'venus', symbol: 'A fan', deity: 'Varuna',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 9, house:9, type:'', longitude: 253.334, degree: 13, mins:20, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '21', name: 'Uttara Ashadha', startsign_name: "sagittarius", startdegree: 26, startmins: 40, 
         ruler: 'sun', symbol: 'Tusk', deity: 'Vishvadevas',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 9, house: 9, type:'', longitude: 266.667, degree: 26, mins:40, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '22', name: 'Shravana', startsign_name: "capricorn", startdegree: 23, startmins: 20, 
         ruler: 'moon', symbol: 'An Ear', deity: 'Vishnu',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 10, house: 10, type:'', longitude: 280.00, degree: 10, mins:0, secs:0,rarray : [], qarray: [],
         color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '23', name: 'Dhanistha', startsign_name: "capricorn", startdegree: 23, startmins: 20, 
         ruler: 'mars', symbol: 'Drum', deity: 'Vasus',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 10, house: 10, type:'', longitude: 293.334, degree: 23, mins:20, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '24', name: 'Satabhishak', startsign_name: "aquarius", startdegree: 6, startmins: 40, 
         ruler: 'rahu', symbol: '1000 Stars', deity: 'Varuna',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 11, house: 11, type:'', longitude: 306.667, degree: 6, mins:40, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         },{
         num: '25', name: 'Purva Bhadra', startsign_name: "aquarius", startdegree: 20, startmins: 00, 
         ruler: 'jupiter', symbol: 'Funeral cot', deity: 'Ajaikapada',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 11, house: 11, type:'', longitude: 320.00, degree: 20, mins:0, secs:0,rarray : [], qarray: [],
         color: 'rgb(255,0,0)', fillcolor: 'rgb(255,0,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '26', name: 'Uttara Bhadra', startsign_name: "pisces", startdegree: 3, startmins: 20, 
         ruler: 'saturn', symbol: 'Water Snake', deity: 'Ahirbudhnyua',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 12, house: 12, type:'', longitude: 333.334, degree: 3, mins:20, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,255,0)', fillcolor: 'rgb(0,255,0)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }, {
         num: '27', name: 'Revati', startsign_name: "pisces", startdegree: 16, startmins: 40, 
         ruler: 'mercury', symbol: 'A fish', deity: 'Pushan',  nature: '', 
-        postion: 1, house: 1, type:'', longitude: 0, degree: 28.7014879, mins:42, secs:0,rarray : [], qarray: [],
+        postion: 12, house: 12, type:'', longitude: 346.667, degree: 16, mins:40, secs:0,rarray : [], qarray: [],
         color: 'rgb(0,0,255)', fillcolor: 'rgb(0,0,255)', colorKey: 'rgb(0,0,0)',
         qualities: ''
         }
@@ -274,7 +274,7 @@ function update_(me) {
         DrawTriangle(me.ctx,rarray,qarray,nakshatraObj.nakshatras[nakshatra_num-1].color,nakshatraObj.nakshatras[nakshatra_num-1].fillcolor);
         console.log("degree= " +  qarray[1] );
         Nakshatra_placeText(me.ctx,MQtoX(rarray[1],qarray[1]),MQtoY(rarray[1],qarray[1]),nakshatra_num+(padha_num/10),"center","middle",'italic','normal',4,'arial','black');
-        if((9*i+k) % 4 ==0)  Nakshatra_placeText(me.ctx,MQtoX(rarray[1]-0.125,qarray[1]+10),MQtoY(rarray[1]-0.125,qarray[1]+10),nakshatraObj.nakshatras[nakshatra_num-1].name,"center","middle",'italic','bold',4,'arial','blue');
+        if((9*i+k) % 4 ==0)  Nakshatra_placeText(me.ctx,MQtoX(rarray[1]-0.125,qarray[1]+10),MQtoY(rarray[1]-0.125,qarray[1]+10),nakshatraObj.nakshatras[nakshatra_num-1].name,"center","middle",'normal','bolder',4,'arial',nakshatraObj.nakshatras[nakshatra_num-1].color);
         console.log("r[0]= " + rarray[0] +  " q[0]= " + qarray[0] +  " r[1]= " + rarray[1] + " q[1]= " + qarray[1]);
         console.log("r[2]= " + rarray[2] +  " q[2]= " + qarray[2] );
         rarray[1] = rarray[2];
