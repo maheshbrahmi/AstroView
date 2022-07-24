@@ -406,29 +406,33 @@ function drawAspect(me) {
   drawAstro(me);
 }
 
+// https://stackoverflow.com/questions/14496531/adding-two-numbers-concatenates-them-instead-of-calculating-the-sum
+// They are actually strings, not numbers. The easiest way to produce a number from a string is to prepend it with +:
+// var x = +y + +z;
+
 function centerAscendant(me) {
   if(me.centerAscendant_ == true) 
     { 
       me.centerAscendant_ = false;   
       //reset ascendant
       //ascendant_adjust = 15 + degree;
-      inputObj.graha["ascendant"] = inputObj.graha["ascendant"] - ascendant_adjust;
-      inputObj.graha["sun"] = inputObj.graha["sun"] - ascendant_adjust;
-      inputObj.graha["moon"] = inputObj.graha["moon"] - ascendant_adjust;
-      inputObj.graha["mercury"] = inputObj.graha["mercury"] - ascendant_adjust;
-      inputObj.graha["venus"] = inputObj.graha["venus"] - ascendant_adjust;
-      inputObj.graha["mars"] = inputObj.graha["mars"] - ascendant_adjust;
-      inputObj.graha["jupiter"] = inputObj.graha["jupiter"] - ascendant_adjust;
-      inputObj.graha["saturn"] = inputObj.graha["saturn"] - ascendant_adjust;
-      inputObj.graha["rahu"] = inputObj.graha["rahu"] - ascendant_adjust;
-      inputObj.graha["ketu"] = inputObj.graha["ketu"] - ascendant_adjust;
+      inputObj.graha["ascendant"] = +inputObj.graha["ascendant"] - +ascendant_adjust;
+      inputObj.graha["sun"] = +inputObj.graha["sun"] - +ascendant_adjust;
+      inputObj.graha["moon"] = +inputObj.graha["moon"] - +ascendant_adjust;
+      inputObj.graha["mercury"] = +inputObj.graha["mercury"] - +ascendant_adjust;
+      inputObj.graha["venus"] = +inputObj.graha["venus"] - +ascendant_adjust;
+      inputObj.graha["mars"] = +inputObj.graha["mars"] - +ascendant_adjust;
+      inputObj.graha["jupiter"] = +inputObj.graha["jupiter"] - +ascendant_adjust;
+      inputObj.graha["saturn"] = +inputObj.graha["saturn"] - +ascendant_adjust;
+      inputObj.graha["rahu"] = +inputObj.graha["rahu"] - +ascendant_adjust;
+      inputObj.graha["ketu"] = +inputObj.graha["ketu"] - +ascendant_adjust;
       ascendant_adjust = 0.0;
     }
   else me.centerAscendant_ = true;
   if(me.centerAscendant_ == true)
   {
   // first get the ascendent degree
-  let degree = 0;
+  let degree = 0.0;
   let mins = 42;
   let secs = 5;
   let position=0;
@@ -436,18 +440,19 @@ function centerAscendant(me) {
   //alert(" degree : "+ degree);
   if(degree != 0.0)
   {
-    if(ascendant_adjust == 0.0) ascendant_adjust = 15 - degree;
-    inputObj.graha["ascendant"] = inputObj.graha["ascendant"] + ascendant_adjust;
-    inputObj.graha["sun"] = inputObj.graha["sun"] + ascendant_adjust;
-    inputObj.graha["moon"] = inputObj.graha["moon"] + ascendant_adjust;
-    inputObj.graha["mercury"] = inputObj.graha["mercury"] + ascendant_adjust;
-    inputObj.graha["venus"] = inputObj.graha["venus"] + ascendant_adjust;
-    inputObj.graha["mars"] = inputObj.graha["mars"] + ascendant_adjust;
-    inputObj.graha["jupiter"] = inputObj.graha["jupiter"] + ascendant_adjust;
-    inputObj.graha["saturn"] = inputObj.graha["saturn"] + ascendant_adjust;
-    inputObj.graha["rahu"] = inputObj.graha["rahu"] + ascendant_adjust;
-    inputObj.graha["ketu"] = inputObj.graha["ketu"] + ascendant_adjust;
+    if(ascendant_adjust == 0.0) ascendant_adjust = 15.0 - +degree;
+    inputObj.graha["ascendant"] = +inputObj.graha["ascendant"] + +ascendant_adjust;
+    inputObj.graha["sun"] = +inputObj.graha["sun"] + +ascendant_adjust;
+    inputObj.graha["moon"] = +inputObj.graha["moon"] + +ascendant_adjust;
+    inputObj.graha["mercury"] = +inputObj.graha["mercury"] + +ascendant_adjust;
+    inputObj.graha["venus"] = +inputObj.graha["venus"] + +ascendant_adjust;
+    inputObj.graha["mars"] = +inputObj.graha["mars"] + +ascendant_adjust;
+    inputObj.graha["jupiter"] = +inputObj.graha["jupiter"] + +ascendant_adjust;
+    inputObj.graha["saturn"] = +inputObj.graha["saturn"] + +ascendant_adjust;
+    inputObj.graha["rahu"] = +inputObj.graha["rahu"] + +ascendant_adjust;
+    inputObj.graha["ketu"] = +inputObj.graha["ketu"] + +ascendant_adjust;
   }
+  //alert(" ascendant_adjust : "+ inputObj.graha["ketu"]);
 
   }
 
