@@ -15,6 +15,7 @@ var isMobile = false; //initiate as false
 const signsArray = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces']; //rashis
 const planetsArray = ['ascendant','sun','moon','mars','mercury','jupiter','venus','saturn','rahu','ketu']; //rashis
 const planetsColor=  ['black','#E75F35','#E7AA35','#C21313','#888888','#C1694F','#EEEA90','#7F9DCB','#E7AA35','#E7AA35']; 
+var ascendant_adjust = 0.0;
 //const pl5_exportformat =['First_last_name' ,'Gender','Ankavalue','City','State','Country','Birthdate','Time','Birthdate_time_Julian','Timezone', 'DST','Longitude' ,'Latitude','Longitudes_Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn','Rahu','Ketu','Dhuma','Vyatipata','Parivesha','Indrachapa','Upaketu','Gulika','Prana Pada','Uranus','Neptune','Pluto','Ascendant'];
 
 //console.log(signs.indexOf('taurus'));
@@ -342,11 +343,13 @@ var astroObj = {
                showAspect: false,
                showNakshatra:false,
                showLords:false,
+               centerAscendant_: false,
                drawAstro: function() { drawAstro(this);},
                drawAspect: function() { drawAspect(this);},
                drawLords: function() { drawLords(this);},
                drawNakshatra: function() { drawNakshatra(this);},
                updateOutput: function() { updateOutput(this);},
+               centerAscendant: function() { centerAscendant(this);},
                test: function() { test(this);},
                //updateSigns: function() { updateSigns (this,ascendant_position );}, // Resets all properties to its default values
                input:inputObj,
@@ -386,7 +389,6 @@ function updateSigns(me, ascendant_position){
 function drawNakshatra(me) {
   if(me.showNakshatra == true) me.showNakshatra = false; 
   else me.showNakshatra = true;
-  //var ctx = me.ctx;
   console.log("Draw Nakshatra");
   drawAstro(me);
 }
@@ -394,7 +396,6 @@ function drawNakshatra(me) {
 function drawLords(me) {
   if(me.showLords == true) me.showLords = false; 
   else me.showLords = true;
-  //var ctx = me.ctx;
   console.log("Draw Lords");
   drawAstro(me);
 }
@@ -402,7 +403,55 @@ function drawLords(me) {
 function drawAspect(me) {
   if(me.showAspect == true) me.showAspect = false; 
   else me.showAspect = true;
-  //var ctx = me.ctx;
+  drawAstro(me);
+}
+
+function centerAscendant(me) {
+  if(me.centerAscendant_ == true) 
+    { 
+      me.centerAscendant_ = false;   
+      //reset ascendant
+      //ascendant_adjust = 15 + degree;
+      inputObj.graha["ascendant"] = inputObj.graha["ascendant"] - ascendant_adjust;
+      inputObj.graha["sun"] = inputObj.graha["sun"] - ascendant_adjust;
+      inputObj.graha["moon"] = inputObj.graha["moon"] - ascendant_adjust;
+      inputObj.graha["mercury"] = inputObj.graha["mercury"] - ascendant_adjust;
+      inputObj.graha["venus"] = inputObj.graha["venus"] - ascendant_adjust;
+      inputObj.graha["mars"] = inputObj.graha["mars"] - ascendant_adjust;
+      inputObj.graha["jupiter"] = inputObj.graha["jupiter"] - ascendant_adjust;
+      inputObj.graha["saturn"] = inputObj.graha["saturn"] - ascendant_adjust;
+      inputObj.graha["rahu"] = inputObj.graha["rahu"] - ascendant_adjust;
+      inputObj.graha["ketu"] = inputObj.graha["ketu"] - ascendant_adjust;
+      ascendant_adjust = 0.0;
+    }
+  else me.centerAscendant_ = true;
+  if(me.centerAscendant_ == true)
+  {
+  // first get the ascendent degree
+  let degree = 0;
+  let mins = 42;
+  let secs = 5;
+  let position=0;
+  [position,degree,mins,secs] = logitudeToPositions(inputObj.graha["ascendant"]);
+  //alert(" degree : "+ degree);
+  if(degree != 0.0)
+  {
+    if(ascendant_adjust == 0.0) ascendant_adjust = 15 - degree;
+    inputObj.graha["ascendant"] = inputObj.graha["ascendant"] + ascendant_adjust;
+    inputObj.graha["sun"] = inputObj.graha["sun"] + ascendant_adjust;
+    inputObj.graha["moon"] = inputObj.graha["moon"] + ascendant_adjust;
+    inputObj.graha["mercury"] = inputObj.graha["mercury"] + ascendant_adjust;
+    inputObj.graha["venus"] = inputObj.graha["venus"] + ascendant_adjust;
+    inputObj.graha["mars"] = inputObj.graha["mars"] + ascendant_adjust;
+    inputObj.graha["jupiter"] = inputObj.graha["jupiter"] + ascendant_adjust;
+    inputObj.graha["saturn"] = inputObj.graha["saturn"] + ascendant_adjust;
+    inputObj.graha["rahu"] = inputObj.graha["rahu"] + ascendant_adjust;
+    inputObj.graha["ketu"] = inputObj.graha["ketu"] + ascendant_adjust;
+  }
+
+  }
+
+
   drawAstro(me);
 }
 //calculate chart
@@ -425,18 +474,6 @@ degree = Number(longitude).toFixed(2);;
 mins = parseInt((longitude-parseInt(longitude))*60);
 //console.log("mins = " +mins);
 secs = parseInt(((longitude-parseInt(longitude))*60 - mins)*60);
-//console.log("secs = " +secs);
-// //let signNum = parseInt(signsArray.indexOf(outputObj[0].sign));
-// let signNum = 10;
-// signNum = signNum+1;
-// //console.log("signNum " +  signNum);
-// //console.log("sign " +  outputObj[0].sign);
-// var pos_dist = position - signNum; 
-// //console.log("pos_dist = " +pos_dist);
-// if(pos_dist < 0) house = pos_dist+13
-// else house = pos_dist+1
-//console.log("house = " +house);
-//=IF((D16-$D$35)<0,(D16 -$D$35)+12+1,D16-$D$35+1)
 return [position,degree,mins,secs];
 }
 
@@ -497,7 +534,7 @@ function updateGraha(graha_name){  // calculate postiions from Logitude
 
     outputObj[graha_name].is_retrograde = false;
     // if in the same house as the SUN and withing 6 degrees from the sun
-    if((graha_name != "sun"  &&  outputObj["sun"].house == house) && (parseInt(outputObj["sun"].degree)- parseInt(degree)) <=6  ) outputObj[graha_name].is_combust = true;
+    if((graha_name != "sun"  &&  outputObj["sun"].house == house) && (Math.abs(parseInt(outputObj["sun"].degree)- parseInt(degree))) <=6  ) outputObj[graha_name].is_combust = true;
     else outputObj[graha_name].is_combust = false;
     const planet_ruledby = signObj[position-1].ruledby;
     //console.log(graha_name + " Planet RULED BY: " + planet_ruledby);
@@ -905,28 +942,6 @@ function drawAstro(me) {
     nakshatraObj.drawNakshatra_();
    // nakshatraObj.print_();
     nakshatraObj.update_();
-    //var ctx = me.ctx;
-    //var planet, x, y, aspect,house,final_aspect;
-    // DrawTriangle(ctx,0,0,0.5,135,0.55,160,"red","red");
-    // DrawTriangle(ctx,0,0,0.55,160,0.71,180,"red","red");
-    // DrawTriangle(ctx,0,0,0.71,180,0.55,200,"red","red");
-    // DrawTriangle(ctx,0,0,0.55,200,0.5,225,"red","red");
-    //DrawTriangle(ctx,0,0,0.5,135,0.55,160,"red","red");
-    // for(let i=1; i <planetsArray.length; i++){
-    //   planet = planetsArray[i];
-    //   if(inputObj.graha[planet]=="") break;
-    //   house = outputObj[planet].house;
-    //   x = outputObj[planet].x;
-    //   y = outputObj[planet].y;
-    //   aspect = outputObj[planet].aspect;
-    //   aspect.forEach(function(aspecting) {
-    //     console.log(planet+' house: '+house+' '+x+' '+y+" => aspecting " + aspecting + " " + " "+ astroObj.houses[aspecting].centerx  + " "+ astroObj.houses[aspecting].centery);
-    //     final_aspect  = house + aspecting - 1;
-    //     if(final_aspect >12) final_aspect = final_aspect - 12;
-    //     console.log("final aspect : " + final_aspect);
-    //     DrawLinewithArrow(ctx,x,y,astroObj.houses[final_aspect-1].centerx,astroObj.houses[final_aspect-1].centery,planetsColor[i] );
-    //   });
-    //}
     console.log("show Nakshatra1")
   }
   
