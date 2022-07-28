@@ -44,4 +44,41 @@ const PK_API_CLIENT_ID = '';
         let location = document.querySelectorAll('.prokerala-location-input');
         Array.from(location).map(initWidget);
     });
-})();
+})();\\
+
+
+# if phase == 1:
+
+#                 result = "🌑"
+
+#             elif phase < 7:
+
+#                 result = "🌒"
+
+#             elif 7 <= phase <= 9:
+
+#                 result = "🌓"
+
+#             elif phase < 14:
+
+#                 result = "🌔"
+
+#             elif phase == 14:
+
+#                 result = "🌕"
+
+#             elif phase < 20:
+
+#                 result = "🌖"
+
+#             elif 20 <= phase <= 22:
+
+#                 result = "🌗"
+
+#             elif phase <= 28:
+
+#                 result = "🌘"
+
+#             else:
+
+#                 result = phase
