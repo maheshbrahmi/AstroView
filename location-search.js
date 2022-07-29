@@ -1,5 +1,5 @@
 // Visit https://api.prokerala.com/demo/birth-details.php to see the following code in action
-const PK_API_CLIENT_ID = '';
+const PK_API_CLIENT_ID = '65b47f48-e589-4a66-8ea8-191853024699';
 (function () {
     function loadScript(cb) {
         var script = document.createElement('script');
