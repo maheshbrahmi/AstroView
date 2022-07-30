@@ -413,7 +413,8 @@ function drawAspect(me) {
 function centerAscendant(me) {
   if(me.centerAscendant_ == true) 
     { 
-      me.centerAscendant_ = false;   
+      me.centerAscendant_ = false;  
+      clear_outputs() ;
       //reset ascendant
       //ascendant_adjust = 15 + degree;
       inputObj.graha["ascendant"] = +inputObj.graha["ascendant"] - +ascendant_adjust;
@@ -431,6 +432,7 @@ function centerAscendant(me) {
   else me.centerAscendant_ = true;
   if(me.centerAscendant_ == true)
   {
+  clear_outputs();
   // first get the ascendent degree
   let degree = 0.0;
   let mins = 42;
@@ -2256,11 +2258,27 @@ function handleFileImport(e) {
 
 }
 
+function clear_outputs(){
+  for (let graha in outputObj) {
+    // house = outputObj[graha].house;
+    // updateGraha(graha);
+    outputObj[graha].is_ownsign =false;
+    outputObj[graha].is_retrograde =false;
+    outputObj[graha].is_combust =false;
+    outputObj[graha].is_exhalted =false;
+    outputObj[graha].is_debilitated =false;
+    outputObj[graha].is_digbala =false;
+    outputObj[graha].is_enemysign =false;
+    outputObj[graha].is_friendsign =false;
+    outputObj[graha].is_neutralsign =false;
+    //console.log("Graha = " + graha);
+  }
+
+}
+
+
 function clear_all(){
-  //astroObj = defaultObj;
-  //var str = JSON.stringify(defaultObj, null, 4); // (Optional) beautiful indented output.
-  //console.log("inputObj on clear= " + str); // Logs output to dev tools console.
-  
+
   inputObj.name ="";
   inputObj.city = "";
   inputObj.state = "";
@@ -2279,20 +2297,21 @@ function clear_all(){
   inputObj.graha["saturn"] = "";
   inputObj.graha["rahu"] = "";
   inputObj.graha["ketu"] = "";
-  for (let graha in outputObj) {
-    // house = outputObj[graha].house;
-    // updateGraha(graha);
-    outputObj[graha].is_ownsign =false;
-    outputObj[graha].is_retrograde =false;
-    outputObj[graha].is_combust =false;
-    outputObj[graha].is_exhalted =false;
-    outputObj[graha].is_debilitated =false;
-    outputObj[graha].is_digbala =false;
-    outputObj[graha].is_enemysign =false;
-    outputObj[graha].is_friendsign =false;
-    outputObj[graha].is_neutralsign =false;
-    //console.log("Graha = " + graha);
-  }
+  clear_outputs();
+  // for (let graha in outputObj) {
+  //   // house = outputObj[graha].house;
+  //   // updateGraha(graha);
+  //   outputObj[graha].is_ownsign =false;
+  //   outputObj[graha].is_retrograde =false;
+  //   outputObj[graha].is_combust =false;
+  //   outputObj[graha].is_exhalted =false;
+  //   outputObj[graha].is_debilitated =false;
+  //   outputObj[graha].is_digbala =false;
+  //   outputObj[graha].is_enemysign =false;
+  //   outputObj[graha].is_friendsign =false;
+  //   outputObj[graha].is_neutralsign =false;
+  //   //console.log("Graha = " + graha);
+  // }
 
 }
 
